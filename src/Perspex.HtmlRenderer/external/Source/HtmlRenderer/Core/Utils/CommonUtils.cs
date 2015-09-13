@@ -265,17 +265,17 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
             var validFileName = GetValidFileName(fileNameBuilder.ToString());
             if (validFileName.Length > 25)
             {
-                validFileName = validFileName.Substring(0, 24) + validFileName.Substring(24).GetHashCode() + Path.GetExtension(validFileName);
+                validFileName = validFileName.Substring(0, 24) + validFileName.Substring(24).GetHashCode() + PathPcl.GetExtension(validFileName);
             }
 
             if (_tempPath == null)
             {
-                _tempPath = Path.Combine(Path.GetTempPath(), "HtmlRenderer");
+                _tempPath = PathPcl.Combine(PathPcl.GetTempPath(), "HtmlRenderer");
                 if (!Directory.Exists(_tempPath))
                     Directory.CreateDirectory(_tempPath);
             }
 
-            return new FileInfo(Path.Combine(_tempPath, validFileName));
+            return new FileInfo(PathPcl.Combine(_tempPath, validFileName));
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         private static string GetValidFileName(string source)
         {
             string retVal = source;
-            char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+            char[] invalidFileNameChars = PathPcl.GetInvalidFileNameChars();
             foreach (var invalidFileNameChar in invalidFileNameChars)
             {
                 retVal = retVal.Replace(invalidFileNameChar, '_');

@@ -120,6 +120,9 @@ namespace Perspex
             private set;
         }
 
+        /// <summary>
+        /// Clipboard value
+        /// </summary>
         public IClipboard Clipboard // => 
             { get { return _clipboard.Value; } }
 

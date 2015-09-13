@@ -13,6 +13,9 @@ namespace Perspex.Direct2D1.Media
 {
     public class FormattedTextImpl : IFormattedTextImpl
     {
+        // TODO Cross platfrom default Font: Helvetica, Arial, Times, Times New Roman
+        // "Helvetica" | "Arial"
+
         public FormattedTextImpl(
             string text,
             string fontFamily,
@@ -25,10 +28,10 @@ namespace Perspex.Direct2D1.Media
 
             var format = new DWrite.TextFormat(
                 factory,
-                fontFamily,
+                fontFamily ?? "Helvetica",
                 (DWrite.FontWeight)fontWeight,
                 (DWrite.FontStyle)fontStyle,
-                (float)fontSize);
+                (float)(fontSize == 0 ? 12.0 : fontSize));
 
             TextLayout = new DWrite.TextLayout(
                 factory,

@@ -438,7 +438,8 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
             try
             {
                 var imageSrc = _currentRect.OwnerBox.GetAttribute("src");
-                _htmlContainer.Adapter.SaveToFile(_currentRect.Image, Path.GetFileName(imageSrc) ?? "image", Path.GetExtension(imageSrc) ?? "png");
+                _htmlContainer.Adapter.SaveToFile(_currentRect.Image, 
+                    System.IO.PathPcl.GetFileName(imageSrc) ?? "image", PathPcl.GetExtension(imageSrc) ?? "png");
             }
             catch (Exception ex)
             {

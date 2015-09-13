@@ -58,7 +58,7 @@ namespace TheArtOfDev.HtmlRenderer.Perspex.Adapters
             }
         }
 
-        private bool _leftMouseButton;
+        // private bool _leftMouseButton;
         public override bool LeftMouseButton => (_control as HtmlControl)?.LeftMouseButton ?? false;
 
         public override bool RightMouseButton

@@ -77,7 +77,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
 
             if (download)
             {
-                var tempPath = Path.GetTempFileName();
+                var tempPath = PathPcl.GetTempFileName();
                 if (async)
                     ThreadPool.QueueUserWorkItem(DownloadImageFromUrlAsync, new DownloadData(imageUri, tempPath, filePath));
                 else

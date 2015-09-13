@@ -140,7 +140,7 @@ namespace System.IO
         }
     }
 
-    internal static class Path
+    internal static class PathPcl
     {
         public static string Combine(string tempPath, string validFileName)
         {

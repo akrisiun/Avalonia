@@ -106,6 +106,9 @@ namespace Perspex.Rendering
                     visual.Render(context);
                     d.Dispose();
 
+                    // Debug check
+                    // if (visual.VisualChildren.Count == 0) {}
+
                     foreach (var child in visual.VisualChildren.OrderBy(x => x.ZIndex))
                     {
                         Render(child, context, translation, transform);

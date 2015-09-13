@@ -457,6 +457,12 @@ namespace Perspex.Controls
         {
             if (_renderer == null)
                 return;
+
+            if ((this as IVisual).VisualChildren.Count == 0
+                && this.Content is Perspex.IVisual)
+                this.AddVisualChild(this.Content as Perspex.IVisual);
+                //   -> Render(visual, handle, Matrix.Identity);
+
             _renderer.Render(this, handle);
             _renderManager.RenderFinished();
         }
