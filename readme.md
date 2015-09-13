@@ -13,24 +13,31 @@ A multi-platform .NET UI framework.
 git clone https://github.com/grokys/Perspex.git
 git submodule update --init
 
+git pull
+git submodule sync
+
+git.exe submodule sync src/Perspex.HtmlRenderer/external
+git.exe submodule sync "src/Perspex.ReactiveUI/src"
+
 -- or
 git clone https://github.com/Reactive-Extensions/Rx.NET.git
 git clone https://github.com/reactiveui/ReactiveUI.git Perspex.ReactiveUI
 git clone https://github.com/Perspex/HTML-Renderer.git Perspex.HtmlRenderer
 ```
 
-
+Modules
+```
 [submodule "src/Perspex.ReactiveUI/src"] 
-2 	path = src/Perspex.ReactiveUI/src 
-3 	url = https://github.com/reactiveui/ReactiveUI.git 
-4 [submodule "src/Perspex.HtmlRenderer/external"] 
-5 	path = src/Perspex.HtmlRenderer/external 
-6 	url = https://github.com/Perspex/HTML-Renderer.git 
-7 	branch = perspex-pcl 
-8 [submodule "src/Markup/Perspex.Markup.Xaml/OmniXAML"] 
-9 	path = src/Markup/Perspex.Markup.Xaml/OmniXAML 
-10 	url = https://github.com/SuperJMN/OmniXAML.git 
-
+ 	path = src/Perspex.ReactiveUI/src 
+ 	url = https://github.com/reactiveui/ReactiveUI.git 
+ [submodule "src/Perspex.HtmlRenderer/external"] 
+ 	path = src/Perspex.HtmlRenderer/external 
+ 	url = https://github.com/Perspex/HTML-Renderer.git 
+ 	branch = perspex-pcl 
+ [submodule "src/Markup/Perspex.Markup.Xaml/OmniXAML"] 
+ 	path = src/Markup/Perspex.Markup.Xaml/OmniXAML 
+ 	url = https://github.com/SuperJMN/OmniXAML.git 
+```
 
 See the [build instructions here](https://github.com/grokys/Perspex/blob/master/docs/build.md)
 

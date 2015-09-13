@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D10D08CB-F41A-43DB-871E-AE90EE5F9179}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TheArtOfDev.HtmlRenderer</RootNamespace>
+    <AssemblyName>HtmlRenderer.Pcl</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile14</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PCL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;PCL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RColor.cs">
+      <Link>Adapters\Entities\RColor.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RDashStyle.cs">
+      <Link>Adapters\Entities\RDashStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RFontStyle.cs">
+      <Link>Adapters\Entities\RFontStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RKeyEvent.cs">
+      <Link>Adapters\Entities\RKeyEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RMouseEvent.cs">
+      <Link>Adapters\Entities\RMouseEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RPoint.cs">
+      <Link>Adapters\Entities\RPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RRect.cs">
+      <Link>Adapters\Entities\RRect.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\Entities\RSize.cs">
+      <Link>Adapters\Entities\RSize.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RAdapter.cs">
+      <Link>Adapters\RAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RBrush.cs">
+      <Link>Adapters\RBrush.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RContextMenu.cs">
+      <Link>Adapters\RContextMenu.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RControl.cs">
+      <Link>Adapters\RControl.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RFont.cs">
+      <Link>Adapters\RFont.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RFontFamily.cs">
+      <Link>Adapters\RFontFamily.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RGraphics.cs">
+      <Link>Adapters\RGraphics.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RGraphicsPath.cs">
+      <Link>Adapters\RGraphicsPath.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RImage.cs">
+      <Link>Adapters\RImage.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Adapters\RPen.cs">
+      <Link>Adapters\RPen.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\CssData.cs">
+      <Link>Core\CssData.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\CssDefaults.cs">
+      <Link>Core\CssDefaults.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\Border.cs">
+      <Link>Core\Dom\Border.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssBox.cs">
+      <Link>Core\Dom\CssBox.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssBoxFrame.cs">
+      <Link>Core\Dom\CssBoxFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssBoxHr.cs">
+      <Link>Core\Dom\CssBoxHr.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssBoxImage.cs">
+      <Link>Core\Dom\CssBoxImage.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssBoxProperties.cs">
+      <Link>Core\Dom\CssBoxProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssLayoutEngine.cs">
+      <Link>Core\Dom\CssLayoutEngine.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssLayoutEngineTable.cs">
+      <Link>Core\Dom\CssLayoutEngineTable.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssLength.cs">
+      <Link>Core\Dom\CssLength.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssLineBox.cs">
+      <Link>Core\Dom\CssLineBox.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssRect.cs">
+      <Link>Core\Dom\CssRect.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssRectImage.cs">
+      <Link>Core\Dom\CssRectImage.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssRectWord.cs">
+      <Link>Core\Dom\CssRectWord.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssSpacingBox.cs">
+      <Link>Core\Dom\CssSpacingBox.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\CssUnit.cs">
+      <Link>Core\Dom\CssUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\HoverBoxBlock.cs">
+      <Link>Core\Dom\HoverBoxBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Dom\HtmlTag.cs">
+      <Link>Core\Dom\HtmlTag.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\CssBlock.cs">
+      <Link>Core\Entities\CssBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\CssBlockSelectorItem.cs">
+      <Link>Core\Entities\CssBlockSelectorItem.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlGenerationStyle.cs">
+      <Link>Core\Entities\HtmlGenerationStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlImageLoadEventArgs.cs">
+      <Link>Core\Entities\HtmlImageLoadEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlLinkClickedEventArgs.cs">
+      <Link>Core\Entities\HtmlLinkClickedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlLinkClickedException.cs">
+      <Link>Core\Entities\HtmlLinkClickedException.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlRefreshEventArgs.cs">
+      <Link>Core\Entities\HtmlRefreshEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlRenderErrorEventArgs.cs">
+      <Link>Core\Entities\HtmlRenderErrorEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlRenderErrorType.cs">
+      <Link>Core\Entities\HtmlRenderErrorType.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlScrollEventArgs.cs">
+      <Link>Core\Entities\HtmlScrollEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\HtmlStylesheetLoadEventArgs.cs">
+      <Link>Core\Entities\HtmlStylesheetLoadEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Entities\LinkElementData.cs">
+      <Link>Core\Entities\LinkElementData.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\BackgroundImageDrawHandler.cs">
+      <Link>Core\Handlers\BackgroundImageDrawHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\BordersDrawHandler.cs">
+      <Link>Core\Handlers\BordersDrawHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\ContextMenuHandler.cs">
+      <Link>Core\Handlers\ContextMenuHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\FontsHandler.cs">
+      <Link>Core\Handlers\FontsHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\ImageDownloader.cs">
+      <Link>Core\Handlers\ImageDownloader.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\ImageLoadHandler.cs">
+      <Link>Core\Handlers\ImageLoadHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\SelectionHandler.cs">
+      <Link>Core\Handlers\SelectionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Handlers\StylesheetLoadHandler.cs">
+      <Link>Core\Handlers\StylesheetLoadHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\HtmlContainerInt.cs">
+      <Link>Core\HtmlContainerInt.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\HtmlRendererUtils.cs">
+      <Link>Core\HtmlRendererUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Parse\CssParser.cs">
+      <Link>Core\Parse\CssParser.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Parse\CssValueParser.cs">
+      <Link>Core\Parse\CssValueParser.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Parse\DomParser.cs">
+      <Link>Core\Parse\DomParser.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Parse\HtmlParser.cs">
+      <Link>Core\Parse\HtmlParser.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Parse\RegexParserHelper.cs">
+      <Link>Core\Parse\RegexParserHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Parse\RegexParserUtils.cs">
+      <Link>Core\Parse\RegexParserUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\ArgChecker.cs">
+      <Link>Core\Utils\ArgChecker.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\CommonUtils.cs">
+      <Link>Core\Utils\CommonUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\CssConstants.cs">
+      <Link>Core\Utils\CssConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\CssUtils.cs">
+      <Link>Core\Utils\CssUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\DomUtils.cs">
+      <Link>Core\Utils\DomUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\HtmlConstants.cs">
+      <Link>Core\Utils\HtmlConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\HtmlUtils.cs">
+      <Link>Core\Utils\HtmlUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\RenderUtils.cs">
+      <Link>Core\Utils\RenderUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\HtmlRenderer\Core\Utils\SubString.cs">
+      <Link>Core\Utils\SubString.cs</Link>
+    </Compile>
+    <Compile Include="PclCompat.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\HtmlRenderer\Core\Utils\ImageError.png">
+      <Link>Core\Utils\ImageError.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\HtmlRenderer\Core\Utils\ImageLoad.png">
+      <Link>Core\Utils\ImageLoad.png</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
