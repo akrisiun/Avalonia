@@ -92,7 +92,7 @@ namespace Perspex.Controls.Html
             PerspexProperty.Register<HtmlControl, Thickness>("BorderThickness", new Thickness(0));
 
         public static readonly PerspexProperty BorderBrushProperty =
-    PerspexProperty.Register<HtmlControl, Brush>("BorderBrush");
+            PerspexProperty.Register<HtmlControl, Brush>("BorderBrush");
 
         public static readonly PerspexProperty PaddingProperty =
             PerspexProperty.Register<HtmlControl, Thickness>("Padding", new Thickness(0));

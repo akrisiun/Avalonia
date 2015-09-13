@@ -16,11 +16,14 @@ using Perspex.Diagnostics;
 using Perspex.Layout;
 using Perspex.Media;
 using Perspex.Media.Imaging;
+using Perspex.Threading;
+using Perspex.Rendering;
+using Perspex.Direct2D1;
 
 #if PERSPEX_GTK
 using Perspex.Gtk;
 #endif
-//using ReactiveUI;
+using ReactiveUI;
 
 namespace TestApplication
 {
@@ -43,6 +46,8 @@ namespace TestApplication
 
     internal class Program
     {
+        #region data
+
         private static readonly PerspexList<Node> s_treeData = new PerspexList<Node>
         {
             new Node
@@ -93,6 +98,12 @@ namespace TestApplication
             new Item { Name = "Item 8", Value = "Item 8 Value" },
         };
 
+        #endregion
+
+        static TextBlock fps;
+        static ReactiveCommand<object> testCommand;
+
+        [STAThread]
         private static void Main(string[] args)
         {
             //Log.Logger = new LoggerConfiguration()
@@ -101,9 +112,22 @@ namespace TestApplication
             //    .WriteTo.Trace(outputTemplate: "[{Id:X8}] [{SourceContext}] {Message}")
             //    .CreateLogger();
 
+            // STAThread
+            //var ctx = PerspexSynchronizationContext.Current ??
+            //    System.Windows.Threading.DispatcherSynchronizationContext.Current;
+            //if (ctx == null)
+            //{
+            //    ctx = new PerspexSynchronizationContext();
+            //    PerspexSynchronizationContext.SetSynchronizationContext(ctx);
+            //}
+
             // The version of ReactiveUI currently included is for WPF and so expects a WPF
             // dispatcher. This makes sure it's initialized.
-            System.Windows.Threading.Dispatcher foo = System.Windows.Threading.Dispatcher.CurrentDispatcher;
+            System.Windows.Threading.Dispatcher foo =
+                System.Windows.Threading.Dispatcher.CurrentDispatcher;
+
+            PerspexSynchronizationContext.AutoInstall = true;
+            Direct2D1Platform.Initialize();
 
             App application = new App
             {
@@ -115,14 +139,16 @@ namespace TestApplication
                         x => true),
                 },
             };
-
-            TextBlock fps;
+            if (PerspexSynchronizationContext.Current == null)
+                throw new InvalidProgramException("STAThread Context error");
 
 #if REACTIVE
-            var testCommand = ReactiveCommand.Create();
-            testCommand.Subscribe(_ => System.Diagnostics.Debug.WriteLine("Test command executed."));
+            testCommand = ReactiveCommand.Create();
+            testCommand.Subscribe(_ => System.Diagnostics.Debug.WriteLine(
+                "Test command executed."));
 #endif
 
+            #region Window 
             Window window = new Window
             {
                 Title = "Perspex Test Application",
@@ -140,132 +166,40 @@ namespace TestApplication
                         new RowDefinition(1, GridUnitType.Star),
                         new RowDefinition(GridLength.Auto),
                     },
-                    Children = new Controls
-                    {
-                        new Menu
-                        {
-                            Items = new[]
+                    Children =
+                    // Children()
+                    new Controls {
+                            (fps = new TextBlock
                             {
-                                new MenuItem
-                                {
-                                    Header = "_File",
-                                    Items = new[]
-                                    {
-                                        new MenuItem
-                                        {
-                                            Header = "_Open...",
-                                            Icon = new Image
-                                            {
-                                                Source = new Bitmap("github_icon.png"),
-                                            },
-                                        },
-                                        new MenuItem
-                                        {
-                                            Header = "_Save",
-                                            Items = new[]
-                                            {
-                                                new MenuItem
-                                                {
-                                                    Header = "Sub Item _1",
-                                                },
-                                                new MenuItem
-                                                {
-                                                    Header = "Sub Item _2",
-                                                },
-                                            }
-                                        },
-                                        new MenuItem
-                                        {
-                                            Header = "Save _As",
-                                            Items = new[]
-                                            {
-                                                new MenuItem
-                                                {
-                                                    Header = "Sub Item _1",
-                                                },
-                                                new MenuItem
-                                                {
-                                                    Header = "Sub Item _2",
-                                                },
-                                            }
-                                        },
-                                        new MenuItem
-                                        {
-                                            Header = "E_xit",
-#if REACTIVE
-                                            Command = testCommand,
-#endif
-                                        },
-                                    }
-                                },
-                                new MenuItem
-                                {
-                                    Header = "_Edit",
-                                    Items = new[]
-                                    {
-                                        new MenuItem
-                                        {
-                                            Header = "Cu_t",
-                                        },
-                                        new MenuItem
-                                        {
-                                            Header = "_Copy",
-                                        },
-                                        new MenuItem
-                                        {
-                                            Header = "_Paste",
-                                        },
-                                    }
-                                }
-                            },
-                            //[Grid.ColumnSpanProperty] = 2,
-                        },
-                        new TabControl
-                        {
-                            Items = new[]
-                            {
-                                ButtonsTab(),
-                                TextTab(),
-                                HtmlTab(),
-                                ImagesTab(),
-                                ListsTab(),
-                                LayoutTab(),
-                                AnimationsTab(),
-                            },
-                            Transition = new PageSlide(TimeSpan.FromSeconds(0.25))
-                            //[Grid.RowProperty] = 1,
-                            //[Grid.ColumnSpanProperty] = 2,
-                        },
-                        (fps = new TextBlock
-                        {
-                            HorizontalAlignment = HorizontalAlignment.Left,
-                            Margin = new Thickness(2)
-                            //[Grid.RowProperty] = 2,
-                        }),
-                        new TextBlock
-                        {
-                            Text = "Press F12 for Dev Tools",
-                            HorizontalAlignment = HorizontalAlignment.Right,
-                            Margin = new Thickness(2)
-                            //[Grid.ColumnProperty] = 1,
-                            //[Grid.RowProperty] = 2,
-                        },
+                                HorizontalAlignment = HorizontalAlignment.Left,
+                                Margin = new Thickness(2),
+                                // [Grid.RowProperty] = 2,
+                            })
+                        
                     }
                 },
             };
+            #endregion
 
+            // Render
             // DevTools.Attach(window);
 
-            //var renderer = ((IRenderRoot)window).Renderer;
-            //var last = renderer.RenderCount;
-            //DispatcherTimer.Run(() =>
-            //{
-            //    fps.Text = "FPS: " + (renderer.RenderCount - last);
-            //    last = renderer.RenderCount;
-            //    return true;
-            //}, TimeSpan.FromSeconds(1));
+            var renderer = ((IRenderRoot)window as TopLevel).Renderer;
+            if (renderer != null)
+            {
+                var last = renderer.RenderCount;
+                DispatcherTimer.Run(() =>
+                {
+                    fps.Text = "FPS: " + (renderer.RenderCount - last);
+                    last = renderer.RenderCount;
+                    return true;
+                }, TimeSpan.FromSeconds(1));
+            }
 
+            if (window.ClientSize.Height == 0)
+                window.DesiredSize = new Size(500, 300);
             window.Show();
+
             Application.Current.Run(window);
         }
 
@@ -304,7 +238,7 @@ namespace TestApplication
                 }
             };
 #else
-            
+
             var showDialog = ReactiveCommand.Create();
 
             var result = new TabItem
@@ -323,14 +257,14 @@ namespace TestApplication
                         {
                             Content = "Button",
                             Command = showDialog
-                            //[ToolTip.TipProperty] = "Hello World!",
+                            , [ToolTip.TipProperty] = "Hello World!",
                         }),
                         new Button
                         {
                             Content = "Button",
                             Background = new SolidColorBrush(0xcc119eda),
-                            //[ToolTip.TipProperty] 
-                            DataContext = "Goodbye Cruel World!",
+                            [ToolTip.TipProperty] = "Goodbye Cruel World!",
+                            // DataContext = "Goodbye Cruel World!",
                         },
                         (defaultButton = new Button
                         {
@@ -405,6 +339,8 @@ namespace TestApplication
 
             return result;
         }
+
+        #region Tabs
 
         private static TabItem HtmlTab()
         {
@@ -511,11 +447,12 @@ namespace TestApplication
                             Content = new Image
                             {
                                 Source = new Bitmap("github_icon.png")
-                                //[!Layoutable.WidthProperty] = size[!RangeBase.ValueProperty],
-                                //[!Layoutable.HeightProperty] = size[!RangeBase.ValueProperty],
+                                , [!Layoutable.WidthProperty] = size[!RangeBase.ValueProperty],
+                                  [!Layoutable.HeightProperty] = size[!RangeBase.ValueProperty],
                             },
                         },
-                        new ProgressBar()
+                        // TODO
+                        // new ProgressBar()
                         //{
                         //    [!RangeBase.MinimumProperty] = size[!RangeBase.MinimumProperty],
                         //    [!RangeBase.MaximumProperty] = size[!RangeBase.MaximumProperty],
@@ -599,8 +536,8 @@ namespace TestApplication
                                 new Button { HorizontalAlignment = HorizontalAlignment.Center, Content = "Center Aligned" },
                                 new Button { HorizontalAlignment = HorizontalAlignment.Right, Content = "Right Aligned" },
                                 new Button { HorizontalAlignment = HorizontalAlignment.Stretch, Content = "Stretch" },
-                            },
-                            //[Grid.ColumnProperty] = 0,
+                            }
+                            , [Grid.ColumnProperty] = 0,
                         },
                         new StackPanel
                         {
@@ -613,7 +550,7 @@ namespace TestApplication
                                 new Button { VerticalAlignment = VerticalAlignment.Bottom, Content = "Bottom Aligned" },
                                 new Button { VerticalAlignment = VerticalAlignment.Stretch, Content = "Stretch" },
                             },
-                            //[Grid.ColumnProperty] = 1,
+                             [Grid.ColumnProperty] = 1,
                         },
                     },
                 }
@@ -685,14 +622,14 @@ namespace TestApplication
                                 Layoutable.WidthProperty.Transition(300),
                                 Layoutable.HeightProperty.Transition(1000),
                             },
-                            //[Grid.ColumnProperty] = 1,
+                            [Grid.ColumnProperty] = 1,
                         }),
                         (button1 = new Button
                         {
                             HorizontalAlignment = HorizontalAlignment.Center,
                             Content = "Animate",
-                            //[Grid.ColumnProperty] = 1,
-                            //[Grid.RowProperty] = 1,
+                            [Grid.ColumnProperty] = 1,
+                            [Grid.RowProperty] = 1,
                         }),
                     },
                 },
@@ -728,6 +665,126 @@ namespace TestApplication
                 BindingPriority.Animation);
 
             return result;
+        }
+
+        #endregion
+
+        static Controls Children()
+        {
+            return new Controls
+                    {
+                        new Menu
+                        {
+                            Items = new[]
+                            {
+                                new MenuItem
+                                {
+                                    Header = "_File",
+                                    Items = new[]
+                                    {
+                                        new MenuItem
+                                        {
+                                            Header = "_Open...",
+                                            Icon = new Image
+                                            {
+                                                Source = new Bitmap("github_icon.png"),
+                                            },
+                                        },
+                                        new MenuItem
+                                        {
+                                            Header = "_Save",
+                                            Items = new[]
+                                            {
+                                                new MenuItem
+                                                {
+                                                    Header = "Sub Item _1",
+                                                },
+                                                new MenuItem
+                                                {
+                                                    Header = "Sub Item _2",
+                                                },
+                                            }
+                                        },
+                                        new MenuItem
+                                        {
+                                            Header = "Save _As",
+                                            Items = new[]
+                                            {
+                                                new MenuItem
+                                                {
+                                                    Header = "Sub Item _1",
+                                                },
+                                                new MenuItem
+                                                {
+                                                    Header = "Sub Item _2",
+                                                },
+                                            }
+                                        },
+                                        new MenuItem
+                                        {
+                                            Header = "E_xit",
+#if REACTIVE
+                                            Command = testCommand,
+#endif
+                                        },
+                                    }
+                                },
+                                new MenuItem
+                                {
+                                    Header = "_Edit",
+                                    Items = new[]
+                                    {
+                                        new MenuItem
+                                        {
+                                            Header = "Cu_t",
+                                        },
+                                        new MenuItem
+                                        {
+                                            Header = "_Copy",
+                                        },
+                                        new MenuItem
+                                        {
+                                            Header = "_Paste",
+                                        },
+                                    }
+                                }
+                            },
+                            //
+#if REACTIVE
+                            [Grid.ColumnSpanProperty] = 2,
+#endif
+                        },
+                        new TabControl
+                        {
+                            Items = new[]
+                            {
+                                ButtonsTab(),
+                                TextTab(),
+                                // HtmlTab(),
+                                ImagesTab(),
+                                ListsTab(),
+                                LayoutTab(),
+                                AnimationsTab(),
+                            },
+                            Transition = new PageSlide(TimeSpan.FromSeconds(0.25))
+                            , [Grid.RowProperty] = 1,
+                            [Grid.ColumnSpanProperty] = 2,
+                        },
+                        (fps = new TextBlock
+                        {
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Thickness(2)
+                            , [Grid.RowProperty] = 2,
+                        }),
+                        new TextBlock
+                        {
+                            Text = "Press F12 for Dev Tools",
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            Margin = new Thickness(2)
+                            , [Grid.ColumnProperty] = 1,
+                              [Grid.RowProperty] = 2,
+                        },
+                    };
         }
     }
 }

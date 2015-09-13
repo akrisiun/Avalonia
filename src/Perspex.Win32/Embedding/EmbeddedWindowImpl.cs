@@ -8,10 +8,9 @@ namespace Perspex.Win32
 {
     public class EmbeddedWindowImpl : WindowImpl
     {
-        private static readonly object // System.Windows.Forms.UserControl 
-            WinFormsControl = null; // new System.Windows.Forms.UserControl();
-
-        public IntPtr Handle { get; private set; }
+        //  private static readonly object // System.Windows.Forms.UserControl 
+        //    WinFormsControl = null; // new System.Windows.Forms.UserControl();
+        //  public IntPtr Handle { get; private set; }
 
         protected override IntPtr CreateWindowOverride(ushort atom, IntPtr Handle)
         {
@@ -29,6 +28,7 @@ namespace Perspex.Win32
                 IntPtr.Zero,
                 IntPtr.Zero,
                 IntPtr.Zero);
+
             Handle = hWnd;
             return hWnd;
         }

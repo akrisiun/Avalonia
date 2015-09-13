@@ -150,12 +150,13 @@ namespace Perspex.Input
                 source = Captured;
             }
 
-            source.RaiseEvent(new PointerEventArgs
-            {
-                Device = this,
-                RoutedEvent = InputElement.PointerMovedEvent,
-                Source = source,
-            });
+            if (source != null)
+                source.RaiseEvent(new PointerEventArgs
+                {
+                    Device = this,
+                    RoutedEvent = InputElement.PointerMovedEvent,
+                    Source = source,
+                });
         }
 
         private void MouseUp(IMouseDevice device, IInputRoot root, Point p)

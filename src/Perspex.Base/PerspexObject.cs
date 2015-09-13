@@ -545,7 +545,8 @@ namespace Perspex
                     "Invalid value for Property '{0}': '{1}' ({2})",
                     property.Name,
                     originalValue,
-                    originalValue == originalValue ? "null" : originalValue.GetType().FullName));
+                    originalValue == null ? "null" :
+                                originalValue.GetType().FullName));
                                 // ?.GetType().FullName ?? "(null)"));
             }
 

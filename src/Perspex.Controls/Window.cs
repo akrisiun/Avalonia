@@ -210,7 +210,10 @@ namespace Perspex.Controls
                     size = new Size(ClientSize.Width, desired.Height);
                     break;
                 case SizeToContent.WidthAndHeight:
-                    size = new Size(desired.Width, desired.Height);
+                    if (desired.Width > 0 || !IsVisible)
+                        size = new Size(desired.Width, desired.Height);
+                    else
+                        size = ClientSize;
                     break;
                 case SizeToContent.Manual:
                     size = ClientSize;

@@ -15,7 +15,7 @@ namespace Perspex.Threading
     /// </summary>
     public class PerspexSynchronizationContext : SynchronizationContext
     {
-        public PerspexSynchronizationContext()
+        static PerspexSynchronizationContext()
         {
             AutoInstall = true;
         }

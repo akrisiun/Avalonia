@@ -182,7 +182,7 @@ namespace Perspex
             }
             else
             {
-                // InitializeSubsystem("Perspex.Direct2D1");
+                InitializeSubsystem("Perspex.Direct2D1");
                 InitializeSubsystem("Perspex.Win32");
             }
         }

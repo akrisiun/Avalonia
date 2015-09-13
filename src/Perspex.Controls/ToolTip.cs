@@ -50,7 +50,8 @@ namespace Perspex.Controls
         static ToolTip()
         {
             TipProperty.Changed.Subscribe(TipChanged);
-            s_show.Throttle(TimeSpan.FromSeconds(0.5), PerspexScheduler.Instance).Subscribe(ShowToolTip);
+            s_show.Throttle(TimeSpan.FromSeconds(0.5), 
+                PerspexScheduler.Instance).Subscribe(ShowToolTip);
         }
 
         /// <summary>

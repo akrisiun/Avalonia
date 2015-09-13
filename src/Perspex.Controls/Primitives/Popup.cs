@@ -158,17 +158,17 @@ namespace Perspex.Controls.Primitives
         {
             if (_popupRoot == null)
             {
-                _popupRoot = new PopupRoot(DependencyResolver);
-                throw new NotImplementedException();
-                //{
-                //    [~ContentControl.ContentProperty] = this[~ChildProperty],
-                //    [~WidthProperty] = this[~WidthProperty],
-                //    [~HeightProperty] = this[~HeightProperty],
-                //    [~MinWidthProperty] = this[~MinWidthProperty],
-                //    [~MaxWidthProperty] = this[~MaxWidthProperty],
-                //    [~MinHeightProperty] = this[~MinHeightProperty],
-                //    [~MaxHeightProperty] = this[~MaxHeightProperty],
-                //};
+                _popupRoot = new PopupRoot(DependencyResolver)
+                // throw new NotImplementedException();
+                {
+                    [~ContentControl.ContentProperty] = this[~ChildProperty],
+                    [~WidthProperty] = this[~WidthProperty],
+                    [~HeightProperty] = this[~HeightProperty],
+                    [~MinWidthProperty] = this[~MinWidthProperty],
+                    [~MaxWidthProperty] = this[~MaxWidthProperty],
+                    [~MinHeightProperty] = this[~MinHeightProperty],
+                    [~MaxHeightProperty] = this[~MaxHeightProperty],
+                };
 
                 ((ISetLogicalParent)_popupRoot).SetParent(this);
             }

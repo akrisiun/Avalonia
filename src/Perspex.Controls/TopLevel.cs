@@ -24,7 +24,8 @@ namespace Perspex.Controls
     /// <see cref="PopupRoot"/>. It handles scheduling layout, styling and rendering as well as
     /// tracking the window <see cref="ClientSize"/> and <see cref="IsActive"/> state.
     /// </remarks>
-    public abstract class TopLevel : ContentControl, IInputRoot, ILayoutRoot, IRenderRoot, ICloseable
+    public abstract class TopLevel : ContentControl, IInputRoot, ILayoutRoot,
+        IRenderRoot, ICloseable
     {
         /// <summary>
         /// Defines the <see cref="ClientSize"/> property.
@@ -58,6 +59,11 @@ namespace Perspex.Controls
         /// The window renderer.
         /// </summary>
         private readonly IRenderer _renderer;
+
+        /// <summary>
+        /// Renderer public object
+        /// </summary>
+        public IRenderer Renderer { get { return _renderer; } }
 
         /// <summary>
         /// The input manager for the window.
@@ -131,7 +137,8 @@ namespace Perspex.Controls
 
             if (renderInterface != null)
             {
-                _renderer = renderInterface.CreateRenderer(PlatformImpl.Handle, clientSize.Width, clientSize.Height);
+                _renderer = renderInterface.CreateRenderer(
+                    PlatformImpl.Handle, clientSize.Width, clientSize.Height);
             }
 
             if (LayoutManager != null)
@@ -188,9 +195,12 @@ namespace Perspex.Controls
         public Size ClientSize
         {
             get { return GetValue(ClientSizeProperty); }
-            private set { SetValue(ClientSizeProperty, value); }
+            // private
+            protected set { SetValue(ClientSizeProperty, value); }
         }
 
+        //  public Size DesiredSize { get; set; }
+        
         /// <summary>
         /// Gets a value that indicates whether the window is active.
         /// </summary>

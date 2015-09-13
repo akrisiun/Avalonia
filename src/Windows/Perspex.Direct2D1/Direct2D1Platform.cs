@@ -20,9 +20,16 @@ namespace Perspex.Direct2D1
 
         private static readonly SharpDX.WIC.ImagingFactory s_imagingFactory = new SharpDX.WIC.ImagingFactory();
 
+        /// <summary>
+        /// Init
+        /// </summary>
         public static void Initialize()
         {
             var locator = Locator.CurrentMutable;
+            var search = locator.GetService<IPlatformRenderInterface>();
+            if (search != null)
+                return;
+
             locator.Register(() => s_instance, typeof(IPlatformRenderInterface));
             locator.Register(() => s_d2D1Factory, typeof(SharpDX.Direct2D1.Factory));
             locator.Register(() => s_dwfactory, typeof(SharpDX.DirectWrite.Factory));
@@ -34,6 +41,16 @@ namespace Perspex.Direct2D1
             return new BitmapImpl(s_imagingFactory, width, height);
         }
 
+        /// <summary>
+        /// Text
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="fontFamily"></param>
+        /// <param name="fontSize"></param>
+        /// <param name="fontStyle"></param>
+        /// <param name="textAlignment"></param>
+        /// <param name="fontWeight"></param>
+        /// <returns></returns>
         public IFormattedTextImpl CreateFormattedText(
             string text,
             string fontFamily,

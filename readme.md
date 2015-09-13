@@ -7,6 +7,34 @@ A multi-platform .NET UI framework.
 
 ![](docs/screen.png)
 
+## Building and Using
+
+```
+git clone https://github.com/grokys/Perspex.git
+git submodule update --init
+
+-- or
+git clone https://github.com/Reactive-Extensions/Rx.NET.git
+git clone https://github.com/reactiveui/ReactiveUI.git Perspex.ReactiveUI
+git clone https://github.com/Perspex/HTML-Renderer.git Perspex.HtmlRenderer
+```
+
+
+[submodule "src/Perspex.ReactiveUI/src"] 
+2 	path = src/Perspex.ReactiveUI/src 
+3 	url = https://github.com/reactiveui/ReactiveUI.git 
+4 [submodule "src/Perspex.HtmlRenderer/external"] 
+5 	path = src/Perspex.HtmlRenderer/external 
+6 	url = https://github.com/Perspex/HTML-Renderer.git 
+7 	branch = perspex-pcl 
+8 [submodule "src/Markup/Perspex.Markup.Xaml/OmniXAML"] 
+9 	path = src/Markup/Perspex.Markup.Xaml/OmniXAML 
+10 	url = https://github.com/SuperJMN/OmniXAML.git 
+
+
+See the [build instructions here](https://github.com/grokys/Perspex/blob/master/docs/build.md)
+
+
 ## Background
 
 Perspex is a multi-platform windowing toolkit - somewhat like WPF - that is intended to be multi-
@@ -35,10 +63,6 @@ There's also a high-level [architecture document](docs/architecture.md) that is 
 out of date, and I've also started writing blog posts on Perspex at http://grokys.github.io/.
 
 Contributions are always welcome!
-
-## Building and Using
-
-See the [build instructions here](https://github.com/grokys/Perspex/blob/master/docs/build.md)
 
 ## Contributing ##
 

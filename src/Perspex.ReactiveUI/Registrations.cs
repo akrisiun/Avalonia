@@ -17,7 +17,8 @@ namespace ReactiveUI
     {
         public void Register(Action<Func<object>, Type> registerFunction)
         {
-            RxApp.MainThreadScheduler = new SynchronizationContextScheduler(SynchronizationContext.Current);
+            RxApp.MainThreadScheduler = 
+                new SynchronizationContextScheduler(SynchronizationContext.Current);
         }
     }
 }
