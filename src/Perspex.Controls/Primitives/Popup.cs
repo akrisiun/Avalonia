@@ -18,31 +18,33 @@ namespace Perspex.Controls.Primitives
         /// Defines the <see cref="Child"/> property.
         /// </summary>
         public static readonly PerspexProperty<Control> ChildProperty =
-            PerspexProperty.Register<Popup, Control>(nameof(Child));
+            PerspexProperty.Register<Popup, Control>("Child"); //nameof(Child));
 
         /// <summary>
         /// Defines the <see cref="IsOpen"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> IsOpenProperty =
-            PerspexProperty.Register<Popup, bool>(nameof(IsOpen));
+            PerspexProperty.Register<Popup, bool>("IsOpen"); // nameof(IsOpen));
 
         /// <summary>
         /// Defines the <see cref="PlacementMode"/> property.
         /// </summary>
         public static readonly PerspexProperty<PlacementMode> PlacementModeProperty =
-            PerspexProperty.Register<Popup, PlacementMode>(nameof(PlacementMode), defaultValue: PlacementMode.Bottom);
+            PerspexProperty.Register<Popup, PlacementMode>("PlacementMode" // nameof(PlacementMode)
+                , defaultValue: PlacementMode.Bottom);
 
         /// <summary>
         /// Defines the <see cref="PlacementTarget"/> property.
         /// </summary>
         public static readonly PerspexProperty<Control> PlacementTargetProperty =
-            PerspexProperty.Register<Popup, Control>(nameof(PlacementTarget));
+            PerspexProperty.Register<Popup, Control>("PlacementTarget"); // nameof(PlacementTarget));
 
         /// <summary>
         /// Defines the <see cref="StaysOpen"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> StaysOpenProperty =
-            PerspexProperty.Register<Popup, bool>(nameof(StaysOpen), true);
+            PerspexProperty.Register<Popup, bool>("StaysOpen" // nameof(StaysOpen)
+                , true);
 
         /// <summary>
         /// The root of the popup.
@@ -130,7 +132,8 @@ namespace Perspex.Controls.Primitives
         /// <summary>
         /// Gets the root of the popup window.
         /// </summary>
-        public PopupRoot PopupRoot => _popupRoot;
+        public PopupRoot PopupRoot // => 
+        { get { return _popupRoot; } }
 
         /// <summary>
         /// Gets or sets a value indicating whether the popup should stay open when the popup is
@@ -145,7 +148,8 @@ namespace Perspex.Controls.Primitives
         /// <summary>
         /// Gets the root of the popup window.
         /// </summary>
-        IVisual IVisualTreeHost.Root => _popupRoot;
+        IVisual IVisualTreeHost.Root // => 
+        { get { return  _popupRoot;}}
 
         /// <summary>
         /// Opens the popup.
@@ -154,16 +158,17 @@ namespace Perspex.Controls.Primitives
         {
             if (_popupRoot == null)
             {
-                _popupRoot = new PopupRoot(DependencyResolver)
-                {
-                    [~ContentControl.ContentProperty] = this[~ChildProperty],
-                    [~WidthProperty] = this[~WidthProperty],
-                    [~HeightProperty] = this[~HeightProperty],
-                    [~MinWidthProperty] = this[~MinWidthProperty],
-                    [~MaxWidthProperty] = this[~MaxWidthProperty],
-                    [~MinHeightProperty] = this[~MinHeightProperty],
-                    [~MaxHeightProperty] = this[~MaxHeightProperty],
-                };
+                _popupRoot = new PopupRoot(DependencyResolver);
+                throw new NotImplementedException();
+                //{
+                //    [~ContentControl.ContentProperty] = this[~ChildProperty],
+                //    [~WidthProperty] = this[~WidthProperty],
+                //    [~HeightProperty] = this[~HeightProperty],
+                //    [~MinWidthProperty] = this[~MinWidthProperty],
+                //    [~MaxWidthProperty] = this[~MaxWidthProperty],
+                //    [~MinHeightProperty] = this[~MinHeightProperty],
+                //    [~MaxHeightProperty] = this[~MaxHeightProperty],
+                //};
 
                 ((ISetLogicalParent)_popupRoot).SetParent(this);
             }
@@ -177,11 +182,13 @@ namespace Perspex.Controls.Primitives
                 _topLevel.AddHandler(PointerPressedEvent, MaybeClose, RoutingStrategies.Tunnel);
             }
 
-            PopupRootCreated?.Invoke(this, EventArgs.Empty);
+            PopupRootCreated // ?
+                    .Invoke(this, EventArgs.Empty);
 
             _popupRoot.Show();
             IsOpen = true;
-            Opened?.Invoke(this, EventArgs.Empty);
+            Opened  // ?
+                    .Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -198,7 +205,8 @@ namespace Perspex.Controls.Primitives
             }
 
             IsOpen = false;
-            Closed?.Invoke(this, EventArgs.Empty);
+            Closed // ?
+                    .Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

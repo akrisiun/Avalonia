@@ -16,6 +16,7 @@ namespace Perspex.Controls.Primitives
         public AdornerLayer AdornerLayer
         {
             get;
+            protected set;
         }
 
         protected override Size MeasureOverride(Size availableSize)

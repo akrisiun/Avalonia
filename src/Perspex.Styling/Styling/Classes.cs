@@ -41,15 +41,20 @@ namespace Perspex.Styling
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
-        public int Count => _inner.Count;
+        public int Count // => 
+            { get { return _inner.Count; }} 
 
-        public bool IsReadOnly => false;
+        public bool IsReadOnly // => 
+            { get { return  false; }} 
 
-        public IObservable<NotifyCollectionChangedEventArgs> BeforeChanged => _beforeChanged;
+        public IObservable<NotifyCollectionChangedEventArgs> BeforeChanged // => 
+            { get { return  _beforeChanged;}}
 
-        public IObservable<NotifyCollectionChangedEventArgs> Changed => _changed;
+        public IObservable<NotifyCollectionChangedEventArgs> Changed // => 
+            { get { return  _changed;}}
 
-        public IObservable<NotifyCollectionChangedEventArgs> AfterChanged => _afterChanged;
+        public IObservable<NotifyCollectionChangedEventArgs> AfterChanged // => 
+            { get { return _afterChanged; } }
 
         public void Add(string item)
         {

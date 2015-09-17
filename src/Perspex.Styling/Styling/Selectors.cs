@@ -68,7 +68,9 @@ namespace Perspex.Styling
             Contract.Requires<ArgumentNullException>(previous != null);
             Contract.Requires<ArgumentNullException>(property != null);
 
-            return new Selector(previous, x => MatchPropertyEquals(x, property, value), $"[{property.Name}={value}]");
+            return new Selector(previous, x => MatchPropertyEquals(x, property, value), 
+                // $
+                "[{property.Name}={value}]");
         }
 
         public static Selector Template(this Selector previous)

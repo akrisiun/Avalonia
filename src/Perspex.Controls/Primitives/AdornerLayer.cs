@@ -45,7 +45,8 @@ namespace Perspex.Controls.Primitives
             return visual.GetVisualAncestors()
                 .OfType<AdornerDecorator>()
                 .FirstOrDefault()
-                ?.AdornerLayer;
+                // ?
+                .AdornerLayer;
         }
 
         protected override Size ArrangeOverride(Size finalSize)

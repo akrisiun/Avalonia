@@ -46,6 +46,7 @@ namespace Perspex
         public int Index
         {
             get;
+            protected set;
         }
 
         /// <summary>

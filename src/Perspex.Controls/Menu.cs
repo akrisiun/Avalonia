@@ -28,7 +28,7 @@ namespace Perspex.Controls
         /// Defines the <see cref="IsOpen"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> IsOpenProperty =
-            PerspexProperty.Register<Menu, bool>(nameof(IsOpen));
+            PerspexProperty.Register<Menu, bool>("IsOpen"); // nameof(IsOpen));
 
         /// <summary>
         /// Tracks event handlers added to the root of the visual tree.
@@ -137,7 +137,8 @@ namespace Perspex.Controls
         /// <param name="e">The event args.</param>
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            bool menuWasOpen = SelectedMenuItem?.IsSubMenuOpen ?? false;
+            bool menuWasOpen = SelectedMenuItem // ?
+                    .IsSubMenuOpenX ?? false;
 
             base.OnKeyDown(e);
 
@@ -177,7 +178,7 @@ namespace Perspex.Controls
             {
                 foreach (var child in this.GetLogicalChildren().OfType<MenuItem>())
                 {
-                    if (child != menuItem && child.IsSubMenuOpen)
+                    if (child != menuItem && (child.IsSubMenuOpen))
                     {
                         child.IsSubMenuOpen = false;
                     }

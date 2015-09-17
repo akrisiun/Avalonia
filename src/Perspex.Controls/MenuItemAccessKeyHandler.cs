@@ -94,7 +94,8 @@ namespace Perspex.Controls
                 var text = e.Text.ToUpper();
                 var focus = _registered
                     .Where(x => x.Item1 == text && x.Item2.IsEffectivelyVisible)
-                    .FirstOrDefault()?.Item2;
+                    .FirstOrDefault() //?
+                        .Item2;
 
                 if (focus != null)
                 {

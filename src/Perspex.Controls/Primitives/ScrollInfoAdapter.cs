@@ -17,20 +17,37 @@ namespace Perspex.Controls.Primitives
             set { _nfo.ScrollOwner = value; }
         }
 
-        public double ExtentWidth => (_nfo as IHorizontalScrollInfo)?.ExtentWidth ?? 0;
+        public double ExtentWidth // => 
+        { get { return  (_nfo as IHorizontalScrollInfo) // ?
+            .ExtentWidth;
+        }
+        } // ?? 0;}}
 
-        public double ViewportWidth => (_nfo as IHorizontalScrollInfo)?.ViewportWidth ?? 0;
+        public double ViewportWidth // => 
+        { get { return  (_nfo as IHorizontalScrollInfo)
+            .ViewportWidth;
+        }
+        } // ?? 0;}}
 
-        public double ExtentHeight => (_nfo as IVerticalScrollInfo)?.ExtentHeight ?? 0;
+        public double ExtentHeight // => 
+        { get { return  (_nfo as IVerticalScrollInfo)
+            .ExtentHeight;
+        }
+        } // ?? 0;}}
 
-        public double ViewportHeight => (_nfo as IVerticalScrollInfo)?.ViewportHeight ?? 0;
+        public double ViewportHeight // => 
+        { get { return  (_nfo as IVerticalScrollInfo)
+            .ViewportHeight;
+        }
+        } // ?? 0;}}
 
         private double _horizontalOffset;
         public double HorizontalOffset
         {
             get
             {
-                return (_nfo as IHorizontalScrollInfo)?.HorizontalOffset ?? _horizontalOffset;
+                return (_nfo as IHorizontalScrollInfo)
+                    .HorizontalOffset; //  ?? _horizontalOffset;
             }
 
             set
@@ -48,7 +65,8 @@ namespace Perspex.Controls.Primitives
         {
             get
             {
-                return (_nfo as IVerticalScrollInfo)?.VerticalOffset ?? _verticalOffset;
+                return ((_nfo as IVerticalScrollInfo) // ?
+                    .VerticalOffset); // ?? _verticalOffset;
             }
 
             set
@@ -61,38 +79,51 @@ namespace Perspex.Controls.Primitives
             }
         }
 
-        public void LineLeft() => (_nfo as IHorizontalScrollInfo)?.LineLeft();
+        public void LineLeft() // => 
+        {     (_nfo as IHorizontalScrollInfo).LineLeft();}
 
-        public void LineRight() => (_nfo as IHorizontalScrollInfo)?.LineRight();
+        public void LineRight() // => 
+        {    (_nfo as IHorizontalScrollInfo).LineRight();}
 
-        public void MouseWheelLeft() => (_nfo as IHorizontalScrollInfo)?.MouseWheelLeft();
+        public void MouseWheelLeft() // => 
+        {    (_nfo as IHorizontalScrollInfo).MouseWheelLeft();}
 
-        public void MouseWheelRight() => (_nfo as IHorizontalScrollInfo)?.MouseWheelRight();
+        public void MouseWheelRight() // => 
+        {    (_nfo as IHorizontalScrollInfo).MouseWheelRight();}
 
-        public void PageLeft() => (_nfo as IHorizontalScrollInfo)?.PageLeft();
+        public void PageLeft() // => 
+        {    (_nfo as IHorizontalScrollInfo).PageLeft();}
 
-        public Rect MakeVisible(Visual visual, Rect rectangle) => _nfo.MakeVisible(visual, rectangle);
+        public Rect MakeVisible(Visual visual, Rect rectangle) // => 
+        { return  _nfo.MakeVisible(visual, rectangle);}
 
-        public void PageRight() => (_nfo as IHorizontalScrollInfo)?.PageRight();
+        public void PageRight() // => 
+        {     (_nfo as IHorizontalScrollInfo).PageRight();}
 
-        public void LineDown() => (_nfo as IVerticalScrollInfo)?.LineDown();
+        public void LineDown() // => 
+        {     (_nfo as IVerticalScrollInfo).LineDown();}
 
-        public void LineUp() => (_nfo as IVerticalScrollInfo)?.LineUp();
+        public void LineUp() // => 
+        {     (_nfo as IVerticalScrollInfo).LineUp();}
 
-        public void MouseWheelDown() => (_nfo as IVerticalScrollInfo)?.MouseWheelDown();
+        public void MouseWheelDown() // => 
+        {     (_nfo as IVerticalScrollInfo).MouseWheelDown();}
 
-        public void MouseWheelUp() => (_nfo as IVerticalScrollInfo)?.MouseWheelUp();
+        public void MouseWheelUp() // => 
+        {     (_nfo as IVerticalScrollInfo).MouseWheelUp();}
 
-        public void PageDown() => (_nfo as IVerticalScrollInfo)?.PageDown();
-
-        public void PageUp() => (_nfo as IVerticalScrollInfo)?.PageUp();
+        public void PageDown() // => 
+        {     (_nfo as IVerticalScrollInfo).PageDown();}
+ 
+        public void PageUp() // => 
+        {   (_nfo as IVerticalScrollInfo).PageUp(); }
 
         private bool _canVerticallyScroll;
         public bool CanVerticallyScroll
         {
             get
             {
-                return (_nfo as IVerticalScrollInfo)?.CanVerticallyScroll ?? _canVerticallyScroll;
+                return (_nfo as IVerticalScrollInfo).CanVerticallyScroll; // ?? _canVerticallyScroll;
             }
 
             set
@@ -110,7 +141,8 @@ namespace Perspex.Controls.Primitives
         {
             get
             {
-                return (_nfo as IHorizontalScrollInfo)?.CanHorizontallyScroll ?? _canHorizontallyScroll;
+                return ((_nfo as IHorizontalScrollInfo) // ?
+                    .CanHorizontallyScroll); //  ?? _canHorizontallyScroll;
             }
 
             set

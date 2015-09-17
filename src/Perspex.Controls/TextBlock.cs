@@ -24,7 +24,7 @@ namespace Perspex.Controls
         /// </summary>
         public static readonly PerspexProperty<string> FontFamilyProperty =
             PerspexProperty.RegisterAttached<TextBlock, Control, string>(
-                nameof(FontFamily),
+                "FontFamily", // nameof(FontFamily),
                 inherits: true);
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Perspex.Controls
         /// </summary>
         public static readonly PerspexProperty<double> FontSizeProperty =
             PerspexProperty.RegisterAttached<TextBlock, Control, double>(
-                nameof(FontSize),
+                "FontSize", // nameof(FontSize),
                 inherits: true);
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Perspex.Controls
         /// </summary>
         public static readonly PerspexProperty<FontStyle> FontStyleProperty =
             PerspexProperty.RegisterAttached<TextBlock, Control, FontStyle>(
-                nameof(FontStyle),
+                "FontStyle", // nameof(FontStyle),
                 inherits: true);
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Perspex.Controls
         /// </summary>
         public static readonly PerspexProperty<FontWeight> FontWeightProperty =
             PerspexProperty.RegisterAttached<TextBlock, Control, FontWeight>(
-                nameof(FontWeight),
+                "FontWeight", // nameof(FontWeight),
                 inherits: true,
                 defaultValue: FontWeight.Normal);
 
@@ -57,7 +57,7 @@ namespace Perspex.Controls
         /// </summary>
         public static readonly PerspexProperty<Brush> ForegroundProperty =
             PerspexProperty.RegisterAttached<TextBlock, Control, Brush>(
-                nameof(Foreground),
+                "Foreground", // nameof(Foreground),
                 new SolidColorBrush(0xff000000),
                 inherits: true);
 
@@ -65,19 +65,19 @@ namespace Perspex.Controls
         /// Defines the <see cref="Text"/> property.
         /// </summary>
         public static readonly PerspexProperty<string> TextProperty =
-            PerspexProperty.Register<TextBlock, string>(nameof(Text));
+            PerspexProperty.Register<TextBlock, string>("Text"); // nameof(Text));
 
         /// <summary>
         /// Defines the <see cref="TextAlignment"/> property.
         /// </summary>
         public static readonly PerspexProperty<TextAlignment> TextAlignmentProperty =
-            PerspexProperty.Register<TextBlock, TextAlignment>(nameof(TextAlignment));
+            PerspexProperty.Register<TextBlock, TextAlignment>("TextAlignment"); // nameof(TextAlignment));
 
         /// <summary>
         /// Defines the <see cref="TextWrapping"/> property.
         /// </summary>
         public static readonly PerspexProperty<TextWrapping> TextWrappingProperty =
-            PerspexProperty.Register<TextBlock, TextWrapping>(nameof(TextWrapping));
+            PerspexProperty.Register<TextBlock, TextWrapping>("TextWrapping"); // nameof(TextWrapping));
 
         /// <summary>
         /// The formatted text used for rendering.

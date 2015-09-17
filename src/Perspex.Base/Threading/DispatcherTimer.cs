@@ -85,7 +85,9 @@ namespace Perspex.Threading
         /// </summary>
         public Dispatcher Dispatcher
         {
-            get; }
+            get;
+            set;    // ankr
+        }
 
         /// <summary>
         /// Gets or sets the interval at which the timer ticks.

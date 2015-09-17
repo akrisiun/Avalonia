@@ -45,7 +45,7 @@ namespace Perspex.Controls
         /// Defines the <see cref="Icon"/> property.
         /// </summary>
         public static readonly PerspexProperty<object> IconProperty =
-            PerspexProperty.Register<MenuItem, object>(nameof(Icon));
+            PerspexProperty.Register<MenuItem, object>("Icon"); // nameof(Icon));
 
         /// <summary>
         /// Defines the <see cref="IsSelected"/> property.
@@ -57,28 +57,31 @@ namespace Perspex.Controls
         /// Defines the <see cref="IsSubMenuOpen"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> IsSubMenuOpenProperty =
-            PerspexProperty.Register<MenuItem, bool>(nameof(IsSubMenuOpen));
+            PerspexProperty.Register<MenuItem, bool>("IsSubMenuOpen"); //nameof(IsSubMenuOpen));
 
         /// <summary>
         /// Defines the <see cref="Click"/> event.
         /// </summary>
         public static readonly RoutedEvent<RoutedEventArgs> ClickEvent =
-            RoutedEvent.Register<MenuItem, RoutedEventArgs>(nameof(Click), RoutingStrategies.Bubble);
+            RoutedEvent.Register<MenuItem, RoutedEventArgs>("Click" // nameof(Click)
+                , RoutingStrategies.Bubble);
 
         /// <summary>
         /// Defines the <see cref="SubmenuOpened"/> event.
         /// </summary>
         public static readonly RoutedEvent<RoutedEventArgs> SubmenuOpenedEvent =
-            RoutedEvent.Register<MenuItem, RoutedEventArgs>(nameof(SubmenuOpened), RoutingStrategies.Bubble);
+            RoutedEvent.Register<MenuItem, RoutedEventArgs>("SubmenuOpened" // nameof(SubmenuOpened)
+                , RoutingStrategies.Bubble);
 
         /// <summary>
         /// The default value for the <see cref="ItemsControl.ItemsPanel"/> property.
         /// </summary>
         private static readonly ITemplate<IPanel> DefaultPanel =
-            new FuncTemplate<IPanel>(() => new StackPanel
-            {
-                [KeyboardNavigation.DirectionalNavigationProperty] = KeyboardNavigationMode.Cycle,
-            });
+            new FuncTemplate<IPanel>(
+                () => new StackPanel { DirectionalNavigation = KeyboardNavigationMode.Cycle }); 
+            //{
+            //    [KeyboardNavigation.DirectionalNavigationProperty] = KeyboardNavigationMode.Cycle,
+            //});
 
         /// <summary>
         /// The timer used to display submenus.
@@ -168,6 +171,8 @@ namespace Perspex.Controls
             set { SetValue(IsSelectedProperty, value); }
         }
 
+        public bool? IsSubMenuOpenX { get { return GetValue(IsSubMenuOpenProperty) as bool?; } }
+        
         /// <summary>
         /// Gets or sets a value that indicates whether the submenu of the <see cref="MenuItem"/> is
         /// open.
@@ -181,12 +186,14 @@ namespace Perspex.Controls
         /// <summary>
         /// Gets or sets a value that indicates whether the <see cref="MenuItem"/> has a submenu.
         /// </summary>
-        public bool HasSubMenu => !Classes.Contains(":empty");
+        public bool HasSubMenu // => 
+        { get { return  !Classes.Contains(":empty");}}
 
         /// <summary>
         /// Gets a value that indicates whether the <see cref="MenuItem"/> is a top-level menu item.
         /// </summary>
-        public bool IsTopLevel => Parent is Menu;
+        public bool IsTopLevel // => 
+        { get { return  Parent is Menu;}}
 
         /// <summary>
         /// Called when the <see cref="MenuItem"/> is clicked.

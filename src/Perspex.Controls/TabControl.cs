@@ -74,7 +74,8 @@ namespace Perspex.Controls
             if ((int)e.NewValue != -1)
             {
                 var item = SelectedItem as IContentControl;
-                var content = item?.Content ?? item;
+                var content = item // ?
+                        .Content ?? item;
                 SelectedTab = item as TabItem;
             }
         }

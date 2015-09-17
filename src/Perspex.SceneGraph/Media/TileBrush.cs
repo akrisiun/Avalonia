@@ -43,37 +43,42 @@ namespace Perspex.Media
         /// Defines the <see cref="AlignmentX"/> property.
         /// </summary>
         public static readonly PerspexProperty<AlignmentX> AlignmentXProperty =
-            PerspexProperty.Register<TileBrush, AlignmentX>(nameof(AlignmentX), AlignmentX.Center);
+            PerspexProperty.Register<TileBrush, AlignmentX>("AlignmentX" // nameof(AlignmentX)
+                , AlignmentX.Center);
 
         /// <summary>
         /// Defines the <see cref="AlignmentY"/> property.
         /// </summary>
         public static readonly PerspexProperty<AlignmentY> AlignmentYProperty =
-            PerspexProperty.Register<TileBrush, AlignmentY>(nameof(AlignmentY), AlignmentY.Center);
+            PerspexProperty.Register<TileBrush, AlignmentY>("AlignmentY" // nameof(AlignmentY)
+                , AlignmentY.Center);
 
         /// <summary>
         /// Defines the <see cref="DestinationRect"/> property.
         /// </summary>
         public static readonly PerspexProperty<RelativeRect> DestinationRectProperty =
-            PerspexProperty.Register<TileBrush, RelativeRect>(nameof(DestinationRect), RelativeRect.Fill);
+            PerspexProperty.Register<TileBrush, RelativeRect>("DestinationRect" // nameof(DestinationRect)
+                , RelativeRect.Fill);
 
         /// <summary>
         /// Defines the <see cref="SourceRect"/> property.
         /// </summary>
         public static readonly PerspexProperty<RelativeRect> SourceRectProperty =
-            PerspexProperty.Register<TileBrush, RelativeRect>(nameof(SourceRect), RelativeRect.Fill);
+            PerspexProperty.Register<TileBrush, RelativeRect>("SourceRect" // nameof(SourceRect)
+                , RelativeRect.Fill);
 
         /// <summary>
         /// Defines the <see cref="Stretch"/> property.
         /// </summary>
         public static readonly PerspexProperty<Stretch> StretchProperty =
-            PerspexProperty.Register<TileBrush, Stretch>(nameof(Stretch), Stretch.Uniform);
+            PerspexProperty.Register<TileBrush, Stretch>("Stretch"  // nameof(Stretch)
+            , Stretch.Uniform);
 
         /// <summary>
         /// Defines the <see cref="TileMode"/> property.
         /// </summary>
         public static readonly PerspexProperty<TileMode> TileModeProperty =
-            PerspexProperty.Register<TileBrush, TileMode>(nameof(TileMode));
+            PerspexProperty.Register<TileBrush, TileMode>("TileMode"); // nameof(TileMode));
 
         /// <summary>
         /// Gets or sets the horizontal alignment of a tile in the destination.

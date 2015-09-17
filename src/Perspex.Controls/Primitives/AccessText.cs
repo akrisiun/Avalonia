@@ -66,7 +66,8 @@ namespace Perspex.Controls.Primitives
         {
             base.Render(context);
 
-            int underscore = Text?.IndexOf('_') ?? -1;
+            int underscore = Text == null ? -1 // ?
+                : Text.IndexOf('_'); // ?? -1;
 
             if (underscore != -1 && ShowAccessKey)
             {
@@ -115,7 +116,8 @@ namespace Perspex.Controls.Primitives
         protected override void OnAttachedToVisualTree(IRenderRoot root)
         {
             base.OnAttachedToVisualTree(root);
-            _accessKeys = (root as IInputRoot)?.AccessKeyHandler;
+            _accessKeys = (root as IInputRoot)// ?
+                .AccessKeyHandler;
 
             if (_accessKeys != null && AccessKey != 0)
             {

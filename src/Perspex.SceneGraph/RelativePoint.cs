@@ -73,12 +73,14 @@ namespace Perspex
         /// <summary>
         /// Gets the point.
         /// </summary>
-        public Point Point => _point;
+        public Point Point // => 
+        { get { return  _point;}}
 
         /// <summary>
         /// Gets the unit.
         /// </summary>
-        public RelativeUnit Unit => _unit;
+        public RelativeUnit Unit // => 
+        { get { return _unit; } }
 
         /// <summary>
         /// Checks for equality between two <see cref="RelativePoint"/>s.

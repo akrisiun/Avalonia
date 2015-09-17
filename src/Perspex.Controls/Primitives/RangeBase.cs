@@ -16,7 +16,7 @@ namespace Perspex.Controls.Primitives
         /// </summary>
         public static readonly PerspexProperty<double> MinimumProperty =
             PerspexProperty.Register<RangeBase, double>(
-                nameof(Minimum),
+                "Minimum", // nameof(Minimum),
                 validate: ValidateMinimum);
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Perspex.Controls.Primitives
         /// </summary>
         public static readonly PerspexProperty<double> MaximumProperty =
             PerspexProperty.Register<RangeBase, double>(
-                nameof(Maximum),
+                "Maximum", // nameof(Maximum),
                 defaultValue: 100.0,
                 validate: ValidateMaximum);
 
@@ -33,7 +33,7 @@ namespace Perspex.Controls.Primitives
         /// </summary>
         public static readonly PerspexProperty<double> ValueProperty =
             PerspexProperty.Register<RangeBase, double>(
-                nameof(Value),
+                "Value", // nameof(Value),
                 validate: ValidateValue);
 
         /// <summary>
@@ -81,7 +81,8 @@ namespace Perspex.Controls.Primitives
         {
             if (double.IsInfinity(value) || double.IsNaN(value))
             {
-                throw new ArgumentException($"{value} is not a valid value for {property}.");
+                throw new ArgumentException( // $
+                    "{value} is not a valid value for {property}.");
             }
         }
 

@@ -15,10 +15,15 @@ namespace Perspex.Threading
     /// </summary>
     public class PerspexSynchronizationContext : SynchronizationContext
     {
+        public PerspexSynchronizationContext()
+        {
+            AutoInstall = true;
+        }
+
         /// <summary>
         /// Controls if SynchronizationContext should be installed in InstallIfNeeded. Used by Designer.
         /// </summary>
-        public static bool AutoInstall { get; set; } = true;
+        public static bool AutoInstall { get; set; } // = true;
 
         /// <summary>
         /// Installs synchronization context in current thread

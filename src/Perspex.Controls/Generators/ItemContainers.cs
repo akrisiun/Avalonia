@@ -24,11 +24,11 @@ namespace Perspex.Controls.Generators
         /// <summary>
         /// Gets the index of the first container in the source items.
         /// </summary>
-        public int StartingIndex { get; }
+        public int StartingIndex { get; protected set; }
 
         /// <summary>
         /// Gets the containers. May contain null entries.
         /// </summary>
-        public IList<IControl> Items { get; }
+        public IList<IControl> Items { get; protected set; }
     }
 }

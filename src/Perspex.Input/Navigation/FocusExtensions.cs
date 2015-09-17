@@ -13,13 +13,15 @@ namespace Perspex.Input.Navigation
         /// </summary>
         /// <param name="e">The element.</param>
         /// <returns>True if the element can be focused.</returns>
-        public static bool CanFocus(this IInputElement e) => e.Focusable && e.IsEnabledCore && e.IsVisible;
+        public static bool CanFocus(this IInputElement e) // => 
+            { return e.Focusable && e.IsEnabledCore && e.IsVisible; }
 
         /// <summary>
         /// Checks if descendents of the specified element can be focused.
         /// </summary>
         /// <param name="e">The element.</param>
         /// <returns>True if descendents of the element can be focused.</returns>
-        public static bool CanFocusDescendents(this IInputElement e) => e.IsEnabledCore && e.IsVisible;
+        public static bool CanFocusDescendents(this IInputElement e) // => 
+            { return e.IsEnabledCore && e.IsVisible; }
     }
 }

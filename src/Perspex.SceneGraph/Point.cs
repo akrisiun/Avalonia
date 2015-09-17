@@ -13,6 +13,16 @@ namespace Perspex
     public struct Point
     {
         /// <summary>
+        /// Empty constant
+        /// </summary>
+        public static readonly Point Empty;
+
+        static Point()
+        {
+            Empty = new Point(0, 0);
+        }
+
+        /// <summary>
         /// The X position.
         /// </summary>
         private readonly double _x;
@@ -36,12 +46,14 @@ namespace Perspex
         /// <summary>
         /// Gets the X position.
         /// </summary>
-        public double X => _x;
+        public double X // => 
+        { get { return _x; }}
 
         /// <summary>
         /// Gets the Y position.
         /// </summary>
-        public double Y => _y;
+        public double Y // => 
+        { get { return _y; } }
 
         /// <summary>
         /// Converts the <see cref="Point"/> to a <see cref="Vector"/>.

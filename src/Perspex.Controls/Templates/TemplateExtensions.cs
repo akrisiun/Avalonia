@@ -27,7 +27,8 @@ namespace Perspex.Controls.Templates
                     chain.Add(reparentingHost);
                 }
 
-                tp = styleable?.TemplatedParent ?? null;
+
+                tp = styleable == null ? null : styleable.TemplatedParent ?? null;
             }
 
             foreach (var reparenting in chain.AsEnumerable().Reverse())

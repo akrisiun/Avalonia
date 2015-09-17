@@ -31,13 +31,13 @@ namespace Perspex.Controls
         /// Defines the <see cref="Gap"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> GapProperty =
-            PerspexProperty.Register<StackPanel, double>(nameof(Gap));
+            PerspexProperty.Register<StackPanel, double>("Gap"); // nameof(Gap));
 
         /// <summary>
         /// Defines the <see cref="Orientation"/> property.
         /// </summary>
         public static readonly PerspexProperty<Orientation> OrientationProperty =
-            PerspexProperty.Register<StackPanel, Orientation>(nameof(Orientation));
+            PerspexProperty.Register<StackPanel, Orientation>("Orientation"); // nameof(Orientation));
 
         /// <summary>
         /// Initializes static members of the <see cref="StackPanel"/> class.
@@ -64,6 +64,20 @@ namespace Perspex.Controls
         {
             get { return GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
+        }
+
+        // Ankr:
+        public static readonly PerspexProperty<KeyboardNavigationMode> DirectionalNavigationProperty =
+           PerspexProperty.Register<StackPanel, KeyboardNavigationMode>("DirectionalNavigation"); // nameof(DirectionalNavigation));
+
+        public KeyboardNavigationMode DirectionalNavigation
+        {
+            //    TODO: Panel.IsSet(KeyboardNavigation.DirectionalNavigationProperty))
+            get { return GetValue(DirectionalNavigationProperty); }
+            set { 
+                SetValue(DirectionalNavigationProperty, value);
+                base.SetValue(KeyboardNavigation.DirectionalNavigationProperty, value);
+            }
         }
 
         /// <summary>

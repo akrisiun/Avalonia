@@ -135,7 +135,8 @@ namespace Perspex.Input
         /// <param name="e">The event args.</param>
         protected virtual void OnKeyDown(object sender, KeyEventArgs e)
         {
-            bool menuIsOpen = MainMenu?.IsOpen == true;
+            bool menuIsOpen = MainMenu == null ? false : // MainMenu?
+                              MainMenu.IsOpen == true;
 
             if (e.Key == Key.Escape && menuIsOpen)
             {

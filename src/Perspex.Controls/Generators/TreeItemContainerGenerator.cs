@@ -32,12 +32,13 @@ namespace Perspex.Controls.Generators
         /// <summary>
         /// Signalled whenever new containers are initialized.
         /// </summary>
-        public IObservable<ItemContainers> ContainersInitialized => _containersInitialized;
+        public IObservable<ItemContainers> ContainersInitialized // => 
+        { get { return _containersInitialized; } }
 
         /// <summary>
         /// Gets the owner control.
         /// </summary>
-        public IControl Owner { get; }
+        public IControl Owner { get; protected set; }
 
         /// <summary>
         /// Creates container controls for a collection of items.

@@ -44,12 +44,20 @@ namespace Perspex.Styling
         /// Gets the immedate result of the selector match, in the case of selectors that cannot
         /// change over time.
         /// </summary>
-        public bool? ImmediateResult { get; }
+        public bool? ImmediateResult
+        {
+            get;
+            protected set;
+        }
 
         /// <summary>
         /// Gets an observable which tracks the selector match, in the case of selectors that can
         /// change over time.
         /// </summary>
-        public IObservable<bool> ObservableResult { get; }
+        public IObservable<bool> ObservableResult
+        {
+            get;
+            protected set;
+        }
     }
 }

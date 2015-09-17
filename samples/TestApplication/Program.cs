@@ -8,7 +8,7 @@ using Perspex;
 using Perspex.Animation;
 using Perspex.Collections;
 using Perspex.Controls;
-using Perspex.Controls.Html;
+//using Perspex.Controls.Html;
 using Perspex.Controls.Primitives;
 using Perspex.Controls.Shapes;
 using Perspex.Controls.Templates;
@@ -16,10 +16,11 @@ using Perspex.Diagnostics;
 using Perspex.Layout;
 using Perspex.Media;
 using Perspex.Media.Imaging;
+
 #if PERSPEX_GTK
 using Perspex.Gtk;
 #endif
-using ReactiveUI;
+//using ReactiveUI;
 
 namespace TestApplication
 {
@@ -117,8 +118,10 @@ namespace TestApplication
 
             TextBlock fps;
 
+#if REACTIVE
             var testCommand = ReactiveCommand.Create();
             testCommand.Subscribe(_ => System.Diagnostics.Debug.WriteLine("Test command executed."));
+#endif
 
             Window window = new Window
             {
@@ -189,7 +192,9 @@ namespace TestApplication
                                         new MenuItem
                                         {
                                             Header = "E_xit",
+#if REACTIVE
                                             Command = testCommand,
+#endif
                                         },
                                     }
                                 },
@@ -213,7 +218,7 @@ namespace TestApplication
                                     }
                                 }
                             },
-                            [Grid.ColumnSpanProperty] = 2,
+                            //[Grid.ColumnSpanProperty] = 2,
                         },
                         new TabControl
                         {
@@ -227,29 +232,29 @@ namespace TestApplication
                                 LayoutTab(),
                                 AnimationsTab(),
                             },
-                            Transition = new PageSlide(TimeSpan.FromSeconds(0.25)),
-                            [Grid.RowProperty] = 1,
-                            [Grid.ColumnSpanProperty] = 2,
+                            Transition = new PageSlide(TimeSpan.FromSeconds(0.25))
+                            //[Grid.RowProperty] = 1,
+                            //[Grid.ColumnSpanProperty] = 2,
                         },
                         (fps = new TextBlock
                         {
                             HorizontalAlignment = HorizontalAlignment.Left,
-                            Margin = new Thickness(2),
-                            [Grid.RowProperty] = 2,
+                            Margin = new Thickness(2)
+                            //[Grid.RowProperty] = 2,
                         }),
                         new TextBlock
                         {
                             Text = "Press F12 for Dev Tools",
                             HorizontalAlignment = HorizontalAlignment.Right,
-                            Margin = new Thickness(2),
-                            [Grid.ColumnProperty] = 1,
-                            [Grid.RowProperty] = 2,
+                            Margin = new Thickness(2)
+                            //[Grid.ColumnProperty] = 1,
+                            //[Grid.RowProperty] = 2,
                         },
                     }
                 },
             };
 
-            DevTools.Attach(window);
+            // DevTools.Attach(window);
 
             //var renderer = ((IRenderRoot)window).Renderer;
             //var last = renderer.RenderCount;
@@ -267,9 +272,40 @@ namespace TestApplication
         private static TabItem ButtonsTab()
         {
             Button defaultButton;
-
-            var showDialog = ReactiveCommand.Create();
             Button showDialogButton;
+
+#if !REACTIVE
+            var result = new TabItem
+            {
+                Header = "Buttons",
+                Content = new StackPanel
+                {
+                    Orientation = Orientation.Vertical,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Gap = 8,
+                    MinWidth = 120,
+                    Children = new Controls(
+                       new[]{
+                           (showDialogButton = new Button
+                        {
+                            Content = "Button",
+                            // Command = showDialog
+                        }),
+                        
+                        (defaultButton = new Button
+                        {
+                            Content = "Default",
+                            IsDefault = true,
+                        }),
+
+                       }
+                    )
+                }
+            };
+#else
+            
+            var showDialog = ReactiveCommand.Create();
 
             var result = new TabItem
             {
@@ -286,14 +322,15 @@ namespace TestApplication
                         (showDialogButton = new Button
                         {
                             Content = "Button",
-                            Command = showDialog,
-                            [ToolTip.TipProperty] = "Hello World!",
+                            Command = showDialog
+                            //[ToolTip.TipProperty] = "Hello World!",
                         }),
                         new Button
                         {
                             Content = "Button",
                             Background = new SolidColorBrush(0xcc119eda),
-                            [ToolTip.TipProperty] = "Goodbye Cruel World!",
+                            //[ToolTip.TipProperty] 
+                            DataContext = "Goodbye Cruel World!",
                         },
                         (defaultButton = new Button
                         {
@@ -337,11 +374,6 @@ namespace TestApplication
                 },
             };
 
-            defaultButton.Click += (s, e) =>
-            {
-                defaultButton.Content = ((string)defaultButton.Content == "Default") ? "Clicked" : "Default";
-            };
-
             showDialog.Subscribe(async _ =>
             {
                 var close = ReactiveCommand.Create();
@@ -364,6 +396,12 @@ namespace TestApplication
 
                 showDialogButton.Content = await dialog.ShowDialog<string>();
             });
+#endif
+
+            defaultButton.Click += (s, e) =>
+            {
+                defaultButton.Content = ((string)defaultButton.Content == "Default") ? "Clicked" : "Default";
+            };
 
             return result;
         }
@@ -371,7 +409,7 @@ namespace TestApplication
         private static TabItem HtmlTab()
         {
             var htmlText =
-                new StreamReader(typeof (Program).Assembly.GetManifestResourceStream("TestApplication.html.htm"))
+                new StreamReader(typeof(Program).Assembly.GetManifestResourceStream("TestApplication.html.htm"))
                     .ReadToEnd();
             return new TabItem
             {
@@ -383,11 +421,11 @@ namespace TestApplication
                     HorizontalAlignment = HorizontalAlignment.Center,
                     CanScrollHorizontally = false,
                     VerticalScrollBarVisibility = ScrollBarVisibility.Visible,
-                    Content =
-                        new HtmlLabel()
-                        {
-                            Text = htmlText
-                        }
+                    //Content =
+                    //    new HtmlLabel()
+                    //    {
+                    //        Text = htmlText
+                    //    }
                 }
             };
         }
@@ -472,17 +510,17 @@ namespace TestApplication
                             CanScrollHorizontally = true,
                             Content = new Image
                             {
-                                Source = new Bitmap("github_icon.png"),
-                                [!Layoutable.WidthProperty] = size[!RangeBase.ValueProperty],
-                                [!Layoutable.HeightProperty] = size[!RangeBase.ValueProperty],
+                                Source = new Bitmap("github_icon.png")
+                                //[!Layoutable.WidthProperty] = size[!RangeBase.ValueProperty],
+                                //[!Layoutable.HeightProperty] = size[!RangeBase.ValueProperty],
                             },
                         },
-                        new ProgressBar
-                        {
-                            [!RangeBase.MinimumProperty] = size[!RangeBase.MinimumProperty],
-                            [!RangeBase.MaximumProperty] = size[!RangeBase.MaximumProperty],
-                            [!RangeBase.ValueProperty] = size[!RangeBase.ValueProperty],
-                        }
+                        new ProgressBar()
+                        //{
+                        //    [!RangeBase.MinimumProperty] = size[!RangeBase.MinimumProperty],
+                        //    [!RangeBase.MaximumProperty] = size[!RangeBase.MaximumProperty],
+                        //    [!RangeBase.ValueProperty] = size[!RangeBase.ValueProperty],
+                        //}
                     }
                 },
             };
@@ -562,7 +600,7 @@ namespace TestApplication
                                 new Button { HorizontalAlignment = HorizontalAlignment.Right, Content = "Right Aligned" },
                                 new Button { HorizontalAlignment = HorizontalAlignment.Stretch, Content = "Stretch" },
                             },
-                            [Grid.ColumnProperty] = 0,
+                            //[Grid.ColumnProperty] = 0,
                         },
                         new StackPanel
                         {
@@ -575,7 +613,7 @@ namespace TestApplication
                                 new Button { VerticalAlignment = VerticalAlignment.Bottom, Content = "Bottom Aligned" },
                                 new Button { VerticalAlignment = VerticalAlignment.Stretch, Content = "Stretch" },
                             },
-                            [Grid.ColumnProperty] = 1,
+                            //[Grid.ColumnProperty] = 1,
                         },
                     },
                 }
@@ -647,14 +685,14 @@ namespace TestApplication
                                 Layoutable.WidthProperty.Transition(300),
                                 Layoutable.HeightProperty.Transition(1000),
                             },
-                            [Grid.ColumnProperty] = 1,
+                            //[Grid.ColumnProperty] = 1,
                         }),
                         (button1 = new Button
                         {
                             HorizontalAlignment = HorizontalAlignment.Center,
                             Content = "Animate",
-                            [Grid.ColumnProperty] = 1,
-                            [Grid.RowProperty] = 1,
+                            //[Grid.ColumnProperty] = 1,
+                            //[Grid.RowProperty] = 1,
                         }),
                     },
                 },

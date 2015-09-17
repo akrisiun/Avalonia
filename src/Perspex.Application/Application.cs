@@ -120,7 +120,8 @@ namespace Perspex
             private set;
         }
 
-        public IClipboard Clipboard => _clipboard.Value;
+        public IClipboard Clipboard // => 
+            { get { return _clipboard.Value; } }
 
         /// <summary>
         /// Gets the application's global styles.
@@ -181,7 +182,7 @@ namespace Perspex
             }
             else
             {
-                InitializeSubsystem("Perspex.Direct2D1");
+                // InitializeSubsystem("Perspex.Direct2D1");
                 InitializeSubsystem("Perspex.Win32");
             }
         }

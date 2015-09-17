@@ -31,10 +31,11 @@ namespace Perspex.Controls
             ListBoxItem.IsSelectedProperty.AddOwner<TreeViewItem>();
 
         private static readonly ITemplate<IPanel> DefaultPanel =
-            new FuncTemplate<IPanel>(() => new StackPanel
-            {
-                [KeyboardNavigation.DirectionalNavigationProperty] = KeyboardNavigationMode.Continue,
-            });
+            new FuncTemplate<IPanel>(() => new StackPanel 
+            { DirectionalNavigation = KeyboardNavigationMode.Continue });
+            //{
+            //    [KeyboardNavigation.DirectionalNavigationProperty] = KeyboardNavigationMode.Continue,
+            //});
 
         private TreeView _treeView;
 

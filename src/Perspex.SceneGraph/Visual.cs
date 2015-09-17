@@ -32,43 +32,46 @@ namespace Perspex
         /// Defines the <see cref="Bounds"/> property.
         /// </summary>
         public static readonly PerspexProperty<Rect> BoundsProperty =
-            PerspexProperty.Register<Visual, Rect>(nameof(Bounds));
+            PerspexProperty.Register<Visual, Rect>("Bounds"); // nameof(Bounds));
 
         /// <summary>
         /// Defines the <see cref="ClipToBounds"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> ClipToBoundsProperty =
-            PerspexProperty.Register<Visual, bool>(nameof(ClipToBounds));
+            PerspexProperty.Register<Visual, bool>("ClipToBounds"); // nameof(ClipToBounds));
 
         /// <summary>
         /// Defines the <see cref="IsVisibleProperty"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> IsVisibleProperty =
-            PerspexProperty.Register<Visual, bool>(nameof(IsVisible), true);
+            PerspexProperty.Register<Visual, bool>("IsVisible" //nameof(IsVisible)
+                , true);
 
         /// <summary>
         /// Defines the <see cref="Opacity"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> OpacityProperty =
-            PerspexProperty.Register<Visual, double>(nameof(Opacity), 1);
+            PerspexProperty.Register<Visual, double>("Opacity" // nameof(Opacity)
+                , 1);
 
         /// <summary>
         /// Defines the <see cref="RenderTransform"/> property.
         /// </summary>
         public static readonly PerspexProperty<Transform> RenderTransformProperty =
-            PerspexProperty.Register<Visual, Transform>(nameof(RenderTransform));
+            PerspexProperty.Register<Visual, Transform>("RenderTransform"); // nameof(RenderTransform));
 
         /// <summary>
         /// Defines the <see cref="TransformOrigin"/> property.
         /// </summary>
         public static readonly PerspexProperty<RelativePoint> TransformOriginProperty =
-            PerspexProperty.Register<Visual, RelativePoint>(nameof(TransformOrigin), defaultValue: RelativePoint.Center);
+            PerspexProperty.Register<Visual, RelativePoint>("TransformOrigin" // nameof(TransformOrigin)
+                , defaultValue: RelativePoint.Center);
 
         /// <summary>
         /// Defines the <see cref="ZIndex"/> property.
         /// </summary>
         public static readonly PerspexProperty<int> ZIndexProperty =
-            PerspexProperty.Register<Visual, int>(nameof(ZIndex));
+            PerspexProperty.Register<Visual, int>("ZIndex"); // nameof(ZIndex));
 
         /// <summary>
         /// Holds the children of the visual.
@@ -190,17 +193,20 @@ namespace Perspex
         /// <summary>
         /// Gets a value indicating whether this scene graph node is attached to a visual root.
         /// </summary>
-        bool IVisual.IsAttachedToVisualTree => _isAttachedToVisualTree;
+        bool IVisual.IsAttachedToVisualTree // => 
+        { get { return  _isAttachedToVisualTree;}}
 
         /// <summary>
         /// Gets the scene graph node's child nodes.
         /// </summary>
-        IPerspexReadOnlyList<IVisual> IVisual.VisualChildren => _visualChildren;
+        IPerspexReadOnlyList<IVisual> IVisual.VisualChildren // => 
+        { get { return  _visualChildren;}}
 
         /// <summary>
         /// Gets the scene graph node's parent node.
         /// </summary>
-        IVisual IVisual.VisualParent => _visualParent;
+        IVisual IVisual.VisualParent // => 
+        { get { return _visualParent; } }
 
         /// <summary>
         /// Invalidates the visual and queues a repaint.

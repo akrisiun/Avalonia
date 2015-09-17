@@ -31,21 +31,21 @@ namespace Perspex.Diagnostics
         /// <summary>
         /// Gets the property.
         /// </summary>
-        public PerspexProperty Property { get; }
+        public PerspexProperty Property { get; protected set; }
 
         /// <summary>
         /// Gets the current property value.
         /// </summary>
-        public object Value { get; }
+        public object Value { get; protected set; }
 
         /// <summary>
         /// Gets the priority of the current value.
         /// </summary>
-        public BindingPriority Priority { get; }
+        public BindingPriority Priority { get; protected set; }
 
         /// <summary>
         /// Gets a diagnostic string.
         /// </summary>
-        public string Diagnostic { get; }
+        public string Diagnostic { get; protected set; }
     }
 }

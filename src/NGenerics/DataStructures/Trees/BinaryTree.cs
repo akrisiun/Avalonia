@@ -96,10 +96,11 @@ namespace NGenerics.DataStructures.Trees
         #region ICollection<T> Members
 
         /// <inheritdoc />
-        public bool IsEmpty => Count == 0;
+        public bool IsEmpty {get{ return Count == 0; }} // => Count == 0;
 
         /// <inheritdoc />
-        public bool IsFull => (_leftSubtree != null) && (_rightSubtree != null);
+        public bool IsFull { get { return (_leftSubtree != null) && (_rightSubtree != null); }} 
+                                    // => (_leftSubtree != null) && (_rightSubtree != null);
 
         /// <inheritdoc />
         public bool Contains(T item)
@@ -289,7 +290,7 @@ namespace NGenerics.DataStructures.Trees
         }
 
         /// <inheritdoc />
-        ITree<T> ITree<T>.Parent => Parent;
+        ITree<T> ITree<T>.Parent {get { return Parent; }} // => Parent;
 
         #endregion
 
@@ -424,7 +425,7 @@ namespace NGenerics.DataStructures.Trees
         }
 
         /// <inheritdoc />
-        public int Degree => Count;
+        public int Degree {get { return Count; }} // => Count;
 
         /// <summary>
         /// Gets the child at the specified index.
@@ -530,7 +531,7 @@ namespace NGenerics.DataStructures.Trees
 
 
         /// <inheritdoc />
-        public virtual bool IsLeafNode => Degree == 0;
+        public virtual bool IsLeafNode { get { return Degree == 0; }} // => Degree == 0;
 
         /// <summary>
         /// Removes the left child.
@@ -640,14 +641,14 @@ namespace NGenerics.DataStructures.Trees
         /// <summary>
         /// Gets the <see cref="BinaryTree{T}"/> at the specified index.
         /// </summary>
-        public BinaryTree<T> this[int index] => GetChild(index);
+        public BinaryTree<T> this[int index] { get { return GetChild(index); } set { } } // => GetChild(index);
 
         #endregion
 
         #region ICollection<T> Members
 
         /// <inheritdoc />
-        public bool IsReadOnly => false;
+        public bool IsReadOnly {get { return false; }} // => false;
 
         #endregion
 

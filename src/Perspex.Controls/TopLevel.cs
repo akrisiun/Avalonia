@@ -42,7 +42,7 @@ namespace Perspex.Controls
         /// Defines the <see cref="IInputRoot.PointerOverElement"/> property.
         /// </summary>
         public static readonly PerspexProperty<IInputElement> PointerOverElementProperty =
-            PerspexProperty.Register<TopLevel, IInputElement>(nameof(IInputRoot.PointerOverElement));
+            PerspexProperty.Register<TopLevel, IInputElement>("PointerOverElement"); // nameof(IInputRoot.PointerOverElement));
 
         /// <summary>
         /// The dispatcher for the window.
@@ -156,13 +156,15 @@ namespace Perspex.Controls
                 _accessKeyHandler.SetOwner(this);
             }
 
-            styler?.ApplyStyles(this);
+            styler.ApplyStyles(this);
 
             GetObservable(ClientSizeProperty).Skip(1).Subscribe(x => PlatformImpl.ClientSize = x);
             GetObservable(PointerOverElementProperty)
                 .Select(
-                    x => (x as InputElement)?.GetObservable(CursorProperty) ?? Observable.Empty<Cursor>())
-                .Switch().Subscribe(cursor => PlatformImpl.SetCursor(cursor?.PlatformCursor));
+                    x => (x as InputElement == null ? null : (x as InputElement).GetObservable(CursorProperty) )
+                            ?? Observable.Empty<Cursor>())
+                .Switch().Subscribe(cursor => PlatformImpl.SetCursor(
+                       cursor == null ? null : cursor.PlatformCursor));
         }
 
         /// <summary>
@@ -203,7 +205,9 @@ namespace Perspex.Controls
         /// </summary>
         public ILayoutManager LayoutManager
         {
-            get; }
+            get;
+            protected set;
+        }
 
         /// <summary>
         /// Gets the platform-specific window implementation.
@@ -211,27 +215,32 @@ namespace Perspex.Controls
         public ITopLevelImpl PlatformImpl
         {
             get;
+            protected set;
         }
 
         /// <summary>
         /// Gets the window renderer.
         /// </summary>
-        IRenderer IRenderRoot.Renderer => _renderer;
+        IRenderer IRenderRoot.Renderer // => 
+        { get { return  _renderer;}}
 
         /// <summary>
         /// Gets the window render manager.
         /// </summary>
-        IRenderManager IRenderRoot.RenderManager => _renderManager;
+        IRenderManager IRenderRoot.RenderManager // => 
+        { get { return  _renderManager;}}
 
         /// <summary>
         /// Gets the access key handler for the window.
         /// </summary>
-        IAccessKeyHandler IInputRoot.AccessKeyHandler => _accessKeyHandler;
+        IAccessKeyHandler IInputRoot.AccessKeyHandler // => 
+        { get { return  _accessKeyHandler;}}
 
         /// <summary>
         /// Gets or sets the keyboard navigation handler for the window.
         /// </summary>
-        IKeyboardNavigationHandler IInputRoot.KeyboardNavigationHandler => _keyboardNavigationHandler;
+        IKeyboardNavigationHandler IInputRoot.KeyboardNavigationHandler // => 
+        { get { return  _keyboardNavigationHandler;}}
 
         /// <summary>
         /// Gets or sets the input element that the pointer is currently over.
@@ -321,7 +330,8 @@ namespace Perspex.Controls
             }
 
             ClientSize = clientSize;
-            _renderer.Resize((int)clientSize.Width, (int)clientSize.Height);
+            if (_renderer != null)
+                _renderer.Resize((int)clientSize.Width, (int)clientSize.Height);
             LayoutManager.ExecuteLayoutPass();
             PlatformImpl.Invalidate(new Rect(clientSize));
         }
@@ -341,7 +351,8 @@ namespace Perspex.Controls
             {
                 System.Diagnostics.Debug.WriteLineIf(
                     result == null,
-                    $"Could not create {typeof(T).Name} : maybe Application.RegisterServices() wasn't called?");
+                    //     $
+                    "Could not create {typeof(T).Name} : maybe Application.RegisterServices() wasn't called?");
             }
 
             return result;
@@ -413,7 +424,8 @@ namespace Perspex.Controls
         /// </summary>
         private void HandleLayoutCompleted()
         {
-            _renderManager?.InvalidateRender(this);
+            _renderManager // ?
+                .InvalidateRender(this);
         }
 
         /// <summary>
@@ -433,6 +445,8 @@ namespace Perspex.Controls
         /// <param name="handle">An optional platform-specific handle.</param>
         private void HandlePaint(Rect rect, IPlatformHandle handle)
         {
+            if (_renderer == null)
+                return;
             _renderer.Render(this, handle);
             _renderManager.RenderFinished();
         }

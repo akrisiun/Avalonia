@@ -94,12 +94,14 @@ namespace Perspex.Layout
         /// <summary>
         /// Gets an observable that is fired when a layout pass is needed.
         /// </summary>
-        public IObservable<Unit> LayoutNeeded => _layoutNeeded;
+        public IObservable<Unit> LayoutNeeded // => 
+            { get { return _layoutNeeded; }} 
 
         /// <summary>
         /// Gets an observable that is fired when a layout pass is completed.
         /// </summary>
-        public IObservable<Unit> LayoutCompleted => _layoutCompleted;
+        public IObservable<Unit> LayoutCompleted // => 
+        { get { return _layoutCompleted; } }
 
         /// <summary>
         /// Gets a value indicating whether a layout is queued.
@@ -318,12 +320,12 @@ namespace Perspex.Layout
             /// <summary>
             /// Gets the control.
             /// </summary>
-            public ILayoutable Control { get; }
+            public ILayoutable Control { get; private set; }
 
             /// <summary>
             /// Gets the control's distance from the layout root.
             /// </summary>
-            public int Distance { get; }
+            public int Distance { get; private set; }
 
             /// <summary>
             /// Compares the distance of two items.

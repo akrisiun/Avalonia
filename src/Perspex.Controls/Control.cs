@@ -35,31 +35,32 @@ namespace Perspex.Controls
         /// Defines the <see cref="DataContext"/> property.
         /// </summary>
         public static readonly PerspexProperty<object> DataContextProperty =
-            PerspexProperty.Register<Control, object>(nameof(DataContext), inherits: true);
+            PerspexProperty.Register<Control, object>("DataContext" // nameof(DataContext)
+            , inherits: true);
 
         /// <summary>
         /// Defines the <see cref="FocusAdorner"/> property.
         /// </summary>
         public static readonly PerspexProperty<ITemplate<IControl>> FocusAdornerProperty =
-            PerspexProperty.Register<Control, ITemplate<IControl>>(nameof(FocusAdorner));
+            PerspexProperty.Register<Control, ITemplate<IControl>>("FocusAdorner"); // nameof(FocusAdorner));
 
         /// <summary>
         /// Defines the <see cref="Parent"/> property.
         /// </summary>
         public static readonly PerspexProperty<IControl> ParentProperty =
-            PerspexProperty.Register<Control, IControl>(nameof(Parent));
+            PerspexProperty.Register<Control, IControl>("Parent"); // nameof(Parent));
 
         /// <summary>
         /// Defines the <see cref="Tag"/> property.
         /// </summary>
         public static readonly PerspexProperty<object> TagProperty =
-            PerspexProperty.Register<Control, object>(nameof(Tag));
+            PerspexProperty.Register<Control, object>("Tag"); // nameof(Tag));
 
         /// <summary>
         /// Defines the <see cref="TemplatedParent"/> property.
         /// </summary>
         public static readonly PerspexProperty<ITemplatedControl> TemplatedParentProperty =
-            PerspexProperty.Register<Control, ITemplatedControl>(nameof(TemplatedParent));
+            PerspexProperty.Register<Control, ITemplatedControl>("TemplatedParent"); // nameof(TemplatedParent));
 
         /// <summary>
         /// Event raised when an element wishes to be scrolled into view.
@@ -228,7 +229,8 @@ namespace Perspex.Controls
         /// <summary>
         /// Gets the control's logical parent.
         /// </summary>
-        public IControl Parent => GetValue(ParentProperty);
+        public IControl Parent // => 
+        { get { return GetValue(ParentProperty); } } 
 
         /// <summary>
         /// Gets or sets a user-defined object attached to the control.
@@ -251,12 +253,14 @@ namespace Perspex.Controls
         /// <summary>
         /// Gets the control's logical parent.
         /// </summary>
-        ILogical ILogical.LogicalParent => Parent;
+        ILogical ILogical.LogicalParent // => 
+            { get { return  Parent; }}
 
         /// <summary>
         /// Gets the control's logical children.
         /// </summary>
-        IPerspexReadOnlyList<ILogical> ILogical.LogicalChildren => LogicalChildren;
+        IPerspexReadOnlyList<ILogical> ILogical.LogicalChildren // => 
+            { get { return  LogicalChildren;}}
 
         /// <summary>
         /// Gets the type by which the control is styled.
@@ -267,7 +271,8 @@ namespace Perspex.Controls
         /// derives from Button and adds extra functionality but is still styled as a regular
         /// Button.
         /// </remarks>
-        Type IStyleable.StyleKey => GetType();
+        Type IStyleable.StyleKey // => 
+        { get { return  GetType(); }} 
 
         /// <summary>
         /// Gets the control's logical children.

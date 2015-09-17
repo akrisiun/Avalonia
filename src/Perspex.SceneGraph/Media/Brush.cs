@@ -16,7 +16,8 @@ namespace Perspex.Media
         /// Defines the <see cref="Opacity"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> OpacityProperty =
-            PerspexProperty.Register<Brush, double>(nameof(Opacity), 1.0);
+            PerspexProperty.Register<Brush, double>("Opacity" // nameof(Opacity)
+                , 1.0);
 
         /// <summary>
         /// Gets or sets the opacity of the brush.
@@ -50,7 +51,8 @@ namespace Perspex.Media
                 }
                 else
                 {
-                    throw new FormatException($"Invalid brush string: '{s}'.");
+                    throw new FormatException( // $
+                        "Invalid brush string: '{s}'.");
                 }
             }
         }

@@ -70,61 +70,66 @@ namespace Perspex.Layout
         /// Defines the <see cref="Width"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> WidthProperty =
-            PerspexProperty.Register<Layoutable, double>(nameof(Width), double.NaN);
+            PerspexProperty.Register<Layoutable, double>("Width" // nameof(Width)
+                , double.NaN);
 
         /// <summary>
         /// Defines the <see cref="Height"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> HeightProperty =
-            PerspexProperty.Register<Layoutable, double>(nameof(Height), double.NaN);
+            PerspexProperty.Register<Layoutable, double>("Height" // nameof(Height)
+                , double.NaN);
 
         /// <summary>
         /// Defines the <see cref="MinWidth"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> MinWidthProperty =
-            PerspexProperty.Register<Layoutable, double>(nameof(MinWidth));
+            PerspexProperty.Register<Layoutable, double>("MinWidth"); // nameof(MinWidth));
 
         /// <summary>
         /// Defines the <see cref="MaxWidth"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> MaxWidthProperty =
-            PerspexProperty.Register<Layoutable, double>(nameof(MaxWidth), double.PositiveInfinity);
+            PerspexProperty.Register<Layoutable, double>("MaxWidth" // nameof(MaxWidth)
+                , double.PositiveInfinity);
 
         /// <summary>
         /// Defines the <see cref="MinHeight"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> MinHeightProperty =
-            PerspexProperty.Register<Layoutable, double>(nameof(MinHeight));
+            PerspexProperty.Register<Layoutable, double>("MinHeight"); // nameof(MinHeight));
 
         /// <summary>
         /// Defines the <see cref="MaxHeight"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> MaxHeightProperty =
-            PerspexProperty.Register<Layoutable, double>(nameof(MaxHeight), double.PositiveInfinity);
+            PerspexProperty.Register<Layoutable, double>("MaxHeight" // nameof(MaxHeight)
+                , double.PositiveInfinity);
 
         /// <summary>
         /// Defines the <see cref="Margin"/> property.
         /// </summary>
         public static readonly PerspexProperty<Thickness> MarginProperty =
-            PerspexProperty.Register<Layoutable, Thickness>(nameof(Margin));
+            PerspexProperty.Register<Layoutable, Thickness>("Margin"); // nameof(Margin));
 
         /// <summary>
         /// Defines the <see cref="HorizontalAlignment"/> property.
         /// </summary>
         public static readonly PerspexProperty<HorizontalAlignment> HorizontalAlignmentProperty =
-            PerspexProperty.Register<Layoutable, HorizontalAlignment>(nameof(HorizontalAlignment));
+            PerspexProperty.Register<Layoutable, HorizontalAlignment>("HorizontalAlignment"); // nameof(HorizontalAlignment));
 
         /// <summary>
         /// Defines the <see cref="VerticalAlignment"/> property.
         /// </summary>
         public static readonly PerspexProperty<VerticalAlignment> VerticalAlignmentProperty =
-            PerspexProperty.Register<Layoutable, VerticalAlignment>(nameof(VerticalAlignment));
+            PerspexProperty.Register<Layoutable, VerticalAlignment>("VerticalAlignment"); // nameof(VerticalAlignment));
 
         /// <summary>
         /// Defines the <see cref="UseLayoutRoundingProperty"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> UseLayoutRoundingProperty =
-            PerspexProperty.Register<Layoutable, bool>(nameof(UseLayoutRounding), defaultValue: true, inherits: true);
+            PerspexProperty.Register<Layoutable, bool>("UseLayoutRounding" // nameof(UseLayoutRounding)
+                , defaultValue: true, inherits: true);
 
         private Size? _previousMeasure;
 
@@ -283,12 +288,14 @@ namespace Perspex.Layout
         /// <summary>
         /// Gets the available size passed in the previous layout pass, if any.
         /// </summary>
-        Size? ILayoutable.PreviousMeasure => _previousMeasure;
+        Size? ILayoutable.PreviousMeasure // => 
+            { get { return _previousMeasure;}}
 
         /// <summary>
         /// Gets the layout rect passed in the previous layout pass, if any.
         /// </summary>
-        Rect? ILayoutable.PreviousArrange => _previousArrange;
+        Rect? ILayoutable.PreviousArrange // => 
+            { get { return _previousArrange; } }
 
         /// <summary>
         /// Creates the visual children of the control, if necessary

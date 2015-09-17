@@ -19,19 +19,19 @@ namespace Perspex.Controls
         /// Defines the <see cref="Content"/> property.
         /// </summary>
         public static readonly PerspexProperty<object> ContentProperty =
-            PerspexProperty.Register<ContentControl, object>(nameof(Content));
+            PerspexProperty.Register<ContentControl, object>("Content"); //nameof(Content));
 
         /// <summary>
         /// Defines the <see cref="HorizontalContentAlignment"/> property.
         /// </summary>
         public static readonly PerspexProperty<HorizontalAlignment> HorizontalContentAlignmentProperty =
-            PerspexProperty.Register<ContentControl, HorizontalAlignment>(nameof(HorizontalContentAlignment));
+            PerspexProperty.Register<ContentControl, HorizontalAlignment>("HorizontalContentAlignment"); //nameof(HorizontalContentAlignment));
 
         /// <summary>
         /// Defines the <see cref="VerticalContentAlignment"/> property.
         /// </summary>
         public static readonly PerspexProperty<VerticalAlignment> VerticalContentAlignmentProperty =
-            PerspexProperty.Register<ContentControl, VerticalAlignment>(nameof(VerticalContentAlignment));
+            PerspexProperty.Register<ContentControl, VerticalAlignment>("VerticalContentAlignment"); // nameof(VerticalContentAlignment));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ContentControl"/> class.
@@ -79,7 +79,8 @@ namespace Perspex.Controls
         /// <summary>
         /// Gets a writeable logical children collection from the host.
         /// </summary>
-        IPerspexList<ILogical> IReparentingHost.LogicalChildren => LogicalChildren;
+        IPerspexList<ILogical> IReparentingHost.LogicalChildren // => 
+        { get { return LogicalChildren; } } 
 
         /// <summary>
         /// Asks the control whether it wants to reparent the logical children of the specified

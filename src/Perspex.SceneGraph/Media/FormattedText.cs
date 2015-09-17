@@ -107,7 +107,9 @@ namespace Perspex.Media
         /// </summary>
         public IFormattedTextImpl PlatformImpl
         {
-            get; }
+            get;
+            protected set;
+        }
 
         /// <summary>
         /// Gets the text alignment.

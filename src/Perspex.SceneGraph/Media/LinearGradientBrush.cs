@@ -13,7 +13,7 @@ namespace Perspex.Media
         /// </summary>
         public static readonly PerspexProperty<RelativePoint> StartPointProperty =
             PerspexProperty.Register<LinearGradientBrush, RelativePoint>(
-                nameof(StartPoint),
+                "StartPoint", // nameof(StartPoint),
                 RelativePoint.TopLeft);
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Perspex.Media
         /// </summary>
         public static readonly PerspexProperty<RelativePoint> EndPointProperty =
             PerspexProperty.Register<LinearGradientBrush, RelativePoint>(
-                nameof(EndPoint), 
+                "EndPoint", // nameof(EndPoint), 
                 RelativePoint.BottomRight);
 
         /// <summary>

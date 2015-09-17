@@ -61,7 +61,9 @@ namespace Perspex.Styling
         /// </summary>
         public object ActivatedValue
         {
-            get; }
+            get;
+            protected set;
+        }
 
         /// <summary>
         /// Gets a description of the binding.
@@ -69,6 +71,7 @@ namespace Perspex.Styling
         public string Description
         {
             get;
+            protected set;
         }
 
         /// <summary>
@@ -77,6 +80,7 @@ namespace Perspex.Styling
         public IObservable<object> Source
         {
             get;
+            protected set;
         }
 
         /// <summary>

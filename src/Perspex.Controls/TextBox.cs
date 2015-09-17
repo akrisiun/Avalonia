@@ -471,7 +471,9 @@ namespace Perspex.Controls
             var selectionEnd = SelectionEnd;
             var start = Math.Min(selectionStart, selectionEnd);
             var end = Math.Max(selectionStart, selectionEnd);
-            if (start == end || (Text?.Length ?? 0) < end)
+            if (start == end 
+                || Text != null && (Text.Length // ?? 0
+                            ) < end)
             {
                 return "";
             }

@@ -23,8 +23,8 @@ namespace Perspex
         /// <param name="unit">The unit of the rect.</param>
         public RelativeRect(double x, double y, double width, double height, RelativeUnit unit)
         {
-            Rect = new Rect(x, y, width, height);
-            Unit = unit;
+            _rect = new Rect(x, y, width, height);
+            _unit = unit;
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace Perspex
         /// <param name="unit">The unit of the rect.</param>
         public RelativeRect(Rect rect, RelativeUnit unit)
         {
-            Rect = rect;
-            Unit = unit;
+            _rect = rect;
+            _unit = unit;
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace Perspex
         /// <param name="unit">The unit of the rect.</param>
         public RelativeRect(Size size, RelativeUnit unit)
         {
-            Rect = new Rect(size);
-            Unit = unit;
+            _rect = new Rect(size);
+            _unit = unit;
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace Perspex
         /// <param name="unit">The unit of the rect.</param>
         public RelativeRect(Point position, Size size, RelativeUnit unit)
         {
-            Rect = new Rect(position, size);
-            Unit = unit;
+            _rect = new Rect(position, size);
+            _unit = unit;
         }
 
         /// <summary>
@@ -69,19 +69,21 @@ namespace Perspex
         /// <param name="unit">The unit of the rect.</param>
         public RelativeRect(Point topLeft, Point bottomRight, RelativeUnit unit)
         {
-            Rect = new Rect(topLeft, bottomRight);
-            Unit = unit;
+            _rect = new Rect(topLeft, bottomRight);
+            _unit = unit;
         }
 
         /// <summary>
         /// Gets the unit of the rectangle.
         /// </summary>
-        public RelativeUnit Unit { get; }
+        RelativeUnit _unit;
+        public RelativeUnit Unit { get { return _unit; }}
 
         /// <summary>
         /// Gets the rectangle.
         /// </summary>
-        public Rect Rect { get; }
+        Rect _rect;
+        public Rect Rect { get { return _rect; } }
 
         /// <summary>
         /// Converts a <see cref="RelativeRect"/> into pixels.

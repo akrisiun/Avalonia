@@ -26,11 +26,11 @@ namespace Perspex.Platform
         /// <summary>
         /// Gets the handle.
         /// </summary>
-        public IntPtr Handle { get; }
+        public IntPtr Handle { get; protected set; }
 
         /// <summary>
         /// Gets an optional string that describes what <see cref="Handle"/> represents.
         /// </summary>
-        public string HandleDescriptor { get; }
+        public string HandleDescriptor { get; protected set; }
     }
 }

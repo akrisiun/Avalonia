@@ -68,7 +68,9 @@ namespace Perspex.Styling
 
         public Selector Previous
         {
-            get; }
+            get;
+            protected set;
+        }
 
         public string SelectorString
         {

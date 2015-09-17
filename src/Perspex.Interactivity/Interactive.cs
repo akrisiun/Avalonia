@@ -23,7 +23,8 @@ namespace Perspex.Interactivity
         /// <summary>
         /// Gets the interactive parent of the object for bubbling and tunnelling events.
         /// </summary>
-        IInteractive IInteractive.InteractiveParent => ((IVisual)this).VisualParent as IInteractive;
+        IInteractive IInteractive.InteractiveParent // => 
+        { get { return ((IVisual)this).VisualParent as IInteractive; } } 
 
         /// <summary>
         /// Adds a handler for the specified routed event.

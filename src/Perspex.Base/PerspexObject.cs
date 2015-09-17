@@ -10,8 +10,10 @@ using System.Reactive.Linq;
 using System.Reflection;
 using Perspex.Reactive;
 using Perspex.Utilities;
+#if LOG
 using Serilog;
 using Serilog.Core.Enrichers;
+#endif
 
 namespace Perspex
 {
@@ -93,23 +95,25 @@ namespace Perspex
         /// </summary>
         private PropertyChangedEventHandler _inpcChanged;
 
+#if LOG
         /// <summary>
         /// A serilog logger for logging property events.
         /// </summary>
         private readonly ILogger _propertyLog;
-
+#endif
         /// <summary>
         /// Initializes a new instance of the <see cref="PerspexObject"/> class.
         /// </summary>
         public PerspexObject()
         {
+#if LOG
             _propertyLog = Log.ForContext(new[]
             {
                 new PropertyEnricher("Area", "Property"),
                 new PropertyEnricher("SourceContext", GetType()),
                 new PropertyEnricher("Id", GetHashCode()),
             });
-
+#endif
             foreach (var property in GetRegisteredProperties())
             {
                 var e = new PerspexPropertyChangedEventArgs(
@@ -541,7 +545,8 @@ namespace Perspex
                     "Invalid value for Property '{0}': '{1}' ({2})",
                     property.Name,
                     originalValue,
-                    originalValue?.GetType().FullName ?? "(null)"));
+                    originalValue == originalValue ? "null" : originalValue.GetType().FullName));
+                                // ?.GetType().FullName ?? "(null)"));
             }
 
             if (!_values.TryGetValue(property, out v))
@@ -555,11 +560,13 @@ namespace Perspex
                 _values.Add(property, v);
             }
 
+#if LOG
             _propertyLog.Verbose(
                 "Set {Property} to {$Value} with priority {Priority}",
                 property,
                 value,
                 priority);
+#endif
             v.SetDirectValue(value, (int)priority);
         }
 
@@ -613,12 +620,13 @@ namespace Perspex
                 _values.Add(property, v);
             }
 
+#if LOG
             _propertyLog.Verbose(
                 "Bound {Property} to {Binding} with priority {Priority}",
                 property,
                 source,
                 priority);
-
+#endif
             return v.Add(source, (int)priority);
         }
 
@@ -743,12 +751,14 @@ namespace Perspex
                 {
                     RaisePropertyChanged(property, oldValue, newValue, (BindingPriority)result.ValuePriority);
 
+#if LOG
                     _propertyLog.Verbose(
                         "{Property} changed from {$Old} to {$Value} with priority {Priority}",
                         property,
                         oldValue,
                         newValue,
                         (BindingPriority)result.ValuePriority);
+#endif
                 }
             });
 

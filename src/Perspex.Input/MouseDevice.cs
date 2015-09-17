@@ -31,7 +31,8 @@ namespace Perspex.Input
                 .Subscribe(ProcessRawEvent);
         }
 
-        public static IMouseDevice Instance => Locator.Current.GetService<IMouseDevice>();
+        public static IMouseDevice Instance // => 
+            { get { return Locator.Current.GetService<IMouseDevice>(); }} 
 
         public IInputElement Captured
         {
@@ -39,7 +40,8 @@ namespace Perspex.Input
             protected set;
         }
 
-        public IInputManager InputManager => Locator.Current.GetService<IInputManager>();
+        public IInputManager InputManager // => 
+        { get { return Locator.Current.GetService<IInputManager>(); } }
 
         public Point Position
         {

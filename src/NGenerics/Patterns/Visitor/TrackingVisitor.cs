@@ -48,7 +48,7 @@ namespace NGenerics.Patterns.Visitor
         }
 
         /// <inheritdoc />
-        public bool HasCompleted => false;
+        public bool HasCompleted {get { return false; }} // => false;
 
         #endregion
 
@@ -58,7 +58,7 @@ namespace NGenerics.Patterns.Visitor
         /// Gets the tracking list.
         /// </summary>
         /// <value>The tracking list.</value>        
-        public IList<T> TrackingList => _tracks;
+        public IList<T> TrackingList {get { return _tracks; }} // => _tracks;
 
         #endregion
     }

@@ -24,16 +24,16 @@ namespace Perspex.VisualTree
         /// <summary>
         /// Gets the control's bounds.
         /// </summary>
-        public Rect Bounds { get; }
+        public Rect Bounds { get; protected set; }
 
         /// <summary>
         /// Gets the control's clip rectangle.
         /// </summary>
-        public Rect Clip { get; }
+        public Rect Clip { get; protected set; }
 
         /// <summary>
         /// Gets the control's transform.
         /// </summary>
-        public Matrix Transform { get; }
+        public Matrix Transform { get; protected set; }
     }
 }

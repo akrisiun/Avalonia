@@ -75,12 +75,12 @@ namespace Perspex
         /// <remarks>
         /// The old and new values may be the same, this class does not check for distinct values.
         /// </remarks>
-        public IObservable<Tuple<object, object>> Changed => _changed;
+        public IObservable<Tuple<object, object>> Changed {get { return _changed; }} // => _changed;
 
         /// <summary>
         /// Gets the current value.
         /// </summary>
-        public object Value => _value;
+        public object Value { get { return _value; } } // => _value;
 
         /// <summary>
         /// Gets the priority of the binding that is currently active.
@@ -150,17 +150,21 @@ namespace Perspex
                 b.Append("Priority ");
                 b.Append(level.Key);
                 b.Append(": ");
-                b.AppendLine(level.Value.Value?.ToString() ?? "(null)");
+                b.AppendLine(level.Value.Value == null ? null : level.Value.Value.ToString() ?? "(null)");
                 b.AppendLine("--------");
                 b.Append("Direct: ");
-                b.AppendLine(level.Value.DirectValue?.ToString() ?? "(null)");
+                if (level.Value.DirectValue != null)
+                    b.AppendLine(level.Value.DirectValue.ToString() ?? "(null)");
+                // b.AppendLine(level.Value.DirectValue?.ToString() ?? "(null)");
 
                 foreach (var binding in level.Value.Bindings)
                 {
                     b.Append(level.Value.ActiveBindingIndex == binding.Index ? "*" : string.Empty);
                     b.Append(binding.Description ?? binding.Observable.GetType().Name);
                     b.Append(": ");
-                    b.AppendLine(binding.Value?.ToString() ?? "(null)");
+                    if (binding.Value != null)
+                        b.AppendLine(binding.Value.ToString()); // ?? "(null)");
+                        // b.AppendLine(binding.Value?.ToString() ?? "(null)");
                 }
 
                 first = false;
@@ -218,7 +222,8 @@ namespace Perspex
                     "Invalid value for Property '{0}': {1} ({2})",
                     _name,
                     value,
-                    value?.GetType().FullName ?? "(null)"));
+                    value == null ? "null" : value.GetType().FullName)); // ?? "(null)"));
+                    // value?.GetType().FullName ?? "(null)"));
             }
 
             var old = _value;

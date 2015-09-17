@@ -19,7 +19,8 @@ namespace Perspex.Media.Imaging
         public Bitmap(string fileName)
         {
             IPlatformRenderInterface factory = Locator.Current.GetService<IPlatformRenderInterface>();
-            PlatformImpl = factory.LoadBitmap(fileName);
+            if (factory != null)
+                PlatformImpl = factory.LoadBitmap(fileName);
         }
 
         /// <summary>
@@ -29,7 +30,8 @@ namespace Perspex.Media.Imaging
         public Bitmap(Stream stream)
         {
             IPlatformRenderInterface factory = Locator.Current.GetService<IPlatformRenderInterface>();
-            PlatformImpl = factory.LoadBitmap(stream);
+            if (factory != null)
+                PlatformImpl = factory.LoadBitmap(stream);
         }
 
         /// <summary>
@@ -55,19 +57,23 @@ namespace Perspex.Media.Imaging
         /// <summary>
         /// Gets the width of the bitmap, in pixels.
         /// </summary>
-        public int PixelWidth => PlatformImpl.PixelWidth;
+        public int PixelWidth // => 
+            { get { return PlatformImpl.PixelWidth; }}
 
         /// <summary>
         /// Gets the height of the bitmap, in pixels.
         /// </summary>
-        public int PixelHeight => PlatformImpl.PixelHeight;
+        public int PixelHeight // => 
+        { get { return PlatformImpl.PixelHeight; } }
 
         /// <summary>
         /// Gets the platform-specific bitmap implementation.
         /// </summary>
         public IBitmapImpl PlatformImpl
         {
-            get; }
+            get;
+            protected set;
+        }
 
         /// <summary>
         /// Saves the bitmap to a file.

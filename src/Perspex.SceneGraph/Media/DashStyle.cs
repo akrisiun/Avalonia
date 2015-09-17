@@ -77,8 +77,8 @@
         /// <summary>
         /// Gets and sets the length of alternating dashes and gaps.
         /// </summary>
-        public IReadOnlyList<double> Dashes { get; }
+        public IReadOnlyList<double> Dashes { get; protected set; }
 
-        public double Offset { get; }
+        public double Offset { get; protected set; }
     }
 }

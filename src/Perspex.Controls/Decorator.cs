@@ -14,13 +14,13 @@ namespace Perspex.Controls
         /// Defines the <see cref="Child"/> property.
         /// </summary>
         public static readonly PerspexProperty<Control> ChildProperty =
-            PerspexProperty.Register<Decorator, Control>(nameof(Child));
+            PerspexProperty.Register<Decorator, Control>("Child"); // nameof(Child));
 
         /// <summary>
         /// Defines the <see cref="Padding"/> property.
         /// </summary>
         public static readonly PerspexProperty<Thickness> PaddingProperty =
-            PerspexProperty.Register<Decorator, Thickness>(nameof(Padding));
+            PerspexProperty.Register<Decorator, Thickness>("Padding"); // nameof(Padding));
 
         /// <summary>
         /// Initializes static members of the <see cref="Decorator"/> class.

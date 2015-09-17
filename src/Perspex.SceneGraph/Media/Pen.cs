@@ -55,23 +55,23 @@ namespace Perspex.Media
         /// <summary>
         /// Gets the brush used to draw the stroke.
         /// </summary>
-        public Brush Brush { get; }
+        public Brush Brush { get; protected set; }
 
         /// <summary>
         /// Gets the stroke thickness.
         /// </summary>
-        public double Thickness { get; } = 1.0;
+        public double Thickness { get; protected set; } // = 1.0;
 
-        public DashStyle DashStyle { get; }
+        public DashStyle DashStyle { get; protected set;}
 
-        public PenLineCap DashCap { get; }
+        public PenLineCap DashCap { get; protected set;}
 
-        public PenLineCap StartLineCap { get; } = PenLineCap.Flat;
+        public PenLineCap StartLineCap { get; protected set;} // = PenLineCap.Flat;
 
-        public PenLineCap EndLineCap { get; } = PenLineCap.Flat;
+        public PenLineCap EndLineCap { get; protected set;} // } = PenLineCap.Flat;
 
-        public PenLineJoin LineJoin { get; } = PenLineJoin.Miter;
+        public PenLineJoin LineJoin { get; protected set;} // } = PenLineJoin.Miter;
 
-        public double MiterLimit { get; } = 10.0;
+        public double MiterLimit { get; protected set;} // } = 10.0;
     }
 }

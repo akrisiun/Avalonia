@@ -16,11 +16,14 @@ namespace Perspex.Input
 
         private readonly Subject<RawInputEventArgs> _postProcess = new Subject<RawInputEventArgs>();
 
-        public static IInputManager Instance => Locator.Current.GetService<IInputManager>();
+        public static IInputManager Instance // => 
+            {get { return  Locator.Current.GetService<IInputManager>();}}
 
-        public IObservable<RawInputEventArgs> RawEventReceived => _rawEventReceived;
+        public IObservable<RawInputEventArgs> RawEventReceived // => 
+            {get { return  _rawEventReceived;}}
 
-        public IObservable<RawInputEventArgs> PostProcess => _postProcess;
+        public IObservable<RawInputEventArgs> PostProcess // => 
+        { get { return _postProcess; } }
 
         public void Process(RawInputEventArgs e)
         {

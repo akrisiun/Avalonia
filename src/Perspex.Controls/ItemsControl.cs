@@ -104,7 +104,8 @@ namespace Perspex.Controls
         }
 
         /// <inheritdoc/>
-        IPerspexList<ILogical> IReparentingHost.LogicalChildren => LogicalChildren;
+        IPerspexList<ILogical> IReparentingHost.LogicalChildren // => 
+        { get { return LogicalChildren; } }
 
         /// <summary>
         /// Asks the control whether it wants to reparent the logical children of the specified

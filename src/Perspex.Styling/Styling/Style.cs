@@ -17,13 +17,14 @@ namespace Perspex.Styling
         /// </summary>
         public Style()
         {
+            Setters = new List<ISetter>();
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Style"/> class.
         /// </summary>
         /// <param name="selector">The style selector.</param>
-        public Style(Func<Selector, Selector> selector)
+        public Style(Func<Selector, Selector> selector) : this()
         {
             Selector = selector(new Selector());
         }
@@ -36,7 +37,7 @@ namespace Perspex.Styling
         /// <summary>
         /// Gets or sets style's setters.
         /// </summary>
-        public IEnumerable<ISetter> Setters { get; set; } = new List<ISetter>();
+        public IEnumerable<ISetter> Setters { get; set; } // = new List<ISetter>();
 
         /// <summary>
         /// Attaches the style to a control if the style's selector matches.

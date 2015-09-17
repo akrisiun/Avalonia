@@ -32,7 +32,7 @@ namespace Perspex.Controls.Primitives
         /// </summary>
         public static readonly PerspexProperty<int> SelectedIndexProperty =
             PerspexProperty.Register<SelectingItemsControl, int>(
-                nameof(SelectedIndex),
+                "SelectedIndex", // nameof(SelectedIndex),
                 defaultValue: -1,
                 validate: ValidateSelectedIndex);
 
@@ -41,7 +41,7 @@ namespace Perspex.Controls.Primitives
         /// </summary>
         public static readonly PerspexProperty<object> SelectedItemProperty =
             PerspexProperty.Register<SelectingItemsControl, object>(
-                nameof(SelectedItem),
+                "SelectedItem", // nameof(SelectedItem),
                 validate: ValidateSelectedItem);
 
         /// <summary>
@@ -243,7 +243,8 @@ namespace Perspex.Controls.Primitives
         private static int ValidateSelectedIndex(SelectingItemsControl sender, int index)
         {
             var items = sender.Items;
-            return (index >= 0 && index < items?.Cast<object>().Count()) ? index : -1;
+            // TODO
+            return (index >= 0 && index < items.Cast<object>().Count()) ? index : -1;
         }
 
         /// <summary>
@@ -255,7 +256,7 @@ namespace Perspex.Controls.Primitives
         private static object ValidateSelectedItem(SelectingItemsControl sender, object item)
         {
             var items = sender.Items;
-            return items?.Cast<object>().Contains(item) == true ? item : null;
+            return items == null ? null : items.Cast<object>().Contains(item) == true ? item : null;
         }
 
         /// <summary>
@@ -358,7 +359,8 @@ namespace Perspex.Controls.Primitives
         /// </summary>
         private void LostSelection()
         {
-            var items = Items?.Cast<object>();
+            var items = Items // ?
+                    .Cast<object>();
 
             if (items != null && AutoSelect)
             {

@@ -16,13 +16,14 @@ namespace Perspex.Controls
         /// Defines the <see cref="Source"/> property.
         /// </summary>
         public static readonly PerspexProperty<Bitmap> SourceProperty =
-            PerspexProperty.Register<Image, Bitmap>(nameof(Source));
+            PerspexProperty.Register<Image, Bitmap>("Source"); // nameof(Source));
 
         /// <summary>
         /// Defines the <see cref="Stretch"/> property.
         /// </summary>
         public static readonly PerspexProperty<Stretch> StretchProperty =
-            PerspexProperty.Register<Image, Stretch>(nameof(Stretch), Stretch.Uniform);
+            PerspexProperty.Register<Image, Stretch>("Stretch" // nameof(Stretch)
+                , Stretch.Uniform);
         
         /// <summary>
         /// Gets or sets the bitmap image that will be displayed.

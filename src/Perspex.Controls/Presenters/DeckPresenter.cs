@@ -66,7 +66,8 @@ namespace Perspex.Controls.Presenters
                 if (_generator == null)
                 {
                     var i = TemplatedParent as ItemsControl;
-                    _generator = i?.ItemContainerGenerator ?? new ItemContainerGenerator(this);
+                    _generator = i // ?
+                        .ItemContainerGenerator ?? new ItemContainerGenerator(this);
                 }
 
                 return _generator;

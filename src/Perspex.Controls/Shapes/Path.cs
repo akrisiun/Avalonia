@@ -17,6 +17,7 @@ namespace Perspex.Controls.Shapes
             set { SetValue(DataProperty, value); }
         }
 
-        public override Geometry DefiningGeometry => Data;
+        public override Geometry DefiningGeometry // => 
+        { get { return Data; } }
     }
 }

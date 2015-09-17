@@ -26,11 +26,14 @@ namespace Perspex.Input
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public static IKeyboardDevice Instance => Locator.Current.GetService<IKeyboardDevice>();
+        public static IKeyboardDevice Instance // => 
+            {get { return  Locator.Current.GetService<IKeyboardDevice>();}}
 
-        public IInputManager InputManager => Locator.Current.GetService<IInputManager>();
+        public IInputManager InputManager // => 
+            {get { return  Locator.Current.GetService<IInputManager>();}}
 
-        public IFocusManager FocusManager => Locator.Current.GetService<IFocusManager>();
+        public IFocusManager FocusManager // => 
+        { get { return Locator.Current.GetService<IFocusManager>(); } }
 
         public IInputElement FocusedElement
         {
@@ -76,7 +79,8 @@ namespace Perspex.Input
 
         protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null) // PropertyChanged?
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void ProcessRawEvent(RawInputEventArgs e)

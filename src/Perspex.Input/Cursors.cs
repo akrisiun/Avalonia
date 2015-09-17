@@ -55,6 +55,6 @@ namespace Perspex.Input
         {
         }
 
-        public IPlatformHandle PlatformCursor { get; }
+        public IPlatformHandle PlatformCursor { get; protected set; }
     }
 }

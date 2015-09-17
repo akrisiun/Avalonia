@@ -35,12 +35,14 @@ namespace Perspex.Input
         /// <summary>
         /// Gets the instance of the <see cref="IFocusManager"/>.
         /// </summary>
-        public static IFocusManager Instance => Locator.Current.GetService<IFocusManager>();
+        public static IFocusManager Instance // => 
+            {get { return  Locator.Current.GetService<IFocusManager>();}}
 
         /// <summary>
         /// Gets the currently focused <see cref="IInputElement"/>.
         /// </summary>
-        public IInputElement Current => KeyboardDevice.Instance.FocusedElement;
+        public IInputElement Current // => 
+            {get { return  KeyboardDevice.Instance.FocusedElement;}}
 
         /// <summary>
         /// Gets the current focus scope.
@@ -138,7 +140,8 @@ namespace Perspex.Input
         /// </summary>
         /// <param name="e">The element.</param>
         /// <returns>True if the element can be focused.</returns>
-        private static bool CanFocus(IInputElement e) => e.Focusable && e.IsEnabledCore && e.IsVisible;
+        private static bool CanFocus(IInputElement e) // => 
+            { return  e.Focusable && e.IsEnabledCore && e.IsVisible; } 
 
         /// <summary>
         /// Gets the focus scope ancestors of the specified control, traversing popups.
@@ -157,7 +160,9 @@ namespace Perspex.Input
                 }
 
                 control = control.GetVisualParent<IInputElement>() ??
-                    ((control as IHostedVisualTreeRoot)?.Host as IInputElement);
+                    (control as IHostedVisualTreeRoot == null ? null 
+                        // ((control as IHostedVisualTreeRoot)?.Host as IInputElement);
+                        : (control as IHostedVisualTreeRoot).Host as IInputElement);
             }
         }
 

@@ -18,13 +18,14 @@ namespace Perspex.Input
         /// Defines the <see cref="Focusable"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> FocusableProperty =
-            PerspexProperty.Register<InputElement, bool>(nameof(Focusable));
+            PerspexProperty.Register<InputElement, bool>("Focusable"); // nameof(Focusable));
 
         /// <summary>
         /// Defines the <see cref="IsEnabled"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> IsEnabledProperty =
-            PerspexProperty.Register<InputElement, bool>(nameof(IsEnabled), true);
+            PerspexProperty.Register<InputElement, bool>("IsEnabled" // nameof(IsEnabled)
+                , true);
 
         /// <summary>
         /// Defines the <see cref="IsEnabledCore"/> property.
@@ -317,7 +318,8 @@ namespace Perspex.Input
         /// controls. The <see cref="IsEnabledCore"/> property takes into account the
         /// <see cref="IsEnabled"/> value of this control and its parent controls.
         /// </remarks>
-        bool IInputElement.IsEnabledCore => IsEnabledCore;
+        bool IInputElement.IsEnabledCore // => 
+        { get { return IsEnabledCore; } }
 
         /// <summary>
         /// Gets a value indicating whether the control is effectively enabled for user interaction.

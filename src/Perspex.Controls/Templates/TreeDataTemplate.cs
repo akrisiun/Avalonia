@@ -114,7 +114,8 @@ namespace Perspex.Controls.Templates
         /// <returns>True if the item should be initially expanded, otherwise false.</returns>
         public bool IsExpanded(object item)
         {
-            return this?._isExpanded(item) ?? false;
+            return (this // ?
+                ._isExpanded(item)); // ?? false;
         }
 
         /// <summary>
@@ -124,7 +125,8 @@ namespace Perspex.Controls.Templates
         /// <returns>The child items, or null if no child items.</returns>
         public IEnumerable ItemsSelector(object item)
         {
-            return this?._itemsSelector(item);
+            return this // ?
+                ._itemsSelector(item);
         }
 
         /// <summary>

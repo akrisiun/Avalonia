@@ -142,17 +142,17 @@ namespace Perspex.Win32.Threading
             /// <summary>
             /// Gets the method to call.
             /// </summary>
-            public Action Action { get; }
+            public Action Action { get; set; }
 
             /// <summary>
             /// Gets the job priority.
             /// </summary>
-            public DispatcherPriority Priority { get; }
+            public DispatcherPriority Priority { get; set; }
 
             /// <summary>
             /// Gets the task completion source.
             /// </summary>
-            public TaskCompletionSource<object> TaskCompletionSource { get; }
+            public TaskCompletionSource<object> TaskCompletionSource { get; set; }
         }
     }
 }

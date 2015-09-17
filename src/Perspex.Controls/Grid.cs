@@ -910,11 +910,11 @@ namespace Perspex.Controls
                 }
             }
 
-            public bool HasAutoAuto { get; }
+            public bool HasAutoAuto { get; protected set; }
 
-            public bool HasStarAuto { get; }
+            public bool HasStarAuto { get; protected set; }
 
-            public bool HasAutoStar { get; }
+            public bool HasAutoStar { get; protected set; }
         }
     }
 }

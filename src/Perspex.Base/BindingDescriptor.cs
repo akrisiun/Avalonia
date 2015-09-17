@@ -81,7 +81,8 @@ namespace Perspex
         /// <summary>
         /// Gets a description of the binding.
         /// </summary>
-        public string Description => string.Format("{0}.{1}", Source?.GetType().Name, Property.Name);
+        public string Description // => 
+                    { get { return string.Format("{0}.{1}", Source == null ? null : Source.GetType().Name, Property.Name); }}
 
         /// <summary>
         /// Makes a two-way binding.

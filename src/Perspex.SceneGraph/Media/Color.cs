@@ -103,7 +103,8 @@ namespace Perspex.Media
                 }
                 else if (s.Length != 9)
                 {
-                    throw new FormatException($"Invalid color string: '{s}'.");
+                    throw new FormatException( // $
+                        "Invalid color string: '{s}'.");
                 }
 
                 return FromUInt32(uint.Parse(s.Substring(1), NumberStyles.HexNumber) | or);
@@ -120,7 +121,8 @@ namespace Perspex.Media
                 }
                 else
                 {
-                    throw new FormatException($"Invalid color string: '{s}'.");
+                    throw new FormatException( // $
+                        "Invalid color string: '{s}'.");
                 }
             }
         }

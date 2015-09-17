@@ -22,11 +22,11 @@ namespace Perspex.Media
         /// <summary>
         /// Gets the length of the line, in characters.
         /// </summary>
-        public int Length { get; }
+        public int Length { get; protected set; }
 
         /// <summary>
         /// Gets the height of the line, in pixels.
         /// </summary>
-        public double Height { get; }
+        public double Height { get; protected set; }
     }
 }

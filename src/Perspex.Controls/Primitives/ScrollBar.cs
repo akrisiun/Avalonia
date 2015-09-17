@@ -16,19 +16,20 @@ namespace Perspex.Controls.Primitives
         /// Defines the <see cref="ViewportSize"/> property.
         /// </summary>
         public static readonly PerspexProperty<double> ViewportSizeProperty =
-            PerspexProperty.Register<ScrollBar, double>(nameof(ViewportSize), defaultValue: double.NaN);
+            PerspexProperty.Register<ScrollBar, double>("ViewportSize"  // nameof(ViewportSize)
+                , defaultValue: double.NaN);
 
         /// <summary>
         /// Defines the <see cref="Visibility"/> property.
         /// </summary>
         public static readonly PerspexProperty<ScrollBarVisibility> VisibilityProperty =
-            PerspexProperty.Register<ScrollBar, ScrollBarVisibility>(nameof(Visibility));
+            PerspexProperty.Register<ScrollBar, ScrollBarVisibility>("Visibility"); // nameof(Visibility));
 
         /// <summary>
         /// Defines the <see cref="Orientation"/> property.
         /// </summary>
         public static readonly PerspexProperty<Orientation> OrientationProperty =
-            PerspexProperty.Register<ScrollBar, Orientation>(nameof(Orientation));
+            PerspexProperty.Register<ScrollBar, Orientation>("Orientation"); // nameof(Orientation));
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScrollBar"/> class.

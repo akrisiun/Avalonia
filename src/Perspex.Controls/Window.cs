@@ -47,13 +47,14 @@ namespace Perspex.Controls
         /// Defines the <see cref="SizeToContent"/> property.
         /// </summary>
         public static readonly PerspexProperty<SizeToContent> SizeToContentProperty =
-            PerspexProperty.Register<Window, SizeToContent>(nameof(SizeToContent));
+            PerspexProperty.Register<Window, SizeToContent>("SizeToContent"); // nameof(SizeToContent));
 
         /// <summary>
         /// Defines the <see cref="Title"/> property.
         /// </summary>
         public static readonly PerspexProperty<string> TitleProperty =
-            PerspexProperty.Register<Window, string>(nameof(Title), "Window");
+            PerspexProperty.Register<Window, string>("Title" // nameof(Title)
+                , "Window");
 
         private object _dialogResult;
 
@@ -80,7 +81,8 @@ namespace Perspex.Controls
         /// <summary>
         /// Gets the platform-specific window implementation.
         /// </summary>
-        public new IWindowImpl PlatformImpl => (IWindowImpl)base.PlatformImpl;
+        public new IWindowImpl PlatformImpl // => 
+            { get { return (IWindowImpl)base.PlatformImpl; }} 
 
         /// <summary>
         /// Gets or sets a value indicating how the window will size itself to fit its content.
@@ -101,7 +103,8 @@ namespace Perspex.Controls
         }
 
         /// <inheritdoc/>
-        Type IStyleable.StyleKey => typeof(Window);
+        Type IStyleable.StyleKey // => 
+        { get { return typeof(Window); } }
 
         /// <summary>
         /// Closes the window.
@@ -179,7 +182,7 @@ namespace Perspex.Controls
                 var modal = PlatformImpl.ShowDialog();
                 var result = new TaskCompletionSource<TResult>();
 
-                Observable.FromEventPattern(this, nameof(Closed))
+                Observable.FromEventPattern(this, "Closed") // nameof(Closed))
                     .Take(1)
                     .Subscribe(_ =>
                     {

@@ -34,7 +34,7 @@ namespace Perspex.Reactive
         /// <summary>
         /// Gets the description of the observable.
         /// </summary>
-        public string Description { get; }
+        public string Description { get; set; }
 
         /// <inheritdoc/>
         protected override IDisposable SubscribeCore(IObserver<T> observer)

@@ -14,7 +14,7 @@ namespace Perspex.Controls
         /// Defines the <see cref="IsSelected"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> IsSelectedProperty =
-            PerspexProperty.Register<ListBoxItem, bool>(nameof(IsSelected));
+            PerspexProperty.Register<ListBoxItem, bool>("IsSelected"); // nameof(IsSelected));
 
         /// <summary>
         /// Initializes static members of the <see cref="ListBoxItem"/> class.

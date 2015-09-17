@@ -93,7 +93,7 @@ namespace Perspex
         /// <value>
         /// The name of the property.
         /// </value>
-        public string Name { get; }
+        public string Name { get; protected set; }
 
         /// <summary>
         /// Gets the type of the property's value.
@@ -101,7 +101,7 @@ namespace Perspex
         /// <value>
         /// The type of the property's value.
         /// </value>
-        public Type PropertyType { get; }
+        public Type PropertyType { get; protected set; }
 
         /// <summary>
         /// Gets the type of the class that registers the property.
@@ -109,7 +109,7 @@ namespace Perspex
         /// <value>
         /// The type of the class that registers the property.
         /// </value>
-        public Type OwnerType { get; }
+        public Type OwnerType { get; protected set; }
 
         /// <summary>
         /// Gets a value indicating whether the property inherits its value.
@@ -117,7 +117,7 @@ namespace Perspex
         /// <value>
         /// A value indicating whether the property inherits its value.
         /// </value>
-        public bool Inherits { get; }
+        public bool Inherits { get; protected set; }
 
         /// <summary>
         /// Gets the default binding mode for the property.
@@ -125,7 +125,7 @@ namespace Perspex
         /// <value>
         /// The default binding mode for the property.
         /// </value>
-        public BindingMode DefaultBindingMode { get; }
+        public BindingMode DefaultBindingMode { get; protected set; }
 
         /// <summary>
         /// Gets a value indicating whether this is an attached property.
@@ -133,7 +133,7 @@ namespace Perspex
         /// <value>
         /// A value indicating whether this is an attached property.
         /// </value>
-        public bool IsAttached { get; }
+        public bool IsAttached { get; protected set; }
 
         /// <summary>
         /// Gets an observable that is fired when this property is initialized on a
@@ -149,7 +149,7 @@ namespace Perspex
         /// An observable that is fired when this property is initialized on a new
         /// <see cref="PerspexObject"/> instance.
         /// </value>
-        public IObservable<PerspexPropertyChangedEventArgs> Initialized => _initialized;
+        public IObservable<PerspexPropertyChangedEventArgs> Initialized {get { return this._initialized; }}  // => _initialized;
 
         /// <summary>
         /// Gets an observable that is fired when this property changes on any
@@ -159,7 +159,7 @@ namespace Perspex
         /// An observable that is fired when this property changes on any
         /// <see cref="PerspexObject"/> instance.
         /// </value>
-        public IObservable<PerspexPropertyChangedEventArgs> Changed => _changed;
+        public IObservable<PerspexPropertyChangedEventArgs> Changed {get { return _changed; }} // => _changed;
 
         /// <summary>
         /// Provides access to a property's binding via the <see cref="PerspexObject"/>

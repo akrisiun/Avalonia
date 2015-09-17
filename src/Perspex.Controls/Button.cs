@@ -36,25 +36,25 @@ namespace Perspex.Controls
         /// Defines the <see cref="ClickMode"/> property.
         /// </summary>
         public static readonly PerspexProperty<ClickMode> ClickModeProperty =
-            PerspexProperty.Register<Button, ClickMode>(nameof(ClickMode));
+            PerspexProperty.Register<Button, ClickMode>("ClickMode"); // nameof(ClickMode));
 
         /// <summary>
         /// Defines the <see cref="Command"/> property.
         /// </summary>
         public static readonly PerspexProperty<ICommand> CommandProperty =
-            PerspexProperty.Register<Button, ICommand>(nameof(Command));
+            PerspexProperty.Register<Button, ICommand>("Command"); //nameof(Command));
 
         /// <summary>
         /// Defines the <see cref="CommandParameter"/> property.
         /// </summary>
         public static readonly PerspexProperty<object> CommandParameterProperty =
-            PerspexProperty.Register<Button, object>(nameof(CommandParameter));
+            PerspexProperty.Register<Button, object>("CommandParameter"); // nameof(CommandParameter));
 
         /// <summary>
         /// Defines the <see cref="IsDefaultProperty"/> property.
         /// </summary>
         public static readonly PerspexProperty<bool> IsDefaultProperty =
-            PerspexProperty.Register<Button, bool>(nameof(IsDefault));
+            PerspexProperty.Register<Button, bool>("IsDefault"); // nameof(IsDefault));
 
         /// <summary>
         /// Defines the <see cref="Click"/> event.

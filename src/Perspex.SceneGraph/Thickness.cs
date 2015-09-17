@@ -80,27 +80,32 @@ namespace Perspex
         /// <summary>
         /// Gets the thickness on the left.
         /// </summary>
-        public double Left => _left;
+        public double Left // => 
+        { get { return  _left;}}
 
         /// <summary>
         /// Gets the thickness on the top.
         /// </summary>
-        public double Top => _top;
+        public double Top // => 
+        { get { return  _top;}}
 
         /// <summary>
         /// Gets the thickness on the right.
         /// </summary>
-        public double Right => _right;
+        public double Right // => 
+        { get { return  _right;}}
 
         /// <summary>
         /// Gets the thickness on the bottom.
         /// </summary>
-        public double Bottom => _bottom;
+        public double Bottom // => 
+        { get { return  _bottom;}}
 
         /// <summary>
         /// Gets a value indicating whether all sides are set to 0.
         /// </summary>
-        public bool IsEmpty => Left == 0 && Top == 0 && Right == 0 && Bottom == 0;
+        public bool IsEmpty // => 
+        { get { return Left == 0 && Top == 0 && Right == 0 && Bottom == 0; } }
 
         /// <summary>
         /// Compares two Thicknesses.

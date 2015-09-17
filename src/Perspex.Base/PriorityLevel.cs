@@ -88,7 +88,7 @@ namespace Perspex
         /// <summary>
         /// Gets the priority of this level.
         /// </summary>
-        public int Priority { get; }
+        public int Priority { get; protected set; }
 
         /// <summary>
         /// Gets or sets the direct value for this priority level.
@@ -121,7 +121,7 @@ namespace Perspex
         /// <summary>
         /// Gets the bindings for the priority level.
         /// </summary>
-        public LinkedList<PriorityBindingEntry> Bindings { get; }
+        public LinkedList<PriorityBindingEntry> Bindings { get; protected set; }
 
         /// <summary>
         /// Adds a binding.

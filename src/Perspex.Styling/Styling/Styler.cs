@@ -19,7 +19,7 @@ namespace Perspex.Styling
                 .FirstOrDefault();
             IGlobalStyles global = Locator.Current.GetService<IGlobalStyles>();
 
-            if (global != null)
+            if (global != null && global.Styles != null)
             {
                 global.Styles.Attach(control, null);
             }

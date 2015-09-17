@@ -40,16 +40,19 @@ namespace Perspex.Collections
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <inheritdoc/>
-        public int Count => _inner.Count;
+        public int Count // => 
+            {get { return _inner.Count; }}
 
         /// <inheritdoc/>
-        public bool IsReadOnly => false;
+        public bool IsReadOnly {get { return false; }} // => false;
 
         /// <inheritdoc/>
-        public ICollection<TKey> Keys => _inner.Keys;
+        public ICollection<TKey> Keys //=> 
+            {get { return _inner.Keys; }}
 
         /// <inheritdoc/>
-        public ICollection<TValue> Values => _inner.Values;
+        public ICollection<TValue> Values // => 
+        { get { return _inner.Values; } }
 
         /// <summary>
         /// Gets or sets the named resource.
@@ -73,7 +76,7 @@ namespace Perspex.Collections
                 {
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs($"Item[{key}]"));
+                        // PropertyChanged(this, new PropertyChangedEventArgs($"Item[{key}]"));
                     }
 
                     if (CollectionChanged != null)
@@ -109,7 +112,7 @@ namespace Perspex.Collections
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs("Count"));
-                PropertyChanged(this, new PropertyChangedEventArgs($"Item[]"));
+                // PropertyChanged(this, new PropertyChangedEventArgs($"Item[]"));
             }
 
             if (CollectionChanged != null)
@@ -150,7 +153,7 @@ namespace Perspex.Collections
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("Count"));
-                    PropertyChanged(this, new PropertyChangedEventArgs($"Item[{key}]"));
+                    // PropertyChanged(this, new PropertyChangedEventArgs($"Item[{key}]"));
                 }
 
                 if (CollectionChanged != null)
@@ -205,7 +208,7 @@ namespace Perspex.Collections
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs("Count"));
-                PropertyChanged(this, new PropertyChangedEventArgs($"Item[{key}]"));
+                // PropertyChanged(this, new PropertyChangedEventArgs($"Item[{key}]"));
             }
 
             if (CollectionChanged != null)

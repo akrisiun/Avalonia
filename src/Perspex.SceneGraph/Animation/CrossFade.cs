@@ -25,7 +25,7 @@ namespace Perspex.Animation
         /// <summary>
         /// Gets the duration of the animation.
         /// </summary>
-        public TimeSpan Duration { get; }
+        public TimeSpan Duration { get; protected set; }
 
         /// <summary>
         /// Starts the animation.
