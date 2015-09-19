@@ -114,19 +114,10 @@ namespace TestApplication
             //    .WriteTo.Trace(outputTemplate: "[{Id:X8}] [{SourceContext}] {Message}")
             //    .CreateLogger();
 
-            // STAThread
-            //var ctx = PerspexSynchronizationContext.Current ??
-            //    System.Windows.Threading.DispatcherSynchronizationContext.Current;
-            //if (ctx == null)
-            //{
-            //    ctx = new PerspexSynchronizationContext();
-            //    PerspexSynchronizationContext.SetSynchronizationContext(ctx);
-            //}
-
             // The version of ReactiveUI currently included is for WPF and so expects a WPF
             // dispatcher. This makes sure it's initialized.
-            //System.Windows.Threading.Dispatcher foo =
-            //    System.Windows.Threading.Dispatcher.CurrentDispatcher;
+            System.Windows.Threading.Dispatcher foo =
+               System.Windows.Threading.Dispatcher.CurrentDispatcher;
 
             PerspexSynchronizationContext.AutoInstall = true;
             Perspex.Direct2D1.Direct2D1Platform.Initialize();
@@ -203,7 +194,8 @@ namespace TestApplication
 
             //if (window.ClientSize.Height == 0)
             //    window.DesiredSize = new Size(500, 300);
-            // window.Background = Brushes.White;
+            
+            window.Background = Brushes.White;
             window.Show();
 
             Application.Current.Run(window as ICloseable);

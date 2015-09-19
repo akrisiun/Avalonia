@@ -51,7 +51,8 @@ namespace Perspex.Win32
             locator.Register(() => CursorFactory.Instance, typeof(IStandardCursorFactory));
             locator.Register(() => s_instance, typeof(IPlatformSettings));
             locator.Register(() => s_instance, typeof(IPlatformThreadingInterface));
-            locator.RegisterConstant(new AssetLoader(), typeof(IAssetLoader));
+
+            // locator.RegisterConstant(new AssetLoader(), typeof(IAssetLoader));
         }
 
         public static void Initialize()

@@ -3,7 +3,7 @@
 
 using System;
 using Perspex;
-//using Perspex.Themes.Default;
+using Perspex.Themes.Default;
 
 namespace TestApplication
 {
@@ -12,8 +12,8 @@ namespace TestApplication
         public App()
         {
             RegisterServices();
-            // InitializeSubsystems((int)Environment.OSVersion.Platform);
-            // Styles = new DefaultTheme();
+            InitializeSubsystems((int)Environment.OSVersion.Platform);
+            Styles = new DefaultTheme();
         }
     }
 }

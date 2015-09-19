@@ -13,7 +13,7 @@ namespace Perspex.Win32
     /// <summary>
     /// Loads assets compiled into the application binary.
     /// </summary>
-    public class AssetLoader : IAssetLoader
+    public class AssetLoader // : IAssetLoader
     {
         /// <summary>
         /// Opens the resource with the requested URI.

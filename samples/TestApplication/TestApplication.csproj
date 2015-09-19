@@ -47,10 +47,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.Direct3D11, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
     <Reference Include="SharpDX.DXGI, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\SharpDX.DXGI.dll</HintPath>
@@ -70,11 +66,11 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
@@ -94,9 +90,9 @@
       <Project>{d211e587-d8bc-45b9-95a4-f297c8fa5200}</Project>
       <Name>Perspex.Animation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Perspex.Application\Perspex.Forms.csproj">
-      <Project>{281b9838-5136-4b11-a0d4-17e8429a579a}</Project>
-      <Name>Perspex.Forms</Name>
+    <ProjectReference Include="..\..\src\Perspex.Application\Perspex.Application.csproj">
+      <Project>{799a7bb5-3c2c-48b6-85a7-406a12c420da}</Project>
+      <Name>Perspex.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Perspex.Base\Perspex.Base.csproj">
       <Project>{B09B78D8-9B26-48B0-9149-D64A2F120F3F}</Project>
@@ -129,6 +125,10 @@
     <ProjectReference Include="..\..\src\Perspex.Styling\Perspex.Styling.csproj">
       <Project>{F1BAA01A-F176-4C6A-B39D-5B40BB1B148F}</Project>
       <Name>Perspex.Styling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Perspex.Themes.Default\Perspex.Themes.Default.csproj">
+      <Project>{3e10a5fa-e8da-48b1-ad44-6a5b6cb7750f}</Project>
+      <Name>Perspex.Themes.Default</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Perspex.Win32\Perspex.Win32.csproj">
       <Project>{811a76cf-1cf6-440f-963b-bbe31bd72a82}</Project>
