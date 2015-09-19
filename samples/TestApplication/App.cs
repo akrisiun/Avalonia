@@ -7,12 +7,12 @@ using Perspex;
 
 namespace TestApplication
 {
-    public class App : Application
+    public class App : Perspex.Application
     {
         public App()
         {
             RegisterServices();
-            InitializeSubsystems((int)Environment.OSVersion.Platform);
+            // InitializeSubsystems((int)Environment.OSVersion.Platform);
             // Styles = new DefaultTheme();
         }
     }

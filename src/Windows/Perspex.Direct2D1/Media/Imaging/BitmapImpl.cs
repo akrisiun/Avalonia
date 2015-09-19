@@ -28,7 +28,7 @@ namespace Perspex.Direct2D1.Media
 
             using (BitmapDecoder decoder = new BitmapDecoder(factory, fileName, DecodeOptions.CacheOnDemand))
             {
-                WicImpl = new Bitmap(factory, decoder.GetFrame(0), BitmapCreateCacheOption.CacheOnDemand);
+                WicImpl = new SharpDX.WIC.Bitmap(factory, decoder.GetFrame(0), BitmapCreateCacheOption.CacheOnDemand);
             }
         }
 

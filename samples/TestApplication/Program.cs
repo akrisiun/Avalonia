@@ -18,7 +18,9 @@ using Perspex.Media;
 using Perspex.Media.Imaging;
 using Perspex.Threading;
 using Perspex.Rendering;
-using Perspex.Direct2D1;
+// using Perspex.Direct2D1;
+using Perspex.Platform;
+using Perspex.Input;
 
 #if PERSPEX_GTK
 using Perspex.Gtk;
@@ -123,11 +125,11 @@ namespace TestApplication
 
             // The version of ReactiveUI currently included is for WPF and so expects a WPF
             // dispatcher. This makes sure it's initialized.
-            System.Windows.Threading.Dispatcher foo =
-                System.Windows.Threading.Dispatcher.CurrentDispatcher;
+            //System.Windows.Threading.Dispatcher foo =
+            //    System.Windows.Threading.Dispatcher.CurrentDispatcher;
 
             PerspexSynchronizationContext.AutoInstall = true;
-            Direct2D1Platform.Initialize();
+            Perspex.Direct2D1.Direct2D1Platform.Initialize();
 
             App application = new App
             {
@@ -179,12 +181,15 @@ namespace TestApplication
                     }
                 },
             };
+            Application.Current.MainWindow = window;
+
             #endregion
 
             // Render
             // DevTools.Attach(window);
 
-            var renderer = ((IRenderRoot)window as TopLevel).Renderer;
+            IRenderer renderer = window.Renderer;
+                        // ((IRenderRoot)window as TopLevel).Renderer;
             if (renderer != null)
             {
                 var last = renderer.RenderCount;
@@ -196,11 +201,12 @@ namespace TestApplication
                 }, TimeSpan.FromSeconds(1));
             }
 
-            if (window.ClientSize.Height == 0)
-                window.DesiredSize = new Size(500, 300);
+            //if (window.ClientSize.Height == 0)
+            //    window.DesiredSize = new Size(500, 300);
+            // window.Background = Brushes.White;
             window.Show();
 
-            Application.Current.Run(window);
+            Application.Current.Run(window as ICloseable);
         }
 
         private static TabItem ButtonsTab()

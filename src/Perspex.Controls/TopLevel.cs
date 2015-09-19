@@ -24,9 +24,10 @@ namespace Perspex.Controls
     /// <see cref="PopupRoot"/>. It handles scheduling layout, styling and rendering as well as
     /// tracking the window <see cref="ClientSize"/> and <see cref="IsActive"/> state.
     /// </remarks>
-    public abstract class TopLevel : ContentControl, IInputRoot, ILayoutRoot,
-        IRenderRoot, ICloseable
+    public abstract class TopLevel : ContentControl, IInputRoot, ILayoutRoot, IRenderRoot, ICloseable
     {
+        #region Properties
+
         /// <summary>
         /// Defines the <see cref="ClientSize"/> property.
         /// </summary>
@@ -79,6 +80,8 @@ namespace Perspex.Controls
         /// The access keyboard navigation handler for the window.
         /// </summary>
         private readonly IKeyboardNavigationHandler _keyboardNavigationHandler;
+        
+        #endregion
 
         /// <summary>
         /// Initializes static members of the <see cref="TopLevel"/> class.
@@ -273,10 +276,11 @@ namespace Perspex.Controls
         /// <summary>
         /// Whether an auto-size operation is in progress.
         /// </summary>
-        protected bool AutoSizing
+        // protected 
+        public bool AutoSizing
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>
@@ -353,7 +357,8 @@ namespace Perspex.Controls
         /// <typeparam name="T">The service type.</typeparam>
         /// <param name="resolver">The resolver.</param>
         /// <returns>The service.</returns>
-        private static T TryGetService<T>(IDependencyResolver resolver) where T : class
+        // private 
+        public static T TryGetService<T>(IDependencyResolver resolver) where T : class
         {
             var result = resolver.GetService<T>();
 
@@ -361,7 +366,7 @@ namespace Perspex.Controls
             {
                 System.Diagnostics.Debug.WriteLineIf(
                     result == null,
-                    //     $
+                    // $
                     "Could not create {typeof(T).Name} : maybe Application.RegisterServices() wasn't called?");
             }
 

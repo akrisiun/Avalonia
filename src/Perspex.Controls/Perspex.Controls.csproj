@@ -131,7 +131,6 @@
     <Compile Include="Utils\StringUtils.cs" />
     <Compile Include="TopLevel.cs" />
     <Compile Include="Primitives\PopupRoot.cs" />
-    <Compile Include="Window.cs" />
     <Compile Include="RowDefinition.cs" />
     <Compile Include="RowDefinitions.cs" />
     <Compile Include="Primitives\SelectingItemsControl.cs" />

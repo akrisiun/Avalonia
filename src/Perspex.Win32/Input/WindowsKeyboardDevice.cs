@@ -48,7 +48,9 @@ namespace Perspex.Win32.Input
             }
         }
 
-        public void WindowActivated(Window window)
+        public void WindowActivated(
+                IInputElement // Window 
+                        window)
         {
             SetFocusedElement(window, NavigationMethod.Unspecified);
         }

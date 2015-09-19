@@ -119,6 +119,8 @@ namespace Perspex.Win32
                     UnmanagedMethods.GetSystemMetrics(UnmanagedMethods.SystemMetric.SM_CXMAXTRACK),
                     UnmanagedMethods.GetSystemMetrics(UnmanagedMethods.SystemMetric.SM_CYMAXTRACK))
                     - BorderThickness;
+
+
             }
         }
 

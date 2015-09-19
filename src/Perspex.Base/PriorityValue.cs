@@ -22,7 +22,9 @@ namespace Perspex
     /// has a higher priority. Each time the value changes, the <see cref="Changed"/> observable is
     /// fired with the old and new values.
     /// </remarks>
-    internal class PriorityValue
+
+    // internal 
+    public class PriorityValue
     {
         /// <summary>
         /// The name of the property.

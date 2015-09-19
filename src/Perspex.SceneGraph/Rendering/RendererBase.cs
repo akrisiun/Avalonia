@@ -52,6 +52,22 @@ namespace Perspex.Rendering
             {
                 Render(visual, context, Matrix.Identity, transform);
             }
+
+            /*
+            https://katyscode.wordpress.com/2013/08/24/c-directx-api-face-off-slimdx-vs-sharpdx-which-should-you-choose/
+            renderTarget.BeginDraw();
+            renderTarget.Transform = Matrix3x2.Identity;
+            renderTarget.Clear(Color.White);
+
+            // put drawing code here (see below)
+
+            renderTarget.EndDraw();
+
+            renderTarget.DrawRectangle(
+                new RectangleF(renderTarget.Size.Width / 2 - 100, renderTarget.Size.Height / 2 - 100, 200, 200),
+                new SolidColorBrush(renderTarget, Color.CornflowerBlue));
+            */
+
         }
 
         /// <summary>

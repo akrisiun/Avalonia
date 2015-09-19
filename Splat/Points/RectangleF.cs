@@ -228,7 +228,7 @@ namespace System.Drawing
         ///	Creates a RectangleF from PointF and SizeF values.
         /// </remarks>
 
-        public RectangleF(PointF location, SizeF size)
+        internal RectangleF(PointF location, SizeF size)
         {
             x = location.X;
             y = location.Y;
@@ -341,7 +341,7 @@ namespace System.Drawing
         ///	The Location of the top-left corner of the RectangleF.
         /// </remarks>
 
-        public PointF Location
+        internal PointF Location
         {
             get
             {
@@ -491,7 +491,7 @@ namespace System.Drawing
         ///	Checks if a Point lies within this RectangleF.
         /// </remarks>
 
-        public bool Contains(PointF pt)
+        internal bool Contains(PointF pt)
         {
             return Contains(pt.X, pt.Y);
         }
@@ -581,7 +581,7 @@ namespace System.Drawing
         ///	Moves the RectangleF a specified distance.
         /// </remarks>
 
-        public void Offset(PointF pos)
+        internal void Offset(PointF pos)
         {
             Offset(pos.X, pos.Y);
         }

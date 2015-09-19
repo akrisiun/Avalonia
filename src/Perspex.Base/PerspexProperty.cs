@@ -226,19 +226,43 @@ namespace Perspex
             return result;
         }
 
-        /// <summary>
-        /// Registers an attached <see cref="PerspexProperty"/>.
-        /// </summary>
-        /// <typeparam name="TOwner">The type of the class that is registering the property.</typeparam>
-        /// <typeparam name="THost">The type of the class that the property is to be registered on.</typeparam>
-        /// <typeparam name="TValue">The type of the property's value.</typeparam>
-        /// <param name="name">The name of the property.</param>
-        /// <param name="defaultValue">The default value of the property.</param>
-        /// <param name="inherits">Whether the property inherits its value.</param>
-        /// <param name="defaultBindingMode">The default binding mode for the property.</param>
-        /// <param name="validate">A validation function.</param>
-        /// <returns>A <see cref="PerspexProperty{TValue}"/></returns>
-        public static PerspexProperty<TValue> RegisterAttached<TOwner, THost, TValue>(
+        public static PerspexProperty<TValue> RegisterObj<TOwner, TValue>(
+            string name,
+            TValue defaultValue = default(TValue),
+            bool inherits = false,
+            BindingMode defaultBindingMode = BindingMode.OneWay,
+            Func<TOwner, TValue, TValue> validate = null)
+            where TOwner : class, IPerspexObject
+        {
+
+            PerspexProperty<TValue> result = new PerspexProperty<TValue>(
+              name,
+              typeof(TOwner),
+              defaultValue,
+              inherits,
+              defaultBindingMode,
+              null, // Cast(validate),
+              false);
+
+            PerspexObject.Register(typeof(TOwner), result);
+
+            return result;
+        }
+
+
+    /// <summary>
+    /// Registers an attached <see cref="PerspexProperty"/>.
+    /// </summary>
+    /// <typeparam name="TOwner">The type of the class that is registering the property.</typeparam>
+    /// <typeparam name="THost">The type of the class that the property is to be registered on.</typeparam>
+    /// <typeparam name="TValue">The type of the property's value.</typeparam>
+    /// <param name="name">The name of the property.</param>
+    /// <param name="defaultValue">The default value of the property.</param>
+    /// <param name="inherits">Whether the property inherits its value.</param>
+    /// <param name="defaultBindingMode">The default binding mode for the property.</param>
+    /// <param name="validate">A validation function.</param>
+    /// <returns>A <see cref="PerspexProperty{TValue}"/></returns>
+    public static PerspexProperty<TValue> RegisterAttached<TOwner, THost, TValue>(
             string name,
             TValue defaultValue = default(TValue),
             bool inherits = false,

@@ -8,7 +8,8 @@ namespace Perspex
     /// <summary>
     /// A registered binding in a <see cref="PriorityValue"/>.
     /// </summary>
-    internal class PriorityBindingEntry : IDisposable
+    // internal 
+    public class PriorityBindingEntry : IDisposable
     {
         /// <summary>
         /// The binding subscription.

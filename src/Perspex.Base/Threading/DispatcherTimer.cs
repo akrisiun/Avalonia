@@ -178,7 +178,8 @@ namespace Perspex.Threading
             if (!IsEnabled)
             {
                 IPlatformThreadingInterface threading = Locator.Current.GetService<IPlatformThreadingInterface>();
-                _timer = threading.StartTimer(Interval, InternalTick);
+                if (threading != null)
+                    _timer = threading.StartTimer(Interval, InternalTick);
             }
         }
 

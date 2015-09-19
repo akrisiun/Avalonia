@@ -13,6 +13,9 @@ using Perspex.Rendering;
 using Perspex.Styling;
 using Perspex.Threading;
 using Splat;
+using SharpHelper;
+using SharpDX.Windows;
+using SharpDX;
 
 namespace Perspex
 {
@@ -71,6 +74,9 @@ namespace Perspex
             get;
             private set;
         }
+
+
+        public Window MainWindow { get; set; }
 
         /// <summary>
         /// Gets or sets the application's global data templates.
@@ -141,6 +147,8 @@ namespace Perspex
             protected set;
         }
 
+        public SharpDevice Device { get; protected set; }
+
         /// <summary>
         /// Runs the application's main loop until the <see cref="ICloseable"/> is closed.
         /// </summary>
@@ -148,8 +156,71 @@ namespace Perspex
         public void Run(ICloseable closable)
         {
             var source = new CancellationTokenSource();
-            closable.Closed += (s, e) => source.Cancel();
-            Dispatcher.UIThread.MainLoop(source.Token);
+            closable.Closed
+                += (s, e) => source.Cancel();
+
+            // Dispatcher.UIThread.MainLoop(source.Token);
+            if (!SharpDevice.IsDirectX11Supported())
+            {
+                System.Windows.Forms.MessageBox.Show("DirectX11 Not Supported");
+                return;
+            }
+
+            //render form
+            RenderForm form = this.MainWindow;
+            if (form == null)
+                return;
+
+            using (Device = new SharpDevice(form))
+            {
+                SharpBatch font = new SharpBatch(Device, "textfont.dds");
+                SharpFPS fpsCounter = new SharpFPS();
+
+                if (form is Window)
+                    RenderLoop.Run(form, 
+                        () =>
+                        {
+                            var formW = form as Window;
+                            var device = Device;
+
+                            if (device.MustResize)
+                            {
+                                device.Resize();
+                                // font.Resize();
+
+                                // form.Size = device.SwapChain
+                                // form.Handle ...
+                            }
+
+
+                            //apply state
+                            device.UpdateAllStates();
+
+                            //clear color
+                            var bg = Color.FromRgba(formW.BackColor.ToArgb());
+                            device.Clear(bg); //  Color.CornflowerBlue);
+
+                            formW.RenderCallback();
+
+                            //begin drawing text
+                            if (font != null)
+                            {
+                                font.Begin();
+
+                                //draw string
+                                fpsCounter.Update();
+                                font.DrawString("FPS: " + fpsCounter.FPS, 0, 0, Color.White);
+                                // font.DrawString("Press W for wireframe, S for solid", 0, 30, Color.White);
+                                // font.DrawString("Press From 1 to 5 for Alphablending", 0, 60, Color.White);
+                                //flush text to view
+                                font.End();
+                            }
+
+                            device.Present();
+                                // -> SwapChain.Present(0, PresentFlags.None);
+
+                        });
+            }
         }
 
         /// <summary>
@@ -185,8 +256,8 @@ namespace Perspex
             }
             else
             {
-                InitializeSubsystem("Perspex.Direct2D1");
-                InitializeSubsystem("Perspex.Win32");
+                InitializeSubsystem("Perspex.Direct2D", "Perspex.Direct2D1.Direct2D1Platform");
+                InitializeSubsystem("Perspex.Win32");   // Perspex.Win32.Win32Platform
             }
         }
 
@@ -194,11 +265,11 @@ namespace Perspex
         /// Initializes the rendering or windowing subsystem defined by the specified assemblt.
         /// </summary>
         /// <param name="assemblyName">The name of the assembly.</param>
-        protected void InitializeSubsystem(string assemblyName)
+        protected void InitializeSubsystem(string assemblyName, string className = null)
         {
             var assembly = Assembly.Load(new AssemblyName(assemblyName));
             var platformClassName = assemblyName.Replace("Perspex.", string.Empty) + "Platform";
-            var platformClassFullName = assemblyName + "." + platformClassName;
+            var platformClassFullName = className ?? (assemblyName + "." + platformClassName);
             var platformClass = assembly.GetType(platformClassFullName);
             var init = platformClass.GetRuntimeMethod("Initialize", new Type[0]);
             init.Invoke(null, null);

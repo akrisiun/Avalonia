@@ -59,13 +59,23 @@ namespace Perspex
         Unset = int.MaxValue,
     }
 
+    public interface IPerspexObject
+    {
+        Dictionary<PerspexProperty, PriorityValue> Values { get; }
+        // new Dictionary<PerspexProperty, PriorityValue>();
+
+        object GetDefaultValue(PerspexProperty property);
+
+        void RaisePropertyChanged(PerspexProperty property, object oldValue, object newValue); // , (BindingPriority)result.ValuePriority); 
+    }
+
     /// <summary>
     /// An object with <see cref="PerspexProperty"/> support.
     /// </summary>
     /// <remarks>
     /// This class is analogous to DependencyObject in WPF.
     /// </remarks>
-    public class PerspexObject : IObservablePropertyBag, INotifyPropertyChanged
+    public class PerspexObject : IObservablePropertyBag, INotifyPropertyChanged, IPerspexObject
     {
         /// <summary>
         /// The registered properties by type.
@@ -89,6 +99,8 @@ namespace Perspex
         /// </summary>
         private readonly Dictionary<PerspexProperty, PriorityValue> _values =
             new Dictionary<PerspexProperty, PriorityValue>();
+
+        public Dictionary<PerspexProperty, PriorityValue> Values { get { return _values; } }
 
         /// <summary>
         /// Event handler for <see cref="INotifyPropertyChanged"/> implementation.
@@ -139,6 +151,27 @@ namespace Perspex
         {
             add { _inpcChanged += value; }
             remove { _inpcChanged -= value; }
+        }
+
+        // Ankr
+        public void RaisePropertyChanged(PerspexProperty property, object oldValue, object newValue) // , (BindingPriority)result.ValuePriority)
+        {
+            Contract.Requires<NullReferenceException>(property != null);
+
+            PerspexPropertyChangedEventArgs e = new PerspexPropertyChangedEventArgs(
+                this,
+                property,
+                oldValue,
+                newValue,
+                BindingPriority.LocalValue);
+
+            OnPropertyChanged(e);
+            property.NotifyChanged(e);
+
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -446,7 +479,34 @@ namespace Perspex
 
             if (result == PerspexProperty.UnsetValue)
             {
-                result = GetDefaultValue(property);
+                result = DefaultValue(property);
+            }
+
+            return result;
+        }
+
+        public virtual object GetDefaultValue(PerspexProperty property) { return DefaultValue(property); } // ( return property.GetDefaultValue(property.PropertyType); }
+
+        public static object ObjGetValue(IPerspexObject owner, PerspexProperty property)
+        {
+            Contract.Requires<NullReferenceException>(property != null);
+
+            object result;
+
+            PriorityValue value;
+
+            if (owner.Values.TryGetValue(property, out value))
+            {
+                result = value.Value;
+            }
+            else
+            {
+                result = PerspexProperty.UnsetValue;
+            }
+
+            if (result == PerspexProperty.UnsetValue)
+            {
+                result = owner.GetDefaultValue(property);
             }
 
             return result;
@@ -742,10 +802,10 @@ namespace Perspex
             result.Changed.Subscribe(x =>
             {
                 object oldValue = (x.Item1 == PerspexProperty.UnsetValue) ?
-                    GetDefaultValue(property) :
+                    DefaultValue(property) :
                     x.Item1;
                 object newValue = (x.Item2 == PerspexProperty.UnsetValue) ?
-                    GetDefaultValue(property) :
+                    DefaultValue(property) :
                     x.Item2;
 
                 if (!Equals(oldValue, newValue))
@@ -766,12 +826,36 @@ namespace Perspex
             return result;
         }
 
+        public static PriorityValue SetPriorityValue(IPerspexObject owner, PerspexProperty property, object newValue)
+        {
+            PriorityValue result = new PriorityValue(property.Name, property.PropertyType, null);
+
+            result.Changed.Subscribe(x =>
+            {
+                object oldValue = (x.Item1 == PerspexProperty.UnsetValue) ?
+                    owner.GetDefaultValue(property) :
+                    x.Item1;
+
+                //object newValue = (x.Item2 == PerspexProperty.UnsetValue) ?
+                //    GetDefaultValue(property) :
+                //    x.Item2;
+
+                if (!Equals(oldValue, newValue))
+                {
+                    owner.RaisePropertyChanged(property, oldValue, newValue); // (BindingPriority)result.ValuePriority); 
+                }
+            });
+
+            return result;
+        }
+
+
         /// <summary>
         /// Gets the default value for a property.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The default value.</returns>
-        private object GetDefaultValue(PerspexProperty property)
+        private object DefaultValue(PerspexProperty property)
         {
             if (property.Inherits && _inheritanceParent != null)
             {

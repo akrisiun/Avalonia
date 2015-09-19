@@ -8,10 +8,13 @@
     <PlatformLib Include="$(MSBuildThisFileDirectory)..\Gtk\Perspex.Gtk\bin\$(Configuration)\Perspex.Gtk.dll" />
     -->
 
+    <!--
     <PlatformLib Include="$(MSBuildThisFileDirectory)..\Windows\Perspex.Direct2D1\bin\$(Configuration)\Perspex.Direct2D1.dll" />
     <PlatformLib Include="$(MSBuildThisFileDirectory)..\Windows\Perspex.Direct2D1\bin\$(Configuration)\SharpDX.dll" />
     <PlatformLib Include="$(MSBuildThisFileDirectory)..\Windows\Perspex.Direct2D1\bin\$(Configuration)\SharpDX.Direct2D1.dll" />
     <PlatformLib Include="$(MSBuildThisFileDirectory)..\Windows\Perspex.Direct2D1\bin\$(Configuration)\SharpDX.DXGI.dll" />
+    -->
+    
     <!--
     <PlatformLib Include="$(MSBuildThisFileDirectory)..\Windows\Perspex.Win32\bin\$(Configuration)\Perspex.Win32.dll" />
     -->

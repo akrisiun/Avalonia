@@ -34,7 +34,7 @@ using System.ComponentModel;
 
 namespace System.Drawing
 {
-    public struct PointF
+    internal struct PointF
     {
         // Private x and y coordinate fields.
         private float x, y;

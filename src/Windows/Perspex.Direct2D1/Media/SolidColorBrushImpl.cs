@@ -7,6 +7,8 @@ namespace Perspex.Direct2D1.Media
     {
         public SolidColorBrushImpl(Perspex.Media.SolidColorBrush brush, SharpDX.Direct2D1.RenderTarget target)
         {
+            // PlatformBrush = new SharpDX.Direct2D1.SolidColorBrush(target, brush.Color.ToDirect2D(), brush);
+
             PlatformBrush = new SharpDX.Direct2D1.SolidColorBrush(
                 target,
                 brush?.Color.ToDirect2D() ?? new SharpDX.Color4(),

@@ -64,16 +64,16 @@ namespace Perspex.Direct2D1
 
         public IRenderer CreateRenderer(IPlatformHandle handle, double width, double height)
         {
-            if (handle.HandleDescriptor == "HWND")
-            {
+            //if (handle.HandleDescriptor == "HWND")
+            //{
                 return new Renderer(handle.Handle, width, height);
-            }
-            else
-            {
-                throw new NotSupportedException(string.Format(
-                    "Don't know how to create a Direct2D1 renderer from a '{0}' handle",
-                    handle.HandleDescriptor));
-            }
+            //}
+            //else
+            //{
+            //    throw new NotSupportedException(string.Format(
+            //        "Don't know how to create a Direct2D1 renderer from a '{0}' handle",
+            //        handle.HandleDescriptor));
+            //}
         }
 
         public IRenderTargetBitmapImpl CreateRenderTargetBitmap(int width, int height)

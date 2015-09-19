@@ -42,3 +42,5 @@ lib/
 packages/
 App.config
 src/Perspex.Markup.Xaml/
+
+samples/TestApplication/App.config
