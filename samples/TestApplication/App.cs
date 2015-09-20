@@ -13,8 +13,16 @@ namespace TestApplication
         public App()
         {
             RegisterServices();
+#if REACTIVE
             InitializeSubsystems((int)Environment.OSVersion.Platform);
+            Styles = new DefaultTheme().Add<Perspex.Window>();
+#else
+
+            // InitializeSubsystems((int)PlatformID.Unix);
+            // BadImageFormatException: must be 32bit application
+            Perspex.Gtk.GtkPlatform.Initialize();
             Styles = new DefaultTheme().Add<Window>();
+#endif
         }
     }
 }

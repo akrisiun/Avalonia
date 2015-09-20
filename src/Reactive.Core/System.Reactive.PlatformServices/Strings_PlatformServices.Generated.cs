@@ -19,6 +19,7 @@ using System.Reflection;
 namespace System.Reactive
 {
     using System;
+    using Reflection;
 
 
     /// <summary>
@@ -56,7 +57,8 @@ namespace System.Reactive
 #if (CRIPPLED_REFLECTION && HAS_WINRT)
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Reactive.Strings_PlatformServices", typeof(Strings_PlatformServices).GetTypeInfo().Assembly);
 #else
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Reactive.Strings_PlatformServices", typeof(Strings_PlatformServices).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Reactive.Strings_PlatformServices", 
+                        typeof(Strings_PlatformServices).GetTypeInfo().Assembly);
 #endif
                     resourceMan = temp;
                 }

@@ -99,9 +99,10 @@ namespace System.Reactive.PlatformServices
                     var ifType = t.GetTypeInfo();
 #else
                     var ifType = t;
+                    var asm = t.GetTypeInfo().Assembly;
 #endif
-                    var asm = new AssemblyName(ifType.Assembly.FullName);
-                    asm.Name = "System.Reactive.Debugger";
+                    // var asm = new AssemblyName(ifType.Assembly.FullName);
+                    // asm.Name = "System.Reactive.Debugger";
                     var name = "System.Reactive.Linq.QueryDebugger, " + asm.FullName;
 #endif
                     var dbg = Type.GetType(name, false);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -8,23 +8,33 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>System.Reactive</RootNamespace>
     <AssemblyName>System.Reactive.PlatformServices</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProductSignAssembly>true</ProductSignAssembly>
-    <CodeAnalysisRuleSet>..\Rx.ruleset</CodeAnalysisRuleSet>
+    <!--<ProductSignAssembly>true</ProductSignAssembly>-->
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <TargetFrameworkProfile>Profile44</TargetFrameworkProfile>
   </PropertyGroup>
-  <Import Project="..\Common.targets" />
+  <!--<Import Project="..\Common.targets" />-->
   <PropertyGroup>
     <DocumentationFile>$(OutputPath)\$(AssemblyName).XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DocumentationFile />
+    <OutputPath>..\..\..\lib\</OutputPath>
+    <DefineConstants>DEBUG;NO_THREAD;</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" Condition=" '$(BuildPlatform)' == 'SILVERLIGHT' Or '$(BuildPlatform)' == 'XNA' " />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Observable" Condition=" '$(BuildFlavor)' == 'SILVERLIGHTM7' " />
-    <Reference Include="Microsoft.Phone" Condition=" '$(BuildFlavor)' == 'SILVERLIGHTM7' " />
-    <Reference Include="System.Windows" Condition=" '$(BuildFlavor)' == 'SILVERLIGHTM7' " />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\..\lib\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\..\lib\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\..\lib\System.Reactive.Linq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
@@ -49,24 +59,10 @@
     <Compile Include="Strings_PlatformServices.Generated.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\System.Reactive.Core\System.Reactive.Core.csproj">
-      <Project>{4E516F10-DA7A-4D43-963E-A93865ABEA5B}</Project>
-      <Name>System.Reactive.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System.Reactive.Interfaces\System.Reactive.Interfaces.csproj">
-      <Project>{9E9B9C60-98B0-40FA-9C2B-1218D417CAA4}</Project>
-      <Name>System.Reactive.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\System.Reactive.Linq\System.Reactive.Linq.csproj">
-      <Project>{63252AE9-5186-45CA-BFCD-FA51C6B66A43}</Project>
-      <Name>System.Reactive.Linq</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Strings_PlatformServices.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="..\Import.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!--<Import Project="..\Import.targets" />-->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

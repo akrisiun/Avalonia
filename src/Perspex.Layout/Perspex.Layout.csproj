@@ -13,7 +13,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -26,8 +26,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,11 +39,11 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <ProjectReference Include="..\..\Splat\Splat-Portable.csproj">
-      <Project>{0ec8dba1-d745-4ee5-993a-6026440ec3bf}</Project>
+      <Project>{0EC8DBA1-D745-4EE5-993A-6026440EC3BF}</Project>
       <Name>Splat-Portable</Name>
     </ProjectReference>
     <ProjectReference Include="..\NGenerics\NGenerics.csproj">
-      <Project>{415e048e-4611-4815-9cf2-d774e29079ac}</Project>
+      <Project>{415E048E-4611-4815-9CF2-D774E29079AC}</Project>
       <Name>NGenerics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Perspex.Base\Perspex.Base.csproj">
@@ -56,17 +54,9 @@
       <Project>{EB582467-6ABB-43A1-B052-E981BA910E3A}</Project>
       <Name>Perspex.SceneGraph</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Core\System.Reactive.Core.csproj">
-      <Project>{4e516f10-da7a-4d43-963e-a93865abea5b}</Project>
-      <Name>System.Reactive.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Interfaces\System.Reactive.Interfaces.csproj">
-      <Project>{9e9b9c60-98b0-40fa-9c2b-1218d417caa4}</Project>
-      <Name>System.Reactive.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Linq\System.Reactive.Linq.csproj">
-      <Project>{63252ae9-5186-45ca-bfcd-fa51c6b66a43}</Project>
-      <Name>System.Reactive.Linq</Name>
+    <ProjectReference Include="..\Perspex.ReactiveUI\Perspex.ReactiveUI.csproj">
+      <Project>{6417B24E-49C2-4985-8DB2-3AB9D898EC91}</Project>
+      <Name>Perspex.ReactiveUI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -82,9 +72,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+    <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10">
       <HintPath>..\..\packages\Serilog.1.5.9\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10\Serilog.dll</HintPath>
-      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\lib\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\lib\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\lib\System.Reactive.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

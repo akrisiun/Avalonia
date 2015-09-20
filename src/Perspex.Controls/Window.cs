@@ -1,17 +1,20 @@
-﻿// Copyright (c) The Perspex Project. All rights reserved.
-// Licensed under the MIT license. See licence.md file in the project root for full license information.
-
-using System;
-using System.Reactive.Linq;
-using System.Threading.Tasks;
-using Perspex.Input;
-using Perspex.Media;
-using Perspex.Platform;
-using Perspex.Styling;
-using Splat;
+﻿// -----------------------------------------------------------------------
+// <copyright file="Window.cs" company="Steven Kirk">
+// Copyright 2014 MIT Licence. See licence.md for more information.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Perspex.Controls
 {
+    using System;
+    using System.Reactive.Linq;
+    using System.Threading.Tasks;
+    using Perspex.Input;
+    using Perspex.Media;
+    using Perspex.Platform;
+    using Perspex.Styling;
+    using Splat;
+
     /// <summary>
     /// Determines how a <see cref="Window"/> will size itself to fit its content.
     /// </summary>
@@ -47,18 +50,15 @@ namespace Perspex.Controls
         /// Defines the <see cref="SizeToContent"/> property.
         /// </summary>
         public static readonly PerspexProperty<SizeToContent> SizeToContentProperty =
-            PerspexProperty.Register<Window, SizeToContent>("SizeToContent"); // nameof(SizeToContent));
+            PerspexProperty.Register<Window, SizeToContent>(nameof(SizeToContent));
 
         /// <summary>
         /// Defines the <see cref="Title"/> property.
         /// </summary>
         public static readonly PerspexProperty<string> TitleProperty =
-            PerspexProperty.Register<Window, string>("Title" // nameof(Title)
-                , "Window");
+            PerspexProperty.Register<Window, string>(nameof(Title), "Window");
 
-        private object _dialogResult;
-
-        private Size _maxPlatformClientSize;
+        private object dialogResult;
 
         /// <summary>
         /// Initializes static members of the <see cref="Window"/> class.
@@ -75,22 +75,23 @@ namespace Perspex.Controls
         public Window()
             : base(Locator.Current.GetService<IWindowImpl>())
         {
-            _maxPlatformClientSize = this.PlatformImpl.MaxClientSize;
         }
 
         /// <summary>
         /// Gets the platform-specific window implementation.
         /// </summary>
-        public new IWindowImpl PlatformImpl // => 
-            { get { return (IWindowImpl)base.PlatformImpl; }} 
+        public new IWindowImpl PlatformImpl
+        {
+            get { return (IWindowImpl)base.PlatformImpl; }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating how the window will size itself to fit its content.
         /// </summary>
         public SizeToContent SizeToContent
         {
-            get { return GetValue(SizeToContentProperty); }
-            set { SetValue(SizeToContentProperty, value); }
+            get { return this.GetValue(SizeToContentProperty); }
+            set { this.SetValue(SizeToContentProperty, value); }
         }
 
         /// <summary>
@@ -98,20 +99,22 @@ namespace Perspex.Controls
         /// </summary>
         public string Title
         {
-            get { return GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
+            get { return this.GetValue(TitleProperty); }
+            set { this.SetValue(TitleProperty, value); }
         }
 
         /// <inheritdoc/>
-        Type IStyleable.StyleKey // => 
-        { get { return typeof(Window); } }
+        Type IStyleable.StyleKey
+        {
+            get { return typeof(Window); }
+        }
 
         /// <summary>
         /// Closes the window.
         /// </summary>
         public void Close()
         {
-            PlatformImpl.Dispose();
+            this.PlatformImpl.Dispose();
         }
 
         /// <summary>
@@ -120,13 +123,13 @@ namespace Perspex.Controls
         /// <param name="dialogResult">The dialog result.</param>
         /// <remarks>
         /// When the window is shown with the <see cref="ShowDialog{TResult}"/> method, the
-        /// resulting task will produce the <see cref="_dialogResult"/> value when the window
+        /// resulting task will produce the <see cref="dialogResult"/> value when the window
         /// is closed.
         /// </remarks>
         public void Close(object dialogResult)
         {
-            _dialogResult = dialogResult;
-            Close();
+            this.dialogResult = dialogResult;
+            this.Close();
         }
 
         /// <summary>
@@ -134,9 +137,9 @@ namespace Perspex.Controls
         /// </summary>
         public void Hide()
         {
-            using (BeginAutoSizing())
+            using (this.BeginAutoSizing())
             {
-                PlatformImpl.Hide();
+                this.PlatformImpl.Hide();
             }
         }
 
@@ -145,11 +148,11 @@ namespace Perspex.Controls
         /// </summary>
         public void Show()
         {
-            LayoutManager.ExecuteLayoutPass();
+            this.LayoutManager.ExecuteLayoutPass();
 
-            using (BeginAutoSizing())
+            using (this.BeginAutoSizing())
             {
-                PlatformImpl.Show();
+                this.PlatformImpl.Show();
             }
         }
 
@@ -161,7 +164,7 @@ namespace Perspex.Controls
         /// </returns>
         public Task ShowDialog()
         {
-            return ShowDialog<object>();
+            return this.ShowDialog<object>();
         }
 
         /// <summary>
@@ -175,19 +178,19 @@ namespace Perspex.Controls
         /// </returns>
         public Task<TResult> ShowDialog<TResult>()
         {
-            LayoutManager.ExecuteLayoutPass();
+            this.LayoutManager.ExecuteLayoutPass();
 
-            using (BeginAutoSizing())
+            using (this.BeginAutoSizing())
             {
-                var modal = PlatformImpl.ShowDialog();
+                var modal = this.PlatformImpl.ShowDialog();
                 var result = new TaskCompletionSource<TResult>();
 
-                Observable.FromEventPattern(this, "Closed") // nameof(Closed))
+                Observable.FromEventPattern(this, nameof(this.Closed))
                     .Take(1)
                     .Subscribe(_ =>
                     {
                         modal.Dispose();
-                        result.SetResult((TResult)_dialogResult);
+                        result.SetResult((TResult)this.dialogResult);
                     });
 
                 return result.Task;
@@ -197,26 +200,23 @@ namespace Perspex.Controls
         /// <inheritdoc/>
         protected override Size MeasureOverride(Size availableSize)
         {
-            var sizeToContent = SizeToContent;
-            var size = ClientSize;
-            var desired = base.MeasureOverride(availableSize.Constrain(_maxPlatformClientSize));
+            var sizeToContent = this.SizeToContent;
+            var size = this.ClientSize;
+            var desired = base.MeasureOverride(availableSize);
 
             switch (sizeToContent)
             {
                 case SizeToContent.Width:
-                    size = new Size(desired.Width, ClientSize.Height);
+                    size = new Size(desired.Width, this.ClientSize.Height);
                     break;
                 case SizeToContent.Height:
-                    size = new Size(ClientSize.Width, desired.Height);
+                    size = new Size(this.ClientSize.Width, desired.Height);
                     break;
                 case SizeToContent.WidthAndHeight:
-                    if (desired.Width > 0 || !IsVisible)
-                        size = new Size(desired.Width, desired.Height);
-                    else
-                        size = ClientSize;
+                    size = new Size(desired.Width, desired.Height);
                     break;
                 case SizeToContent.Manual:
-                    size = ClientSize;
+                    size = this.ClientSize;
                     break;
                 default:
                     throw new InvalidOperationException("Invalid value for SizeToContent.");
@@ -228,9 +228,9 @@ namespace Perspex.Controls
         /// <inheritdoc/>
         protected override void HandleResized(Size clientSize)
         {
-            if (!AutoSizing)
+            if (!this.AutoSizing)
             {
-                SizeToContent = SizeToContent.Manual;
+                this.SizeToContent = SizeToContent.Manual;
             }
 
             base.HandleResized(clientSize);

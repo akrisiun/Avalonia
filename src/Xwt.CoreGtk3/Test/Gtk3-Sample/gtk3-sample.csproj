@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{48234565-8E78-462E-ADEC-9AAA81B641B2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>sample</RootNamespace>
+    <AssemblyName>gtk3-sample</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\lib\</OutputPath>
+    <DefineConstants>DEBUG;NET_4_5;GTK3;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>GtkDemo.DemoMain</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>xwt.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeModelDemo.cs" />
+    <Compile Include="Actions.cs" />
+    <Compile Include="Assistant.cs" />
+    <Compile Include="ButtonApp.cs" />
+    <Compile Include="CairoSample.cs" />
+    <Compile Include="CalendarApp.cs" />
+    <Compile Include="CustomCellRenderer.cs" />
+    <Compile Include="CustomWidget.cs" />
+    <Compile Include="DrawingSample.cs" />
+    <Compile Include="GExceptionTest.cs" />
+    <Compile Include="HelloWorld.cs" />
+    <Compile Include="ManagedTreeViewDemo.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="NativeInstantiationTest.cs" />
+    <Compile Include="NodeViewDemo.cs" />
+    <Compile Include="PolarFixed.cs" />
+    <Compile Include="PropertyRegistration.cs" />
+    <Compile Include="Scribble.cs" />
+    <Compile Include="ScribbleXInput.cs" />
+    <Compile Include="SpawnTests.cs" />
+    <Compile Include="Subclass.cs" />
+    <Compile Include="TestDnd.cs" />
+    <Compile Include="Thread.cs" />
+    <Compile Include="TreeViewDemo.cs" />
+    <Compile Include="GtkDemo\DemoApplicationWindow.cs" />
+    <Compile Include="GtkDemo\DemoAttribute.cs" />
+    <Compile Include="GtkDemo\DemoButtonBox.cs" />
+    <Compile Include="GtkDemo\DemoClipboard.cs" />
+    <Compile Include="GtkDemo\DemoColorSelection.cs" />
+    <Compile Include="GtkDemo\DemoDialog.cs" />
+    <Compile Include="GtkDemo\DemoDrawingArea.cs" />
+    <Compile Include="GtkDemo\DemoEditableCells.cs" />
+    <Compile Include="GtkDemo\DemoEntryCompletion.cs" />
+    <Compile Include="GtkDemo\DemoExpander.cs" />
+    <Compile Include="GtkDemo\DemoHyperText.cs" />
+    <Compile Include="GtkDemo\DemoIconView.cs" />
+    <Compile Include="GtkDemo\DemoImages.cs" />
+    <Compile Include="GtkDemo\DemoListStore.cs" />
+    <Compile Include="GtkDemo\DemoMain.cs" />
+    <Compile Include="GtkDemo\DemoMenus.cs" />
+    <Compile Include="GtkDemo\DemoPanes.cs" />
+    <Compile Include="GtkDemo\DemoPixbuf.cs" />
+    <Compile Include="GtkDemo\DemoPrinting.cs" />
+    <Compile Include="GtkDemo\DemoRotatedText.cs" />
+    <Compile Include="GtkDemo\DemoSizeGroup.cs" />
+    <Compile Include="GtkDemo\DemoStockBrowser.cs" />
+    <Compile Include="GtkDemo\DemoTextView.cs" />
+    <Compile Include="GtkDemo\DemoTreeStore.cs" />
+    <Compile Include="GtkDemo\DemoUIManager.cs" />
+    <Compile Include="test\TestCheckButton.cs" />
+    <Compile Include="test\TestColorSelection.cs" />
+    <Compile Include="test\TestComboBox.cs" />
+    <Compile Include="test\TestDialog.cs" />
+    <Compile Include="test\TestFlipping.cs" />
+    <Compile Include="test\TestRadioButton.cs" />
+    <Compile Include="test\TestRange.cs" />
+    <Compile Include="test\TestSizeGroup.cs" />
+    <Compile Include="test\TestStatusbar.cs" />
+    <Compile Include="test\WidgetViewer.cs" />
+    <Compile Include="CustomScrollableWidget.cs" />
+    <Compile Include="AsyncSample.cs" />
+    <Compile Include="gio\AppInfo.cs" />
+    <Compile Include="gio\Volume.cs" />
+    <Compile Include="gtk-gio\MountOperation.cs" />
+    <Compile Include="CairoPng.cs" />
+    <Compile Include="GtkDemo\DemoSpinner.cs" />
+    <Compile Include="GtkDemo\DemoCssBasics.cs" />
+    <Compile Include="GtkDemo\DemoThemingStyleClasses.cs" />
+    <Compile Include="VariantDemo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="xwt.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Dynamic" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Base\atk\atk3.csproj">
+      <Project>{42fe871a-d8cf-4b29-9aff-b02454e6c976}</Project>
+      <Name>atk3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\cairo\cairo3.csproj">
+      <Project>{364577db-9728-4951-ac2c-edf7a6fcc09d}</Project>
+      <Name>cairo3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\gio\gio3.csproj">
+      <Project>{1c3bb17b-336d-432a-8952-4e979bc90867}</Project>
+      <Name>gio3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\glib\glib3.csproj">
+      <Project>{3bf1d531-8840-4f15-8066-a9788d8c398b}</Project>
+      <Name>glib3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CoreGtk3.csproj">
+      <Project>{9e4b0803-5255-43aa-9c68-0cbdf76db564}</Project>
+      <Name>CoreGtk3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xwt.CoreGtk3\CoreGtk3.csproj">
+      <Project>{9E4B0803-5255-43AA-9C68-0CBDF76DB564}</Project>
+      <Name>CoreGtk3</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GtkDemo\css\css_basics.css" />
+    <EmbeddedResource Include="GtkDemo\css\reset.css" />
+    <Content Include="GtkDemo\images\alphatest.png" />
+    <Content Include="GtkDemo\images\apple-red.png" />
+    <Content Include="GtkDemo\images\background.jpg" />
+    <Content Include="GtkDemo\images\floppybuddy.gif" />
+    <Content Include="GtkDemo\images\gnome-applets.png" />
+    <Content Include="GtkDemo\images\gnome-calendar.png" />
+    <Content Include="GtkDemo\images\gnome-foot.png" />
+    <Content Include="GtkDemo\images\gnome-gimp.png" />
+    <Content Include="GtkDemo\images\gnome-gmush.png" />
+    <Content Include="GtkDemo\images\gnome-gsame.png" />
+    <Content Include="GtkDemo\images\gnu-keys.png" />
+    <Content Include="GtkDemo\images\gtk-logo-rgb.gif" />
+    <Content Include="GtkDemo\images\MonoIcon.png" />
+  </ItemGroup>
+</Project>

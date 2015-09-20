@@ -26,17 +26,21 @@ namespace Perspex.Input
         /// </summary>
         public FocusManager()
         {
-            InputElement.PointerPressedEvent.AddClassHandler(
-                typeof(IInputElement),
-                new EventHandler<RoutedEventArgs>(OnPreviewPointerPressed),
-                RoutingStrategies.Tunnel);
+            try
+            {
+                InputElement.PointerPressedEvent.AddClassHandler(
+                    typeof(IInputElement),
+                    new EventHandler<RoutedEventArgs>(OnPreviewPointerPressed),
+                    RoutingStrategies.Tunnel);
+            }
+            catch (Exception) { }
         }
 
         /// <summary>
         /// Gets the instance of the <see cref="IFocusManager"/>.
         /// </summary>
         public static IFocusManager Instance // => 
-            {get { return  Locator.Current.GetService<IFocusManager>();}}
+            {get { return Locator.Current.GetService<IFocusManager>();}}
 
         /// <summary>
         /// Gets the currently focused <see cref="IInputElement"/>.

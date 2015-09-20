@@ -15,14 +15,13 @@
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\lib\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,48 +39,8 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <ProjectReference Include="..\..\Splat\Splat-Portable.csproj">
-      <Project>{0ec8dba1-d745-4ee5-993a-6026440ec3bf}</Project>
+      <Project>{0EC8DBA1-D745-4EE5-993A-6026440EC3BF}</Project>
       <Name>Splat-Portable</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Perspex.Base\Perspex.Base.csproj">
-      <Project>{B09B78D8-9B26-48B0-9149-D64A2F120F3F}</Project>
-      <Name>Perspex.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Perspex.Controls\Perspex.Controls.csproj">
-      <Project>{D2221C82-4A25-4583-9B43-D791E3F6820C}</Project>
-      <Name>Perspex.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Perspex.Input\Perspex.Input.csproj">
-      <Project>{62024B2D-53EB-4638-B26B-85EEAA54866E}</Project>
-      <Name>Perspex.Input</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Perspex.Interactivity\Perspex.Interactivity.csproj">
-      <Project>{6B0ED19D-A08B-461C-A9D9-A9EE40B0C06B}</Project>
-      <Name>Perspex.Interactivity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Perspex.Layout\Perspex.Layout.csproj">
-      <Project>{42472427-4774-4C81-8AFF-9F27B8E31721}</Project>
-      <Name>Perspex.Layout</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Perspex.SceneGraph\Perspex.SceneGraph.csproj">
-      <Project>{EB582467-6ABB-43A1-B052-E981BA910E3A}</Project>
-      <Name>Perspex.SceneGraph</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Perspex.Styling\Perspex.Styling.csproj">
-      <Project>{F1BAA01A-F176-4C6A-B39D-5B40BB1B148F}</Project>
-      <Name>Perspex.Styling</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Core\System.Reactive.Core.csproj">
-      <Project>{4e516f10-da7a-4d43-963e-a93865abea5b}</Project>
-      <Name>System.Reactive.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Interfaces\System.Reactive.Interfaces.csproj">
-      <Project>{9e9b9c60-98b0-40fa-9c2b-1218d417caa4}</Project>
-      <Name>System.Reactive.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Linq\System.Reactive.Linq.csproj">
-      <Project>{63252ae9-5186-45ca-bfcd-fa51c6b66a43}</Project>
-      <Name>System.Reactive.Linq</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -118,15 +77,39 @@
     <Compile Include="TreeViewStyle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <Reference Include="Perspex.Base">
+      <HintPath>..\..\lib\Perspex.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.Controls">
+      <HintPath>..\..\lib\Perspex.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.Input">
+      <HintPath>..\..\lib\Perspex.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.Interactivity">
+      <HintPath>..\..\lib\Perspex.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.Layout">
+      <HintPath>..\..\lib\Perspex.Layout.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.ReactiveUI">
+      <HintPath>..\..\lib\Perspex.ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.SceneGraph">
+      <HintPath>..\..\lib\Perspex.SceneGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.Styling">
+      <HintPath>..\..\lib\Perspex.Styling.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\lib\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\lib\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\lib\System.Reactive.Linq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

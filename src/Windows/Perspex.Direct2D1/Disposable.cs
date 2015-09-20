@@ -1,23 +1,26 @@
-﻿// Copyright (c) The Perspex Project. All rights reserved.
-// Licensed under the MIT license. See licence.md file in the project root for full license information.
-
-using System;
+﻿// -----------------------------------------------------------------------
+// <copyright file="Disposable.cs" company="Steven Kirk">
+// Copyright 2013 MIT Licence. See licence.md for more information.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Perspex.Direct2D1
 {
+    using System;
+
     public class Disposable<T> : IDisposable where T : IDisposable
     {
-        private readonly IDisposable _extra;
+        private IDisposable extra;
 
         public Disposable(T inner)
         {
-            Inner = inner;
+            this.Inner = inner;
         }
 
         public Disposable(T inner, IDisposable extra)
         {
-            Inner = inner;
-            _extra = extra;
+            this.Inner = inner;
+            this.extra = extra;
         }
 
         public T Inner { get; }
@@ -29,8 +32,8 @@ namespace Perspex.Direct2D1
 
         public void Dispose()
         {
-            Inner.Dispose();
-            _extra?.Dispose();
+            this.Inner.Dispose();
+            this.extra?.Dispose();
         }
     }
 }

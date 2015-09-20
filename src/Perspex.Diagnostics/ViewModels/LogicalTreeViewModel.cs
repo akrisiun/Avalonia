@@ -29,6 +29,6 @@ namespace Perspex.Diagnostics.ViewModels
             set { this.RaiseAndSetIfChanged(ref _selected, value); }
         }
 
-        public ControlDetailsViewModel Details => _details.Value;
+        public ControlDetailsViewModel Details {get { return _details.Value; }}
     }
 }

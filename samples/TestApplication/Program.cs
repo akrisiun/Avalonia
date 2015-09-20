@@ -114,14 +114,15 @@ namespace TestApplication
             //    .WriteTo.Trace(outputTemplate: "[{Id:X8}] [{SourceContext}] {Message}")
             //    .CreateLogger();
 
+#if REACTIVE
             // The version of ReactiveUI currently included is for WPF and so expects a WPF
             // dispatcher. This makes sure it's initialized.
             System.Windows.Threading.Dispatcher foo =
                System.Windows.Threading.Dispatcher.CurrentDispatcher;
 
-            PerspexSynchronizationContext.AutoInstall = true;
             Perspex.Direct2D1.Direct2D1Platform.Initialize();
-
+#endif
+            PerspexSynchronizationContext.AutoInstall = true;
             App application = new App
             {
                 DataTemplates = new DataTemplates
@@ -142,6 +143,7 @@ namespace TestApplication
 #endif
 
             #region Window 
+
             Window window = new Window
             {
                 Title = "Perspex Test Application",
@@ -159,16 +161,15 @@ namespace TestApplication
                         new RowDefinition(1, GridUnitType.Star),
                         new RowDefinition(GridLength.Auto),
                     },
-                    Children =  Children()
-                    //new Controls {
-                    //        (fps = new TextBlock
-                    //        {
-                    //            HorizontalAlignment = HorizontalAlignment.Left,
-                    //            Margin = new Thickness(2),
-                    //            // [Grid.RowProperty] = 2,
-                    //        })
-                        
-                    //}
+                    Children = // Children()
+                    new Controls {
+                            (fps = new TextBlock
+                            {
+                                HorizontalAlignment = HorizontalAlignment.Left,
+                                Margin = new Thickness(2),
+                                // [Grid.RowProperty] = 2,
+                            })
+                    }
                 },
             };
             Application.Current.MainWindow = window;
@@ -445,8 +446,8 @@ namespace TestApplication
                             Content = new Image
                             {
                                 Source = new Bitmap("github_icon.png")
-                                , [!Layoutable.WidthProperty] = size[!RangeBase.ValueProperty],
-                                  [!Layoutable.HeightProperty] = size[!RangeBase.ValueProperty],
+                               // , [!Layoutable.WidthProperty] = size[!RangeBase.ValueProperty],
+                               //   [!Layoutable.HeightProperty] = size[!RangeBase.ValueProperty],
                             },
                         },
                         // TODO
@@ -535,7 +536,7 @@ namespace TestApplication
                                 new Button { HorizontalAlignment = HorizontalAlignment.Right, Content = "Right Aligned" },
                                 new Button { HorizontalAlignment = HorizontalAlignment.Stretch, Content = "Stretch" },
                             }
-                            , [Grid.ColumnProperty] = 0,
+                           // , [Grid.ColumnProperty] = 0,
                         },
                         new StackPanel
                         {
@@ -548,13 +549,14 @@ namespace TestApplication
                                 new Button { VerticalAlignment = VerticalAlignment.Bottom, Content = "Bottom Aligned" },
                                 new Button { VerticalAlignment = VerticalAlignment.Stretch, Content = "Stretch" },
                             },
-                             [Grid.ColumnProperty] = 1,
+                           //  [Grid.ColumnProperty] = 1,
                         },
                     },
                 }
             };
         }
 
+        /*
         private static TabItem AnimationsTab()
         {
             Border border1;
@@ -664,6 +666,7 @@ namespace TestApplication
 
             return result;
         }
+        */
 
         #endregion
 
@@ -762,25 +765,25 @@ namespace TestApplication
                                 ImagesTab(),
                                 ListsTab(),
                                 LayoutTab(),
-                                AnimationsTab(),
+                                // AnimationsTab(),
                             },
                             Transition = new PageSlide(TimeSpan.FromSeconds(0.25))
-                            , [Grid.RowProperty] = 1,
-                            [Grid.ColumnSpanProperty] = 2,
+                        // , [Grid.RowProperty] = 1,
+                        //  [Grid.ColumnSpanProperty] = 2,
                         },
                         (fps = new TextBlock
                         {
                             HorizontalAlignment = HorizontalAlignment.Left,
                             Margin = new Thickness(2)
-                            , [Grid.RowProperty] = 2,
+                            //  , [Grid.RowProperty] = 2,
                         }),
                         new TextBlock
                         {
                             Text = "Press F12 for Dev Tools",
                             HorizontalAlignment = HorizontalAlignment.Right,
                             Margin = new Thickness(2)
-                            , [Grid.ColumnProperty] = 1,
-                              [Grid.RowProperty] = 2,
+                        //  , [Grid.ColumnProperty] = 1,
+                        //    [Grid.RowProperty] = 2,
                         },
                     };
         }

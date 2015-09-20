@@ -125,7 +125,7 @@ namespace Perspex
             private set;
         }
 
-        public IClipboard Clipboard => _clipboard.Value;
+        public IClipboard Clipboard { get { return _clipboard.Value; } }
 
         /// <summary>
         /// Gets the application's global styles.
@@ -159,29 +159,38 @@ namespace Perspex
         protected virtual void RegisterServices()
         {
             PerspexSynchronizationContext.InstallIfNeeded();
-            FocusManager = new FocusManager();
             InputManager = new InputManager();
 
             Locator.CurrentMutable.Register(() => new AccessKeyHandler(), typeof(IAccessKeyHandler));
             Locator.CurrentMutable.Register(() => this, typeof(IGlobalDataTemplates));
             Locator.CurrentMutable.Register(() => this, typeof(IGlobalStyles));
-            Locator.CurrentMutable.Register(() => FocusManager, typeof(IFocusManager));
             Locator.CurrentMutable.Register(() => InputManager, typeof(IInputManager));
+
+            FocusManager = new FocusManager();
+            Locator.CurrentMutable.Register(() => FocusManager, typeof(IFocusManager));
+
             Locator.CurrentMutable.Register(() => new KeyboardNavigationHandler(), typeof(IKeyboardNavigationHandler));
             Locator.CurrentMutable.Register(() => _styler, typeof(IStyler));
             Locator.CurrentMutable.Register(() => new LayoutManager(), typeof(ILayoutManager));
             Locator.CurrentMutable.Register(() => new RenderManager(), typeof(IRenderManager));
         }
 
+        const int Platform_Unix = 4;
+        const int Platform_MacOs = 6;
+        
         /// <summary>
         /// Initializes the rendering and windowing subsystems according to platform.
         /// </summary>
         /// <param name="platformID">The value of Environment.OSVersion.Platform.</param>
         protected void InitializeSubsystems(int platformID)
         {
-            if (platformID == 4 || platformID == 6)
+            if (platformID == Platform_MacOs)
             {
                 InitializeSubsystem("Perspex.Cairo");
+                InitializeSubsystem("Perspex.Gtk");
+            }
+            else if (platformID == Platform_Unix)
+            { 
                 InitializeSubsystem("Perspex.Gtk");
             }
             else

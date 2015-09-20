@@ -1,26 +1,29 @@
-﻿// Copyright (c) The Perspex Project. All rights reserved.
-// Licensed under the MIT license. See licence.md file in the project root for full license information.
-
-using System;
-using Perspex.Layout;
-using Splat;
+﻿// -----------------------------------------------------------------------
+// <copyright file="LogManager.cs" company="Steven Kirk">
+// Copyright 2014 MIT Licence. See licence.md for more information.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Perspex.Diagnostics
 {
+    using System;
+    using Perspex.Layout;
+    using Splat;
+
     public class LogManager : ILogManager
     {
-        private static LogManager s_instance;
+        private static LogManager instance;
 
         public static LogManager Instance
         {
             get
             {
-                if (s_instance == null)
+                if (instance == null)
                 {
-                    s_instance = new LogManager();
+                    instance = new LogManager();
                 }
 
-                return s_instance;
+                return instance;
             }
         }
 
@@ -50,10 +53,10 @@ namespace Perspex.Diagnostics
 
         public IFullLogger GetLogger(Type type)
         {
-            if ((type == typeof(PerspexObject) && LogPropertyMessages) ||
-                (type == typeof(Layoutable) && LogLayoutMessages))
+            if ((type == typeof(PerspexObject) && this.LogPropertyMessages) ||
+                (type == typeof(Layoutable) && this.LogLayoutMessages))
             {
-                return new WrappingFullLogger(Logger, type);
+                return new WrappingFullLogger(this.Logger, type);
             }
             else
             {

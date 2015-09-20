@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E3A1060B-50D0-44E8-88B6-F44EF2E5BD72}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestApplication</RootNamespace>
     <AssemblyName>TestApplication</AssemblyName>
@@ -13,18 +13,19 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp />
     <TargetFrameworkProfile />
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WPF;REACTIVE;NET45;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WPF;NO_REACTIVE;NET45;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,30 +40,6 @@
     <StartupObject>TestApplication.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SharpDX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct2D1, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SharpDX.Direct2D1.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SharpDX.DXGI.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Toolkit, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SharpDX.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Toolkit.Graphics, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SharpDX.Toolkit.Graphics.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SharpDX.XInput.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -70,7 +47,18 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\lib\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\lib\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\lib\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Perspex.Themes.Default">
+      <HintPath>..\..\lib\Perspex.Themes.Default.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
@@ -83,11 +71,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Splat\Splat-Portable.csproj">
-      <Project>{0ec8dba1-d745-4ee5-993a-6026440ec3bf}</Project>
+      <Project>{0EC8DBA1-D745-4EE5-993A-6026440EC3BF}</Project>
       <Name>Splat-Portable</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Gtk\Perspex.Gtk\Perspex.Gtk.csproj">
+      <Project>{54f237d5-a70a-4752-9656-0c70b1a7b047}</Project>
+      <Name>Perspex.Gtk</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Perspex.Application\Perspex.Application.csproj">
-      <Project>{799a7bb5-3c2c-48b6-85a7-406a12c420da}</Project>
+      <Project>{799A7BB5-3C2C-48B6-85A7-406A12C420DA}</Project>
       <Name>Perspex.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Perspex.Base\Perspex.Base.csproj">
@@ -111,7 +103,7 @@
       <Name>Perspex.Layout</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Perspex.ReactiveUI\Perspex.ReactiveUI.csproj">
-      <Project>{6417b24e-49c2-4985-8db2-3ab9d898ec91}</Project>
+      <Project>{6417B24E-49C2-4985-8DB2-3AB9D898EC91}</Project>
       <Name>Perspex.ReactiveUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Perspex.SceneGraph\Perspex.SceneGraph.csproj">
@@ -122,42 +114,28 @@
       <Project>{F1BAA01A-F176-4C6A-B39D-5B40BB1B148F}</Project>
       <Name>Perspex.Styling</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Perspex.Themes.Default\Perspex.Themes.Default.csproj">
-      <Project>{3e10a5fa-e8da-48b1-ad44-6a5b6cb7750f}</Project>
-      <Name>Perspex.Themes.Default</Name>
+    <ProjectReference Include="..\..\src\Xwt.CoreGtk3\Base\atk\atk3.csproj">
+      <Project>{42fe871a-d8cf-4b29-9aff-b02454e6c976}</Project>
+      <Name>atk3</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Perspex.Win32\Perspex.Win32.csproj">
-      <Project>{811a76cf-1cf6-440f-963b-bbe31bd72a82}</Project>
-      <Name>Perspex.Win32</Name>
+    <ProjectReference Include="..\..\src\Xwt.CoreGtk3\Base\gio\gio3.csproj">
+      <Project>{1c3bb17b-336d-432a-8952-4e979bc90867}</Project>
+      <Name>gio3</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Reactive.Core\System.Reactive.Core\System.Reactive.Core.csproj">
-      <Project>{4e516f10-da7a-4d43-963e-a93865abea5b}</Project>
-      <Name>System.Reactive.Core</Name>
+    <ProjectReference Include="..\..\src\Xwt.CoreGtk3\Base\glib\glib3.csproj">
+      <Project>{3bf1d531-8840-4f15-8066-a9788d8c398b}</Project>
+      <Name>glib3</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Reactive.Core\System.Reactive.Interfaces\System.Reactive.Interfaces.csproj">
-      <Project>{9e9b9c60-98b0-40fa-9c2b-1218d417caa4}</Project>
-      <Name>System.Reactive.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Reactive.Core\System.Reactive.Linq\System.Reactive.Linq.csproj">
-      <Project>{63252ae9-5186-45ca-bfcd-fa51c6b66a43}</Project>
-      <Name>System.Reactive.Linq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Windows\Perspex.Direct2D1\Perspex.Direct2D.csproj">
-      <Project>{3e908f67-5543-4879-a1dc-08eace79b3cd}</Project>
-      <Name>Perspex.Direct2D</Name>
+    <ProjectReference Include="..\..\src\Xwt.CoreGtk3\CoreGtk3.csproj">
+      <Project>{9e4b0803-5255-43aa-9c68-0cbdf76db564}</Project>
+      <Name>CoreGtk3</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="github_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="textfont.dds">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="html.htm" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--

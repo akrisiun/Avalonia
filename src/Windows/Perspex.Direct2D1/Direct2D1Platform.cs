@@ -1,56 +1,42 @@
-﻿// Copyright (c) The Perspex Project. All rights reserved.
-// Licensed under the MIT license. See licence.md file in the project root for full license information.
-
-using System;
-using System.IO;
-using Perspex.Direct2D1.Media;
-using Perspex.Media;
-using Perspex.Platform;
-using Splat;
+﻿// -----------------------------------------------------------------------
+// <copyright file="Direct2D1Platform.cs" company="Steven Kirk">
+// Copyright 2014 MIT Licence. See licence.md for more information.
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Perspex.Direct2D1
 {
+    using System;
+    using Perspex.Direct2D1.Media;
+    using Perspex.Media;
+    using Perspex.Platform;
+    using Perspex.Threading;
+    using Splat;
+
     public class Direct2D1Platform : IPlatformRenderInterface
     {
-        private static readonly Direct2D1Platform s_instance = new Direct2D1Platform();
+        private static Direct2D1Platform instance = new Direct2D1Platform();
 
-        private static readonly SharpDX.Direct2D1.Factory s_d2D1Factory = new SharpDX.Direct2D1.Factory();
+        private static SharpDX.Direct2D1.Factory d2d1Factory = new SharpDX.Direct2D1.Factory();
 
-        private static readonly SharpDX.DirectWrite.Factory s_dwfactory = new SharpDX.DirectWrite.Factory();
+        private static SharpDX.DirectWrite.Factory dwfactory = new SharpDX.DirectWrite.Factory();
 
-        private static readonly SharpDX.WIC.ImagingFactory s_imagingFactory = new SharpDX.WIC.ImagingFactory();
+        private static SharpDX.WIC.ImagingFactory imagingFactory = new SharpDX.WIC.ImagingFactory();
 
-        /// <summary>
-        /// Init
-        /// </summary>
         public static void Initialize()
         {
             var locator = Locator.CurrentMutable;
-            var search = locator.GetService<IPlatformRenderInterface>();
-            if (search != null)
-                return;
-
-            locator.Register(() => s_instance, typeof(IPlatformRenderInterface));
-            locator.Register(() => s_d2D1Factory, typeof(SharpDX.Direct2D1.Factory));
-            locator.Register(() => s_dwfactory, typeof(SharpDX.DirectWrite.Factory));
-            locator.Register(() => s_imagingFactory, typeof(SharpDX.WIC.ImagingFactory));
+            locator.Register(() => instance, typeof(IPlatformRenderInterface));
+            locator.Register(() => d2d1Factory, typeof(SharpDX.Direct2D1.Factory));
+            locator.Register(() => dwfactory, typeof(SharpDX.DirectWrite.Factory));
+            locator.Register(() => imagingFactory, typeof(SharpDX.WIC.ImagingFactory));
         }
 
         public IBitmapImpl CreateBitmap(int width, int height)
         {
-            return new BitmapImpl(s_imagingFactory, width, height);
+            return new BitmapImpl(imagingFactory, width, height);
         }
 
-        /// <summary>
-        /// Text
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="fontFamily"></param>
-        /// <param name="fontSize"></param>
-        /// <param name="fontStyle"></param>
-        /// <param name="textAlignment"></param>
-        /// <param name="fontWeight"></param>
-        /// <returns></returns>
         public IFormattedTextImpl CreateFormattedText(
             string text,
             string fontFamily,
@@ -64,21 +50,21 @@ namespace Perspex.Direct2D1
 
         public IRenderer CreateRenderer(IPlatformHandle handle, double width, double height)
         {
-            //if (handle.HandleDescriptor == "HWND")
-            //{
+            if (handle.HandleDescriptor == "HWND")
+            {
                 return new Renderer(handle.Handle, width, height);
-            //}
-            //else
-            //{
-            //    throw new NotSupportedException(string.Format(
-            //        "Don't know how to create a Direct2D1 renderer from a '{0}' handle",
-            //        handle.HandleDescriptor));
-            //}
+            }
+            else
+            {
+                throw new NotSupportedException(string.Format(
+                    "Don't know how to create a Direct2D1 renderer from a '{0}' handle",
+                    handle.HandleDescriptor));
+            }
         }
 
         public IRenderTargetBitmapImpl CreateRenderTargetBitmap(int width, int height)
         {
-            return new RenderTargetBitmapImpl(s_imagingFactory, s_d2D1Factory, width, height);
+            return new RenderTargetBitmapImpl(imagingFactory, d2d1Factory, width, height);
         }
 
         public IStreamGeometryImpl CreateStreamGeometry()
@@ -88,12 +74,7 @@ namespace Perspex.Direct2D1
 
         public IBitmapImpl LoadBitmap(string fileName)
         {
-            return new BitmapImpl(s_imagingFactory, fileName);
-        }
-
-        public IBitmapImpl LoadBitmap(Stream stream)
-        {
-            return new BitmapImpl(s_imagingFactory, stream);
+            return new BitmapImpl(imagingFactory, fileName);
         }
     }
 }

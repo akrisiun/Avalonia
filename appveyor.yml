@@ -2,6 +2,7 @@ version: 1.0.{build}
 os: Visual Studio 2015
 before_build:
 - git submodule update --init
+- nuget restore Perspex.sln
 build:
-  project: Perspex-Net45.sln
+  project: Perspex.sln
   verbosity: minimal
