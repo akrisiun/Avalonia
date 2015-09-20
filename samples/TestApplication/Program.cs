@@ -159,17 +159,16 @@ namespace TestApplication
                         new RowDefinition(1, GridUnitType.Star),
                         new RowDefinition(GridLength.Auto),
                     },
-                    Children =
-                    // Children()
-                    new Controls {
-                            (fps = new TextBlock
-                            {
-                                HorizontalAlignment = HorizontalAlignment.Left,
-                                Margin = new Thickness(2),
-                                // [Grid.RowProperty] = 2,
-                            })
+                    Children =  Children()
+                    //new Controls {
+                    //        (fps = new TextBlock
+                    //        {
+                    //            HorizontalAlignment = HorizontalAlignment.Left,
+                    //            Margin = new Thickness(2),
+                    //            // [Grid.RowProperty] = 2,
+                    //        })
                         
-                    }
+                    //}
                 },
             };
             Application.Current.MainWindow = window;
@@ -196,6 +195,7 @@ namespace TestApplication
             //    window.DesiredSize = new Size(500, 300);
             
             window.Background = Brushes.White;
+            var temp = window.Template;
             window.Show();
 
             Application.Current.Run(window as ICloseable);
@@ -608,18 +608,18 @@ namespace TestApplication
                                 HorizontalAlignment = HorizontalAlignment.Center,
                                 VerticalAlignment = VerticalAlignment.Center,
                             },
-                            RenderTransform = (rotate = new RotateTransform
-                            {
-                                PropertyTransitions = new PropertyTransitions
-                                {
-                                    RotateTransform.AngleProperty.Transition(500),
-                                }
-                            }),
-                            PropertyTransitions = new PropertyTransitions
-                            {
-                                Layoutable.WidthProperty.Transition(300),
-                                Layoutable.HeightProperty.Transition(1000),
-                            },
+                            //RenderTransform = (rotate = new RotateTransform
+                            //{
+                            //    PropertyTransitions = new PropertyTransitions
+                            //    {
+                            //        RotateTransform.AngleProperty.Transition(500),
+                            //    }
+                            //}),
+                            //PropertyTransitions = new PropertyTransitions
+                            //{
+                            //    Layoutable.WidthProperty.Transition(300),
+                            //    Layoutable.HeightProperty.Transition(1000),
+                            //},
                             [Grid.ColumnProperty] = 1,
                         }),
                         (button1 = new Button
@@ -635,32 +635,32 @@ namespace TestApplication
 
             button1.Click += (s, e) =>
             {
-                if (border2.Width == 100)
-                {
-                    border2.Width = border2.Height = 400;
-                    rotate.Angle = 180;
-                }
-                else
-                {
-                    border2.Width = border2.Height = 100;
-                    rotate.Angle = 0;
-                }
+                //if (border2.Width == 100)
+                //{
+                //    border2.Width = border2.Height = 400;
+                //    rotate.Angle = 180;
+                //}
+                //else
+                //{
+                //    border2.Width = border2.Height = 100;
+                //    rotate.Angle = 0;
+                //}
             };
 
-            var start = Animate.Stopwatch.Elapsed;
-            var degrees = Animate.Timer
-                .Select(x =>
-                {
-                    var elapsed = (x - start).TotalSeconds;
-                    var cycles = elapsed / 4;
-                    var progress = cycles % 1;
-                    return 360.0 * progress;
-                });
+            //var start = Animate.Stopwatch.Elapsed;
+            //var degrees = Animate.Timer
+            //    .Select(x =>
+            //    {
+            //        var elapsed = (x - start).TotalSeconds;
+            //        var cycles = elapsed / 4;
+            //        var progress = cycles % 1;
+            //        return 360.0 * progress;
+            //    });
 
-            border1.RenderTransform.Bind(
-                RotateTransform.AngleProperty,
-                degrees,
-                BindingPriority.Animation);
+            //border1.RenderTransform.Bind(
+            //    RotateTransform.AngleProperty,
+            //    degrees,
+            //    BindingPriority.Animation);
 
             return result;
         }

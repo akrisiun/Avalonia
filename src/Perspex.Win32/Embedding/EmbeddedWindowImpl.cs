@@ -10,17 +10,16 @@ namespace Perspex.Win32
     {
         static EmbeddedWindowImpl()
         {
-            WinFormsControl = new System.Windows.Forms.UserControl();
         }
 
-        private static readonly object // System.Windows.Forms.UserControl 
-            WinFormsControl; // new System.Windows.Forms.UserControl();
+        //  private static readonly object WinFormsControl;
+            // new System.Windows.Forms.UserControl();
         //  public IntPtr Handle { get; private set; }
 
         protected override IntPtr CreateWindowOverride(ushort atom, IntPtr Handle)
         {
-            if (Handle == IntPtr.Zero)
-                Handle = (WinFormsControl as System.Windows.Forms.UserControl).Handle;
+            //if (Handle == IntPtr.Zero)
+            //    Handle = (WinFormsControl as System.Windows.Forms.UserControl).Handle;
 
             var hWnd = UnmanagedMethods.CreateWindowEx(
                 0,

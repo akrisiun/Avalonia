@@ -2,14 +2,17 @@
 // Licensed under the MIT license. See licence.md file in the project root for full license information.
 
 using System;
-using Perspex.Animation;
+// using Perspex.Animation;
+namespace Perspex.Animation
+{
+}
 
 namespace Perspex.Media
 {
     /// <summary>
     /// Represents a transform on an <see cref="IVisual"/>.
     /// </summary>
-    public abstract class Transform : Animatable
+    public abstract class Transform : PerspexObject // Animatable
     {
         /// <summary>
         /// Raised when the transform changes.

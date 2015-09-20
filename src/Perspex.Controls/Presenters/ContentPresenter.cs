@@ -99,8 +99,8 @@ namespace Perspex.Controls.Presenters
             var content = Content;
             var result = content != null ? this.MaterializeDataTemplate(content) : null;
             var logicalHost = this.FindReparentingHost();
-            var logicalChildren = logicalHost  // ?
-                .LogicalChildren; //  ?? LogicalChildren;
+            var logicalChildren = logicalHost == null ? LogicalChildren
+                : logicalHost.LogicalChildren; //  ?? LogicalChildren;
 
             logicalChildren.Remove(old);
             ClearVisualChildren();

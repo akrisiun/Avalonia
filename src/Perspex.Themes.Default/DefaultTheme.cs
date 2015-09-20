@@ -1,6 +1,7 @@
 ﻿// Copyright (c) The Perspex Project. All rights reserved.
 // Licensed under the MIT license. See licence.md file in the project root for full license information.
 
+using Perspex.Controls;
 using Perspex.Styling;
 
 namespace Perspex.Themes.Default
@@ -41,7 +42,22 @@ namespace Perspex.Themes.Default
             Add(new ToolTipStyle());
             Add(new TreeViewStyle());
             Add(new TreeViewItemStyle());
-            Add(new WindowStyle());
+
+            // new WindowStyle
         }
+
+        /// <summary>
+        /// Window class style add
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public DefaultTheme Add<T>() where T : ContentControl
+        {
+            var wStyle = new WindowStyle();
+            wStyle.AddRange<T>();
+            Add(wStyle);
+            return this;
+        }
+
     }
 }

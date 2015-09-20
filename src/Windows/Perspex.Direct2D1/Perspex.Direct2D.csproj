@@ -43,26 +43,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.Direct3D11">
-      <HintPath>..\..\..\lib\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
     <Reference Include="SharpDX.DXGI, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\SharpDX.DXGI.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.Toolkit">
-      <HintPath>..\..\..\lib\SharpDX.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Toolkit.Graphics">
-      <HintPath>..\..\..\lib\SharpDX.Toolkit.Graphics.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput">
-      <HintPath>..\..\..\lib\SharpDX.XInput.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -74,9 +61,7 @@
     </Compile>
     <Compile Include="Direct2D1Platform.cs" />
     <Compile Include="Disposable.cs" />
-    <Compile Include="Form\DirectRenderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Form\DirectRenderForm.cs" />
     <Compile Include="Media\BrushImpl.cs" />
     <Compile Include="Media\BrushWrapper.cs" />
     <Compile Include="Media\DrawingContext.cs" />
@@ -102,10 +87,6 @@
     <ProjectReference Include="..\..\..\Splat\Splat-Portable.csproj">
       <Project>{0ec8dba1-d745-4ee5-993a-6026440ec3bf}</Project>
       <Name>Splat-Portable</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Perspex.Animation\Perspex.Animation.csproj">
-      <Project>{d211e587-d8bc-45b9-95a4-f297c8fa5200}</Project>
-      <Name>Perspex.Animation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Perspex.Base\Perspex.Base.csproj">
       <Project>{B09B78D8-9B26-48B0-9149-D64A2F120F3F}</Project>

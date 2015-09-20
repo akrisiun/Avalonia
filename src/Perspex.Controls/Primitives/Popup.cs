@@ -182,6 +182,9 @@ namespace Perspex.Controls.Primitives
                 _topLevel.AddHandler(PointerPressedEvent, MaybeClose, RoutingStrategies.Tunnel);
             }
 
+            if (PopupRootCreated == null)
+                return;      // fail
+
             PopupRootCreated // ?
                     .Invoke(this, EventArgs.Empty);
 

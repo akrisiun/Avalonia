@@ -9,8 +9,9 @@ using Perspex.Media;
 using Perspex.Platform;
 using Perspex.Styling;
 using Splat;
+using Perspex.Controls;
 
-namespace Perspex.Controls
+namespace Perspex
 {
     /// <summary>
     /// Determines how a <see cref="Window"/> will size itself to fit its content.

@@ -53,13 +53,13 @@ namespace Perspex.Animation
             {
                 var transform = new TranslateTransform();
                 from.RenderTransform = transform;
-                tasks.Add(Animate.Property(
-                    transform,
-                    TranslateTransform.XProperty,
-                    0.0,
-                    forward ? -distance : distance,
-                    LinearEasing.For<double>(),
-                    Duration).ToTask());
+                //tasks.Add(Animate.Property(
+                //    transform,
+                //    TranslateTransform.XProperty,
+                //    0.0,
+                //    forward ? -distance : distance,
+                //    LinearEasing.For<double>(),
+                //    Duration).ToTask());
             }
 
             if (to != null)
@@ -67,13 +67,13 @@ namespace Perspex.Animation
                 var transform = new TranslateTransform();
                 to.RenderTransform = transform;
                 to.IsVisible = true;
-                tasks.Add(Animate.Property(
-                    transform,
-                    TranslateTransform.XProperty,
-                    forward ? distance : -distance,
-                    0.0,
-                    LinearEasing.For<double>(),
-                    Duration).ToTask());
+                //tasks.Add(Animate.Property(
+                //    transform,
+                //    TranslateTransform.XProperty,
+                //    forward ? distance : -distance,
+                //    0.0,
+                //    LinearEasing.For<double>(),
+                //    Duration).ToTask());
             }
 
             await Task.WhenAll(tasks.ToArray());

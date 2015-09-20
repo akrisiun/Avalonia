@@ -26,7 +26,8 @@ namespace Perspex
     /// To traverse the scene graph (aka Visual Tree), use the extension methods defined
     /// in <see cref="VisualExtensions"/>.
     /// </remarks>
-    public class Visual : Animatable, IVisual
+    public class Visual : PerspexObject, IVisual // Animatable
+
     {
         /// <summary>
         /// Defines the <see cref="Bounds"/> property.

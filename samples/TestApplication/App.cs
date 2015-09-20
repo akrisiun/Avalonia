@@ -4,6 +4,7 @@
 using System;
 using Perspex;
 using Perspex.Themes.Default;
+using Perspex.Controls;
 
 namespace TestApplication
 {
@@ -13,7 +14,7 @@ namespace TestApplication
         {
             RegisterServices();
             InitializeSubsystems((int)Environment.OSVersion.Platform);
-            Styles = new DefaultTheme();
+            Styles = new DefaultTheme().Add<Window>();
         }
     }
 }

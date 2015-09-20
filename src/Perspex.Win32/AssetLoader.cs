@@ -13,7 +13,7 @@ namespace Perspex.Win32
     /// <summary>
     /// Loads assets compiled into the application binary.
     /// </summary>
-    public class AssetLoader // : IAssetLoader
+    public class AssetLoader : IAssetLoader
     {
         /// <summary>
         /// Opens the resource with the requested URI.
@@ -26,12 +26,15 @@ namespace Perspex.Win32
         public Stream Open(Uri uri)
         {
             var assembly = Assembly.GetEntryAssembly();
-            var resourceName = assembly.GetName().Name + ".g";
-            var manager = new ResourceManager(resourceName, assembly);
+            var name = uri.ToString().Split(new[] { '.' });
+            var resourceName = assembly.GetName().Name + ".Views." + name[2] + ".xaml"; //  + ".g";
+            //var manager = new ResourceManager(resourceName, assembly);
+            var names = assembly.GetManifestResourceNames();
 
-            using (var resourceSet = manager.GetResourceSet(CultureInfo.CurrentCulture, true, true))
+            //using (var resourceSet = manager.GetResourceSet(CultureInfo.CurrentCulture, true, true))
             {
-                var stream = (Stream)resourceSet.GetObject(uri.ToString(), true);
+                //var stream = (Stream)resourceSet.GetObject(uri.ToString(), true);
+                Stream stream = assembly.GetManifestResourceStream(resourceName);
 
                 if (stream == null)
                 {
