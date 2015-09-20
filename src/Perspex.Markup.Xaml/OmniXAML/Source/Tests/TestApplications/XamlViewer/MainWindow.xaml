@@ -1,0 +1,88 @@
+﻿<Window x:Class="XamlViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xamlViewer="clr-namespace:XamlViewer"
+        xmlns:views="clr-namespace:XamlViewer.Views"        
+        xmlns:viewModels="clr-namespace:XamlViewer.ViewModels"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"        
+        Title="OmniXAML Tester" Height="648.456" Width="742.407">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type xamlViewer:Snippet}">
+            <Grid d:DesignWidth="159.113" d:DesignHeight="50.25" x:Name="Tools" Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                <xamlViewer:XamlToolsControl HorizontalAlignment="Right"  Grid.Column="1" VerticalAlignment="Top" Xaml="{Binding Xaml, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" WiringContext="{Binding Path=DataContext.WiringContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" />
+            </Grid>
+        </DataTemplate>
+
+        <StackPanel x:Key="Guidelines" Margin="10">
+            <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Margin="4" >
+                <Run>In order to load (inflate) XAML you need to choose a model of objects.</Run>
+                <Run>You can choose WPF or Dummy. </Run>
+            </TextBlock>
+            <StackPanel Margin="4">
+                <BulletDecorator>
+                    <BulletDecorator.Bullet>
+                        <Ellipse Stroke="Black" Height="6" Width="6" Margin="0,1,0,0"  />
+                    </BulletDecorator.Bullet>
+                    <TextBlock Margin="5,0,0,0" TextWrapping="Wrap">WPF will inflate into a real Windows Presentation Foundation visual tree.</TextBlock>
+                </BulletDecorator>
+                <BulletDecorator>
+                    <BulletDecorator.Bullet>
+                        <Ellipse Stroke="Black" Height="6" Width="6" Margin="0,1,0,0"  />
+                    </BulletDecorator.Bullet>
+                    <TextBlock Margin="5,0,0,0" TextWrapping="Wrap">Dummy is a test model rich and simple enough to be useful.</TextBlock>
+                </BulletDecorator>
+            </StackPanel>
+        </StackPanel>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ContentControl Content="{StaticResource Guidelines}">
+        </ContentControl>
+        <TabControl Grid.Row="1">
+            <TabItem>
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Height="20" Source="Images/wpf.png" />
+                        <TextBlock Margin="4" VerticalAlignment="Center" Grid.Column="1">WPF</TextBlock>
+                    </Grid>
+                </TabItem.Header>
+                <TabItem.DataContext>
+                    <viewModels:WpfLoaderViewModel />
+                </TabItem.DataContext>
+                <views:WpfLoaderControl />
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Height="20" Source="Images/dummy.png" />
+                        <TextBlock Margin="4" VerticalAlignment="Center" Grid.Column="1">Dummy</TextBlock>
+                    </Grid>
+                </TabItem.Header>
+                <TabItem.DataContext>
+                    <viewModels:DummyLoaderViewModel />
+                </TabItem.DataContext>
+                <views:DummyLoaderControl />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

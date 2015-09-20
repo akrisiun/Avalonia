@@ -208,8 +208,8 @@ namespace Perspex.Controls.Primitives
             }
 
             IsOpen = false;
-            Closed // ?
-                    .Invoke(this, EventArgs.Empty);
+            if (Closed != null)
+                Closed.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

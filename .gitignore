@@ -41,6 +41,7 @@ Thumbs.db
 lib/
 packages/
 App.config
-src/Perspex.Markup.Xaml/
-
 samples/TestApplication/App.config
+*.userprefs
+src/Xwt.CoreGtk3/Base/atk/glue/.libs/
+Perspex.v2.ncrunchsolution
