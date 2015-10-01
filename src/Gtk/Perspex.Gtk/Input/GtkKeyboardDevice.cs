@@ -214,7 +214,7 @@ namespace Perspex.Gtk
             //{ Gdk.Key.?, Key.DeadCharProcessed }
         };
 
-        public static GtkKeyboardDevice Instance { get; } = new GtkKeyboardDevice();
+        public static new GtkKeyboardDevice Instance { get; } = new GtkKeyboardDevice();
 
         public static Key ConvertKey(Gdk.Key key)
         {

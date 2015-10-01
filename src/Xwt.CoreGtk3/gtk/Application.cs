@@ -42,8 +42,8 @@ namespace Gtk
 
         static Application()
         {
-            if (!GLib.Thread.Supported)
-                GLib.Thread.Init();
+            //if (!GLib.Thread.Supported)
+            //    GLib.Thread.Init();
 
             switch (Environment.OSVersion.Platform)
             {

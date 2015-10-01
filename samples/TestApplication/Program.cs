@@ -752,7 +752,7 @@ namespace TestApplication
         {
             Border border1;
             Border border2;
-            RotateTransform rotate;
+            // RotateTransform rotate;
             Button button1;
 
             var result = new TabItem
