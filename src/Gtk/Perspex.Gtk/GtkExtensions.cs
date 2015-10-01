@@ -7,6 +7,18 @@ namespace Perspex.Gtk
 
     public static class GtkExtensions
     {
+        static GtkExtensions()
+        {
+            Empty = new Rect(0, 0, 0, 0);
+        }
+
+        public static readonly Rect Empty;
+
+        public static Rect ToPerspex(this Cairo.Context context)
+        {
+            return Empty;
+        }
+
         public static Rect ToPerspex(this Gdk.Rectangle rect)
         {
             return new Rect(rect.Left, rect.Top, rect.Right, rect.Bottom);

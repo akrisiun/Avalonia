@@ -64,7 +64,7 @@ namespace Perspex
             public PerspexLocator ToTransient<TImpl>() where TImpl : class, TService, new() => ToFunc(() => new TImpl());
         }
 
-        public RegistrationHelper<T> Bind<T>() => new RegistrationHelper<T>(this);
+        public RegistrationHelper<T> Bind<T>() { return new RegistrationHelper<T>(this); }
 
 
         public PerspexLocator BindToSelf<T>(T constant)

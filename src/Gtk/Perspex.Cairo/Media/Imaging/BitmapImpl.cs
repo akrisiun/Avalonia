@@ -15,9 +15,9 @@ namespace Perspex.Cairo.Media.Imaging
             Surface = pixbuf;
         }
 
-        public int PixelWidth => Surface.Width;
+        public int PixelWidth => Surface == null ? 0 : Surface.Width;
 
-        public int PixelHeight => Surface.Height;
+        public int PixelHeight => Surface == null ? 0 : Surface.Height;
 
         public Gdk.Pixbuf Surface
         {

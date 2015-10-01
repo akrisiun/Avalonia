@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{364577DB-9728-4951-AC2C-EDF7A6FCC09D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>cairo</RootNamespace>
+    <AssemblyName>cairo3-sharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\lib\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>xwt.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Antialias.cs" />
+    <Compile Include="Cairo.cs" />
+    <Compile Include="Content.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="DirectFBSurface.cs" />
+    <Compile Include="Extend.cs" />
+    <Compile Include="FillRule.cs" />
+    <Compile Include="Filter.cs" />
+    <Compile Include="FontExtents.cs" />
+    <Compile Include="FontFace.cs" />
+    <Compile Include="FontOptions.cs" />
+    <Compile Include="FontSlant.cs" />
+    <Compile Include="FontType.cs" />
+    <Compile Include="FontWeight.cs" />
+    <Compile Include="Format.cs" />
+    <Compile Include="GlitzSurface.cs" />
+    <Compile Include="Glyph.cs" />
+    <Compile Include="Gradient.cs" />
+    <Compile Include="HintMetrics.cs" />
+    <Compile Include="HintStyle.cs" />
+    <Compile Include="ImageSurface.cs" />
+    <Compile Include="LinearGradient.cs" />
+    <Compile Include="LineCap.cs" />
+    <Compile Include="LineJoin.cs" />
+    <Compile Include="Matrix.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Operator.cs" />
+    <Compile Include="Path.cs" />
+    <Compile Include="Pattern.cs" />
+    <Compile Include="PatternType.cs" />
+    <Compile Include="PdfSurface.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PSSurface.cs" />
+    <Compile Include="RadialGradient.cs" />
+    <Compile Include="Rectangle.cs" />
+    <Compile Include="Region.cs" />
+    <Compile Include="ScaledFont.cs" />
+    <Compile Include="SolidPattern.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="SubpixelOrder.cs" />
+    <Compile Include="Surface.cs" />
+    <Compile Include="SurfacePattern.cs" />
+    <Compile Include="SurfaceType.cs" />
+    <Compile Include="SvgSurface.cs" />
+    <Compile Include="SvgVersion.cs" />
+    <Compile Include="TextExtents.cs" />
+    <Compile Include="Win32Surface.cs" />
+    <Compile Include="XcbSurface.cs" />
+    <Compile Include="XlibSurface.cs" />
+    <Compile Include="CairoDebug.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="Distance.cs" />
+    <Compile Include="Point.cs" />
+    <Compile Include="PointD.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xwt.snk" />
+  </ItemGroup>
+</Project>

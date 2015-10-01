@@ -37,9 +37,23 @@ namespace Perspex.Cairo.Media
         /// Initializes a new instance of the <see cref="DrawingContext"/> class.
         /// </summary>
         /// <param name="surface">The GDK drawable.</param>
-        public DrawingContext(Gdk.Drawable drawable)
+        public DrawingContext(Gdk.Drawable drawable, bool owner = false)
         {
-            _context = Gdk.CairoHelper.Create(drawable);
+            // TODO
+            _context = new Cairo.Context(drawable.Handle, owner);
+            CurrentTransform = Matrix.Identity;
+        }
+
+        public DrawingContext(GLib.Object gtkobject, bool owner = false)
+        {
+            // TODO
+            _context = new Cairo.Context(gtkobject.Handle, owner);
+            CurrentTransform = Matrix.Identity;
+        }
+
+        public DrawingContext(Gdk.Window window)
+        {
+            _context = Gdk.CairoHelper.Create(window);
             CurrentTransform = Matrix.Identity;
         }
 

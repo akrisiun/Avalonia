@@ -12,7 +12,16 @@ namespace TestApplication
         public App()
         {
             RegisterServices();
-            InitializeSubsystems((int)Environment.OSVersion.Platform);            
+
+#if GTK
+            // Should be 32bit
+            Gtk.Application.Init();
+            Perspex.Cairo.CairoPlatform.Initialize();
+            Perspex.Gtk.GtkPlatform.Initialize();
+#else
+            InitializeSubsystems((int)Environment.OSVersion.Platform);
+#endif
+
             Styles = new DefaultTheme();
             Styles.Add(new SampleTabStyle());
         }

@@ -55,7 +55,9 @@ namespace Perspex.Cairo
         {
             if(_surface != null)
                 return new DrawingContext(_surface);
-            return new DrawingContext(_window.GdkWindow);
+            
+            //  return new DrawingContext(_window.GdkWindow);
+            return new DrawingContext(_window.Window);
         }
         
         public void Dispose() => _surface?.Dispose();

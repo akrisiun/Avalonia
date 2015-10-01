@@ -14,11 +14,21 @@ namespace Perspex.Cairo
 
     public class CairoPlatform : IPlatformRenderInterface
     {
-        private static readonly CairoPlatform s_instance = new CairoPlatform();
+        static CairoPlatform()
+        {
+            // Debug entry
+            s_instance = new CairoPlatform();
+        }
 
-        private static Pango.Context s_pangoContext = CreatePangoContext();
+        private static readonly CairoPlatform s_instance;
 
-        public static void Initialize() => PerspexLocator.CurrentMutable.Bind<IPlatformRenderInterface>().ToConstant(s_instance);
+        private static Pango.Context s_pangoContext;
+
+        public static void Initialize()
+        {
+            s_pangoContext = CreatePangoContext();
+            PerspexLocator.CurrentMutable.Bind<IPlatformRenderInterface>().ToConstant(s_instance);
+        }
 
         public IBitmapImpl CreateBitmap(int width, int height)
         {
@@ -57,7 +67,12 @@ namespace Perspex.Cairo
 
         public IBitmapImpl LoadBitmap(string fileName)
         {
-            var pixbuf = new Gdk.Pixbuf(fileName);
+            Gdk.Pixbuf pixbuf = null;
+            try
+            {
+                pixbuf = new Gdk.Pixbuf(fileName);
+            }
+            catch (Exception ex) { Console.WriteLine(String.Format("Failed {0} : {1}", fileName, ex.Message)); }   // not critical error
 
             return new BitmapImpl(pixbuf);
         }

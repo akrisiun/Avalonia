@@ -157,3 +157,5 @@ $RECYCLE.BIN/
 *.userprefs
 *.nugetreferenceswitcher
 src/lib/
+lib/
+samples/Gtk3-Sample/

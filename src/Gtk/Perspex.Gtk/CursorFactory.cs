@@ -55,7 +55,8 @@ namespace Perspex.Gtk
                 rv = new Gdk.Cursor((CursorType)desc);
             }
 
-            rv.Owned = false;
+            // TODO
+            // rv.Owned = false;
             return rv;
         }
 

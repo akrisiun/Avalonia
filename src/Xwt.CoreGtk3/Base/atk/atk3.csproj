@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{42FE871A-D8CF-4B29-9AFF-B02454E6C976}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>atk</RootNamespace>
+    <AssemblyName>atk3-sharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\lib\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>xwt.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Global.cs" />
+    <Compile Include="Hyperlink.cs" />
+    <Compile Include="Misc.cs" />
+    <Compile Include="Object.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectionAdapter.cs" />
+    <Compile Include="TextAdapter.cs" />
+    <Compile Include="TextChangedDetail.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="generated\Atk\ActionAdapter.cs" />
+    <Compile Include="generated\Atk\ActiveDescendantChangedHandler.cs" />
+    <Compile Include="generated\Atk\AtkSharp.EventListenerInitNative.cs" />
+    <Compile Include="generated\Atk\AtkSharp.EventListenerNative.cs" />
+    <Compile Include="generated\Atk\AtkSharp.FocusHandlerNative.cs" />
+    <Compile Include="generated\Atk\AtkSharp.FunctionNative.cs" />
+    <Compile Include="generated\Atk\AtkSharp.KeySnoopFuncNative.cs" />
+    <Compile Include="generated\Atk\AtkSharp.PropertyChangeHandlerNative.cs" />
+    <Compile Include="generated\Atk\Attribute.cs" />
+    <Compile Include="generated\Atk\BoundsChangedHandler.cs" />
+    <Compile Include="generated\Atk\ChildrenChangedHandler.cs" />
+    <Compile Include="generated\Atk\ColumnDeletedHandler.cs" />
+    <Compile Include="generated\Atk\ColumnInsertedHandler.cs" />
+    <Compile Include="generated\Atk\ComponentAdapter.cs" />
+    <Compile Include="generated\Atk\CoordType.cs" />
+    <Compile Include="generated\Atk\DocumentAdapter.cs" />
+    <Compile Include="generated\Atk\EditableTextAdapter.cs" />
+    <Compile Include="generated\Atk\EventListener.cs" />
+    <Compile Include="generated\Atk\EventListenerInit.cs" />
+    <Compile Include="generated\Atk\Focus.cs" />
+    <Compile Include="generated\Atk\FocusEventHandler.cs" />
+    <Compile Include="generated\Atk\FocusHandler.cs" />
+    <Compile Include="generated\Atk\FocusTracker.cs" />
+    <Compile Include="generated\Atk\Function.cs" />
+    <Compile Include="generated\Atk\Global.cs" />
+    <Compile Include="generated\Atk\GObjectAccessible.cs" />
+    <Compile Include="generated\Atk\Hyperlink.cs" />
+    <Compile Include="generated\Atk\HyperlinkImplAdapter.cs" />
+    <Compile Include="generated\Atk\HyperlinkStateFlags.cs" />
+    <Compile Include="generated\Atk\HypertextAdapter.cs" />
+    <Compile Include="generated\Atk\IAction.cs" />
+    <Compile Include="generated\Atk\IComponent.cs" />
+    <Compile Include="generated\Atk\IDocument.cs" />
+    <Compile Include="generated\Atk\IEditableText.cs" />
+    <Compile Include="generated\Atk\IHyperlinkImpl.cs" />
+    <Compile Include="generated\Atk\IHypertext.cs" />
+    <Compile Include="generated\Atk\IImage.cs" />
+    <Compile Include="generated\Atk\IImplementor.cs" />
+    <Compile Include="generated\Atk\ImageAdapter.cs" />
+    <Compile Include="generated\Atk\ImplementorAdapter.cs" />
+    <Compile Include="generated\Atk\ISelection.cs" />
+    <Compile Include="generated\Atk\IStreamableContent.cs" />
+    <Compile Include="generated\Atk\ITable.cs" />
+    <Compile Include="generated\Atk\IText.cs" />
+    <Compile Include="generated\Atk\IValue.cs" />
+    <Compile Include="generated\Atk\KeyEventStruct.cs" />
+    <Compile Include="generated\Atk\KeyEventType.cs" />
+    <Compile Include="generated\Atk\KeySnoopFunc.cs" />
+    <Compile Include="generated\Atk\Layer.cs" />
+    <Compile Include="generated\Atk\LinkSelectedHandler.cs" />
+    <Compile Include="generated\Atk\Misc.cs" />
+    <Compile Include="generated\Atk\NoOpObject.cs" />
+    <Compile Include="generated\Atk\NoOpObjectFactory.cs" />
+    <Compile Include="generated\Atk\Object.cs" />
+    <Compile Include="generated\Atk\ObjectFactory.cs" />
+    <Compile Include="generated\Atk\Plug.cs" />
+    <Compile Include="generated\Atk\PropertyChangeEventHandler.cs" />
+    <Compile Include="generated\Atk\PropertyChangeHandler.cs" />
+    <Compile Include="generated\Atk\PropertyValues.cs" />
+    <Compile Include="generated\Atk\RealStateSet.cs" />
+    <Compile Include="generated\Atk\Rectangle.cs" />
+    <Compile Include="generated\Atk\Registry.cs" />
+    <Compile Include="generated\Atk\Relation.cs" />
+    <Compile Include="generated\Atk\RelationSet.cs" />
+    <Compile Include="generated\Atk\RelationType.cs" />
+    <Compile Include="generated\Atk\Role.cs" />
+    <Compile Include="generated\Atk\RowDeletedHandler.cs" />
+    <Compile Include="generated\Atk\RowInsertedHandler.cs" />
+    <Compile Include="generated\Atk\SelectionAdapter.cs" />
+    <Compile Include="generated\Atk\Socket.cs" />
+    <Compile Include="generated\Atk\StateChangeHandler.cs" />
+    <Compile Include="generated\Atk\StateManager.cs" />
+    <Compile Include="generated\Atk\StateSet.cs" />
+    <Compile Include="generated\Atk\StateType.cs" />
+    <Compile Include="generated\Atk\StreamableContentAdapter.cs" />
+    <Compile Include="generated\Atk\TableAdapter.cs" />
+    <Compile Include="generated\Atk\TextAdapter.cs" />
+    <Compile Include="generated\Atk\TextAttribute.cs" />
+    <Compile Include="generated\Atk\TextBoundary.cs" />
+    <Compile Include="generated\Atk\TextCaretMovedHandler.cs" />
+    <Compile Include="generated\Atk\TextChangedHandler.cs" />
+    <Compile Include="generated\Atk\TextClipType.cs" />
+    <Compile Include="generated\Atk\TextRange.cs" />
+    <Compile Include="generated\Atk\TextRectangle.cs" />
+    <Compile Include="generated\Atk\Util.cs" />
+    <Compile Include="generated\Atk\ValueAdapter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xwt.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\glib\glib3.csproj">
+      <Project>{3BF1D531-8840-4F15-8066-A9788D8C398B}</Project>
+      <Name>glib3</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

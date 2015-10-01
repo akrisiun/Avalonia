@@ -8,11 +8,12 @@ using Perspex.Controls;
 using Perspex.Input.Raw;
 using Perspex.Platform;
 using Perspex.Input;
-using Action = System.Action;
 
 namespace Perspex.Gtk
 {
+    using global::Gtk;
     using Gtk = global::Gtk;
+    using Action = System.Action;
 
     public class WindowImpl : Gtk.Window, IWindowImpl, IPlatformHandle
     {
@@ -44,14 +45,41 @@ namespace Perspex.Gtk
             Events = EventMask.PointerMotionMask |
               EventMask.ButtonPressMask |
               EventMask.ButtonReleaseMask;
+
+            ContentPanel = new HBox(false, 0);
+            this.Add(ContentPanel);
+
             _imContext = new Gtk.IMMulticontext();
             _imContext.Commit += ImContext_Commit;
         }
 
-		protected override void OnRealized ()
+        public HBox ContentPanel { get; protected set; }
+
+        void IWindowImpl.Show()
+        {
+            //https://developer.gnome.org/gtk3/stable/GtkWindow.html
+            //gtk_init(&argc, &argv);
+
+            //window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+            //vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+
+            // gtk_container_add(GTK_CONTAINER(window), vbox);
+            // fill_with_content(vbox);
+
+            var hbox = this.ContentPanel;
+            var impl = this as ITopLevelImpl;
+            var h = impl.Handle;
+
+            // TODO get Content
+            //hbox.PackStart(this.PangoContext, false, false, 0);
+
+            base.ShowAll();    
+        }
+
+        protected override void OnRealized ()
 		{
 			base.OnRealized ();
-			_imContext.ClientWindow = this.GdkWindow;
+			_imContext.ClientWindow = this.Window;
 		}
 
         public Size ClientSize
@@ -92,15 +120,19 @@ namespace Perspex.Gtk
 
         public void Invalidate(Rect rect)
         {
-            if (base.GdkWindow != null)
-                base.GdkWindow.InvalidateRect(
+            // if (base.GdkWindow != null)
+            if (base.Window != null)
+                base.Window.InvalidateRect(
                     new Rectangle((int) rect.X, (int) rect.Y, (int) rect.Width, (int) rect.Height), true);
         }
 
         public Point PointToScreen(Point point)
         {
             int x, y;
-            GdkWindow.GetDeskrelativeOrigin(out x, out y);
+            // GdkWindow.GetDeskrelativeOrigin(out x, out y);
+
+            // TODO
+            Window.GetRootOrigin(out x, out y);
 
             return new Point(point.X + x, point.Y + y);
         }
@@ -118,7 +150,7 @@ namespace Perspex.Gtk
 
         public void SetCursor(IPlatformHandle cursor)
         {
-            GdkWindow.Cursor = cursor != null ? new Gdk.Cursor(cursor.Handle) : DefaultCursor;
+            Window.Cursor = cursor != null ? new Gdk.Cursor(cursor.Handle) : DefaultCursor;
         }
 
         public IDisposable ShowDialog()
@@ -205,6 +237,7 @@ namespace Perspex.Gtk
             if (newSize != _clientSize)
             {
                 Resized(newSize);
+                _clientSize = newSize;
             }
 
             return true;
@@ -238,10 +271,20 @@ namespace Perspex.Gtk
             Input(new RawTextInputEventArgs(GtkKeyboardDevice.Instance, _lastKeyEventTimestamp, args.Str));
         }
 
-        protected override bool OnExposeEvent(EventExpose evnt)
+        // Gtk2.X
+        // protected override bool OnExposeEvent(EventExpose evnt)
+        
+        // [GLib.DefaultSignalHandler(Type = typeof(Gtk.Widget), ConnectionMethod = "OverrideDrawn")]
+        protected override bool OnDrawn(Cairo.Context cr)
         {
-            Paint(evnt.Area.ToPerspex());
-            return true;
+            //EventExpose evnt;
+            // Rectangle Area
+            // Paint(evnt.Area.ToPerspex());
+
+            // TODO
+            Paint(GtkExtensions.ToPerspex(cr));
+                
+            return base.OnDrawn(cr);
         }
 
         protected override void OnFocusActivated()
