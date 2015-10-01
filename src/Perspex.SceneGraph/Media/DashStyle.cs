@@ -7,7 +7,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class DashStyle : Animatable
+    public class DashStyle : PerspexObject // Animatable
     {
         private static DashStyle dash;
         public static DashStyle Dash

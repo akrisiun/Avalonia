@@ -61,12 +61,12 @@ namespace Perspex
         /// </summary>
         public PerspexObject()
         {
-            _propertyLog = Log.ForContext(new[]
-            {
-                new PropertyEnricher("Area", "Property"),
-                new PropertyEnricher("SourceContext", GetType()),
-                new PropertyEnricher("Id", GetHashCode()),
-            });
+            //_propertyLog = Log.ForContext(new[]
+            //{
+            //    new PropertyEnricher("Area", "Property"),
+            //    new PropertyEnricher("SourceContext", GetType()),
+            //    new PropertyEnricher("Id", GetHashCode()),
+            //});
 
             foreach (var property in GetRegisteredProperties())
             {
@@ -527,7 +527,8 @@ namespace Perspex
                 v.SetValue(value, (int)priority);
             }
 
-            _propertyLog.Verbose(
+            if (_propertyLog != null)
+                _propertyLog.Verbose(
                 "Set {Property} to {$Value} with priority {Priority}",
                 property,
                 value,
@@ -590,7 +591,8 @@ namespace Perspex
                     throw new ArgumentException($"The property {property.Name} is readonly.");
                 }
 
-                _propertyLog.Verbose(
+                if (_propertyLog != null)
+                    _propertyLog.Verbose(
                     "Bound {Property} to {Binding} with priority LocalValue",
                     property,
                     source);
@@ -613,7 +615,8 @@ namespace Perspex
                     _values.Add(property, v);
                 }
 
-                _propertyLog.Verbose(
+                if (_propertyLog != null)
+                    _propertyLog.Verbose(
                     "Bound {Property} to {Binding} with priority {Priority}",
                     property,
                     source,
@@ -821,7 +824,8 @@ namespace Perspex
                 {
                     RaisePropertyChanged(property, oldValue, newValue, (BindingPriority)result.ValuePriority);
 
-                    _propertyLog.Verbose(
+                    if (_propertyLog != null)
+                        _propertyLog.Verbose(
                         "{Property} changed from {$Old} to {$Value} with priority {Priority}",
                         property,
                         oldValue,

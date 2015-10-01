@@ -11,7 +11,7 @@ using Perspex.Styling;
 namespace Perspex.Themes.Default
 {
     /// <summary>
-    /// The default style for the <see cref="Window"/> control.
+    /// The default style for the <see cref="WindowC"/> control.
     /// </summary>
     public class WindowStyle : Styles
     {
@@ -22,11 +22,11 @@ namespace Perspex.Themes.Default
         {
             AddRange(new[]
             {
-                new Style(x => x.OfType<Window>())
+                new Style(x => x.OfType<WindowC>())
                 {
                     Setters = new[]
                     {
-                        new Setter(TemplatedControl.TemplateProperty, new ControlTemplate<Window>(Template)),
+                        new Setter(TemplatedControl.TemplateProperty, new ControlTemplate<WindowC>(Template)),
                         new Setter(TemplatedControl.FontFamilyProperty, "Segoe UI"),
                         new Setter(TemplatedControl.FontSizeProperty, 12.0),
                     },
@@ -35,11 +35,11 @@ namespace Perspex.Themes.Default
         }
 
         /// <summary>
-        /// The default template for the <see cref="Window"/> control.
+        /// The default template for the <see cref="WindowC"/> control.
         /// </summary>
         /// <param name="control">The control being styled.</param>
         /// <returns>The root of the instantiated template.</returns>
-        public static Control Template(Window control)
+        public static Control Template(WindowC control)
         {
             return new Border
             {

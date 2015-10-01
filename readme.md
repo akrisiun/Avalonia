@@ -9,8 +9,41 @@ A multi-platform .NET UI framework.
 
 <a href='https://www.youtube.com/watch?t=28&v=c_AB_XSILp0' target='_blank'>![](docs/perspex-video.png)<a/>
 
-## NuGet
+## Building and Using
 
+```
+git clone https://github.com/grokys/Perspex.git
+git submodule update --init
+
+git pull
+git submodule sync
+
+git.exe submodule sync src/Perspex.HtmlRenderer/external
+git.exe submodule sync "src/Perspex.ReactiveUI/src"
+
+-- or
+git clone https://github.com/Reactive-Extensions/Rx.NET.git
+git clone https://github.com/reactiveui/ReactiveUI.git Perspex.ReactiveUI
+git clone https://github.com/Perspex/HTML-Renderer.git Perspex.HtmlRenderer
+```
+
+Modules
+```
+[submodule "src/Perspex.ReactiveUI/src"] 
+ 	path = src/Perspex.ReactiveUI/src 
+ 	url = https://github.com/reactiveui/ReactiveUI.git 
+ [submodule "src/Perspex.HtmlRenderer/external"] 
+ 	path = src/Perspex.HtmlRenderer/external 
+ 	url = https://github.com/Perspex/HTML-Renderer.git 
+ 	branch = perspex-pcl 
+ [submodule "src/Markup/Perspex.Markup.Xaml/OmniXAML"] 
+ 	path = src/Markup/Perspex.Markup.Xaml/OmniXAML 
+ 	url = https://github.com/SuperJMN/OmniXAML.git 
+```
+
+See the [build instructions here](https://github.com/grokys/Perspex/blob/master/docs/build.md)
+
+## NuGet
 Perspex is delivered as a NuGet package.
 You can find the packages here: ([stable(ish)](https://www.nuget.org/packages/Perspex/), [nightly](https://github.com/Perspex/Perspex/wiki/Using-nightly-build-feed))
 
@@ -36,7 +69,7 @@ framework.
 
 ## Documentation
 
-As mentioned above, Perspex is still in alpha and as such there's not much documentation yet. You can
+As mentioned above, Perspex is still in alpha and as such there's not much documentation yet. You can 
 take a look at the [getting started page](docs/gettingstarted.md) for an
 overview of how to get started but probably the best thing to do for now is to already know a little bit
 about WPF/Silverlight/UWP/XAML and ask questions in our [Gitter room](https://gitter.im/grokys/Perspex).
@@ -49,7 +82,6 @@ Contributions are always welcome!
 ## Building and Using
 
 See the [build instructions here](https://github.com/grokys/Perspex/blob/master/docs/build.md)
-
 ## Contributing ##
 
 Please read the [contribution guidelines](docs/contributing.md) before submitting a pull request.

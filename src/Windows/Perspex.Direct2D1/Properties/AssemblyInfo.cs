@@ -4,3 +4,5 @@
 using System.Reflection;
 
 [assembly: AssemblyTitle("Perspex.Direct2D1")]
+// [assembly: AssemblyVersion("0.0.1.0")]
+

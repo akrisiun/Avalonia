@@ -13,7 +13,7 @@ using Perspex.Markup.Xaml;
 
 namespace XamlTestApplication.Views
 {
-    public class MainWindow : Window
+    public class MainWindow : WindowC
     {
         public MainWindow()
         {

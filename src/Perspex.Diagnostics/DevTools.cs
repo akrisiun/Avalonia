@@ -31,7 +31,7 @@ namespace Perspex.Diagnostics
             set { SetValue(RootProperty, value); }
         }
 
-        public static IDisposable Attach(Window window)
+        public static IDisposable Attach(WindowC window)
         {
             return window.AddHandler(
                 KeyDownEvent,
@@ -43,13 +43,13 @@ namespace Perspex.Diagnostics
         {
             if (e.Key == Key.F12)
             {
-                Window window = new Window
+                WindowC window = new WindowC
                 {
                     Width = 1024,
                     Height = 512,
                     Content = new DevTools
                     {
-                        Root = (Window)sender,
+                        Root = (WindowC)sender,
                     },
                 };
 

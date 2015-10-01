@@ -17,7 +17,7 @@ namespace Perspex.Controls
     {
         public string DefaultExtension { get; set; }
 
-        public async Task<string> ShowAsync(Window window = null)
+        public async Task<string> ShowAsync(WindowC window = null)
             =>
                 ((await PerspexLocator.Current.GetService<ISystemDialogImpl>().ShowFileDialogAsync(this, window?.PlatformImpl)) ??
                  new string[0]).FirstOrDefault();
@@ -27,7 +27,7 @@ namespace Perspex.Controls
     {
         public bool AllowMultiple { get; set; }
 
-        public Task<string[]> ShowAsync(Window window = null)
+        public Task<string[]> ShowAsync(WindowC window = null)
             => PerspexLocator.Current.GetService<ISystemDialogImpl>().ShowFileDialogAsync(this, window?.PlatformImpl);
     }
 

@@ -24,6 +24,24 @@ using ReactiveUI;
 
 namespace TestApplication
 {
+    internal class Item
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
+
+    internal class Node
+    {
+        public Node()
+        {
+            Children = new PerspexList<Node>();
+        }
+
+        public string Name { get; set; }
+        public PerspexList<Node> Children { get; set; }
+    }
+
+
     internal class Program
     {
         private static readonly PerspexList<Node> s_treeData = new PerspexList<Node>
@@ -95,7 +113,7 @@ namespace TestApplication
 
             TabControl container;
 
-            Window window = new Window
+            var window = new WindowC
             {
                 Title = "Perspex Test Application",
                 Width = 900,
@@ -799,18 +817,18 @@ namespace TestApplication
 										HorizontalAlignment = HorizontalAlignment.Center,
 										VerticalAlignment = VerticalAlignment.Center,
 									},
-									RenderTransform = (rotate = new RotateTransform
-									{
-										PropertyTransitions = new PropertyTransitions
-										{
-											RotateTransform.AngleProperty.Transition(500),
-										}
-									}),
-									PropertyTransitions = new PropertyTransitions
-									{
-										Layoutable.WidthProperty.Transition(300),
-										Layoutable.HeightProperty.Transition(1000),
-									},
+									//RenderTransform = (rotate = new RotateTransform
+									//{
+									//	PropertyTransitions = new PropertyTransitions
+									//	{
+									//		RotateTransform.AngleProperty.Transition(500),
+									//	}
+									//}),
+									//PropertyTransitions = new PropertyTransitions
+									//{
+									//	Layoutable.WidthProperty.Transition(300),
+									//	Layoutable.HeightProperty.Transition(1000),
+									//},
 									[Canvas.LeftProperty] = 400,
 									[Canvas.TopProperty] = 100,
 								}),
@@ -825,29 +843,29 @@ namespace TestApplication
                 if (border2.Width == 100)
                 {
                     border2.Width = border2.Height = 400;
-                    rotate.Angle = 180;
+                    //rotate.Angle = 180;
                 }
                 else
                 {
                     border2.Width = border2.Height = 100;
-                    rotate.Angle = 0;
+                    //rotate.Angle = 0;
                 }
             };
 
-            var start = Animate.Stopwatch.Elapsed;
-            var degrees = Animate.Timer
-                .Select(x =>
-                {
-                    var elapsed = (x - start).TotalSeconds;
-                    var cycles = elapsed / 4;
-                    var progress = cycles % 1;
-                    return 360.0 * progress;
-                });
+            //var start = Animate.Stopwatch.Elapsed;
+            //var degrees = Animate.Timer
+            //    .Select(x =>
+            //    {
+            //        var elapsed = (x - start).TotalSeconds;
+            //        var cycles = elapsed / 4;
+            //        var progress = cycles % 1;
+            //        return 360.0 * progress;
+            //    });
 
-            border1.RenderTransform.Bind(
-                RotateTransform.AngleProperty,
-                degrees,
-                BindingPriority.Animation);
+            //border1.RenderTransform.Bind(
+            //    RotateTransform.AngleProperty,
+            //    degrees,
+            //    BindingPriority.Animation);
 
             return result;
         }

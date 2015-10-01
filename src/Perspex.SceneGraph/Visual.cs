@@ -26,7 +26,7 @@ namespace Perspex
     /// To traverse the scene graph (aka Visual Tree), use the extension methods defined
     /// in <see cref="VisualExtensions"/>.
     /// </remarks>
-    public class Visual : Animatable, IVisual
+    public class Visual : PerspexObject, IVisual // Animatable, IVisual
     {
         /// <summary>
         /// Defines the <see cref="Bounds"/> property.
@@ -99,7 +99,7 @@ namespace Perspex
         /// <summary>
         /// The logger for visual-level events.
         /// </summary>
-        private readonly ILogger _visualLogger;
+        //private readonly ILogger _visualLogger;
 
         /// <summary>
         /// Initializes static members of the <see cref="Visual"/> class.
@@ -116,12 +116,12 @@ namespace Perspex
         /// </summary>
         public Visual()
         {
-            _visualLogger = Log.ForContext(new[]
-            {
-                new PropertyEnricher("Area", "Visual"),
-                new PropertyEnricher("SourceContext", GetType()),
-                new PropertyEnricher("Id", GetHashCode()),
-            });
+            //_visualLogger = Log.ForContext(new[]
+            //{
+            //    new PropertyEnricher("Area", "Visual"),
+            //    new PropertyEnricher("SourceContext", GetType()),
+            //    new PropertyEnricher("Id", GetHashCode()),
+            //});
 
             _visualChildren = new PerspexList<IVisual>();
             _visualChildren.CollectionChanged += VisualChildrenChanged;
@@ -491,7 +491,7 @@ namespace Perspex
         /// <param name="root">The root of the visual tree.</param>
         private void NotifyAttachedToVisualTree(IRenderRoot root)
         {
-            _visualLogger.Verbose("Attached to visual tree");
+            //_visualLogger.Verbose("Attached to visual tree");
 
             _isAttachedToVisualTree = true;
             OnAttachedToVisualTree(root);
@@ -512,7 +512,7 @@ namespace Perspex
         /// <param name="root">The root of the visual tree.</param>
         private void NotifyDetachedFromVisualTree(IRenderRoot root)
         {
-            _visualLogger.Verbose("Detached from visual tree");
+            //_visualLogger.Verbose("Detached from visual tree");
 
             _isAttachedToVisualTree = false;
             OnDetachedFromVisualTree(root);

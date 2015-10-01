@@ -154,12 +154,12 @@ namespace Perspex.Layout
         /// </summary>
         public Layoutable()
         {
-            _layoutLog = Log.ForContext(new[]
-            {
-                new PropertyEnricher("Area", "Layout"),
-                new PropertyEnricher("SourceContext", GetType()),
-                new PropertyEnricher("Id", GetHashCode()),
-            });
+            //_layoutLog = Log.ForContext(new[]
+            //{
+            //    new PropertyEnricher("Area", "Layout"),
+            //    new PropertyEnricher("SourceContext", GetType()),
+            //    new PropertyEnricher("Id", GetHashCode()),
+            //});
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Perspex.Layout
                 DesiredSize = desiredSize;
                 _previousMeasure = availableSize;
 
-                _layoutLog.Verbose("Measure requested {DesiredSize}", DesiredSize);
+                //_layoutLog.Verbose("Measure requested {DesiredSize}", DesiredSize);
             }
         }
 
@@ -354,7 +354,7 @@ namespace Perspex.Layout
 
             if (force || !IsArrangeValid || _previousArrange != rect)
             {
-                _layoutLog.Verbose("Arrange to {Rect} ", rect);
+                //_layoutLog.Verbose("Arrange to {Rect} ", rect);
 
                 IsArrangeValid = true;
                 ArrangeCore(rect);
@@ -371,7 +371,7 @@ namespace Perspex.Layout
 
             if (IsMeasureValid)
             {
-                _layoutLog.Verbose("Invalidated measure");
+                //_layoutLog.Verbose("Invalidated measure");
             }
 
             IsMeasureValid = false;
@@ -403,7 +403,7 @@ namespace Perspex.Layout
 
             if (IsArrangeValid)
             {
-                _layoutLog.Verbose("Arrange measure");
+                //_layoutLog.Verbose("Arrange measure");
             }
 
             IsArrangeValid = false;

@@ -68,12 +68,12 @@ namespace Perspex.Layout
         /// </summary>
         public LayoutManager()
         {
-            _log = Log.ForContext(new[]
-            {
-                new PropertyEnricher("Area", "Layout"),
-                new PropertyEnricher("SourceContext", GetType()),
-                new PropertyEnricher("Id", GetHashCode()),
-            });
+            //_log = Log.ForContext(new[]
+            //{
+            //    new PropertyEnricher("Area", "Layout"),
+            //    new PropertyEnricher("SourceContext", GetType()),
+            //    new PropertyEnricher("Id", GetHashCode()),
+            //});
 
             _layoutNeeded = new Subject<Unit>();
             _layoutCompleted = new Subject<Unit>();
@@ -129,7 +129,8 @@ namespace Perspex.Layout
                 _running = true;
                 LayoutQueued = false;
 
-                _log.Information(
+                if (_log != null)
+                    _log.Information(
                     "Started layout pass. To measure: {Measure} To arrange: {Arrange}",
                     _toMeasure.Count,
                     _toArrange.Count);
@@ -154,7 +155,8 @@ namespace Perspex.Layout
                 }
 
                 stopwatch.Stop();
-                _log.Information("Layout pass finised in {Time}", stopwatch.Elapsed);
+                if (_log != null)
+                    _log.Information("Layout pass finised in {Time}", stopwatch.Elapsed);
 
                 _layoutCompleted.OnNext(Unit.Default);
             }

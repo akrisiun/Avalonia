@@ -94,12 +94,12 @@ namespace Perspex.Controls.Primitives
         /// </summary>
         public TemplatedControl()
         {
-            _templateLog = Log.ForContext(new[]
-            {
-                new PropertyEnricher("Area", "Template"),
-                new PropertyEnricher("SourceContext", GetType()),
-                new PropertyEnricher("Id", GetHashCode()),
-            });
+            //_templateLog = Log.ForContext(new[]
+            //{
+            //    new PropertyEnricher("Area", "Template"),
+            //    new PropertyEnricher("SourceContext", GetType()),
+            //    new PropertyEnricher("Id", GetHashCode()),
+            //});
         }
 
         /// <summary>

@@ -45,7 +45,9 @@ namespace Perspex.Animation
         /// </value>
         public static Stopwatch Stopwatch
         {
-            get; }
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Gets the animation timer.
@@ -60,7 +62,9 @@ namespace Perspex.Animation
         /// </value>
         public static IObservable<TimeSpan> Timer
         {
-            get; }
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Gets a timer that fires every frame for the specified duration.

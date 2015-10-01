@@ -12,7 +12,7 @@ using Perspex.Styling;
 namespace Perspex.Controls
 {
     /// <summary>
-    /// Determines how a <see cref="Window"/> will size itself to fit its content.
+    /// Determines how a <see cref="WindowC"/> will size itself to fit its content.
     /// </summary>
     public enum SizeToContent
     {
@@ -40,37 +40,37 @@ namespace Perspex.Controls
     /// <summary>
     /// A top-level window.
     /// </summary>
-    public class Window : TopLevel, IStyleable, IFocusScope
+    public class WindowC : TopLevel, IStyleable, IFocusScope
     {
         /// <summary>
         /// Defines the <see cref="SizeToContent"/> property.
         /// </summary>
         public static readonly PerspexProperty<SizeToContent> SizeToContentProperty =
-            PerspexProperty.Register<Window, SizeToContent>(nameof(SizeToContent));
+            PerspexProperty.Register<WindowC, SizeToContent>(nameof(SizeToContent));
 
         /// <summary>
         /// Defines the <see cref="Title"/> property.
         /// </summary>
         public static readonly PerspexProperty<string> TitleProperty =
-            PerspexProperty.Register<Window, string>(nameof(Title), "Window");
+            PerspexProperty.Register<WindowC, string>(nameof(Title), "Window");
 
         private object _dialogResult;
 
         private Size _maxPlatformClientSize;
 
         /// <summary>
-        /// Initializes static members of the <see cref="Window"/> class.
+        /// Initializes static members of the <see cref="WindowC"/> class.
         /// </summary>
-        static Window()
+        static WindowC()
         {
-            BackgroundProperty.OverrideDefaultValue(typeof(Window), Brushes.White);
-            TitleProperty.Changed.AddClassHandler<Window>((s, e) => s.PlatformImpl.SetTitle((string)e.NewValue));
+            BackgroundProperty.OverrideDefaultValue(typeof(WindowC), Brushes.White);
+            TitleProperty.Changed.AddClassHandler<WindowC>((s, e) => s.PlatformImpl.SetTitle((string)e.NewValue));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Window"/> class.
+        /// Initializes a new instance of the <see cref="WindowC"/> class.
         /// </summary>
-        public Window()
+        public WindowC()
             : base(PerspexLocator.Current.GetService<IWindowImpl>())
         {
             _maxPlatformClientSize = this.PlatformImpl.MaxClientSize;
@@ -100,7 +100,7 @@ namespace Perspex.Controls
         }
 
         /// <inheritdoc/>
-        Type IStyleable.StyleKey => typeof(Window);
+        Type IStyleable.StyleKey => typeof(WindowC);
 
         /// <summary>
         /// Closes the window.

@@ -29,7 +29,7 @@ namespace Perspex.Animation
         /// <value>
         /// The property to be animated.
         /// </value>
-        public PerspexProperty Property { get; }
+        public PerspexProperty Property { get; protected set; }
 
         /// <summary>
         /// Gets the duration of the animation.
@@ -37,7 +37,7 @@ namespace Perspex.Animation
         /// <value>
         /// The duration of the animation.
         /// </value>
-        public TimeSpan Duration { get; }
+        public TimeSpan Duration { get; protected set; }
 
         /// <summary>
         /// Gets the easing function used.
@@ -45,6 +45,6 @@ namespace Perspex.Animation
         /// <value>
         /// The easing function.
         /// </value>
-        public IEasing Easing { get; }
+        public IEasing Easing { get; protected set; }
     }
 }
