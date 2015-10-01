@@ -192,7 +192,8 @@ namespace Perspex.Controls.Primitives
 
                 if (Template != null)
                 {
-                    _templateLog.Verbose("Creating control template");
+                    if (_templateLog != null)
+                        _templateLog.Verbose("Creating control template");
 
                     var child = Template.Build(this);
 

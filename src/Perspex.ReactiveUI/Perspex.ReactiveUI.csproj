@@ -91,18 +91,17 @@
       <Project>{0ec8dba1-d745-4ee5-993a-6026440ec3bf}</Project>
       <Name>Splat-Portable</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Core\System.Reactive.Core.csproj">
-      <Project>{4e516f10-da7a-4d43-963e-a93865abea5b}</Project>
-      <Name>System.Reactive.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Interfaces\System.Reactive.Interfaces.csproj">
-      <Project>{9e9b9c60-98b0-40fa-9c2b-1218d417caa4}</Project>
-      <Name>System.Reactive.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reactive.Core\System.Reactive.Linq\System.Reactive.Linq.csproj">
-      <Project>{63252ae9-5186-45ca-bfcd-fa51c6b66a43}</Project>
-      <Name>System.Reactive.Linq</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\lib\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\lib\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\lib\System.Reactive.Linq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

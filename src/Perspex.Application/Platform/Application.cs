@@ -159,7 +159,7 @@ namespace Perspex
         protected virtual void RegisterServices()
         {
             PerspexSynchronizationContext.InstallIfNeeded();
-            // FocusManager = new FocusManager();
+            FocusManager = new FocusManager();
             InputManager = new InputManager();
 
             PerspexLocator.CurrentMutable
@@ -187,7 +187,7 @@ namespace Perspex
             }
             else
             {
-                InitializeSubsystem("Perspex.Direct2D", "Perspex.Direct2D1.Direct2D1Platform");
+                InitializeSubsystem("Perspex.Direct2D1", "Perspex.Direct2D1.Direct2D1Platform");
                 InitializeSubsystem("Perspex.Win32");   // Perspex.Win32.Win32Platform
             }
         }

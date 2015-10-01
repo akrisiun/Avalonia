@@ -44,6 +44,8 @@ namespace TestApplication
 
     internal class Program
     {
+        #region TreeData
+
         private static readonly PerspexList<Node> s_treeData = new PerspexList<Node>
         {
             new Node
@@ -94,6 +96,9 @@ namespace TestApplication
             new Item { Name = "Item 8", Value = "Item 8 Value" },
         };
 
+        #endregion
+
+        [STAThread]
         private static void Main(string[] args)
         {
             // The version of ReactiveUI currently included is for WPF and so expects a WPF

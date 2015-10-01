@@ -26,6 +26,9 @@ namespace Perspex.Direct2D1.Media
         {
             _factory = factory;
 
+            if (!File.Exists(fileName))
+                return;
+
             using (BitmapDecoder decoder = new BitmapDecoder(factory, fileName, DecodeOptions.CacheOnDemand))
             {
                 WicImpl = new Bitmap(factory, decoder.GetFrame(0), BitmapCreateCacheOption.CacheOnDemand);
@@ -67,19 +70,20 @@ namespace Perspex.Direct2D1.Media
         /// <summary>
         /// Gets the width of the bitmap, in pixels.
         /// </summary>
-        public int PixelWidth => WicImpl.Size.Width;
+        public int PixelWidth => WicImpl == null ? 0 : WicImpl.Size.Width;
 
         /// <summary>
         /// Gets the height of the bitmap, in pixels.
         /// </summary>
-        public int PixelHeight => WicImpl.Size.Height;
+        public int PixelHeight => WicImpl == null ? 0 : WicImpl.Size.Height;
 
         /// <summary>
         /// Gets the WIC implementation of the bitmap.
         /// </summary>
         public Bitmap WicImpl
         {
-            get; }
+            get;
+        }
 
         /// <summary>
         /// Gets a Direct2D bitmap to use on the specified render target.
@@ -88,7 +92,7 @@ namespace Perspex.Direct2D1.Media
         /// <returns>The Direct2D bitmap.</returns>
         public SharpDX.Direct2D1.Bitmap GetDirect2DBitmap(SharpDX.Direct2D1.RenderTarget renderTarget)
         {
-            if (_direct2D == null)
+            if (_direct2D == null && WicImpl != null)
             {
                 FormatConverter converter = new FormatConverter(_factory);
                 converter.Initialize(WicImpl, PixelFormat.Format32bppPBGRA);
@@ -117,7 +121,8 @@ namespace Perspex.Direct2D1.Media
 
                 BitmapFrameEncode frame = new BitmapFrameEncode(encoder);
                 frame.Initialize();
-                frame.WriteSource(WicImpl);
+                if (WicImpl != null)
+                    frame.WriteSource(WicImpl);
                 frame.Commit();
                 encoder.Commit();
             }
