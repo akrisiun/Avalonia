@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D9CC1DE-84C3-40D7-9CC5-B7751E0B25D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OmniXaml</RootNamespace>
+    <AssemblyName>OmniXaml</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="INameScope.cs" />
+    <Compile Include="NamespacePrefix.cs" />
+    <Compile Include="ObjectAssembler\CurrentLevelWrapper.cs" />
+    <Compile Include="ObjectAssembler\InstanceProperties.cs" />
+    <Compile Include="ObjectAssembler\NullLevel.cs" />
+    <Compile Include="ObjectAssembler\ObjectAssemblerSettings.cs" />
+    <Compile Include="ObjectAssembler\PreviousLevelWrapper.cs" />
+    <Compile Include="ObjectAssembler\XamlSetValueEventArgs.cs" />
+    <Compile Include="Attributes\ContentPropertyAttribute.cs" />
+    <Compile Include="Attributes\XmlnsDefinitionAttribute.cs" />
+    <Compile Include="Builder\AddressPack.cs" />
+    <Compile Include="Builder\AssemblyNameConfig.cs" />
+    <Compile Include="Builder\ConfiguredAssembly.cs" />
+    <Compile Include="Builder\ConfiguredAssemblyWithNamespaces.cs" />
+    <Compile Include="Builder\ContentProperties.cs" />
+    <Compile Include="Builder\ContentPropertyDefinition.cs" />
+    <Compile Include="Builder\TypeConverterRegistration.cs" />
+    <Compile Include="Builder\Converters.cs" />
+    <Compile Include="Builder\Route.cs" />
+    <Compile Include="Builder\XamlNamespace.cs" />
+    <Compile Include="Builder\XamlInstructionBuilder.cs" />
+    <Compile Include="ContentPropertyProvider.cs" />
+    <Compile Include="DefaultObjectAssemblerFactory.cs" />
+    <Compile Include="Attributes\DependsOnAttribute.cs" />
+    <Compile Include="DeferredLoaderMapping.cs" />
+    <Compile Include="ITypeFeatureProvider.cs" />
+    <Compile Include="IWiringContext.cs" />
+    <Compile Include="IXamlLoader.cs" />
+    <Compile Include="IObjectAssemblerFactory.cs" />
+    <Compile Include="IXamlParserFactory.cs" />
+    <Compile Include="LookaheadBuffer.cs" />
+    <Compile Include="ObjectAssembler\TopDownValueContext.cs" />
+    <Compile Include="ObjectAssembler\Commands\ITopDownValueContext.cs" />
+    <Compile Include="ObjectAssembler\ConstructionArgument.cs" />
+    <Compile Include="ObjectAssembler\StateCommuter.cs" />
+    <Compile Include="ObjectAssembler\Command.cs" />
+    <Compile Include="ObjectAssembler\Commands\EndMemberCommand.cs" />
+    <Compile Include="ObjectAssembler\Commands\EndObjectCommand.cs" />
+    <Compile Include="ObjectAssembler\Commands\GetObjectCommand.cs" />
+    <Compile Include="ObjectAssembler\Level.cs" />
+    <Compile Include="ObjectAssembler\Commands\NamespaceDeclarationCommand.cs" />
+    <Compile Include="ObjectAssembler\Commands\StartMemberCommand.cs" />
+    <Compile Include="ObjectAssembler\Commands\StartObjectCommand.cs" />
+    <Compile Include="ObjectAssembler\ObjectAssembler.cs" />
+    <Compile Include="ObjectAssembler\Commands\ValueCommand.cs" />
+    <Compile Include="ObjectAssembler\ValuePipeline.cs" />
+    <Compile Include="ObjectAssembler\ValueProcessingMode.cs" />
+    <Compile Include="Parsers\IParser.cs" />
+    <Compile Include="Parsers\ProtoParser\IXmlReader.cs" />
+    <Compile Include="Parsers\ProtoParser\DirectiveAssignment.cs" />
+    <Compile Include="Parsers\ProtoParser\ProtoXamlInstructionExtensions.cs" />
+    <Compile Include="Parsers\ProtoParser\UnprocessedAttributeBase.cs" />
+    <Compile Include="Parsers\ProtoParser\XmlCompatibilityReader.cs" />
+    <Compile Include="Parsers\ProtoParser\IProtoParser.cs" />
+    <Compile Include="Parsers\XamlInstructions\IXamlInstructionParser.cs" />
+    <Compile Include="Parsers\XamlInstructions\OrderAwareXamlInstructionParser.cs" />
+    <Compile Include="MemberDependencyNodeSorter.cs" />
+    <Compile Include="TypeConversion\BuiltInConverters\TypeTypeConverter.cs" />
+    <Compile Include="TypeConversion\IXamlTypeConverterContext.cs" />
+    <Compile Include="TypeConversion\XamlTypeConverterContext.cs" />
+    <Compile Include="TypeFactory.cs" />
+    <Compile Include="IContentPropertyProvider.cs" />
+    <Compile Include="IDeferredLoader.cs" />
+    <Compile Include="IMarkupExtension.cs" />
+    <Compile Include="ITypeContext.cs" />
+    <Compile Include="ITypeFactory.cs" />
+    <Compile Include="ITypeProvider.cs" />
+    <Compile Include="IValueConverter.cs" />
+    <Compile Include="IXamlParser.cs" />
+    <Compile Include="IObjectAssembler.cs" />
+    <Compile Include="MarkupExtension.cs" />
+    <Compile Include="NamespaceDeclaration.cs" />
+    <Compile Include="ObjectAssembler\TypeOperations.cs" />
+    <Compile Include="Parsers\MarkupExtensions\AssignmentNode.cs" />
+    <Compile Include="Parsers\MarkupExtensions\IdentifierNode.cs" />
+    <Compile Include="Parsers\MarkupExtensions\MarkupExtensionNodeToXamlNodesConverter.cs" />
+    <Compile Include="Parsers\MarkupExtensions\MarkupExtensionNode.cs" />
+    <Compile Include="Parsers\MarkupExtensions\MarkupExtensionParser.cs" />
+    <Compile Include="Parsers\MarkupExtensions\Option.cs" />
+    <Compile Include="Parsers\MarkupExtensions\OptionsCollection.cs" />
+    <Compile Include="Parsers\MarkupExtensions\PositionalOption.cs" />
+    <Compile Include="Parsers\MarkupExtensions\PropertyOption.cs" />
+    <Compile Include="Parsers\MarkupExtensions\StringNode.cs" />
+    <Compile Include="Parsers\MarkupExtensions\TreeNode.cs" />
+    <Compile Include="Parsers\Inject.cs" />
+    <Compile Include="Parsers\ProtoParser\AttributeFeed.cs" />
+    <Compile Include="Parsers\ProtoParser\AttributeParser.cs" />
+    <Compile Include="Parsers\ProtoParser\NsPrefix.cs" />
+    <Compile Include="Parsers\ProtoParser\XamlProtoInstructionParser.cs" />
+    <Compile Include="Parsers\ProtoParser\AttributeAssignment.cs" />
+    <Compile Include="Parsers\XamlInstructions\XamlInstructionParser.cs" />
+    <Compile Include="Parsers\ProtoParser\NodeType.cs" />
+    <Compile Include="PrefixRegistrationMode.cs" />
+    <Compile Include="ProtoInstructionBuilder.cs" />
+    <Compile Include="ProtoXamlInstruction.cs" />
+    <Compile Include="TemplateHostingObjectAssembler.cs" />
+    <Compile Include="TypeContext.cs" />
+    <Compile Include="TypeContextBuilder.cs" />
+    <Compile Include="TypeConversion\BuiltInConverters\BooleanConverter.cs" />
+    <Compile Include="TypeConversion\BuiltInConverters\DoubleTypeConverter.cs" />
+    <Compile Include="TypeConversion\ITypeConverter.cs" />
+    <Compile Include="TypeConversion\ITypeConverterProvider.cs" />
+    <Compile Include="TypeConversion\BuiltInConverters\IntTypeConverter.cs" />
+    <Compile Include="TypeConversion\BuiltInConverters\StringTypeConverter.cs" />
+    <Compile Include="TypeConversion\TypeConverterAttribute.cs" />
+    <Compile Include="TypeConversion\TypeConverterProvider.cs" />
+    <Compile Include="TypeFactoryMixin.cs" />
+    <Compile Include="TypeFeatureProvider.cs" />
+    <Compile Include="TypeFeatureProviderBuilder.cs" />
+    <Compile Include="TypeNotFoundException.cs" />
+    <Compile Include="Typing\AttachableXamlMember.cs" />
+    <Compile Include="Typing\ClrNamespace.cs" />
+    <Compile Include="Typing\IXamlMemberValuePlugin.cs" />
+    <Compile Include="Typing\IXamlNamespaceRegistry.cs" />
+    <Compile Include="Typing\IXamlTypeRepository.cs" />
+    <Compile Include="Typing\MemberValuePlugin.cs" />
+    <Compile Include="Typing\MutableXamlMember.cs" />
+    <Compile Include="Typing\Namespace.cs" />
+    <Compile Include="Typing\PrefixRegistration.cs" />
+    <Compile Include="Typing\XamlDirective.cs" />
+    <Compile Include="Typing\XamlMember.cs" />
+    <Compile Include="Typing\XamlMemberBase.cs" />
+    <Compile Include="Typing\XamlName.cs" />
+    <Compile Include="Typing\XamlNamespaceRegistry.cs" />
+    <Compile Include="Typing\PropertyLocator.cs" />
+    <Compile Include="Typing\XamlQualifiedName.cs" />
+    <Compile Include="Typing\CoreTypes.cs" />
+    <Compile Include="Typing\XamlType.cs" />
+    <Compile Include="Typing\XamlTypeName.cs" />
+    <Compile Include="Typing\XamlTypeRepository.cs" />
+    <Compile Include="ValueConversionException.cs" />
+    <Compile Include="DependencySortingVisitor.cs" />
+    <Compile Include="InstructionNode.cs" />
+    <Compile Include="Visualization\IVisitor.cs" />
+    <Compile Include="Sequence.cs" />
+    <Compile Include="MemberReverserVisitor.cs" />
+    <Compile Include="InstructionTreeBuilder.cs" />
+    <Compile Include="Visualization\NodeType.cs" />
+    <Compile Include="Visualization\NodeVisualizer.cs" />
+    <Compile Include="Visualization\VisualizationNode.cs" />
+    <Compile Include="Visualization\VisualizationTag.cs" />
+    <Compile Include="WiringContext.cs" />
+    <Compile Include="PhaseParserKit.cs" />
+    <Compile Include="XamlLoaderExtensions.cs" />
+    <Compile Include="XamlInstruction.cs" />
+    <Compile Include="XamlInstructionType.cs" />
+    <Compile Include="XamlParseException.cs" />
+    <Compile Include="MarkupExtensionContext.cs" />
+    <Compile Include="XamlXmlParser.cs" />
+    <Compile Include="XamlLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Glass\Glass.csproj">
+      <Project>{B719FF91-BC7A-4145-8597-811D504FCFEF}</Project>
+      <Name>Glass</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Sprache, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sprache.SuperJMN.2.0.0.50\lib\portable-net45+netcore45\Sprache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

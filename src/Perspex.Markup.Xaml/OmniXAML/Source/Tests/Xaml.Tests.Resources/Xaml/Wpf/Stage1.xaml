@@ -1,0 +1,14 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Title="Hello OmniXaml!">
+  <Window.Content>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.Children>
+        <TextBlock Text="XAML is the way" Grid.Column="0" />
+        <TextBlock Text="To make you invincible :D" Grid.Column="1" />
+      </Grid.Children>
+    </Grid>
+  </Window.Content>
+</Window>
