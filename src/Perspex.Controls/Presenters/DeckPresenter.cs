@@ -207,9 +207,12 @@ namespace Perspex.Controls.Presenters
                 }
             }
 
-            if (Transition != null && (from != null || to != null))
+            if (Transition != null && to != null) //  && (from != null || to != null))
             {
-                await Transition.Start((Visual)from, (Visual)to, fromIndex < toIndex);
+                //await Transition.Start((Visual)from, (Visual)to, fromIndex < toIndex);
+                if (from != null)
+                    from.Opacity = 0;
+                to.Opacity = 1;
             }
 
             if (from != null)

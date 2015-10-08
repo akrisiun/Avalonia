@@ -378,12 +378,16 @@ namespace Perspex.Win32
                     break;
 
                 case UnmanagedMethods.WindowsMessage.WM_MOUSEWHEEL:
+
+                    var pt = ScreenToClient((uint)lParam & 0xffff, (uint)(UInt64)lParam >> 16);
+                    var vt = new Vector(0, ((Int64)wParam >> 16) / wheelDelta);
+
                     e = new RawMouseWheelEventArgs(
                         WindowsMouseDevice.Instance,
                         timestamp,
                         _owner,
-                        ScreenToClient((uint)lParam & 0xffff, (uint)lParam >> 16),
-                        new Vector(0, ((int)wParam >> 16) / wheelDelta), GetMouseModifiers(wParam));
+                        pt,
+                        vt, GetMouseModifiers(wParam));
                     break;
 
                 case UnmanagedMethods.WindowsMessage.WM_MOUSELEAVE:
@@ -437,7 +441,7 @@ namespace Perspex.Win32
 
         static InputModifiers GetMouseModifiers(IntPtr wParam)
         {
-            var keys = (UnmanagedMethods.ModifierKeys)wParam.ToInt32();
+            var keys = (UnmanagedMethods.ModifierKeys)Convert.ToUInt32((UInt64)wParam & 0xffff);
             var modifiers = WindowsKeyboardDevice.Instance.Modifiers;
             if (keys.HasFlag(UnmanagedMethods.ModifierKeys.MK_LBUTTON))
                 modifiers |= InputModifiers.LeftMouseButton;
