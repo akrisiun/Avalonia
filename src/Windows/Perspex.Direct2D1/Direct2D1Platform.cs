@@ -19,11 +19,14 @@ namespace Perspex.Direct2D1
 
         private static readonly SharpDX.WIC.ImagingFactory s_imagingFactory = new SharpDX.WIC.ImagingFactory();
 
-        public static void Initialize() => PerspexLocator.CurrentMutable
+        public static void Initialize()
+        {
+            PerspexLocator.CurrentMutable
             .Bind<IPlatformRenderInterface>().ToConstant(s_instance)
             .BindToSelf(s_d2D1Factory)
             .BindToSelf(s_dwfactory)
             .BindToSelf(s_imagingFactory);
+        }
 
         public IBitmapImpl CreateBitmap(int width, int height)
         {

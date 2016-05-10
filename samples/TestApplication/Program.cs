@@ -9,7 +9,7 @@ using Perspex;
 using Perspex.Animation;
 using Perspex.Collections;
 using Perspex.Controls;
-using Perspex.Controls.Html;
+// using Perspex.Controls.Html;
 using Perspex.Controls.Primitives;
 using Perspex.Controls.Shapes;
 using Perspex.Controls.Templates;
@@ -308,7 +308,8 @@ namespace TestApplication
 								FontSize = 13,
 								Foreground = SolidColorBrush.Parse("#727272"),
 								Margin = new Thickness(0, 0, 0, 10)
-							},
+							}
+                            /*,
 							new HtmlLabel 
 							{ 
 								Background = SolidColorBrush.Parse("#CCCCCC"),
@@ -330,6 +331,7 @@ namespace TestApplication
 										   <li>Aliquam tincidunt mauris eu risus.</li>
 										</ul>" 				
 							}
+                            */
 						}
               		}
 				}
