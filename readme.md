@@ -1,3 +1,11 @@
+  Perspex.Base -> \webstack\WPF\Perspex\src\lib\Perspex.Base.dll
+C:\Program Files\MSBuild\Microsoft\VisualStudio\v14.0\AppxPackage\Microsoft.AppXPackage.Targets
+(923,5): error APPX3212: SDK root folder for 'Portable 7.0' cannot be located Microsoft.AppXPackage.Targets. See 
+http://go.microsoft.com/fwlink/?prd=12560&pver=1.0&plcid=0x409&ar=MSDN&sar=PlatformMultiTargeting&o1=Portable&o2=7.0 
+for more information.
+ [\webstack\WPF\Perspex\src\Perspex.Base\Perspex.Base.csproj]
+  Splat-Portable -> \webstack\WPF\Perspex\lib\Splat.dll
+
 # Perspex
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/grokys/Perspex?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
