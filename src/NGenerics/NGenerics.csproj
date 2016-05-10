@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D211E587-D8BC-45B9-95A4-F297C8FA5200}</ProjectGuid>
+    <ProjectGuid>{415E048E-4611-4815-9CF2-D774E29079AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Perspex.Animation</RootNamespace>
-    <AssemblyName>Perspex.Animation</AssemblyName>
+    <RootNamespace>NGenerics</RootNamespace>
+    <AssemblyName>NGenerics</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -24,8 +24,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,48 +32,38 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Perspex.Animation.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Perspex.Base\Perspex.Base.csproj">
-      <Project>{b09b78d8-9b26-48b0-9149-d64a2f120f3f}</Project>
-      <Name>Perspex.Base</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Shared\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Animation`1.cs" />
-    <Compile Include="Animation.cs" />
-    <Compile Include="Animate.cs" />
-    <Compile Include="Animatable.cs" />
-    <Compile Include="AnimationExtensions.cs" />
-    <Compile Include="IEasing`1.cs" />
-    <Compile Include="LinearEasing.cs" />
-    <Compile Include="LinearDoubleEasing.cs" />
-    <Compile Include="IEasing.cs" />
+    <Compile Include="DataStructures\Comparers\ReverseComparer.cs" />
+    <Compile Include="DataStructures\General\Heap.cs" />
+    <Compile Include="DataStructures\General\HeapType.cs" />
+    <Compile Include="DataStructures\General\IHeap.cs" />
+    <Compile Include="DataStructures\Trees\BinarySearchTreeBase.cs" />
+    <Compile Include="DataStructures\Trees\BinaryTree.cs" />
+    <Compile Include="DataStructures\Comparers\ComparisonComparer.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Util\Guard.cs" />
+    <Compile Include="Patterns\Visitor\InOrderVisitor.cs" />
+    <Compile Include="DataStructures\Queues\IQueue.cs" />
+    <Compile Include="DataStructures\Trees\ISearchTree.cs" />
+    <Compile Include="DataStructures\Trees\ITree.cs" />
+    <Compile Include="Patterns\Visitor\IVisitor.cs" />
+    <Compile Include="Patterns\Visitor\KeyTrackingVisitor.cs" />
+    <Compile Include="DataStructures\Comparers\KeyValuePairComparer.cs" />
+    <Compile Include="DataStructures\Trees\NodeColor.cs" />
+    <Compile Include="Patterns\Visitor\OrderedVisitor.cs" />
+    <Compile Include="DataStructures\Queues\PriorityQueue.cs" />
+    <Compile Include="DataStructures\Queues\PriorityQueueType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyTransitions.cs" />
-    <Compile Include="PropertyTransition.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\..\packages\Rx-Core.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\..\packages\Rx-Interfaces.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\..\packages\Rx-Linq.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\..\packages\Rx-PlatformServices.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.PlatformServices.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="DataStructures\Trees\RedBlackTree.cs" />
+    <Compile Include="DataStructures\Trees\RedBlackTreeDictionary.cs" />
+    <Compile Include="DataStructures\Trees\RedBlackTreeList.cs" />
+    <Compile Include="DataStructures\Trees\RedBlackTreeNode.cs" />
+    <Compile Include="Patterns\Visitor\TrackingVisitor.cs" />
+    <Compile Include="Patterns\Visitor\ValueTrackingVisitor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -38,7 +38,7 @@ using System.ComponentModel;
 
 namespace System.Drawing
 {
-    internal struct Point
+    public struct Point
     {
         // Private x and y coordinate fields.
         private int x, y;

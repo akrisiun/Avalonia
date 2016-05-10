@@ -126,8 +126,7 @@ namespace System.Drawing
         ///	SizeF. Requires explicit cast.
         /// </remarks>
 
-        // public static explicit operator PointF
-        internal PointF ToPointF(SizeF size)
+        public static explicit operator PointF(SizeF size)
         {
             return new PointF(size.Width, size.Height);
         }
@@ -145,7 +144,7 @@ namespace System.Drawing
         ///	Creates a SizeF from a PointF value.
         /// </remarks>
 
-        internal SizeF(PointF pt)
+        public SizeF(PointF pt)
         {
             width = pt.X;
             height = pt.Y;
@@ -268,12 +267,12 @@ namespace System.Drawing
             return (int)width ^ (int)height;
         }
 
-        internal PointF ToPointF()
+        public PointF ToPointF()
         {
             return new PointF(width, height);
         }
 
-        internal Size ToSize()
+        public Size ToSize()
         {
             int w, h;
             checked

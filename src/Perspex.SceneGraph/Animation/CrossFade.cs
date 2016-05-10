@@ -16,13 +16,6 @@ namespace Perspex.Animation
         /// <summary>
         /// Initializes a new instance of the <see cref="CrossFade"/> class.
         /// </summary>
-        public CrossFade()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CrossFade"/> class.
-        /// </summary>
         /// <param name="duration">The duration of the animation.</param>
         public CrossFade(TimeSpan duration)
         {
@@ -32,7 +25,7 @@ namespace Perspex.Animation
         /// <summary>
         /// Gets the duration of the animation.
         /// </summary>
-        public TimeSpan Duration { get; set; }
+        public TimeSpan Duration { get; protected set; }
 
         /// <summary>
         /// Starts the animation.
@@ -55,30 +48,30 @@ namespace Perspex.Animation
                 to.Opacity = 0;
             }
 
-            //if (from != null)
-            //{
-            //    tasks.Add(Animate.Property(
-            //        (IObservablePropertyBag)from,
-            //        Visual.OpacityProperty,
-            //        from.Opacity,
-            //        0,
-            //        LinearEasing.For<double>(),
-            //        Duration).ToTask());
-            //}
+            if (from != null)
+            {
+                tasks.Add(Animate.Property(
+                    (IObservablePropertyBag)from,
+                    Visual.OpacityProperty,
+                    from.Opacity,
+                    0,
+                    LinearEasing.For<double>(),
+                    Duration).ToTask());
+            }
 
-            //if (to != null)
-            //{
-            //    to.Opacity = 0;
-            //    to.IsVisible = true;
+            if (to != null)
+            {
+                to.Opacity = 0;
+                to.IsVisible = true;
 
-            //    tasks.Add(Animate.Property(
-            //        (IObservablePropertyBag)to,
-            //        Visual.OpacityProperty,
-            //        0,
-            //        1,
-            //        LinearEasing.For<double>(),
-            //        Duration).ToTask());
-            //}
+                tasks.Add(Animate.Property(
+                    (IObservablePropertyBag)to,
+                    Visual.OpacityProperty,
+                    0,
+                    1,
+                    LinearEasing.For<double>(),
+                    Duration).ToTask());
+            }
 
             await Task.WhenAll(tasks.ToArray());
 

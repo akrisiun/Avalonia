@@ -17,13 +17,6 @@ namespace Perspex.Animation
         /// <summary>
         /// Initializes a new instance of the <see cref="PageSlide"/> class.
         /// </summary>
-        public PageSlide()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PageSlide"/> class.
-        /// </summary>
         /// <param name="duration">The duration of the animation.</param>
         public PageSlide(TimeSpan duration)
         {
@@ -33,7 +26,7 @@ namespace Perspex.Animation
         /// <summary>
         /// Gets the duration of the animation.
         /// </summary>
-        public TimeSpan Duration { get; set; }
+        public TimeSpan Duration { get; protected set; }
 
         /// <summary>
         /// Starts the animation.
@@ -56,32 +49,32 @@ namespace Perspex.Animation
             var parent = GetVisualParent(from, to);
             var distance = parent.Bounds.Width;
 
-            //if (from != null)
-            //{
-            //    var transform = new TranslateTransform();
-            //    from.RenderTransform = transform;
-            //    tasks.Add(Animate.Property(
-            //        transform,
-            //        TranslateTransform.XProperty,
-            //        0.0,
-            //        forward ? -distance : distance,
-            //        LinearEasing.For<double>(),
-            //        Duration).ToTask());
-            //}
+            if (from != null)
+            {
+                var transform = new TranslateTransform();
+                from.RenderTransform = transform;
+                tasks.Add(Animate.Property(
+                    transform,
+                    TranslateTransform.XProperty,
+                    0.0,
+                    forward ? -distance : distance,
+                    LinearEasing.For<double>(),
+                    Duration).ToTask());
+            }
 
-            //if (to != null)
-            //{
-            //    var transform = new TranslateTransform();
-            //    to.RenderTransform = transform;
-            //    to.IsVisible = true;
-            //    tasks.Add(Animate.Property(
-            //        transform,
-            //        TranslateTransform.XProperty,
-            //        forward ? distance : -distance,
-            //        0.0,
-            //        LinearEasing.For<double>(),
-            //        Duration).ToTask());
-            //}
+            if (to != null)
+            {
+                var transform = new TranslateTransform();
+                to.RenderTransform = transform;
+                to.IsVisible = true;
+                tasks.Add(Animate.Property(
+                    transform,
+                    TranslateTransform.XProperty,
+                    forward ? distance : -distance,
+                    0.0,
+                    LinearEasing.For<double>(),
+                    Duration).ToTask());
+            }
 
             await Task.WhenAll(tasks.ToArray());
 

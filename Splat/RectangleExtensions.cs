@@ -13,7 +13,7 @@ namespace Splat
         /// <summary>
         /// Determine the center of a Rectangle
         /// </summary>
-        internal static PointF Center(this RectangleF This)
+        public static PointF Center(this RectangleF This)
         {
             return new PointF(This.X + This.Width / 2.0f, This.Y + This.Height / 2.0f);
         }

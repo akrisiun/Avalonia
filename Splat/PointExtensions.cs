@@ -8,7 +8,7 @@ namespace Splat
         /// <summary>
         /// Floor the specified point (i.e. round it to integer values)
         /// </summary>
-        internal static PointF Floor(this Point This)
+        public static PointF Floor(this Point This)
         {
 #if UIKIT
             // NB: I have no idea but Archimedes does this, soooooooo....
@@ -21,7 +21,7 @@ namespace Splat
         /// <summary>
         /// Determines whether two points are within 'epsilon' of each other
         /// </summary>
-        internal static bool WithinEpsilonOf(this PointF This, PointF other, float epsilon)
+        public static bool WithinEpsilonOf(this PointF This, PointF other, float epsilon)
         {
             return This.DistanceTo(other) < epsilon;
         }
@@ -29,7 +29,7 @@ namespace Splat
         /// <summary>
         /// Calculates the Dot product of two points
         /// </summary>
-        internal static float DotProduct(this PointF This, PointF other)
+        public static float DotProduct(this PointF This, PointF other)
         {
             return (This.X * other.X + This.Y * other.Y);
         }
@@ -37,7 +37,7 @@ namespace Splat
         /// <summary>
         /// Scales a PointF by a scalar factor
         /// </summary>
-        internal static PointF ScaledBy(this PointF This, float factor)
+        public static PointF ScaledBy(this PointF This, float factor)
         {
             return new PointF(This.X * factor, This.Y * factor);
         }
@@ -45,7 +45,7 @@ namespace Splat
         /// <summary>
         /// Calculates the magnitude of a point from (0,0)
         /// </summary>
-        internal static float Length(this PointF This)
+        public static float Length(this PointF This)
         {
             return PointF.Empty.DistanceTo(This);
         }
@@ -53,7 +53,7 @@ namespace Splat
         /// <summary>
         /// Normalize the specified PointF (i.e. makes its magnitude = 1.0f)
         /// </summary>
-        internal static PointF Normalize(this PointF This)
+        public static PointF Normalize(this PointF This)
         {
             var length = This.Length();
             if (length == 0.0f) return This;
@@ -64,7 +64,7 @@ namespace Splat
         /// <summary>
         /// Calculates the angle in degrees of a PointF
         /// </summary>
-        internal static float AngleInDegrees(this PointF This)
+        public static float AngleInDegrees(this PointF This)
         {
             return (float)(Math.Atan2(This.Y, This.X) * 180.0f / Math.PI);
         }
@@ -72,18 +72,18 @@ namespace Splat
         /// <summary>
         /// Projects a PointF along a specified direction
         /// </summary>
-        internal static PointF ProjectAlong(this PointF This, PointF direction)
+        public static PointF ProjectAlong(this PointF This, PointF direction)
         {
             var normalDirection = direction.Normalize();
             var dist = This.DotProduct(normalDirection);
 
             return normalDirection.ScaledBy(dist);
         }
-
+                
         /// <summary>
         /// Projects a PointF along a specified angle
         /// </summary>
-        internal static PointF ProjectAlongAngle(this PointF This, float angleInDegrees)
+        public static PointF ProjectAlongAngle(this PointF This, float angleInDegrees)
         {
             var rads = angleInDegrees * Math.PI / 180.0f;
             var direction = new PointF((float)Math.Cos(rads), (float)Math.Sin(rads));
@@ -94,7 +94,7 @@ namespace Splat
         /// <summary>
         /// Calculates the distance between two points
         /// </summary>
-        internal static float DistanceTo(this PointF This, PointF other)
+        public static float DistanceTo(this PointF This, PointF other)
         {
             var deltaX = other.X - This.X;
             var deltaY = other.Y - This.Y;

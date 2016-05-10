@@ -136,7 +136,7 @@ namespace System.Drawing
         ///	Inflates the Rectangle by a specified Size.
         /// </remarks>
 
-        internal void Inflate(Size size)
+        public void Inflate(Size size)
         {
             x -= size.Width;
             y -= size.Height;
@@ -291,7 +291,7 @@ namespace System.Drawing
         ///	Creates a Rectangle from Point and Size values.
         /// </remarks>
 
-        internal Rectangle(Point location, Size size)
+        public Rectangle(Point location, Size size)
         {
             x = location.X;
             y = location.Y;
@@ -395,7 +395,7 @@ namespace System.Drawing
         ///	The Location of the top-left corner of the Rectangle.
         /// </remarks>
 
-        internal Point Location
+        public Point Location
         {
             get
             {
@@ -433,7 +433,7 @@ namespace System.Drawing
         ///	The Size of the Rectangle.
         /// </remarks>
 
-        internal Size Size
+        public Size Size
         {
             get
             {
@@ -545,7 +545,7 @@ namespace System.Drawing
         ///	Checks if a Point lies within this Rectangle.
         /// </remarks>
 
-        internal bool Contains(Point pt)
+        public bool Contains(Point pt)
         {
             return Contains(pt.X, pt.Y);
         }
@@ -635,7 +635,7 @@ namespace System.Drawing
         ///	Moves the Rectangle a specified distance.
         /// </remarks>
 
-        internal void Offset(Point pos)
+        public void Offset(Point pos)
         {
             x += pos.X;
             y += pos.Y;

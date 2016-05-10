@@ -38,8 +38,7 @@ using System.ComponentModel;
 
 namespace System.Drawing
 {
-    // public
-    internal struct Size
+    public struct Size
     {
 
         // Private Height and width fields.
