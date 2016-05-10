@@ -183,6 +183,10 @@
       <Project>{42472427-4774-4C81-8AFF-9F27B8E31721}</Project>
       <Name>Perspex.Layout</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Perspex.ReactiveUI\Perspex.ReactiveUI.csproj">
+      <Project>{6417b24e-49c2-4985-8db2-3ab9d898ec91}</Project>
+      <Name>Perspex.ReactiveUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Perspex.SceneGraph\Perspex.SceneGraph.csproj">
       <Project>{EB582467-6ABB-43A1-B052-E981BA910E3A}</Project>
       <Name>Perspex.SceneGraph</Name>

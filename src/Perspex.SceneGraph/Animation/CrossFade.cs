@@ -50,13 +50,13 @@ namespace Perspex.Animation
 
             if (from != null)
             {
-                tasks.Add(Animate.Property(
-                    (IObservablePropertyBag)from,
-                    Visual.OpacityProperty,
-                    from.Opacity,
-                    0,
-                    LinearEasing.For<double>(),
-                    Duration).ToTask());
+                //tasks.Add(Animate.Property(
+                //    (IObservablePropertyBag)from,
+                //    Visual.OpacityProperty,
+                //    from.Opacity,
+                //    0,
+                //    LinearEasing.For<double>(),
+                //    Duration).ToTask());
             }
 
             if (to != null)
@@ -64,13 +64,13 @@ namespace Perspex.Animation
                 to.Opacity = 0;
                 to.IsVisible = true;
 
-                tasks.Add(Animate.Property(
-                    (IObservablePropertyBag)to,
-                    Visual.OpacityProperty,
-                    0,
-                    1,
-                    LinearEasing.For<double>(),
-                    Duration).ToTask());
+                //tasks.Add(Animate.Property(
+                //    (IObservablePropertyBag)to,
+                //    Visual.OpacityProperty,
+                //    0,
+                //    1,
+                //    LinearEasing.For<double>(),
+                //    Duration).ToTask());
             }
 
             await Task.WhenAll(tasks.ToArray());

@@ -10,6 +10,7 @@ using Device = SharpDX.Direct3D11.Device;
 using FactoryD2D = SharpDX.Direct2D1.Factory;
 using FactoryDXGI = SharpDX.DXGI.Factory1;
 using Buffer11 = SharpDX.Direct3D11.Buffer;
+using System.IO;
 
 namespace Tutorial6
 {
@@ -101,7 +102,10 @@ namespace Tutorial6
 
                 //load Shader Resouce View from file
                 //it contains texture for using inside shaders
-                ShaderResourceView texture = ShaderResourceView.FromFile(device.Device, "../../texture.dds");
+                var file = "texture.dds";
+                if (!File.Exists(file))
+                    file = "../../texture.dds";
+                ShaderResourceView texture = ShaderResourceView.FromFile(device.Device, file);
 
                 //init frame rate counter
                 fpsCounter.Reset();

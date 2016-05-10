@@ -81,7 +81,8 @@ namespace Perspex
         /// <summary>
         /// Gets the platform-specific window implementation.
         /// </summary>
-        public new IWindowImpl PlatformImpl => (IWindowImpl)base.PlatformImpl;
+        public new IWindowImpl PlatformImpl // => (IWindowImpl)base.PlatformImpl;
+        { get { return base.PlatformImpl as IWindowImpl; } }
 
         /// <summary>
         /// Gets or sets a value indicating how the window will size itself to fit its content.

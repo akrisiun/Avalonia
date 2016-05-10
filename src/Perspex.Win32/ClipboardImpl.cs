@@ -53,7 +53,7 @@ namespace Perspex.Win32
         {
             if (text == null)
             {
-                throw new ArgumentNullException("text"); // nameof(text));
+                throw new ArgumentNullException(nameof(text));
             }
 
             await OpenClipboard();

@@ -6,11 +6,12 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Resources;
-using OmniXaml;
 using Perspex;
 using Perspex.Controls;
 using Perspex.Diagnostics;
-using Perspex.Markup.Xaml;
+
+//using OmniXaml;
+//using Perspex.Markup.Xaml;
 
 namespace XamlTestApplication.Views
 {

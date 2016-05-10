@@ -306,7 +306,7 @@ namespace Perspex.Direct2D1.Media
             var solidColorBrush = brush as Perspex.Media.SolidColorBrush;
             var linearGradientBrush = brush as Perspex.Media.LinearGradientBrush;
             var radialGradientBrush = brush as Perspex.Media.RadialGradientBrush;
-            var imageBrush = brush as ImageBrush;
+            var imageBrush = brush as Perspex.Media.ImageBrush;
             var visualBrush = brush as VisualBrush;
 
             if (solidColorBrush != null)

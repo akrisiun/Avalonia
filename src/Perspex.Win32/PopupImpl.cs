@@ -26,7 +26,7 @@ namespace Perspex.Win32
             UnmanagedMethods.ShowWindow(Handle.Handle, UnmanagedMethods.ShowWindowCommand.ShowNoActivate);
         }
 
-        protected override IntPtr CreateWindowOverride(ushort atom, IntPtr Handle) // = IntPtr.Zero)
+        protected override IntPtr CreateWindowOverride(ushort atom)
         {
             UnmanagedMethods.WindowStyles style =
                 UnmanagedMethods.WindowStyles.WS_POPUP |
@@ -45,7 +45,7 @@ namespace Perspex.Win32
                 UnmanagedMethods.CW_USEDEFAULT,
                 UnmanagedMethods.CW_USEDEFAULT,
                 UnmanagedMethods.CW_USEDEFAULT,
-                Handle, // IntPtr.Zero,
+                IntPtr.Zero,
                 IntPtr.Zero,
                 IntPtr.Zero,
                 IntPtr.Zero);

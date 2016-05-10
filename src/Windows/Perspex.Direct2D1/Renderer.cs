@@ -13,98 +13,100 @@ using DwFactory = SharpDX.DirectWrite.Factory;
 
 namespace Perspex.Direct2D1
 {
-    public class Renderer : RendererBase
-    {
-        /// <summary>
-        /// The render target.
-        /// </summary>
-        private readonly RenderTarget _renderTarget;
+    // use RenderTarget.cs
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Renderer"/> class.
-        /// </summary>
-        /// <param name="hwnd">The window handle.</param>
-        /// <param name="width">The width of the window.</param>
-        /// <param name="height">The height of the window.</param>
-        public Renderer(IntPtr hwnd, double width, double height)
-        {
-            Direct2DFactory = Locator.Current.GetService<Factory>();
-            DirectWriteFactory = Locator.Current.GetService<DwFactory>();
+    //public class Renderer : RendererBase
+    //{
+    //    /// <summary>
+    //    /// The render target.
+    //    /// </summary>
+    //    private readonly RenderTarget _renderTarget;
 
-            RenderTargetProperties renderTargetProperties = new RenderTargetProperties
-            {
-            };
+    //    /// <summary>
+    //    /// Initializes a new instance of the <see cref="Renderer"/> class.
+    //    /// </summary>
+    //    /// <param name="hwnd">The window handle.</param>
+    //    /// <param name="width">The width of the window.</param>
+    //    /// <param name="height">The height of the window.</param>
+    //    public Renderer(IntPtr hwnd, double width, double height)
+    //    {
+    //        Direct2DFactory = Locator.Current.GetService<Factory>();
+    //        DirectWriteFactory = Locator.Current.GetService<DwFactory>();
 
-            HwndRenderTargetProperties hwndProperties = new HwndRenderTargetProperties
-            {
-                Hwnd = hwnd,
-                PixelSize = new Size2((int)width, (int)height),
-                PresentOptions = PresentOptions.Immediately,
-            };
+    //        RenderTargetProperties renderTargetProperties = new RenderTargetProperties
+    //        {
+    //        };
 
-            _renderTarget = new WindowRenderTarget(
-                Direct2DFactory,
-                renderTargetProperties,
-                hwndProperties);
-        }
+    //        HwndRenderTargetProperties hwndProperties = new HwndRenderTargetProperties
+    //        {
+    //            Hwnd = hwnd,
+    //            PixelSize = new Size2((int)width, (int)height),
+    //            PresentOptions = PresentOptions.Immediately,
+    //        };
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Renderer"/> class.
-        /// </summary>
-        /// <param name="renderTarget">The render target.</param>
-        public Renderer(RenderTarget renderTarget)
-        {
-            Direct2DFactory = Locator.Current.GetService<Factory>();
-            DirectWriteFactory = Locator.Current.GetService<DwFactory>();
-            _renderTarget = renderTarget;
-        }
+    //        _renderTarget = new WindowRenderTarget(
+    //            Direct2DFactory,
+    //            renderTargetProperties,
+    //            hwndProperties);
+    //    }
 
-        /// <summary>
-        /// Gets the Direct2D factory.
-        /// </summary>
-        public Factory Direct2DFactory
-        {
-            get; }
+    //    /// <summary>
+    //    /// Initializes a new instance of the <see cref="Renderer"/> class.
+    //    /// </summary>
+    //    /// <param name="renderTarget">The render target.</param>
+    //    public Renderer(RenderTarget renderTarget)
+    //    {
+    //        Direct2DFactory = Locator.Current.GetService<Factory>();
+    //        DirectWriteFactory = Locator.Current.GetService<DwFactory>();
+    //        _renderTarget = renderTarget;
+    //    }
 
-        /// <summary>
-        /// Gets the DirectWrite factory.
-        /// </summary>
-        public DwFactory DirectWriteFactory
-        {
-            get; }
+    //    /// <summary>
+    //    /// Gets the Direct2D factory.
+    //    /// </summary>
+    //    public Factory Direct2DFactory
+    //    {
+    //        get; }
 
-        /// <summary>
-        /// Resizes the renderer.
-        /// </summary>
-        /// <param name="width">The new width.</param>
-        /// <param name="height">The new height.</param>
-        public override void Resize(int width, int height)
-        {
-            WindowRenderTarget window = _renderTarget as WindowRenderTarget;
+    //    /// <summary>
+    //    /// Gets the DirectWrite factory.
+    //    /// </summary>
+    //    public DwFactory DirectWriteFactory
+    //    {
+    //        get; }
 
-            if (window == null)
-            {
-                throw new InvalidOperationException(string.Format(
-                    "A renderer with a target of type '{0}' cannot be resized.",
-                    _renderTarget.GetType().Name));
-            }
+    //    /// <summary>
+    //    /// Resizes the renderer.
+    //    /// </summary>
+    //    /// <param name="width">The new width.</param>
+    //    /// <param name="height">The new height.</param>
+    //    public override void Resize(int width, int height)
+    //    {
+    //        WindowRenderTarget window = _renderTarget as WindowRenderTarget;
 
-            window.Resize(new Size2(width, height));
-        }
+    //        if (window == null)
+    //        {
+    //            throw new InvalidOperationException(string.Format(
+    //                "A renderer with a target of type '{0}' cannot be resized.",
+    //                _renderTarget.GetType().Name));
+    //        }
 
-        /// <summary>
-        /// Creates a drawing context for a rendering session.
-        /// </summary>
-        /// <param name="handle">The platform handle. Unused.</param>
-        /// <returns>An <see cref="IDrawingContext"/>.</returns>
-        protected override IDrawingContext CreateDrawingContext(IPlatformHandle handle)
-        {
-            return new DrawingContext(_renderTarget, DirectWriteFactory);
-        }
+    //        window.Resize(new Size2(width, height));
+    //    }
 
-        public void Dispose()
-        {
-            _renderTarget.Dispose();
-        }
-    }
+    //    /// <summary>
+    //    /// Creates a drawing context for a rendering session.
+    //    /// </summary>
+    //    /// <param name="handle">The platform handle. Unused.</param>
+    //    /// <returns>An <see cref="IDrawingContext"/>.</returns>
+    //    protected override IDrawingContext CreateDrawingContext(IPlatformHandle handle)
+    //    {
+    //        return new DrawingContext(_renderTarget, DirectWriteFactory);
+    //    }
+
+    //    public void Dispose()
+    //    {
+    //        _renderTarget.Dispose();
+    //    }
+    //}
 }

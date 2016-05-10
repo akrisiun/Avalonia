@@ -11,6 +11,11 @@ namespace Perspex.Direct2D1
 {
     public class Direct2D1Platform : IPlatformRenderInterface
     {
+        static Direct2D1Platform()
+        {
+            // for breakpoint
+        }
+
         private static readonly Direct2D1Platform s_instance = new Direct2D1Platform();
 
         private static readonly SharpDX.Direct2D1.Factory s_d2D1Factory = new SharpDX.Direct2D1.Factory();

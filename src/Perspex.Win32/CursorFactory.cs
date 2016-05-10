@@ -14,12 +14,7 @@ namespace Perspex.Win32
 {
     internal class CursorFactory : IStandardCursorFactory
     {
-        static CursorFactory()
-        {
-            Instance = new CursorFactory();
-        }
-
-        public static CursorFactory Instance { get; private set; } // = new CursorFactory();
+        public static CursorFactory Instance { get; } = new CursorFactory();
 
         private CursorFactory()
         {

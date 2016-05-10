@@ -176,7 +176,8 @@ namespace Perspex.Controls.Presenters
             }
 
             _createdPanel = true;
-            var task = MoveToPage(-1, SelectedIndex);
+            // var task = 
+            MoveToPage(-1, SelectedIndex);
         }
 
         /// <summary>
@@ -185,7 +186,8 @@ namespace Perspex.Controls.Presenters
         /// <param name="fromIndex">The index of the old page.</param>
         /// <param name="toIndex">The index of the new page.</param>
         /// <returns>A task tracking the animation.</returns>
-        private async Task MoveToPage(int fromIndex, int toIndex)
+        private void // async Task 
+            MoveToPage(int fromIndex, int toIndex)
         {
             var generator = ItemContainerGenerator;
             IControl from = null;
@@ -230,7 +232,8 @@ namespace Perspex.Controls.Presenters
         {
             if (Panel != null)
             {
-                var task = MoveToPage((int)e.OldValue, (int)e.NewValue);
+                // var task = 
+                MoveToPage((int)e.OldValue, (int)e.NewValue);
             }
         }
     }

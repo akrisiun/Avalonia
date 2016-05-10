@@ -39,9 +39,13 @@
     <StartupObject>TestApplication.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Perspex.Direct2D">
+      <HintPath>..\..\lib\Perspex.Direct2D.dll</HintPath>
+    </Reference>
     <Reference Include="Perspex.Win32">
       <HintPath>..\..\lib\Perspex.Win32.dll</HintPath>
     </Reference>
+
     <Reference Include="SharpDX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\SharpDX.dll</HintPath>
@@ -145,10 +149,6 @@
     <ProjectReference Include="..\..\src\Perspex.Themes.Default\Perspex.Themes.Default.csproj">
       <Project>{3e10a5fa-e8da-48b1-ad44-6a5b6cb7750f}</Project>
       <Name>Perspex.Themes.Default</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Windows\Perspex.Direct2D1\Perspex.Direct2D1.csproj">
-      <Project>{3e908f67-5543-4879-a1dc-08eace79b3cd}</Project>
-      <Name>Perspex.Direct2D1</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
