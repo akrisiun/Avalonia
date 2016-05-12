@@ -1,9 +1,0 @@
-﻿<Window xmlns="wpf">
-    <ListBox >
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <MyUserControl Property="It's-a me, Mario" />
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
-</Window>

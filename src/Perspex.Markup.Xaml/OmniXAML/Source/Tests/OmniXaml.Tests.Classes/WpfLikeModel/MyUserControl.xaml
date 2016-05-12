@@ -1,5 +1,0 @@
-<UserControl xmlns="root">
-    <UserControl.Content>
-        <ChildClass />
-    </UserControl.Content>
-</UserControl>

@@ -1,7 +1,0 @@
-﻿<Grid xmlns="root">
-  <Grid.Children>
-    <TextBlock>
-    </TextBlock>
-    <TextBlock />
-  </Grid.Children>
-</Grid>
