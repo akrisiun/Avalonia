@@ -1,6 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
+//using Avalonia.Markup.Xaml;
 
 namespace ControlCatalog
 {
@@ -19,7 +19,7 @@ namespace ControlCatalog
             // now I am doing that here. But we need a better solution!!
             var theme = new Avalonia.Themes.Default.DefaultTheme();
             theme.FindResource("Button");
-            AvaloniaXamlLoader.Load(this);
+            //AvaloniaXamlLoader.Load(this);
         }
     }
 }

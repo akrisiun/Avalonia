@@ -1,5 +1,5 @@
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
+//using Avalonia.Markup.Xaml;
 
 namespace BindingTest
 {
@@ -12,7 +12,7 @@ namespace BindingTest
 
         private void InitializeComponent()
         {
-            AvaloniaXamlLoader.Load(this);
+            //AvaloniaXamlLoader.Load(this);
         }
     }
 }

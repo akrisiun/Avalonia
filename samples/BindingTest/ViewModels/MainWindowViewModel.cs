@@ -24,24 +24,24 @@ namespace BindingTest.ViewModels
 
             SelectedItems = new ObservableCollection<TestItem>();
 
-            ShuffleItems = ReactiveCommand.Create();
-            ShuffleItems.Subscribe(_ =>
-            {
-                var r = new Random();
-                Items.Move(r.Next(Items.Count), 1);
-            });
+            //ShuffleItems = ReactiveCommand.Create();
+            //ShuffleItems.Subscribe(_ =>
+            //{
+            //    var r = new Random();
+            //    Items.Move(r.Next(Items.Count), 1);
+            //});
 
-            StringValueCommand = ReactiveCommand.Create();
-            StringValueCommand.Subscribe(param =>
-            {
-                BooleanFlag = !BooleanFlag;
-                StringValue = param.ToString();
-            });
+            //StringValueCommand = ReactiveCommand.Create();
+            //StringValueCommand.Subscribe(param =>
+            //{
+            //    BooleanFlag = !BooleanFlag;
+            //    StringValue = param.ToString();
+            //});
         }
 
         public ObservableCollection<TestItem> Items { get; }
         public ObservableCollection<TestItem> SelectedItems { get; }
-        public ReactiveCommand<object> ShuffleItems { get; }
+        //public ReactiveCommand<object> ShuffleItems { get; }
 
         public string BooleanString
         {
@@ -67,7 +67,7 @@ namespace BindingTest.ViewModels
             set { this.RaiseAndSetIfChanged(ref _booleanFlag, value); }
         }
 
-        public ReactiveCommand<object> StringValueCommand { get; }
+        //public ReactiveCommand<object> StringValueCommand { get; }
 
         public ExceptionPropertyErrorViewModel ExceptionPropertyValidation { get; }
             = new ExceptionPropertyErrorViewModel();

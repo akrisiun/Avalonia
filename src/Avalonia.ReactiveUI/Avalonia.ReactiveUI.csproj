@@ -56,10 +56,10 @@
     <Compile Include="src\src\ReactiveUI\Legacy\ReactiveCommand.cs" />
     <Compile Include="src\src\ReactiveUI\LoggingMixins.cs" />
     <Compile Include="src\src\ReactiveUI\MessageBus.cs" />
+    <Compile Include="src\src\ReactiveUI\MobileLifecycle.cs" />
     <Compile Include="src\src\ReactiveUI\ObservableAsPropertyHelper.cs" />
     <Compile Include="src\src\ReactiveUI\ObservedChangedMixin.cs" />
     <Compile Include="src\src\ReactiveUI\OrderedComparer.cs" />
-    <Compile Include="src\src\ReactiveUI\Platform\FlexibleCommandBinder.cs" />
     <Compile Include="src\src\ReactiveUI\POCOObservableForProperty.cs">
       <SubType>Code</SubType>
     </Compile>

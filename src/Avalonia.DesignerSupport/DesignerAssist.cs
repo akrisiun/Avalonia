@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using OmniXaml;
-using OmniXaml.ObjectAssembler;
+//using OmniXaml;
+//using OmniXaml.ObjectAssembler;
+//using Avalonia.Markup.Xaml;
 using Avalonia.Controls;
 using Avalonia.Controls.Platform;
-using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
 using Avalonia.Styling;
 using Avalonia.Themes.Default;
@@ -22,12 +22,12 @@ namespace Avalonia.DesignerSupport
         {
             public override void Initialize()
             {
-                Styles.Add(new DefaultTheme());
+                //Styles.Add(new DefaultTheme());
 
-                var loader = new AvaloniaXamlLoader();
-                var baseLight = (IStyle)loader.Load(
-                    new Uri("resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.Default"));
-                Styles.Add(baseLight);
+                //var loader = new AvaloniaXamlLoader();
+                //var baseLight = (IStyle)loader.Load(
+                //    new Uri("resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.Default"));
+                //Styles.Add(baseLight);
             }
         }
 
@@ -86,10 +86,8 @@ namespace Avalonia.DesignerSupport
 
             using (PlatformManager.DesignerMode())
             {
-                var loader = new AvaloniaXamlLoader();
+                //var loader = new AvaloniaXamlLoader();
                 var stream = new MemoryStream(Encoding.UTF8.GetBytes(xamlInfo.Xaml));
-
-
                 
                 Uri baseUri = null;
                 if (xamlInfo.AssemblyPath != null)
@@ -99,50 +97,50 @@ namespace Avalonia.DesignerSupport
                         new Uri("resm:Fake.xaml?assembly=" + Path.GetFileNameWithoutExtension(xamlInfo.AssemblyPath));
                 }
 
-                var loaded = loader.Load(stream, null, baseUri);
-                var styles = loaded as Styles;
-                if (styles != null)
-                {
-                    var substitute = Design.GetPreviewWith(styles) ??
-                                     styles.Select(Design.GetPreviewWith).FirstOrDefault(s => s != null);
-                    if (substitute != null)
-                    {
-                        substitute.Styles.AddRange(styles);
-                        control = substitute;
-                    }
-                    else
-                        control = new StackPanel
-                        {
-                            Children =
-                            {
-                                new TextBlock {Text = "Styles can't be previewed without Design.PreviewWith. Add"},
-                                new TextBlock {Text = "<Design.PreviewWith>"},
-                                new TextBlock {Text = "    <Border Padding=20><!-- YOUR CONTROL FOR PREVIEW HERE--></Border>"},
-                                new TextBlock {Text = "<Design.PreviewWith>"},
-                                new TextBlock {Text = "before setters in your first Style"}
-                            }
-                        };
-                }
-                if (loaded is Application)
-                    control = new TextBlock {Text = "Application can't be previewed in design view"};
-                else
-                    control = (Control) loaded;
+                //var loaded = loader.Load(stream, null, baseUri);
+                //var styles = loaded as Styles;
+                //if (styles != null)
+                //{
+                //    var substitute = Design.GetPreviewWith(styles) ??
+                //                     styles.Select(Design.GetPreviewWith).FirstOrDefault(s => s != null);
+                //    if (substitute != null)
+                //    {
+                //        substitute.Styles.AddRange(styles);
+                //        control = substitute;
+                //    }
+                //    else
+                //        control = new StackPanel
+                //        {
+                //            Children =
+                //            {
+                //                new TextBlock {Text = "Styles can't be previewed without Design.PreviewWith. Add"},
+                //                new TextBlock {Text = "<Design.PreviewWith>"},
+                //                new TextBlock {Text = "    <Border Padding=20><!-- YOUR CONTROL FOR PREVIEW HERE--></Border>"},
+                //                new TextBlock {Text = "<Design.PreviewWith>"},
+                //                new TextBlock {Text = "before setters in your first Style"}
+                //            }
+                //        };
+                //}
+                //if (loaded is Application)
+                //    control = new TextBlock {Text = "Application can't be previewed in design view"};
+                //else
+                //    control = (Control) loaded;
 
-                window = control as Window;
-                if (window == null)
-                {
-                    window = new Window() {Content = (Control)control};
-                }
+                //window = control as Window;
+                //if (window == null)
+                //{
+                //    window = new Window() {Content = (Control)control};
+                //}
 
-                if (!window.IsSet(Window.SizeToContentProperty))
-                    window.SizeToContent = SizeToContent.WidthAndHeight;
+                //if (!window.IsSet(Window.SizeToContentProperty))
+                //    window.SizeToContent = SizeToContent.WidthAndHeight;
             }
 
             s_currentWindow?.Close();
-            s_currentWindow = window;
-            window.Show();
-            Design.ApplyDesignerProperties(window, control);
-            Api.OnWindowCreated?.Invoke(window.PlatformImpl.Handle.Handle);
+            //s_currentWindow = window;
+            //window.Show();
+            //Design.ApplyDesignerProperties(window, control);
+            //Api.OnWindowCreated?.Invoke(window.PlatformImpl.Handle.Handle);
             Api.OnResize?.Invoke();
         }
     }

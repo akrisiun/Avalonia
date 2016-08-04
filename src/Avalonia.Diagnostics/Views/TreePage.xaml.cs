@@ -4,7 +4,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Shapes;
 using Avalonia.Diagnostics.ViewModels;
 using Avalonia.Input;
-using Avalonia.Markup.Xaml;
+//using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 
 namespace Avalonia.Diagnostics.Views
@@ -48,7 +48,7 @@ namespace Avalonia.Diagnostics.Views
 
         private void InitializeComponent()
         {
-            AvaloniaXamlLoader.Load(this);
+            //AvaloniaXamlLoader.Load(this);
             _tree = this.FindControl<TreeView>("tree");
         }
 

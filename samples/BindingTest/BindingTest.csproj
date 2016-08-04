@@ -93,14 +93,6 @@
     <EmbeddedResource Include="TestItemView.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Markup\Avalonia.Markup.Xaml\Avalonia.Markup.Xaml.csproj">
-      <Project>{3e53a01a-b331-47f3-b828-4a5717e77a24}</Project>
-      <Name>Avalonia.Markup.Xaml</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Markup\Avalonia.Markup\Avalonia.Markup.csproj">
-      <Project>{6417e941-21bc-467b-a771-0de389353ce6}</Project>
-      <Name>Avalonia.Markup</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\Avalonia.Animation\Avalonia.Animation.csproj">
       <Project>{d211e587-d8bc-45b9-95a4-f297c8fa5200}</Project>
       <Name>Avalonia.Animation</Name>
@@ -160,14 +152,6 @@
     <ProjectReference Include="..\..\src\Windows\Avalonia.Win32\Avalonia.Win32.csproj">
       <Project>{811a76cf-1cf6-440f-963b-bbe31bd72a82}</Project>
       <Name>Avalonia.Win32</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Gtk\Avalonia.Gtk\Avalonia.Gtk.csproj">
-      <Project>{54F237D5-A70A-4752-9656-0C70B1A7B047}</Project>
-      <Name>Avalonia.Gtk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Gtk\Avalonia.Cairo\Avalonia.Cairo.csproj">
-      <Project>{FB05AC90-89BA-4F2F-A924-F37875FB547C}</Project>
-      <Name>Avalonia.Cairo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,9 +5,9 @@ using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 using Avalonia.Themes.Default;
+//using Avalonia.Markup.Xaml;
 using Avalonia.Diagnostics;
 using Avalonia.Platform;
 using Avalonia.Shared.PlatformSupport;
@@ -21,10 +21,10 @@ namespace TestApplication
         {
             Styles.Add(new DefaultTheme());
 
-            var loader = new AvaloniaXamlLoader();
-            var baseLight = (IStyle)loader.Load(
-                new Uri("resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.Default"));
-            Styles.Add(baseLight);
+            //var loader = new AvaloniaXamlLoader();
+            //var baseLight = (IStyle)loader.Load(
+            //    new Uri("resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.Default"));
+            //Styles.Add(baseLight);
 
             Styles.Add(new SampleTabStyle());
             DataTemplates = new DataTemplates

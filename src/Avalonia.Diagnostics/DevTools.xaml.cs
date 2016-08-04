@@ -9,7 +9,7 @@ using Avalonia.Diagnostics.ViewModels;
 using Avalonia.Input;
 using Avalonia.Input.Raw;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
+//using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
 using ReactiveUI;
 
@@ -98,7 +98,7 @@ namespace Avalonia.Diagnostics
 
         private void InitializeComponent()
         {
-            AvaloniaXamlLoader.Load(this);
+            //AvaloniaXamlLoader.Load(this);
         }
 
         private void RawKeyDown(RawKeyEventArgs e)

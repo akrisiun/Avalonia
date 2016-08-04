@@ -1,3 +1,15 @@
+# Fork custom build 
+
+submodules
+```
+git submodule add https://github.com/akrisiun/ReactiveUI.git src/Avalonia.ReactiveUI/src
+
+git submodule status
+git rm --cached src/Avalonia.HtmlRenderer/external
+git rm --cached src/Markup/Avalonia.Markup.Xaml/OmniXAML
+git rm --cached src/Markup/Avalonia.Markup.Xaml/glass
+```
+
 # Avalonia
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/AvaloniaUI/Avalonia?utm_campaign=pr-badge&utm_content=badge&utm_medium=badge&utm_source=badge)
 

@@ -2,7 +2,7 @@ using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Logging.Serilog;
-using Avalonia.Markup.Xaml;
+//using Avalonia.Markup.Xaml;
 using Serilog;
 
 namespace BindingTest
@@ -11,7 +11,7 @@ namespace BindingTest
     {
         public override void Initialize()
         {
-            AvaloniaXamlLoader.Load(this);
+            //AvaloniaXamlLoader.Load(this);
         }
 
         private static void Main()
