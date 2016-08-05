@@ -4,6 +4,10 @@ submodules
 ```
 git submodule add https://github.com/akrisiun/ReactiveUI.git src/Avalonia.ReactiveUI/src
 
+git submodule add -f https://github.com/AvaloniaUI/OmniXAML.git src/Markup/Avalonia.Markup.Xaml/OmniXAML
+git submodule add -f https://github.com/SuperJMN/glass.git src/Markup/Avalonia.Markup.Xaml/glass
+git submodule update --init
+
 git submodule status
 git rm --cached src/Avalonia.HtmlRenderer/external
 git rm --cached src/Markup/Avalonia.Markup.Xaml/OmniXAML
