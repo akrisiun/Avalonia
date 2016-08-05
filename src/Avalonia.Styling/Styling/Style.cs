@@ -170,7 +170,8 @@ namespace Avalonia.Styling
 
             foreach (var subscription in subscriptions)
             {
-                subscription.Dispose();
+                // ankr: broken
+                subscription?.Dispose();
             }
 
             _applied.Remove(control);

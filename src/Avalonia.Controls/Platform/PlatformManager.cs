@@ -15,9 +15,12 @@ namespace Avalonia.Controls.Platform
 
         public static IRenderTarget CreateRenderTarget(ITopLevelImpl window)
         {
-            return AvaloniaLocator.Current
-                .GetService<IPlatformRenderInterface>()
+            var rendInterface = AvaloniaLocator.Current
+                .GetService<IPlatformRenderInterface>();
+
+            var target = rendInterface?
                 .CreateRenderer(window.Handle);
+            return target;
         }
 
         public static IDisposable DesignerMode()

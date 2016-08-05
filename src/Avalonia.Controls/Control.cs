@@ -33,7 +33,7 @@ namespace Avalonia.Controls
     /// - Implements <see cref="IStyleable"/> to allow styling to work on the control.
     /// - Implements <see cref="ILogical"/> to form part of a logical tree.
     /// </remarks>
-    public class Control : InputElement, IControl, INamed, ISetInheritanceParent, ISetLogicalParent, ISupportInitialize
+    public class Control : InputElement, IControl, IControlScope, INamed, ISetInheritanceParent, ISetLogicalParent, ISupportInitialize
     {
         /// <summary>
         /// Defines the <see cref="DataContext"/> property.
@@ -44,6 +44,7 @@ namespace Avalonia.Controls
                 inherits: true,
                 notifying: DataContextNotifying);
 
+     
         /// <summary>
         /// Defines the <see cref="FocusAdorner"/> property.
         /// </summary>
@@ -128,6 +129,13 @@ namespace Avalonia.Controls
         /// Raised when the control is detached from a rooted logical tree.
         /// </summary>
         public event EventHandler<LogicalTreeAttachmentEventArgs> DetachedFromLogicalTree;
+
+        #region IControlScope // ankr
+
+        public INameScope FindNameScope() { return ControlExtensions.FindNameScope(this); }
+
+        #endregion
+
 
         /// <summary>
         /// Occurs when the <see cref="DataContext"/> property changes.

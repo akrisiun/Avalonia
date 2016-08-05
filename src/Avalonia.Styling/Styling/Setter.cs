@@ -126,7 +126,16 @@ namespace Avalonia.Styling
                 if (source != null)
                 {
                     var cloned = Clone(source, style, activator);
-                    return BindingOperations.Apply(control, Property, cloned, null);
+                    IDisposable apply = null;
+                    try
+                    {
+                        apply = BindingOperations.Apply(control, Property, cloned, null);
+                    }
+                    catch (Exception)
+                    { // System.Diagnostics.Debugger.Log(.Tracing.
+
+                    }
+                    return apply;
                 }
             }
 

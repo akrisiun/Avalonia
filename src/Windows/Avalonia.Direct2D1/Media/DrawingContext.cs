@@ -71,6 +71,8 @@ namespace Avalonia.Direct2D1.Media
         {
             BitmapImpl impl = (BitmapImpl)source.PlatformImpl;
             Bitmap d2d = impl.GetDirect2DBitmap(_renderTarget);
+            if (d2d == null) return;
+
             _renderTarget.DrawBitmap(
                 d2d,
                 destRect.ToSharpDX(),

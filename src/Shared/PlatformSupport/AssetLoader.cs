@@ -63,6 +63,9 @@ namespace Avalonia.Shared.PlatformSupport
 
             if (asset == null)
             {
+                if (uri.LocalPath.EndsWith(".png")
+                    || uri.LocalPath.EndsWith(".jpg"))  // if images : not reason to stop
+                    return null;
                 throw new FileNotFoundException($"The resource {uri} could not be found.");
             }
 

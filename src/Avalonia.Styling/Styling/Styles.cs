@@ -22,7 +22,7 @@ namespace Avalonia.Styling
         {
             foreach (IStyle style in this)
             {
-                style.Attach(control, container);
+                style?.Attach(control, container);
             }
         }
 
@@ -37,6 +37,8 @@ namespace Avalonia.Styling
         {
             foreach (var style in this.Reverse())
             {
+                if (style == null)  // ankr: brokens
+                    return null;
                 var result = style.FindResource(name);
 
                 if (result != AvaloniaProperty.UnsetValue)

@@ -78,7 +78,7 @@
       <Name>Avalonia.Styling</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avalonia.Themes.Default\Avalonia.Themes.Default.csproj">
-      <Project>{3e10a5fa-e8da-48b1-ad44-6a5b6cb7750f}</Project>
+      <Project>{c6fb9750-3a7e-4f11-9c14-8afd1463551f}</Project>
       <Name>Avalonia.Themes.Default</Name>
     </ProjectReference>
   </ItemGroup>

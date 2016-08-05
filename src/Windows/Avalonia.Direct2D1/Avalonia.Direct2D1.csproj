@@ -93,7 +93,7 @@
       <Name>Avalonia.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Avalonia.Controls\Avalonia.Controls.csproj">
-      <Project>{d2221c82-4a25-4583-9b43-d791e3f6820c}</Project>
+      <Project>{d500fc35-8d14-4246-9d35-19af451fcc6a}</Project>
       <Name>Avalonia.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Avalonia.Input\Avalonia.Input.csproj">

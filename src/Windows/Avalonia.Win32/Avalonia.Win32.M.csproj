@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{811A76CF-1CF6-440F-963B-BBE31BD72A82}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalonia.Win32</RootNamespace>
+    <AssemblyName>Avalonia.Win32M</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Avalonia.Win32M.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Avalonia.Win32M.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Avalonia.Core">
+      <HintPath>..\..\..\bin\Avalonia.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharp.Reactive">
+      <HintPath>..\..\..\bin\Sharp.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ClipboardImpl.cs" />
+    <Compile Include="IconImpl.cs" />
+    <Compile Include="SystemDialogImpl.cs" />
+    <Compile Include="CursorFactory.cs" />
+    <Compile Include="Input\KeyInterop.cs" />
+    <Compile Include="Input\WindowsKeyboardDevice.cs" />
+    <Compile Include="Input\WindowsMouseDevice.cs" />
+    <Compile Include="Interop\UnmanagedMethods.cs" />
+    <Compile Include="PlatformConstants.cs" />
+    <Compile Include="PopupImpl.cs" />
+    <Compile Include="WindowImpl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Win32Platform.cs" />
+    <Compile Include="Embedding\EmbeddedWindowImpl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Avalonia.Controls\Avalonia.Controls.Merge.csproj">
+      <Project>{d2221c82-4a25-4583-9b43-d791e3f6820c}</Project>
+      <Name>Avalonia.Controls.Merge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Avalonia.Layout\Avalonia.Layout.Merge.csproj">
+      <Project>{1626aea3-122a-4b8a-bb6e-76bac02a28ca}</Project>
+      <Name>Avalonia.Layout.Merge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Avalonia.Styling\Avalonia.Styling.Merge.csproj">
+      <Project>{c630dddb-ba43-4481-bd15-baef988f6de0}</Project>
+      <Name>Avalonia.Styling.Merge</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\..\Shared\PlatformSupport\PlatformSupport.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

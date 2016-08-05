@@ -40,6 +40,8 @@ namespace Avalonia.Direct2D1.Media
         public BitmapImpl(ImagingFactory factory, Stream stream)
         {
             _factory = factory;
+            if (stream == null)
+                return;
 
             using (BitmapDecoder decoder = new BitmapDecoder(factory, stream, DecodeOptions.CacheOnLoad))
             {
@@ -67,15 +69,16 @@ namespace Avalonia.Direct2D1.Media
         /// <summary>
         /// Gets the width of the bitmap, in pixels.
         /// </summary>
-        public int PixelWidth => WicImpl.Size.Width;
+        public int PixelWidth => WicImpl == null ? 0 : WicImpl.Size.Width;
 
         /// <summary>
         /// Gets the height of the bitmap, in pixels.
         /// </summary>
-        public int PixelHeight => WicImpl.Size.Height;
+        public int PixelHeight => WicImpl == null ? 0 : WicImpl.Size.Height;
 
         public virtual void Dispose()
         {
+            if (WicImpl == null) return;
             WicImpl.Dispose();
         }
 
@@ -95,6 +98,8 @@ namespace Avalonia.Direct2D1.Media
         {
             if (_direct2D == null)
             {
+                if (WicImpl == null) return null;
+
                 FormatConverter converter = new FormatConverter(_factory);
                 converter.Initialize(WicImpl, PixelFormat.Format32bppPBGRA);
                 _direct2D = SharpDX.Direct2D1.Bitmap.FromWicBitmap(renderTarget, converter);
@@ -123,6 +128,8 @@ namespace Avalonia.Direct2D1.Media
 
         public void Save(Stream stream)
         {
+            if (WicImpl == null) return;
+
             PngBitmapEncoder encoder = new PngBitmapEncoder(_factory);
             encoder.Initialize(stream);
 

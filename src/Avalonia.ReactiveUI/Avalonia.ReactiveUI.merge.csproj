@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7F1500B-35E6-4EF9-B28E-41C3C851A773}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalonia.ReactiveUI</RootNamespace>
+    <AssemblyName>Avalonia.ReactiveUIM</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;MONO PORTABLE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;MONO PORTABLE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\src\ReactiveUI\Activation.cs" />
+    <Compile Include="src\src\ReactiveUI\AutoPersistHelper.cs" />
+    <Compile Include="src\src\ReactiveUI\BindingTypeConverters.cs" />
+    <Compile Include="src\src\ReactiveUI\CollectionDebugView.cs" />
+    <Compile Include="src\src\ReactiveUI\CommandBinding.cs" />
+    <Compile Include="src\src\ReactiveUI\CompatMixins.cs" />
+    <Compile Include="src\src\ReactiveUI\ConsoleStub.cs" />
+    <Compile Include="src\src\ReactiveUI\ContractStubs.cs" />
+    <Compile Include="src\src\ReactiveUI\CreatesCommandBinding.cs" />
+    <Compile Include="src\src\ReactiveUI\DisposableMixins.cs" />
+    <Compile Include="src\src\ReactiveUI\ExpressionMixins.cs" />
+    <Compile Include="src\src\ReactiveUI\ExpressionRewriter.cs" />
+    <Compile Include="src\src\ReactiveUI\IDependencyResolver.cs" />
+    <Compile Include="src\src\ReactiveUI\INPCObservableForProperty.cs" />
+    <Compile Include="src\src\ReactiveUI\Interactions.cs" />
+    <Compile Include="src\src\ReactiveUI\Interfaces.cs" />
+    <Compile Include="src\src\ReactiveUI\IReactiveObject.cs" />
+    <Compile Include="src\src\ReactiveUI\IROObservableForProperty.cs" />
+    <Compile Include="src\src\ReactiveUI\Legacy\ReactiveCommand.cs" />
+    <Compile Include="src\src\ReactiveUI\LoggingMixins.cs" />
+    <Compile Include="src\src\ReactiveUI\MessageBus.cs" />
+    <Compile Include="src\src\ReactiveUI\MobileLifecycle.cs" />
+    <Compile Include="src\src\ReactiveUI\ObservableAsPropertyHelper.cs" />
+    <Compile Include="src\src\ReactiveUI\ObservedChangedMixin.cs" />
+    <Compile Include="src\src\ReactiveUI\OrderedComparer.cs" />
+    <Compile Include="src\src\ReactiveUI\POCOObservableForProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\src\ReactiveUI\PropertyBinding.cs" />
+    <Compile Include="src\src\ReactiveUI\ReactiveBinding.cs" />
+    <Compile Include="src\src\ReactiveUI\ReactiveCollectionMixins.cs" />
+    <Compile Include="src\src\ReactiveUI\ReactiveCommand.cs" />
+    <Compile Include="src\src\ReactiveUI\ReactiveList.cs" />
+    <Compile Include="src\src\ReactiveUI\ReactiveNotifyPropertyChangedMixin.cs" />
+    <Compile Include="src\src\ReactiveUI\ReactiveObject.cs" />
+    <Compile Include="src\src\ReactiveUI\RefcountDisposeWrapper.cs" />
+    <Compile Include="src\src\ReactiveUI\Reflection.cs" />
+    <Compile Include="src\src\ReactiveUI\RegisterableInterfaces.cs" />
+    <Compile Include="src\src\ReactiveUI\Registrations.cs" />
+    <Compile Include="src\src\ReactiveUI\RoutableViewModelMixin.cs" />
+    <Compile Include="src\src\ReactiveUI\RoutingState.cs" />
+    <Compile Include="src\src\ReactiveUI\RxApp.cs" />
+    <Compile Include="src\src\ReactiveUI\ScheduledSubject.cs" />
+    <Compile Include="src\src\ReactiveUI\VariadicTemplates.cs" />
+    <Compile Include="src\src\ReactiveUI\ViewLocator.cs" />
+    <Compile Include="src\src\ReactiveUI\WaitForDispatcherScheduler.cs" />
+    <Compile Include="src\src\ReactiveUI\WeakEventManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Registrations.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Splat">
+      <HintPath>..\..\packages\Splat.1.6.2\lib\NetCore45\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\packages\System.Reactive.Core.3.0.0\lib\netstandard1.0\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\packages\System.Reactive.Interfaces.3.0.0\lib\netstandard1.0\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\packages\System.Reactive.Linq.3.0.0\lib\netstandard1.1\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\WindowsBase.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

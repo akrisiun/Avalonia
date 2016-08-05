@@ -116,7 +116,7 @@ namespace Avalonia.Controls
                 this.GetObservable(TextAlignmentProperty).Select(_ => Unit.Default),
                 this.GetObservable(FontSizeProperty).Select(_ => Unit.Default),
                 this.GetObservable(FontStyleProperty).Select(_ => Unit.Default),
-                this.GetObservable(FontWeightProperty).Select(_=>Unit.Default))
+                this.GetObservable(FontWeightProperty).Select(_ => Unit.Default))
                 .Subscribe(_ =>
                 {
                     InvalidateFormattedText();
@@ -350,15 +350,23 @@ namespace Avalonia.Controls
         /// <returns>A <see cref="FormattedText"/> object.</returns>
         protected virtual FormattedText CreateFormattedText(Size constraint)
         {
-            var result = new FormattedText(
-                Text ?? string.Empty,
-                FontFamily,
-                FontSize,
-                FontStyle,
-                TextAlignment,
-                FontWeight,
-                TextWrapping);
-            result.Constraint = constraint;
+            FormattedText result = null;
+            try
+            {
+                result = new FormattedText(
+                  Text ?? string.Empty,
+                  FontFamily,
+                  FontSize,
+                  FontStyle,
+                  TextAlignment,
+                  FontWeight,
+                  TextWrapping);
+                result.Constraint = constraint;
+            }
+            catch (Exception)
+            {
+                // Ankr: broken
+            }
             return result;
         }
 
@@ -390,8 +398,10 @@ namespace Avalonia.Controls
                 {
                     FormattedText.Constraint = new Size(availableSize.Width, double.PositiveInfinity);
                 }
-                else
+                else 
                 {
+                    if (FormattedText == null)
+                        return Size.Infinity;   // ankr
                     FormattedText.Constraint = Size.Infinity;
                 }
 

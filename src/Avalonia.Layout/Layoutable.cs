@@ -319,7 +319,8 @@ namespace Avalonia.Layout
 
                 if (IsInvalidSize(desiredSize))
                 {
-                    throw new InvalidOperationException("Invalid size returned for Measure.");
+                    return; // ankr
+                    // throw new InvalidOperationException("Invalid size returned for Measure.");
                 }
 
                 DesiredSize = desiredSize;
@@ -459,17 +460,17 @@ namespace Avalonia.Layout
                 var height = measured.Height;
 
                 if (!double.IsNaN(Width))
-                {
                     width = Width;
-                }
+                else if (double.IsNaN(width))
+                    width = constrained.Width;      // ankr !!
 
                 width = Math.Min(width, MaxWidth);
                 width = Math.Max(width, MinWidth);
 
                 if (!double.IsNaN(Height))
-                {
                     height = Height;
-                }
+                else if (double.IsNaN(height))
+                    height = constrained.Height;    // ankr !!
 
                 height = Math.Min(height, MaxHeight);
                 height = Math.Max(height, MinHeight);
@@ -547,10 +548,10 @@ namespace Avalonia.Layout
                 if (UseLayoutRounding)
                 {
                     size = new Size(
-                        Math.Ceiling(size.Width * scale) / scale, 
+                        Math.Ceiling(size.Width * scale) / scale,
                         Math.Ceiling(size.Height * scale) / scale);
                     availableSizeMinusMargins = new Size(
-                        Math.Ceiling(availableSizeMinusMargins.Width * scale) / scale, 
+                        Math.Ceiling(availableSizeMinusMargins.Width * scale) / scale,
                         Math.Ceiling(availableSizeMinusMargins.Height * scale) / scale);
                 }
 
@@ -674,7 +675,7 @@ namespace Avalonia.Layout
 
         private double GetLayoutScale()
         {
-            var result =  (VisualRoot as ILayoutRoot)?.LayoutScaling ?? 1.0;
+            var result = (VisualRoot as ILayoutRoot)?.LayoutScaling ?? 1.0;
 
             if (result == 0 || double.IsNaN(result) || double.IsInfinity(result))
             {

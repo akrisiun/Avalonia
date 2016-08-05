@@ -52,7 +52,7 @@ namespace Avalonia.Markup.Xaml.Styling
         {
             if (Source != null)
             {
-                Loaded.Attach(control, container);
+                Loaded?.Attach(control, container);
             }
         }
 
