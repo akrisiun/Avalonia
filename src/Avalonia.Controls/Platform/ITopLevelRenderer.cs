@@ -45,7 +45,7 @@ namespace Avalonia.Controls.Platform
             topLevel.Closed += delegate
             {
                 foreach (var disposable in resources)
-                    disposable.Dispose();
+                    disposable?.Dispose();
                 resources.Clear();
             };
 

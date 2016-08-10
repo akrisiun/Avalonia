@@ -41,41 +41,29 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Avalonia.Animation\Avalonia.Animation.csproj">
-      <Project>{d211e587-d8bc-45b9-95a4-f297c8fa5200}</Project>
-      <Name>Avalonia.Animation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Base\Avalonia.Base.csproj">
-      <Project>{B09B78D8-9B26-48B0-9149-D64A2F120F3F}</Project>
-      <Name>Avalonia.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Controls\Avalonia.Controls.csproj">
+    <ProjectReference Include="..\Avalonia.Controls\Avalonia.Controls.Merge.csproj">
       <Project>{D2221C82-4A25-4583-9B43-D791E3F6820C}</Project>
-      <Name>Avalonia.Controls</Name>
+      <Name>Avalonia.Controls.Merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Input\Avalonia.Input.csproj">
-      <Project>{62024B2D-53EB-4638-B26B-85EEAA54866E}</Project>
-      <Name>Avalonia.Input</Name>
+    <ProjectReference Include="..\Avalonia.Core.csproj">
+      <Project>{877d4d64-a729-4dff-80e4-ef951b57eb33}</Project>
+      <Name>Avalonia.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Interactivity\Avalonia.Interactivity.csproj">
-      <Project>{6B0ED19D-A08B-461C-A9D9-A9EE40B0C06B}</Project>
-      <Name>Avalonia.Interactivity</Name>
+    <ProjectReference Include="..\Avalonia.ReactiveUI\Avalonia.ReactiveUI.merge.csproj">
+      <Project>{b7f1500b-35e6-4ef9-b28e-41c3c851a773}</Project>
+      <Name>Avalonia.ReactiveUI.merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Layout\Avalonia.Layout.csproj">
-      <Project>{42472427-4774-4C81-8AFF-9F27B8E31721}</Project>
-      <Name>Avalonia.Layout</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.SceneGraph\Avalonia.SceneGraph.csproj">
-      <Project>{EB582467-6ABB-43A1-B052-E981BA910E3A}</Project>
-      <Name>Avalonia.SceneGraph</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Styling\Avalonia.Styling.csproj">
-      <Project>{F1BAA01A-F176-4C6A-B39D-5B40BB1B148F}</Project>
-      <Name>Avalonia.Styling</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Themes.Default\Avalonia.Themes.Default.csproj">
+    <ProjectReference Include="..\Avalonia.Themes.Default\Avalonia.Themes.Default.Merge.csproj">
       <Project>{3E10A5FA-E8DA-48B1-AD44-6A5B6CB7750F}</Project>
-      <Name>Avalonia.Themes.Default</Name>
+      <Name>Avalonia.Themes.Default.Merge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Markup\Avalonia.Markup.Xaml\Avalonia.Markup.Xaml.M.csproj">
+      <Project>{dea0e3f7-3b50-4827-aa55-1405c35f9808}</Project>
+      <Name>Avalonia.Markup.Xaml.M</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Markup\Avalonia.Markup\Avalonia.Markup.Merge.csproj">
+      <Project>{4ef3baf8-05bd-4100-9e76-1d6e9326e98f}</Project>
+      <Name>Avalonia.Markup.Merge</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -90,21 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.Reactive.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Reactive.Core.3.0.0\lib\netstandard1.1\System.Reactive.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Reactive.Interfaces, Version=3.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Reactive.Interfaces.3.0.0\lib\netstandard1.0\System.Reactive.Interfaces.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Reactive.Linq, Version=3.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Reactive.Linq.3.0.0\lib\netstandard1.1\System.Reactive.Linq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Reactive.PlatformServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Reactive.PlatformServices.3.0.0\lib\netstandard1.0\System.Reactive.PlatformServices.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="SharpDx.Reactive">
+      <HintPath>..\..\lib\SharpDx.Reactive.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

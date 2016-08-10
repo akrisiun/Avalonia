@@ -28,10 +28,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Avalonia.Core, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\Avalonia.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Serilog.1.5.14\lib\net45\Serilog.dll</HintPath>
       <Private>True</Private>
@@ -40,9 +36,12 @@
       <HintPath>..\..\packages\Serilog.1.5.14\lib\net45\Serilog.FullNetFx.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sharp.Reactive, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SharpDx.Reactive, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\merge\Sharp.Reactive.dll</HintPath>
+      <HintPath>..\..\lib\SharpDx.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="Sprache">
+      <HintPath>..\..\lib\Sprache.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,40 +63,33 @@
     <Compile Include="TestApplicationShared\Node.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\src\Avalonia.Controls\Avalonia.Controls.Merge.csproj">
-      <Project>{D2221C82-4A25-4583-9B43-D791E3F6820C}</Project>
+      <Project>{d2221c82-4a25-4583-9b43-d791e3f6820c}</Project>
       <Name>Avalonia.Controls.Merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Avalonia.Layout\Avalonia.Layout.Merge.csproj">
-      <Project>{1626aea3-122a-4b8a-bb6e-76bac02a28ca}</Project>
-      <Name>Avalonia.Layout.Merge</Name>
+    <ProjectReference Include="..\..\src\Avalonia.Core.csproj">
+      <Project>{877d4d64-a729-4dff-80e4-ef951b57eb33}</Project>
+      <Name>Avalonia.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Avalonia.ReactiveUI\Avalonia.ReactiveUI.merge.csproj">
       <Project>{b7f1500b-35e6-4ef9-b28e-41c3c851a773}</Project>
       <Name>Avalonia.ReactiveUI.merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Avalonia.Styling\Avalonia.Styling.Merge.csproj">
-      <Project>{c630dddb-ba43-4481-bd15-baef988f6de0}</Project>
-      <Name>Avalonia.Styling.Merge</Name>
+    <ProjectReference Include="..\..\src\Avalonia.Themes.Default\Avalonia.Themes.Default.Merge.csproj">
+      <Project>{3e10a5fa-e8da-48b1-ad44-6a5b6cb7750f}</Project>
+      <Name>Avalonia.Themes.Default.Merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Avalonia.Themes.Default\Avalonia.Themes.Default.csproj">
-      <Project>{3E10A5FA-E8DA-48B1-AD44-6A5B6CB7750F}</Project>
-      <Name>Avalonia.Themes.Default</Name>
+    <ProjectReference Include="..\..\src\Markup\Avalonia.Markup.Xaml\Avalonia.Markup.Xaml.M.csproj">
+      <Project>{dea0e3f7-3b50-4827-aa55-1405c35f9808}</Project>
+      <Name>Avalonia.Markup.Xaml.M</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Markup\Avalonia.Markup.Xaml\Avalonia.Markup.Xaml.Merge.csproj">
-      <Project>{3e53a01a-b331-47f3-b828-4a5717e77a24}</Project>
-      <Name>Avalonia.Markup.Xaml.Merge</Name>
+    <ProjectReference Include="..\..\src\Windows\Avalonia.Direct2D1\Avalonia.Direct2D1.Merge.csproj">
+      <Project>{3e908f67-5543-4879-a1dc-08eace79b3cd}</Project>
+      <Name>Avalonia.Direct2D1.Merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Markup\Avalonia.Markup\Avalonia.Markup.Merge.csproj">
-      <Project>{4ef3baf8-05bd-4100-9e76-1d6e9326e98f}</Project>
-      <Name>Avalonia.Markup.Merge</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Windows\Avalonia.Win32\Avalonia.Win32.csproj">
-      <Project>{811A76CF-1CF6-440F-963B-BBE31BD72A82}</Project>
-      <Name>Avalonia.Win32</Name>
+    <ProjectReference Include="..\..\src\Windows\Avalonia.Win32\Avalonia.Win32.Merge.csproj">
+      <Project>{811a76cf-1cf6-440f-963b-bbe31bd72a82}</Project>
+      <Name>Avalonia.Win32.Merge</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

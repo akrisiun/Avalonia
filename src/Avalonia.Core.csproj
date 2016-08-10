@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{877D4D64-A729-4DFF-80E4-EF951B57EB33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalonia.Core</RootNamespace>
+    <AssemblyName>Avalonia.Core</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Avalonia.Animation\Animatable.cs" />
+    <Compile Include="Avalonia.Animation\Animate.cs" />
+    <Compile Include="Avalonia.Animation\Animation.cs" />
+    <Compile Include="Avalonia.Animation\AnimationExtensions.cs" />
+    <Compile Include="Avalonia.Animation\Animation`1.cs" />
+    <Compile Include="Avalonia.Animation\IEasing.cs" />
+    <Compile Include="Avalonia.Animation\IEasing`1.cs" />
+    <Compile Include="Avalonia.Animation\LinearDoubleEasing.cs" />
+    <Compile Include="Avalonia.Animation\LinearEasing.cs" />
+    <Compile Include="Avalonia.Animation\PropertyTransition.cs" />
+    <Compile Include="Avalonia.Animation\PropertyTransitions.cs" />
+    <Compile Include="Avalonia.Base\AttachedProperty.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaDisposable.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaInternalException.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaLocator.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaObject.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaObjectExtensions.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaProperty.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaPropertyChangedEventArgs.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaPropertyRegistry.cs" />
+    <Compile Include="Avalonia.Base\AvaloniaProperty`1.cs" />
+    <Compile Include="Avalonia.Base\Collections\AvaloniaDictionary.cs" />
+    <Compile Include="Avalonia.Base\Collections\AvaloniaList.cs" />
+    <Compile Include="Avalonia.Base\Collections\AvaloniaListExtensions.cs" />
+    <Compile Include="Avalonia.Base\Collections\IAvaloniaList.cs" />
+    <Compile Include="Avalonia.Base\Collections\IAvaloniaReadOnlyList.cs" />
+    <Compile Include="Avalonia.Base\Contract.cs" />
+    <Compile Include="Avalonia.Base\Data\AssignBindingAttribute.cs" />
+    <Compile Include="Avalonia.Base\Data\BindingError.cs" />
+    <Compile Include="Avalonia.Base\Data\BindingMode.cs" />
+    <Compile Include="Avalonia.Base\Data\BindingOperations.cs" />
+    <Compile Include="Avalonia.Base\Data\BindingPriority.cs" />
+    <Compile Include="Avalonia.Base\Data\IBinding.cs" />
+    <Compile Include="Avalonia.Base\Data\IndexerBinding.cs" />
+    <Compile Include="Avalonia.Base\Data\IndexerDescriptor.cs" />
+    <Compile Include="Avalonia.Base\Data\InstancedBinding.cs" />
+    <Compile Include="Avalonia.Base\Data\IValidationStatus.cs" />
+    <Compile Include="Avalonia.Base\Data\ObjectValidationStatus.cs" />
+    <Compile Include="Avalonia.Base\Diagnostics\AvaloniaObjectExtensions.cs" />
+    <Compile Include="Avalonia.Base\Diagnostics\AvaloniaPropertyValue.cs" />
+    <Compile Include="Avalonia.Base\Diagnostics\IAvaloniaObjectDebug.cs" />
+    <Compile Include="Avalonia.Base\Diagnostics\INotifyCollectionChangedDebug.cs" />
+    <Compile Include="Avalonia.Base\DirectProperty.cs" />
+    <Compile Include="Avalonia.Base\DirectPropertyMetadata`1.cs" />
+    <Compile Include="Avalonia.Base\IAvaloniaObject.cs" />
+    <Compile Include="Avalonia.Base\IDescription.cs" />
+    <Compile Include="Avalonia.Base\IDirectPropertyAccessor.cs" />
+    <Compile Include="Avalonia.Base\IDirectPropertyMetadata.cs" />
+    <Compile Include="Avalonia.Base\IPriorityValueOwner.cs" />
+    <Compile Include="Avalonia.Base\IStyledPropertyAccessor.cs" />
+    <Compile Include="Avalonia.Base\IStyledPropertyMetadata.cs" />
+    <Compile Include="Avalonia.Base\ISupportInitialize.cs" />
+    <Compile Include="Avalonia.Base\Logging\ILogSink.cs" />
+    <Compile Include="Avalonia.Base\Logging\LogArea.cs" />
+    <Compile Include="Avalonia.Base\Logging\LogEventLevel.cs" />
+    <Compile Include="Avalonia.Base\Logging\Logger.cs" />
+    <Compile Include="Avalonia.Base\Metadata\ContentAttribute.cs" />
+    <Compile Include="Avalonia.Base\Metadata\DependsOnAttribute.cs" />
+    <Compile Include="Avalonia.Base\Metadata\XmlnsDefinitionAttribute.cs" />
+    <Compile Include="Avalonia.Base\Platform\IAssetLoader.cs" />
+    <Compile Include="Avalonia.Base\Platform\IPclPlatformWrapper.cs" />
+    <Compile Include="Avalonia.Base\Platform\IPlatformHandle.cs" />
+    <Compile Include="Avalonia.Base\Platform\IPlatformThreadingInterface.cs" />
+    <Compile Include="Avalonia.Base\Platform\PlatformHandle.cs" />
+    <Compile Include="Avalonia.Base\PriorityBindingEntry.cs" />
+    <Compile Include="Avalonia.Base\PriorityLevel.cs" />
+    <Compile Include="Avalonia.Base\PriorityValue.cs" />
+    <Compile Include="Avalonia.Base\PropertyMetadata.cs" />
+    <Compile Include="Avalonia.Base\Reactive\AnonymousSubject`1.cs" />
+    <Compile Include="Avalonia.Base\Reactive\AnonymousSubject`2.cs" />
+    <Compile Include="Avalonia.Base\Reactive\AvaloniaObservable.cs" />
+    <Compile Include="Avalonia.Base\Reactive\ObservableEx.cs" />
+    <Compile Include="Avalonia.Base\Reactive\WeakPropertyChangedObservable.cs" />
+    <Compile Include="Avalonia.Base\StyledProperty.cs" />
+    <Compile Include="Avalonia.Base\StyledPropertyBase.cs" />
+    <Compile Include="Avalonia.Base\StyledPropertyMetadata`1.cs" />
+    <Compile Include="Avalonia.Base\Threading\AvaloniaScheduler.cs" />
+    <Compile Include="Avalonia.Base\Threading\AvaloniaSynchronizationContext.cs" />
+    <Compile Include="Avalonia.Base\Threading\Dispatcher.cs" />
+    <Compile Include="Avalonia.Base\Threading\DispatcherPriority.cs" />
+    <Compile Include="Avalonia.Base\Threading\DispatcherTimer.cs" />
+    <Compile Include="Avalonia.Base\Threading\JobRunner.cs" />
+    <Compile Include="Avalonia.Base\Threading\SingleThreadDispatcher.cs" />
+    <Compile Include="Avalonia.Base\Utilities\IWeakSubscriber.cs" />
+    <Compile Include="Avalonia.Base\Utilities\MathUtilities.cs" />
+    <Compile Include="Avalonia.Base\Utilities\TypeUtilities.cs" />
+    <Compile Include="Avalonia.Base\Utilities\WeakSubscriptionManager.cs" />
+    <Compile Include="Avalonia.Base\Utilities\WeakTimer.cs" />
+    <Compile Include="Avalonia.Input\AccessKeyHandler.cs" />
+    <Compile Include="Avalonia.Input\Cursors.cs" />
+    <Compile Include="Avalonia.Input\FocusManager.cs" />
+    <Compile Include="Avalonia.Input\Gestures.cs" />
+    <Compile Include="Avalonia.Input\GotFocusEventArgs.cs" />
+    <Compile Include="Avalonia.Input\IAccessKeyHandler.cs" />
+    <Compile Include="Avalonia.Input\ICloseable.cs" />
+    <Compile Include="Avalonia.Input\IFocusManager.cs" />
+    <Compile Include="Avalonia.Input\IFocusScope.cs" />
+    <Compile Include="Avalonia.Input\IInputDevice.cs" />
+    <Compile Include="Avalonia.Input\IInputElement.cs" />
+    <Compile Include="Avalonia.Input\IInputManager.cs" />
+    <Compile Include="Avalonia.Input\IInputRoot.cs" />
+    <Compile Include="Avalonia.Input\IKeyboardDevice.cs" />
+    <Compile Include="Avalonia.Input\IKeyboardNavigationHandler.cs" />
+    <Compile Include="Avalonia.Input\IMainMenu.cs" />
+    <Compile Include="Avalonia.Input\IMouseDevice.cs" />
+    <Compile Include="Avalonia.Input\INavigableContainer.cs" />
+    <Compile Include="Avalonia.Input\InputElement.cs" />
+    <Compile Include="Avalonia.Input\InputExtensions.cs" />
+    <Compile Include="Avalonia.Input\InputManager.cs" />
+    <Compile Include="Avalonia.Input\IPointerDevice.cs" />
+    <Compile Include="Avalonia.Input\Key.cs" />
+    <Compile Include="Avalonia.Input\KeyBinding.cs" />
+    <Compile Include="Avalonia.Input\KeyboardDevice.cs" />
+    <Compile Include="Avalonia.Input\KeyboardNavigation.cs" />
+    <Compile Include="Avalonia.Input\KeyboardNavigationHandler.cs" />
+    <Compile Include="Avalonia.Input\KeyboardNavigationMode.cs" />
+    <Compile Include="Avalonia.Input\KeyEventArgs.cs" />
+    <Compile Include="Avalonia.Input\KeyGesture.cs" />
+    <Compile Include="Avalonia.Input\MouseDevice.cs" />
+    <Compile Include="Avalonia.Input\NavigationDirection.cs" />
+    <Compile Include="Avalonia.Input\NavigationMethod.cs" />
+    <Compile Include="Avalonia.Input\Navigation\DirectionalNavigation.cs" />
+    <Compile Include="Avalonia.Input\Navigation\FocusExtensions.cs" />
+    <Compile Include="Avalonia.Input\Navigation\TabNavigation.cs" />
+    <Compile Include="Avalonia.Input\Platform\IClipboard.cs" />
+    <Compile Include="Avalonia.Input\Platform\IStandardCursorFactory.cs" />
+    <Compile Include="Avalonia.Input\PointerEventArgs.cs" />
+    <Compile Include="Avalonia.Input\PointerWheelEventArgs.cs" />
+    <Compile Include="Avalonia.Input\Raw\RawInputEventArgs.cs" />
+    <Compile Include="Avalonia.Input\Raw\RawKeyEventArgs.cs" />
+    <Compile Include="Avalonia.Input\Raw\RawMouseEventArgs.cs" />
+    <Compile Include="Avalonia.Input\Raw\RawMouseWheelEventArgs.cs" />
+    <Compile Include="Avalonia.Input\Raw\RawSizeEventArgs.cs" />
+    <Compile Include="Avalonia.Input\Raw\RawTextInputEventArgs.cs" />
+    <Compile Include="Avalonia.Input\TextInputEventArgs.cs" />
+    <Compile Include="Avalonia.Input\VectorEventArgs.cs" />
+    <Compile Include="Avalonia.Interactivity\EventSubscription.cs" />
+    <Compile Include="Avalonia.Interactivity\IInteractive.cs" />
+    <Compile Include="Avalonia.Interactivity\Interactive.cs" />
+    <Compile Include="Avalonia.Interactivity\InteractiveExtensions.cs" />
+    <Compile Include="Avalonia.Interactivity\RoutedEvent.cs" />
+    <Compile Include="Avalonia.Interactivity\RoutedEventArgs.cs" />
+    <Compile Include="Avalonia.Layout\ILayoutable.cs" />
+    <Compile Include="Avalonia.Layout\ILayoutManager.cs" />
+    <Compile Include="Avalonia.Layout\ILayoutRoot.cs" />
+    <Compile Include="Avalonia.Layout\Layoutable.cs" />
+    <Compile Include="Avalonia.Layout\LayoutHelper.cs" />
+    <Compile Include="Avalonia.Layout\LayoutManager.cs" />
+    <Compile Include="Avalonia.SceneGraph\Animation\CrossFade.cs" />
+    <Compile Include="Avalonia.SceneGraph\Animation\IPageTransition.cs" />
+    <Compile Include="Avalonia.SceneGraph\Animation\PageSlide.cs" />
+    <Compile Include="Avalonia.SceneGraph\INamed.cs" />
+    <Compile Include="Avalonia.SceneGraph\Matrix.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\AlignmentX.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\AlignmentY.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\ArcSegment.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\BezierSegment .cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Brush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Brushes.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\BrushMappingMode.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Color.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Colors.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\DashStyle.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\DrawingContext.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\EllipseGeometry.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\FillRule.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\FontStyle.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\FontWeight.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\FormattedText.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\FormattedTextLine.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Geometry.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\GradientBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\GradientSpreadMethod.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\GradientStop.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\IBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\IDrawingContext.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\ImageBush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Imaging\Bitmap.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Imaging\IBitmap.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Imaging\RenderTargetBitmap.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\ISolidColorBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\LinearGradientBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\LineGeometry.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\LineSegment.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\MatrixTransform.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\MediaExtensions.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Mutable\SolidColorBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PathFigure.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PathGeometry.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PathGeometryCollections.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PathMarkupParser.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PathSegment.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Pen.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PenLineCap.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PenLineJoin.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\PolylineGeometry.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\QuadraticBezierSegment .cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\RadialGradientBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\RectangleGeometry.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\RotateTransform.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\ScaleTransform.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\SolidColorBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\StreamGeometry.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\StreamGeometryContext.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Stretch.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\SweepDirection.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\TextAlignment.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\TextHitTestResult.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\TextWrapping.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\TileBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\Transform.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\TransformGroup.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\TranslateTransform.cs" />
+    <Compile Include="Avalonia.SceneGraph\Media\VisualBrush.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IBitmapImpl.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IFormattedTextImpl.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IGeometryImpl.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IPlatformRenderInterface.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IPlatformSettings.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IRenderTarget.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IRenderTargetBitmapImpl.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IStreamGeometryContextImpl.cs" />
+    <Compile Include="Avalonia.SceneGraph\Platform\IStreamGeometryImpl.cs" />
+    <Compile Include="Avalonia.SceneGraph\Point.cs" />
+    <Compile Include="Avalonia.SceneGraph\Properties\AssemblyInfo.cs" />
+    <Compile Include="Avalonia.SceneGraph\Rect.cs" />
+    <Compile Include="Avalonia.SceneGraph\RelativePoint.cs" />
+    <Compile Include="Avalonia.SceneGraph\RelativeRect.cs" />
+    <Compile Include="Avalonia.SceneGraph\Rendering\IRenderQueueManager.cs" />
+    <Compile Include="Avalonia.SceneGraph\Rendering\IRenderRoot.cs" />
+    <Compile Include="Avalonia.SceneGraph\Rendering\RendererMixin.cs" />
+    <Compile Include="Avalonia.SceneGraph\Rendering\RenderQueueManager.cs" />
+    <Compile Include="Avalonia.SceneGraph\Size.cs" />
+    <Compile Include="Avalonia.SceneGraph\Thickness.cs" />
+    <Compile Include="Avalonia.SceneGraph\Vector.cs" />
+    <Compile Include="Avalonia.SceneGraph\Visual.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualExtensions.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualTreeAttachmentEventArgs.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualTree\BoundsTracker.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualTree\IHostedVisualTreeRoot.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualTree\IVisual.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualTree\IVisualTreeHost.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualTree\TransformedBounds.cs" />
+    <Compile Include="Avalonia.SceneGraph\VisualTree\VisualExtensions.cs" />
+    <Compile Include="Avalonia.Styling\Controls\INameScope.cs" />
+    <Compile Include="Avalonia.Styling\Controls\NameScope.cs" />
+    <Compile Include="Avalonia.Styling\Controls\NameScopeEventArgs.cs" />
+    <Compile Include="Avalonia.Styling\Controls\NameScopeExtensions.cs" />
+    <Compile Include="Avalonia.Styling\LogicalTree\ILogical.cs" />
+    <Compile Include="Avalonia.Styling\LogicalTree\LogicalExtensions.cs" />
+    <Compile Include="Avalonia.Styling\LogicalTree\LogicalTreeAttachmentEventArgs.cs" />
+    <Compile Include="Avalonia.Styling\Styling\ActivatedObservable.cs" />
+    <Compile Include="Avalonia.Styling\Styling\ActivatedSubject.cs" />
+    <Compile Include="Avalonia.Styling\Styling\ActivatedValue.cs" />
+    <Compile Include="Avalonia.Styling\Styling\ChildSelector.cs" />
+    <Compile Include="Avalonia.Styling\Styling\DescendentSelector.cs" />
+    <Compile Include="Avalonia.Styling\Styling\IGlobalStyles.cs" />
+    <Compile Include="Avalonia.Styling\Styling\ISetter.cs" />
+    <Compile Include="Avalonia.Styling\Styling\IStyle.cs" />
+    <Compile Include="Avalonia.Styling\Styling\IStyleable.cs" />
+    <Compile Include="Avalonia.Styling\Styling\IStyleHost.cs" />
+    <Compile Include="Avalonia.Styling\Styling\IStyler.cs" />
+    <Compile Include="Avalonia.Styling\Styling\IStyleRoot.cs" />
+    <Compile Include="Avalonia.Styling\Styling\ITemplate.cs" />
+    <Compile Include="Avalonia.Styling\Styling\ITemplatedControl.cs" />
+    <Compile Include="Avalonia.Styling\Styling\PropertyEqualsSelector.cs" />
+    <Compile Include="Avalonia.Styling\Styling\Selector.cs" />
+    <Compile Include="Avalonia.Styling\Styling\SelectorMatch.cs" />
+    <Compile Include="Avalonia.Styling\Styling\Selectors.cs" />
+    <Compile Include="Avalonia.Styling\Styling\Setter.cs" />
+    <Compile Include="Avalonia.Styling\Styling\Style.cs" />
+    <Compile Include="Avalonia.Styling\Styling\StyleActivator.cs" />
+    <Compile Include="Avalonia.Styling\Styling\StyleExtensions.cs" />
+    <Compile Include="Avalonia.Styling\Styling\Styler.cs" />
+    <Compile Include="Avalonia.Styling\Styling\Styles.cs" />
+    <Compile Include="Avalonia.Styling\Styling\TemplateSelector.cs" />
+    <Compile Include="Avalonia.Styling\Styling\TypeNameAndClassSelector.cs" />
+    <Compile Include="Shared\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations.PCL328, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\JetBrains.Annotations.PCL328.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDx.Reactive">
+      <HintPath>..\lib\SharpDx.Reactive.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Avalonia.Animation\packages.config" />
+    <None Include="Avalonia.Base\packages.config" />
+    <None Include="Avalonia.Base\Settings.StyleCop" />
+    <None Include="Avalonia.Input\packages.config" />
+    <None Include="Avalonia.Styling\Styling\packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

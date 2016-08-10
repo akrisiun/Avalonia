@@ -145,14 +145,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Avalonia.Animation\Avalonia.Animation.Merge.csproj">
-      <Project>{1432d50b-84b5-4806-b72c-def2e1d8663f}</Project>
-      <Name>Avalonia.Animation.Merge</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Base\Avalonia.Base.merge.csproj">
-      <Project>{1e17d0ee-dab7-4813-8075-069c37555e25}</Project>
-      <Name>Avalonia.Base.merge</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Avalonia.ReactiveUI\Avalonia.ReactiveUI.merge.csproj">
       <Project>{b7f1500b-35e6-4ef9-b28e-41c3c851a773}</Project>
       <Name>Avalonia.ReactiveUI.merge</Name>

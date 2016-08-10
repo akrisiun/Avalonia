@@ -38,11 +38,8 @@
     <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Avalonia.Core">
-      <HintPath>..\..\..\bin\Avalonia.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sharp.Reactive">
-      <HintPath>..\..\..\bin\Sharp.Reactive.dll</HintPath>
+    <Reference Include="SharpDx.Reactive">
+      <HintPath>..\..\..\lib\SharpDx.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,13 +76,9 @@
       <Project>{d2221c82-4a25-4583-9b43-d791e3f6820c}</Project>
       <Name>Avalonia.Controls.Merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Layout\Avalonia.Layout.Merge.csproj">
-      <Project>{1626aea3-122a-4b8a-bb6e-76bac02a28ca}</Project>
-      <Name>Avalonia.Layout.Merge</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Styling\Avalonia.Styling.Merge.csproj">
-      <Project>{c630dddb-ba43-4481-bd15-baef988f6de0}</Project>
-      <Name>Avalonia.Styling.Merge</Name>
+    <ProjectReference Include="..\..\Avalonia.Core.csproj">
+      <Project>{877d4d64-a729-4dff-80e4-ef951b57eb33}</Project>
+      <Name>Avalonia.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\Shared\PlatformSupport\PlatformSupport.projitems" Label="Shared" />

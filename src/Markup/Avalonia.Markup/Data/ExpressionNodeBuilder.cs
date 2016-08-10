@@ -6,7 +6,8 @@ using Avalonia.Markup.Data.Parsers;
 
 namespace Avalonia.Markup.Data
 {
-    internal static class ExpressionNodeBuilder
+    // internal
+    public static class ExpressionNodeBuilder
     {
         public static ExpressionNode Build(string expression, bool enableValidation = false)
         {

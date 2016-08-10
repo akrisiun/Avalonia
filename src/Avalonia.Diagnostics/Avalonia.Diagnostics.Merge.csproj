@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7062AE20-5DCC-4442-9645-8195BDECE63E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalonia.Diagnostics</RootNamespace>
+    <AssemblyName>Avalonia.Diagnostics</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Avalonia.Diagnostics.XML</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Avalonia.Diagnostics.XML</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Avalonia.Controls\Avalonia.Controls.Merge.csproj">
+      <Project>{D2221C82-4A25-4583-9B43-D791E3F6820C}</Project>
+      <Name>Avalonia.Controls.Merge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalonia.Core.csproj">
+      <Project>{877d4d64-a729-4dff-80e4-ef951b57eb33}</Project>
+      <Name>Avalonia.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalonia.ReactiveUI\Avalonia.ReactiveUI.merge.csproj">
+      <Project>{b7f1500b-35e6-4ef9-b28e-41c3c851a773}</Project>
+      <Name>Avalonia.ReactiveUI.merge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Avalonia.Themes.Default\Avalonia.Themes.Default.Merge.csproj">
+      <Project>{3e10a5fa-e8da-48b1-ad44-6a5b6cb7750f}</Project>
+      <Name>Avalonia.Themes.Default.Merge</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="LogManager.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewLocator.cs" />
+    <Compile Include="ViewModels\DevToolsViewModel.cs" />
+    <Compile Include="ViewModels\TreePageViewModel.cs" />
+    <Compile Include="ViewModels\PropertyDetails.cs" />
+    <Compile Include="ViewModels\ControlDetailsViewModel.cs" />
+    <Compile Include="ViewModels\LogicalTreeNode.cs" />
+    <Compile Include="ViewModels\TreeNode.cs" />
+    <Compile Include="ViewModels\VisualTreeNode.cs" />
+    <Compile Include="Views\SimpleGrid.cs" />
+    <Compile Include="Views\TreePage.xaml.cs">
+      <DependentUpon>TreePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DevTools.xaml.cs">
+      <DependentUpon>DevTools.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControlDetailsView.cs" />
+    <Compile Include="Views\GridRepeater.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <EmbeddedResource Include="DevTools.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TreePageView.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SharpDx.Reactive">
+      <HintPath>..\..\lib\SharpDx.Reactive.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

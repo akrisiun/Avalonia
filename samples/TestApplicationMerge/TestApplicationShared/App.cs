@@ -20,7 +20,7 @@ namespace TestApplication
 
             var loader = new AvaloniaXamlLoader();
             var baseLight = (IStyle)loader.Load(
-                new Uri("resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.Default"));
+                new Uri("resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.DefaultM"));
             Styles.Add(baseLight);
 
             Styles.Add(new SampleTabStyle());

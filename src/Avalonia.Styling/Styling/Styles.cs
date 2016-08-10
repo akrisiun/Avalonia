@@ -4,7 +4,18 @@
 using System.Linq;
 using Avalonia.Collections;
 
-namespace Avalonia.Styling
+namespace Avalonia.Animation
+{
+    public class Styles : Avalonia.Styling.Styles
+    {
+        public Styles()
+        {
+
+        }
+    }
+}
+
+   namespace Avalonia.Styling
 {
     /// <summary>
     /// A style that consists of a number of child styles.

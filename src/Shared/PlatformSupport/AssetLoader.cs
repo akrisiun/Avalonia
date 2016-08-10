@@ -130,6 +130,9 @@ namespace Avalonia.Shared.PlatformSupport
                 return _defaultAssembly;
             }
 
+            if (name == "Avalonia.Themes.Default")
+                name = "Avalonia.Themes.DefaultM";
+
             AssemblyDescriptor rv;
             if (!AssemblyNameCache.TryGetValue(name, out rv))
             {
@@ -178,7 +181,8 @@ namespace Avalonia.Shared.PlatformSupport
 
             public Stream GetStream()
             {
-                return _asm.GetManifestResourceStream(_name);
+                var stream = _asm.GetManifestResourceStream(_name);
+                return stream;
             }
         }
 

@@ -16,7 +16,9 @@ using Avalonia.Shared.PlatformSupport;
 using Avalonia.Win32.Input;
 using Avalonia.Win32.Interop;
 using Avalonia.Controls;
+
 using System.IO;
+using System.Diagnostics;
 
 namespace Avalonia
 {
@@ -24,7 +26,9 @@ namespace Avalonia
     {
         public static AppBuilder UseWin32(this AppBuilder builder)
         {
-            builder.WindowingSubsystem = Avalonia.Win32.Win32Platform.Initialize;
+            // var init = Avalonia.Win32.Win32Platform.Initialize as Action; // <string>;
+            Avalonia.Win32.Win32Platform.Initialize();
+            //builder.WindowingSubsystem = init;
             return builder;
         }
     }
@@ -48,14 +52,30 @@ namespace Avalonia.Win32
                 UnmanagedMethods.SetProcessDpiAwareness(UnmanagedMethods.PROCESS_DPI_AWARENESS.PROCESS_PER_MONITOR_DPI_AWARE);
             }
 
-            CreateMessageWindow();
         }
+
+        public static object lockMessages = new object();
+        public static bool hasMessages = false;
 
         public Size DoubleClickSize => new Size(
             UnmanagedMethods.GetSystemMetrics(UnmanagedMethods.SystemMetric.SM_CXDOUBLECLK),
             UnmanagedMethods.GetSystemMetrics(UnmanagedMethods.SystemMetric.SM_CYDOUBLECLK));
 
         public TimeSpan DoubleClickTime => TimeSpan.FromMilliseconds(UnmanagedMethods.GetDoubleClickTime());
+
+        public void InitializeLocator()
+        {
+            lock (lockMessages)
+            {
+                if (!hasMessages)
+                {
+                    hasMessages = true;
+                    CreateMessageWindow();
+                }
+            }
+
+            Initialize();
+        }
 
         public static void Initialize()
         {
@@ -93,9 +113,24 @@ namespace Avalonia.Win32
             while (!cancellationToken.IsCancellationRequested)
             {
                 UnmanagedMethods.MSG msg;
-                UnmanagedMethods.GetMessage(out msg, IntPtr.Zero, 0, 0);
-                UnmanagedMethods.TranslateMessage(ref msg);
-                UnmanagedMethods.DispatchMessage(ref msg);
+                try
+                {
+                    UnmanagedMethods.GetMessage(out msg, IntPtr.Zero, 0, 0);
+                    UnmanagedMethods.TranslateMessage(ref msg);
+
+                    UnmanagedMethods.DispatchMessage(ref msg);
+                }
+                catch (Exception ex)
+                {
+                    //                    Managed Debugging Assistant 'CallbackOnCollectedDelegate' has detected a problem in TestApplicationMerge.vshost.exe'.
+
+                    //Additional information: A callback was made on a garbage collected delegate of type 'Avalonia.Win32M!Avalonia.Win32.Interop.UnmanagedMethods+WndProc::Invoke'.
+                    // This may cause application crashes, corruption and data loss.
+                    //When passing delegates to unmanaged code, they must be kept alive by the managed application until it is guaranteed that they will never be called.occurred
+
+                    Debugger.Log(0, "UnmanagedMethods.DispatchMessage", ex.Message);
+                    Console.WriteLine("UnmanagedMethods.DispatchMessage", ex.Message);
+                }
             }
         }
 
@@ -120,14 +155,14 @@ namespace Avalonia.Win32
             });
         }
 
-        private static readonly int SignalW = unchecked((int) 0xdeadbeaf);
+        private static readonly int SignalW = unchecked((int)0xdeadbeaf);
         private static readonly int SignalL = unchecked((int)0x12345678);
 
         public void Signal()
         {
             UnmanagedMethods.PostMessage(
                 _hwnd,
-                (int) UnmanagedMethods.WindowsMessage.WM_DISPATCH_WORK_ITEM,
+                (int)UnmanagedMethods.WindowsMessage.WM_DISPATCH_WORK_ITEM,
                 new IntPtr(SignalW),
                 new IntPtr(SignalL));
         }
@@ -139,7 +174,7 @@ namespace Avalonia.Win32
         [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1305:FieldNamesMustNotUseHungarianNotation", Justification = "Using Win32 naming for consistency.")]
         private IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
         {
-            if (msg == (int) UnmanagedMethods.WindowsMessage.WM_DISPATCH_WORK_ITEM && wParam.ToInt64() == SignalW && lParam.ToInt64() == SignalL)
+            if (msg == (int)UnmanagedMethods.WindowsMessage.WM_DISPATCH_WORK_ITEM && wParam.ToInt64() == SignalW && lParam.ToInt64() == SignalL)
             {
                 Signaled?.Invoke();
             }

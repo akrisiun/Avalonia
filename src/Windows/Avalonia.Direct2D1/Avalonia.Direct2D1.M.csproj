@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E908F67-5543-4879-A1DC-08EACE79B3CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Avalonia.Direct2D1</RootNamespace>
+    <AssemblyName>Avalonia.Direct2D1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Avalonia.Direct2D1.XML</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Avalonia.Direct2D1.XML</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SharpDX, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SharpDX.3.0.2\lib\net45\SharpDX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SharpDX.Direct2D1.3.0.2\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=3.0.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SharpDX.DXGI.3.0.2\lib\net45\SharpDX.DXGI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Avalonia.Win32\Interop\UnmanagedMethods.cs">
+      <Link>UnmanagedMethods.cs</Link>
+    </Compile>
+    <Compile Include="Direct2D1Platform.cs" />
+    <Compile Include="Disposable.cs" />
+    <Compile Include="Media\BrushImpl.cs" />
+    <Compile Include="Media\BrushWrapper.cs" />
+    <Compile Include="Media\DrawingContext.cs" />
+    <Compile Include="Media\Imaging\RenderTargetBitmapImpl.cs" />
+    <Compile Include="Media\Imaging\BitmapImpl.cs" />
+    <Compile Include="Media\RadialGradientBrushImpl.cs" />
+    <Compile Include="Media\LinearGradientBrushImpl.cs" />
+    <Compile Include="Media\AvaloniaTextRenderer.cs" />
+    <Compile Include="Media\TileBrushImpl.cs" />
+    <Compile Include="Media\SolidColorBrushImpl.cs" />
+    <Compile Include="Media\StreamGeometryContextImpl.cs" />
+    <Compile Include="Media\GeometryImpl.cs" />
+    <Compile Include="Media\StreamGeometryImpl.cs" />
+    <Compile Include="Media\FormattedTextImpl.cs" />
+    <Compile Include="PrimitiveExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderTarget.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Avalonia.Animation\Avalonia.Animation.csproj">
+      <Project>{D211E587-D8BC-45B9-95A4-F297C8FA5200}</Project>
+      <Name>Avalonia.Animation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Avalonia.Controls\Avalonia.Controls.Merge.csproj">
+      <Project>{d2221c82-4a25-4583-9b43-d791e3f6820c}</Project>
+      <Name>Avalonia.Controls.Merge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Avalonia.Core.csproj">
+      <Project>{877d4d64-a729-4dff-80e4-ef951b57eb33}</Project>
+      <Name>Avalonia.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\..\Shared\RenderHelpers\RenderHelpers.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

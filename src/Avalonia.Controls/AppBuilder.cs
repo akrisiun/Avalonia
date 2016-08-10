@@ -19,12 +19,12 @@ namespace Avalonia.Controls
         /// <summary>
         /// Gets or sets a method to call the initialize the windowing subsystem.
         /// </summary>
-        public Action WindowingSubsystem { get; set; }
+        public Action<string> WindowingSubsystem { get; set; }
 
         /// <summary>
         /// Gets or sets a method to call the initialize the windowing subsystem.
         /// </summary>
-        public Action RenderingSubsystem { get; set; }
+        public Action<string> RenderingSubsystem { get; set; }
 
         /// <summary>
         /// Gets or sets a method to call before <see cref="Start{TMainWindow}"/> is called on the
@@ -99,7 +99,7 @@ namespace Avalonia.Controls
         /// </summary>
         /// <param name="initializer">The method to call to initialize the windowing subsystem.</param>
         /// <returns>An <see cref="AppBuilder"/> instance.</returns>
-        public AppBuilder UseWindowingSubsystem(Action initializer)
+        public AppBuilder UseWindowingSubsystem(Action<string> initializer)
         {
             WindowingSubsystem = initializer;
             return this;
@@ -110,14 +110,19 @@ namespace Avalonia.Controls
         /// </summary>
         /// <param name="dll">The dll in which to look for subsystem.</param>
         /// <returns>An <see cref="AppBuilder"/> instance.</returns>
-        public AppBuilder UseWindowingSubsystem(string dll) => UseWindowingSubsystem(GetInitializer(dll));
+        public AppBuilder UseWindowingSubsystem(string dll)
+        {
+            // (dll)
+            var build = UseWindowingSubsystem(GetInitializer);
+            return build;
+        }
 
         /// <summary>
         /// Specifies a rendering subsystem to use.
         /// </summary>
         /// <param name="initializer">The method to call to initialize the rendering subsystem.</param>
         /// <returns>An <see cref="AppBuilder"/> instance.</returns>
-        public AppBuilder UseRenderingSubsystem(Action initializer)
+        public AppBuilder UseRenderingSubsystem(Action<string> initializer)
         {
             RenderingSubsystem = initializer;
             return this;
@@ -128,32 +133,48 @@ namespace Avalonia.Controls
         /// </summary>
         /// <param name="dll">The dll in which to look for subsystem.</param>
         /// <returns>An <see cref="AppBuilder"/> instance.</returns>
-        public AppBuilder UseRenderingSubsystem(string dll) => UseRenderingSubsystem(GetInitializer(dll));
-
-        static Action GetInitializer(string assemblyName) => () =>
+        public AppBuilder UseRenderingSubsystem(string dll)
         {
-            var assembly = Assembly.Load(new AssemblyName(assemblyName));
-            var platformClassName = assemblyName.Replace("Avalonia.", string.Empty) + "Platform";
-            var platformClassFullName = assemblyName + "." + platformClassName;
-            var platformClass = assembly.GetType(platformClassFullName);
-            var init = platformClass.GetRuntimeMethod("Initialize", new Type[0]);
-            init.Invoke(null, null);
-        };
+            Action<string> get = GetInitializer ?? GetInitializerDefault;
+            return UseRenderingSubsystem(get);
+            // get(dll));
+        }
+
+        // public static Action GetInitializer(string assemblyName) => () =>
+        public static Action<string> GetInitializer { get; set; }
+
+        public static Action<string> GetInitializerDefault
+        {
+            get
+            {
+                return (assemblyName) =>
+                {
+                    var assembly = Assembly.Load(new AssemblyName(assemblyName));
+                    var platformClassName = assemblyName.Replace("Avalonia.", string.Empty) + "Platform";
+                    var platformClassFullName = assemblyName + "." + platformClassName;
+                    var platformClass = assembly.GetType(platformClassFullName);
+                    var init = platformClass.GetRuntimeMethod("Initialize", new Type[0]);
+
+                    init.Invoke(null, null);
+                };
+            }
+        }
 
         public AppBuilder UsePlatformDetect()
         {
             var platformId = (int)
-                ((dynamic) Type.GetType("System.Environment").GetRuntimeProperty("OSVersion").GetValue(null)).Platform;
-            if (platformId == 4 || platformId == 6)
-            {
-                UseRenderingSubsystem("Avalonia.Cairo");
-                UseWindowingSubsystem("Avalonia.Gtk");
-            }
-            else
-            {
-                UseRenderingSubsystem("Avalonia.Direct2D1");
-                UseWindowingSubsystem("Avalonia.Win32");
-            }
+                ((dynamic)Type.GetType("System.Environment").GetRuntimeProperty("OSVersion").GetValue(null)).Platform;
+
+            //if (platformId == 4 || platformId == 6)
+            //{
+            //    UseRenderingSubsystem("Avalonia.Cairo");
+            //    UseWindowingSubsystem("Avalonia.Gtk");
+            //}
+            //else
+            //{
+            UseRenderingSubsystem("Avalonia.Direct2D1");
+            UseWindowingSubsystem("Avalonia.Win32");
+            //}
             return this;
         }
 
@@ -178,8 +199,8 @@ namespace Avalonia.Controls
             }
 
             Instance.RegisterServices();
-            WindowingSubsystem();
-            RenderingSubsystem();
+            WindowingSubsystem(null);
+            RenderingSubsystem(null);
             Instance.Initialize();
         }
     }

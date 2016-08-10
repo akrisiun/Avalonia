@@ -158,3 +158,4 @@ nuget.exe
 lib/*.exe
 lib/*.dll
 lib/*.config
+tools/DotNet/

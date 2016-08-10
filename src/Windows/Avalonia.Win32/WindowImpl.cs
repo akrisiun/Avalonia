@@ -10,6 +10,8 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+
 using Avalonia.Controls;
 using Avalonia.Input.Raw;
 using Avalonia.Platform;
@@ -133,7 +135,7 @@ namespace Avalonia.Win32
             {
                 var placement = default(UnmanagedMethods.WINDOWPLACEMENT);
                 UnmanagedMethods.GetWindowPlacement(_hwnd, ref placement);
-                
+
                 switch (placement.ShowCmd)
                 {
                     case UnmanagedMethods.ShowWindowCommand.Maximize:
@@ -183,7 +185,7 @@ namespace Avalonia.Win32
         {
             if (value == _decorated)
                 return;
-            var style = (UnmanagedMethods.WindowStyles) UnmanagedMethods.GetWindowLong(_hwnd, -16);
+            var style = (UnmanagedMethods.WindowStyles)UnmanagedMethods.GetWindowLong(_hwnd, -16);
             style |= UnmanagedMethods.WindowStyles.WS_OVERLAPPEDWINDOW;
             if (!value)
                 style ^= UnmanagedMethods.WindowStyles.WS_OVERLAPPEDWINDOW;
@@ -194,7 +196,7 @@ namespace Avalonia.Win32
             Rect newRect;
             var oldThickness = BorderThickness;
 
-            UnmanagedMethods.SetWindowLong(_hwnd, -16, (uint) style);
+            UnmanagedMethods.SetWindowLong(_hwnd, -16, (uint)style);
             if (value)
             {
                 var thickness = BorderThickness;
@@ -210,8 +212,8 @@ namespace Avalonia.Win32
                     windowRect.top + oldThickness.Top,
                     (windowRect.right - windowRect.left) - (oldThickness.Left + oldThickness.Right),
                     (windowRect.bottom - windowRect.top) - (oldThickness.Top + oldThickness.Bottom));
-            UnmanagedMethods.SetWindowPos(_hwnd, IntPtr.Zero, (int) newRect.X, (int) newRect.Y, (int) newRect.Width,
-                (int) newRect.Height,
+            UnmanagedMethods.SetWindowPos(_hwnd, IntPtr.Zero, (int)newRect.X, (int)newRect.Y, (int)newRect.Width,
+                (int)newRect.Height,
                 UnmanagedMethods.SetWindowPosFlags.SWP_NOZORDER | UnmanagedMethods.SetWindowPosFlags.SWP_NOACTIVATE);
 
 
@@ -266,7 +268,7 @@ namespace Avalonia.Win32
 
         public void BeginMoveDrag()
         {
-            UnmanagedMethods.DefWindowProc(_hwnd, (int) UnmanagedMethods.WindowsMessage.WM_NCLBUTTONDOWN,
+            UnmanagedMethods.DefWindowProc(_hwnd, (int)UnmanagedMethods.WindowsMessage.WM_NCLBUTTONDOWN,
                 new IntPtr((int)UnmanagedMethods.HitTestValues.HTCAPTION), IntPtr.Zero);
         }
 
@@ -284,8 +286,8 @@ namespace Avalonia.Win32
 
         public void BeginResizeDrag(WindowEdge edge)
         {
-            UnmanagedMethods.DefWindowProc(_hwnd, (int) UnmanagedMethods.WindowsMessage.WM_NCLBUTTONDOWN,
-                new IntPtr((int) EdgeDic[edge]), IntPtr.Zero);
+            UnmanagedMethods.DefWindowProc(_hwnd, (int)UnmanagedMethods.WindowsMessage.WM_NCLBUTTONDOWN,
+                new IntPtr((int)EdgeDic[edge]), IntPtr.Zero);
         }
 
         public Point Position
@@ -301,8 +303,8 @@ namespace Avalonia.Win32
                 UnmanagedMethods.SetWindowPos(
                     Handle.Handle,
                     IntPtr.Zero,
-                    (int) value.X,
-                    (int) value.Y,
+                    (int)value.X,
+                    (int)value.Y,
                     0,
                     0,
                     UnmanagedMethods.SetWindowPosFlags.SWP_NOSIZE | UnmanagedMethods.SetWindowPosFlags.SWP_NOACTIVATE);
@@ -452,7 +454,7 @@ namespace Avalonia.Win32
                                 : RawMouseEventType.MiddleButtonDown,
                         DipFromLParam(lParam), GetMouseModifiers(wParam));
                     break;
-                    
+
                 case UnmanagedMethods.WindowsMessage.WM_LBUTTONUP:
                 case UnmanagedMethods.WindowsMessage.WM_RBUTTONUP:
                 case UnmanagedMethods.WindowsMessage.WM_MBUTTONUP:
@@ -460,9 +462,9 @@ namespace Avalonia.Win32
                         WindowsMouseDevice.Instance,
                         timestamp,
                         _owner,
-                        msg == (int) UnmanagedMethods.WindowsMessage.WM_LBUTTONUP
+                        msg == (int)UnmanagedMethods.WindowsMessage.WM_LBUTTONUP
                             ? RawMouseEventType.LeftButtonUp
-                            : msg == (int) UnmanagedMethods.WindowsMessage.WM_RBUTTONUP
+                            : msg == (int)UnmanagedMethods.WindowsMessage.WM_RBUTTONUP
                                 ? RawMouseEventType.RightButtonUp
                                 : RawMouseEventType.MiddleButtonUp,
                         DipFromLParam(lParam), GetMouseModifiers(wParam));
@@ -506,7 +508,7 @@ namespace Avalonia.Win32
                         timestamp,
                         _owner,
                         ScreenToClient(DipFromLParam(lParam)),
-                        new Vector(-(ToInt32(wParam) >> 16) / wheelDelta,0), GetMouseModifiers(wParam));
+                        new Vector(-(ToInt32(wParam) >> 16) / wheelDelta, 0), GetMouseModifiers(wParam));
                     break;
 
                 case UnmanagedMethods.WindowsMessage.WM_MOUSELEAVE:
@@ -582,9 +584,9 @@ namespace Avalonia.Win32
             var modifiers = WindowsKeyboardDevice.Instance.Modifiers;
             if (keys.HasFlag(UnmanagedMethods.ModifierKeys.MK_LBUTTON))
                 modifiers |= InputModifiers.LeftMouseButton;
-            if(keys.HasFlag(UnmanagedMethods.ModifierKeys.MK_RBUTTON))
-                modifiers  |= InputModifiers.RightMouseButton;
-            if(keys.HasFlag(UnmanagedMethods.ModifierKeys.MK_MBUTTON))
+            if (keys.HasFlag(UnmanagedMethods.ModifierKeys.MK_RBUTTON))
+                modifiers |= InputModifiers.RightMouseButton;
+            if (keys.HasFlag(UnmanagedMethods.ModifierKeys.MK_MBUTTON))
                 modifiers |= InputModifiers.MiddleMouseButton;
             return modifiers;
         }
@@ -678,7 +680,21 @@ namespace Avalonia.Win32
                     throw new ArgumentException("Invalid WindowState.");
             }
 
-            UnmanagedMethods.ShowWindow(_hwnd, command);
+            try
+            {
+
+                UnmanagedMethods.ShowWindow(_hwnd, command);
+            }
+            catch (Exception ex)
+            {
+                // Callback error 
+
+                Debugger.Log(0, "UnmanagedMethods.Show", ex.Message);
+                if (ex.InnerException != null)
+                    Debugger.Log(0, "UnmanagedMethods.Show", ex.InnerException.Message);
+
+                Console.WriteLine("UnmanagedMethods.Show", ex.Message);
+            }
         }
 
         public void SetIcon(IWindowIconImpl icon)

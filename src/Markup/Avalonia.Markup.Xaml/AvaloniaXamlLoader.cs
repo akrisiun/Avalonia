@@ -93,6 +93,8 @@ namespace Avalonia.Markup.Xaml
             {
                 if (assetLocator.Exists(uri))
                 {
+                    // resm: Avalonia.Themes.Default.DefaultTheme.xaml? assembly = Avalonia.Themes.DefaultM
+
                     using (var stream = assetLocator.Open(uri))
                     {
                         var initialize = rootInstance as ISupportInitialize;

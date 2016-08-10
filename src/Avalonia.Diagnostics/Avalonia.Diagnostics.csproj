@@ -49,9 +49,9 @@
       <Project>{B09B78D8-9B26-48B0-9149-D64A2F120F3F}</Project>
       <Name>Avalonia.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Controls\Avalonia.Controls.csproj">
+    <ProjectReference Include="..\Avalonia.Controls\Avalonia.Controls.Merge.csproj">
       <Project>{D2221C82-4A25-4583-9B43-D791E3F6820C}</Project>
-      <Name>Avalonia.Controls</Name>
+      <Name>Avalonia.Controls.Merge</Name>
     </ProjectReference>
     <ProjectReference Include="..\Avalonia.Input\Avalonia.Input.csproj">
       <Project>{62024B2D-53EB-4638-B26B-85EEAA54866E}</Project>

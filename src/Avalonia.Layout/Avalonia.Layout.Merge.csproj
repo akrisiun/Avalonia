@@ -60,20 +60,6 @@
       <HintPath>..\..\bin\merge\Sharp.Reactive.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Avalonia.Animation\Avalonia.Animation.Merge.csproj">
-      <Project>{1432d50b-84b5-4806-b72c-def2e1d8663f}</Project>
-      <Name>Avalonia.Animation.Merge</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.Base\Avalonia.Base.merge.csproj">
-      <Project>{1e17d0ee-dab7-4813-8075-069c37555e25}</Project>
-      <Name>Avalonia.Base.merge</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Avalonia.SceneGraph\Avalonia.SceneGraph.Merge.csproj">
-      <Project>{11f25870-9d72-4558-a79b-86d029b9af83}</Project>
-      <Name>Avalonia.SceneGraph.Merge</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

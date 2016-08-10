@@ -14,7 +14,9 @@ namespace Avalonia
     {
         public static AppBuilder UseDirect2D1(this AppBuilder builder)
         {
-            builder.RenderingSubsystem = Avalonia.Direct2D1.Direct2D1Platform.Initialize;
+            // var init = Avalonia.Direct2D1.Direct2D1Platform.Initialize as Action;
+            Avalonia.Direct2D1.Direct2D1Platform.Initialize();
+            // builder.RenderingSubsystem = init as Action<string>;
             return builder;
         }
     }
@@ -32,11 +34,12 @@ namespace Avalonia.Direct2D1
 
         private static readonly SharpDX.WIC.ImagingFactory s_imagingFactory = new SharpDX.WIC.ImagingFactory();
 
-        public static void Initialize() => AvaloniaLocator.CurrentMutable
-            .Bind<IPlatformRenderInterface>().ToConstant(s_instance)
-            .BindToSelf(s_d2D1Factory)
-            .BindToSelf(s_dwfactory)
-            .BindToSelf(s_imagingFactory);
+        public static void Initialize() 
+            => AvaloniaLocator.CurrentMutable
+                .Bind<IPlatformRenderInterface>().ToConstant(s_instance)
+                .BindToSelf(s_d2D1Factory)
+                .BindToSelf(s_dwfactory)
+                .BindToSelf(s_imagingFactory);
 
         public IBitmapImpl CreateBitmap(int width, int height)
         {

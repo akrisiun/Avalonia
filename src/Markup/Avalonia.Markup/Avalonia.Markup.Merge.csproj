@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\merge\src2\</OutputPath>
+    <OutputPath>..\..\bin\merge\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -75,31 +75,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Avalonia.Core">
-      <HintPath>..\..\..\bin\Avalonia.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Sharp.Reactive">
-      <HintPath>..\..\..\bin\merge\Sharp.Reactive.dll</HintPath>
+    <Reference Include="SharpDx.Reactive">
+      <HintPath>..\..\..\lib\SharpDx.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\WindowsBase.dll</HintPath>
+      <HintPath>..\..\..\lib\WindowsBase.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Avalonia.Styling\Avalonia.Styling.Merge.csproj">
-      <Project>{c630dddb-ba43-4481-bd15-baef988f6de0}</Project>
-      <Name>Avalonia.Styling.Merge</Name>
+    <ProjectReference Include="..\..\Avalonia.Core.csproj">
+      <Project>{877d4d64-a729-4dff-80e4-ef951b57eb33}</Project>
+      <Name>Avalonia.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

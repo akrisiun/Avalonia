@@ -42,6 +42,9 @@ namespace Avalonia.Rendering
         /// <param name="visual">The visual to render.</param>
         public static void Render(this IRenderTarget renderTarget, IVisual visual)
         {
+            if (renderTarget == null)
+                return;
+
             using (var ctx = renderTarget.CreateDrawingContext())
             {
                 ctx.Render(visual);

@@ -18,12 +18,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Avalonia.Direct2D1.XML</DocumentationFile>
-    <NoWarn>CS1591</NoWarn>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>CS1591,CS0067</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -84,37 +85,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Avalonia.Animation\Avalonia.Animation.csproj">
-      <Project>{D211E587-D8BC-45B9-95A4-F297C8FA5200}</Project>
-      <Name>Avalonia.Animation</Name>
+    <ProjectReference Include="..\..\Avalonia.Controls\Avalonia.Controls.Merge.csproj">
+      <Project>{d2221c82-4a25-4583-9b43-d791e3f6820c}</Project>
+      <Name>Avalonia.Controls.Merge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Base\Avalonia.Base.csproj">
-      <Project>{B09B78D8-9B26-48B0-9149-D64A2F120F3F}</Project>
-      <Name>Avalonia.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Controls\Avalonia.Controls.csproj">
-      <Project>{d500fc35-8d14-4246-9d35-19af451fcc6a}</Project>
-      <Name>Avalonia.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Input\Avalonia.Input.csproj">
-      <Project>{62024b2d-53eb-4638-b26b-85eeaa54866e}</Project>
-      <Name>Avalonia.Input</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Interactivity\Avalonia.Interactivity.csproj">
-      <Project>{6b0ed19d-a08b-461c-a9d9-a9ee40b0c06b}</Project>
-      <Name>Avalonia.Interactivity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Layout\Avalonia.Layout.csproj">
-      <Project>{42472427-4774-4C81-8AFF-9F27B8E31721}</Project>
-      <Name>Avalonia.Layout</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.SceneGraph\Avalonia.SceneGraph.csproj">
-      <Project>{EB582467-6ABB-43A1-B052-E981BA910E3A}</Project>
-      <Name>Avalonia.SceneGraph</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Avalonia.Styling\Avalonia.Styling.csproj">
-      <Project>{f1baa01a-f176-4c6a-b39d-5b40bb1b148f}</Project>
-      <Name>Avalonia.Styling</Name>
+    <ProjectReference Include="..\..\Avalonia.Core.csproj">
+      <Project>{877d4d64-a729-4dff-80e4-ef951b57eb33}</Project>
+      <Name>Avalonia.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\Shared\RenderHelpers\RenderHelpers.projitems" Label="Shared" />

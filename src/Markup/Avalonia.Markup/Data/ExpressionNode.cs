@@ -7,7 +7,8 @@ using Avalonia.Data;
 
 namespace Avalonia.Markup.Data
 {
-    internal abstract class ExpressionNode : IObservable<object>
+    // internal 
+    public abstract class ExpressionNode : IObservable<object>
     {
         protected static readonly WeakReference UnsetReference = 
             new WeakReference(AvaloniaProperty.UnsetValue);
