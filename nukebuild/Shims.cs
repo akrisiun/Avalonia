@@ -5,7 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.IO;
-using Numerge;
+//using Numerge;
 
 public partial class Build
 {
@@ -78,9 +78,9 @@ public partial class Build
         }
     }
 
-    class NumergeNukeLogger : INumergeLogger
+    class NumergeNukeLogger // : INumergeLogger
     {
-        public void Log(NumergeLogLevel level, string message)
+        public void Log(int level, string message)
         {
             if(level == NumergeLogLevel.Error)
                 Logger.Error(message);
@@ -89,5 +89,12 @@ public partial class Build
             else
                 Logger.Info(message);
         }
+    }
+
+    class NumergeLogLevel
+    {
+       public const int None = 0;
+       public const int Warning = 1;
+       public const int Error = 2;
     }
 }
